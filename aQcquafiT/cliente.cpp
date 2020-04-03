@@ -1,7 +1,7 @@
 #include "cliente.h"
 #include "ui_cliente.h"
 
-Cliente::Cliente(char n, char c, unsigned int g, unsigned int m, unsigned int a, std::string cf, char lN, char r, char v, unsigned int num): nome(n),cognome(c),giorno(g),mese(m),anno(a),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num){}
+Cliente::Cliente(char n, char c, unsigned int g, unsigned int m, unsigned int a,string cf, char lN, char r, char v, unsigned int num,string nt,string em,bool s): nome(n),cognome(c),giorno(g),mese(m),anno(a),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
 
 char Cliente::getnome() const
 {
@@ -28,7 +28,7 @@ unsigned int Cliente::getanno() const
     return anno;
 }
 
-std::string Cliente::getcodfiscale() const
+string Cliente::getcodfiscale() const
 {
     return codicefiscale;
 }
@@ -51,4 +51,19 @@ char Cliente::getvia() const
 unsigned int Cliente::getnum() const
 {
     return numvia;
+}
+
+string Cliente::getnumerotel() const
+{
+    return numerotel;
+}
+
+string Cliente::getmail() const
+{
+    return mail;
+}
+
+bool Cliente::getstudent() const
+{
+    return student;
 }
