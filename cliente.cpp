@@ -1,69 +1,69 @@
 #include "cliente.h"
 #include "ui_cliente.h"
 
-Cliente::Cliente(char n, char c, unsigned int g, unsigned int m, unsigned int a,string cf, char lN, char r, char v, unsigned int num,string nt,string em,bool s): nome(n),cognome(c),giorno(g),mese(m),anno(a),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
+cliente::cliente(char n, char c, unsigned int g, unsigned int m, unsigned int a,string cf, char lN, char r, char v, unsigned int num,string nt,string em,bool s): nome(n),cognome(c),giorno(g),mese(m),anno(a),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
 
-char Cliente::getnome() const
+char cliente::getnome() const
 {
     return nome;
 }
 
-char Cliente::getcognome() const
+char cliente::getcognome() const
 {
     return cognome;
 }
 
-unsigned int Cliente::getgiorno() const
+unsigned int cliente::getgiorno() const
 {
     return giorno;
 }
 
-unsigned int Cliente::getmese() const
+unsigned int cliente::getmese() const
 {
     return mese;
 }
 
-unsigned int Cliente::getanno() const
+unsigned int cliente::getanno() const
 {
     return anno;
 }
 
-string Cliente::getcodfiscale() const
+string cliente::getcodfiscale() const
 {
     return codicefiscale;
 }
 
-char Cliente::getluogo() const
+char cliente::getluogo() const
 {
     return luogodN;
 }
 
-char Cliente::getres() const
+char cliente::getres() const
 {
     return residenza;
 }
 
-char Cliente::getvia() const
+char cliente::getvia() const
 {
     return via;
 }
 
-unsigned int Cliente::getnum() const
+unsigned int cliente::getnum() const
 {
     return numvia;
 }
 
-string Cliente::getnumerotel() const
+string cliente::getnumerotel() const
 {
     return numerotel;
 }
 
-string Cliente::getmail() const
+string cliente::getmail() const
 {
     return mail;
 }
 
-bool Cliente::getstudent() const
+bool cliente::getstudent() const
 {
     return student;
 }

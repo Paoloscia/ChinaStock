@@ -2,23 +2,29 @@
 #define PISCINA_H
 
 #include "cliente.h"
-#include "data.h"
 
-class Piscina : public Cliente
+class piscina : virtual public cliente
 {
-public:
-    Piscina(Cliente,data,string,bool);
-    ~Piscina();
-    data getscadenzaabbonamento() const;
-    string getnomeistruttorepiscina() const;
-    bool getcorsonuoto() const;
-    static int clientipiscina;
-    int getclientipiscina();
 private:
-    data datascadenza;
-    string nomeistruttorepiscina;
     bool corsonuoto;
-    Cliente clientepiscina;
+    string nomeistruttorepiscina;
+    unsigned int sgiorno; //scadenza giorno
+    unsigned int smese;  // scadenza mese
+    unsigned int sanno;  // scadenza anno
+public:
+    piscina(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool,bool,string,unsigned int,unsigned int,unsigned int);
+    piscina(cliente,bool,string,unsigned int,unsigned int,unsigned int);
+    virtual piscina* clone() const;
+    //virtual ~piscina();
+    bool iscorsonuoto() const;
+
+    string getnomeistruttorepiscina() const;
+
+
+    unsigned int getsgiorno() const;
+    unsigned int getsmese() const;
+    unsigned int getsanno() const;
+
 };
 
 #endif // PISCINA_H

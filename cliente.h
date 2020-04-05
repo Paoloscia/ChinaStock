@@ -2,7 +2,7 @@
 #define MODEL_H
 #include<string>
 using std::string;
-class Cliente{
+class cliente{
 private:
     char nome;
     char cognome;
@@ -18,7 +18,7 @@ private:
     string mail;
     bool student;
 public:
-    Cliente(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool);
+    cliente(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool);
     //virtual ~Cliente = default ;
     //virtual Cliente* clone() const = 0;
 
