@@ -8,9 +8,9 @@ class piscina : virtual public cliente
 private:
     bool corsonuoto;
     string nomeistruttorepiscina;
-    unsigned int sgiorno; //scadenza giorno
-    unsigned int smese;  // scadenza mese
-    unsigned int sanno;  // scadenza anno
+    unsigned int sgiornopi; //scadenza giorno
+    unsigned int smesepi;  // scadenza mese
+    unsigned int sannopi;  // scadenza anno
 public:
     piscina(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool,bool,string,unsigned int,unsigned int,unsigned int);
     piscina(cliente,bool,string,unsigned int,unsigned int,unsigned int);

@@ -2,8 +2,8 @@
 
 
 
-piscina::piscina(char n, char c, unsigned int g, unsigned int m, unsigned int a,string cf, char lN, char r, char v, unsigned int num,string nt,string em,bool s,bool cn,string ni,unsigned int sg,unsigned int sm,unsigned int sa):cliente(n,c,g,m,a,cf,lN,r,v,num,nt,em,s),corsonuoto(cn),nomeistruttorepiscina(ni),sgiorno(sg),smese(sm),sanno(sa){}
-piscina::piscina(cliente cli,bool cn,string ni,unsigned int sg,unsigned int sm,unsigned int sa):cliente(cli),corsonuoto(cn),nomeistruttorepiscina(ni),sgiorno(sg),smese(sm),sanno(sa){}
+piscina::piscina(char n, char c, unsigned int g, unsigned int m, unsigned int a,string cf, char lN, char r, char v, unsigned int num,string nt,string em,bool s,bool cn,string ni,unsigned int sgpi,unsigned int smpi,unsigned int sapi):cliente(n,c,g,m,a,cf,lN,r,v,num,nt,em,s),corsonuoto(cn),nomeistruttorepiscina(ni),sgiornopi(sgpi),smesepi(smpi),sannopi(sapi){}
+piscina::piscina(cliente cli,bool cn,string ni,unsigned int sgpi,unsigned int smpi,unsigned int sapi):cliente(cli),corsonuoto(cn),nomeistruttorepiscina(ni),sgiornopi(sgpi),smesepi(smpi),sannopi(sapi){}
 piscina *piscina::clone() const{
     return new piscina(*this);
 }
@@ -21,15 +21,15 @@ string piscina::getnomeistruttorepiscina() const
 
 unsigned int piscina::getsgiorno() const
 {
-    return sgiorno;
+    return sgiornopi;
 }
 
 unsigned int piscina::getsmese() const
 {
-    return smese;
+    return smesepi;
 }
 
 unsigned int piscina::getsanno() const
 {
-    return sanno;
+    return sannopi;
 }

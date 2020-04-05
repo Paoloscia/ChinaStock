@@ -7,9 +7,9 @@ class palestra : virtual public cliente
 private:
     bool scheda; //se fa la scheda oppure no;
     string nomeistruttorepalestra; //nome istruttore;
-    unsigned int sgiorno; //scadenza giorno
-    unsigned int smese;  // scadenza mese
-    unsigned int sanno;  // scadenza anno
+    unsigned int sgiornopa; //scadenza giorno
+    unsigned int smesepa;  // scadenza mese
+    unsigned int sannopa;  // scadenza anno
 public:
     palestra(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool,bool,string,unsigned int,unsigned int,unsigned int);
     //palestra(const palestra& p);
