@@ -4,10 +4,11 @@
 #include "piscina.h"
 #include "palestra.h"
 
-class vip: public palestra, public piscina
+class vip: public piscina, public palestra
 {
 public:
-    vip(){};
+
+    vip(cliente,piscina,palestra);
 };
 
 #endif // VIP_H
