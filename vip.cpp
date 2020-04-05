@@ -1,6 +1,7 @@
 #include "vip.h"
 
-Vip::Vip()
+vip::vip(++++, cliente cli, data d,string n,bool cn) :clientepiscina(cli), datascadenza(d), nomeistruttorepiscina (n), corsonuoto(cn)
 {
+    clientipiscina++;
 
 }
