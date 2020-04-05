@@ -17,10 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cliente.cpp \
-    main.cpp
+    main.cpp\
+    palestra.cpp\
+    piscina.cpp\
+    vip.cpp
 
 HEADERS += \
-    cliente.h
+    cliente.h\
+    palestra.h\
+    piscina.h\
+    vip.h
 
 FORMS += \
     cliente.ui
