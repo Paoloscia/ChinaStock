@@ -24,6 +24,7 @@ SOURCES += \
 
 HEADERS += \
     cliente.h\
+    container.h \
     palestra.h\
     piscina.h\
     vip.h
