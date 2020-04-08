@@ -20,6 +20,7 @@ private:
     };
     static void eliminaNodo(); //CAPIRE MEGLIO STATICI, CONTROLLARE!!!!!!!!
     nodo* primo, *ultimo;
+    static nodo* clone(nodo*, nodo*&);
     //nodo *copia(const nodo*);
     //nodo *lastNode(const nodo*);
 public:
@@ -91,4 +92,29 @@ void Container<T>::nodo::distruggi()
 {
     if (next) next->distruggi();
     delete this;
+}
+
+template<class T>
+typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
+{
+    if (pri == nullptr)
+    {
+        ult = nullptr;
+        return nullptr;
+    }
+    nodo* p = new nodo(pri->info, clone(pri->next, ult));
+    if(pri->next == nullptr) ult = p;
+    return p;
+}
+
+template<class T>
+Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
+
+template<class T>
+Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
+
+template<class T>
+Container<T>::~Container()
+{
+    if (primo) primo->distruggi();
 }
