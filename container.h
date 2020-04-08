@@ -36,37 +36,37 @@ public:
 
 
     class constIteratore
-       {
-           friend Container<T>;
-       private:
-           const nodo* puntatore;
-           constIteratore(nodo*);
-       public:
-           constIteratore();
-           constIteratore& operator=(const constIteratore&);
-           constIteratore& operator++();
-           constIteratore& operator++(int);
-           const T& operator*() const;
-           const T* operator->() const;
-           bool operator==(const constIteratore&);
-           bool operator!=(const constIteratore&);
-       };
+    {
+        friend Container<T>;
+    private:
+        const nodo* puntatore;
+        constIteratore(nodo*);
+    public:
+        constIteratore();
+        constIteratore& operator=(const constIteratore&);
+        constIteratore& operator++();
+        constIteratore& operator++(int);
+        const T& operator*() const;
+        const T* operator->() const;
+        bool operator==(const constIteratore&);
+        bool operator!=(const constIteratore&);
+    };
 
 
     class Iteratore{
-    friend class Container;
+        friend class Container;
     private:
-    nodo * puntatore;
-    //bool pte;
-    Iteratore(nodo *); //bool=false
+        nodo * puntatore;
+        //bool pte;
+        Iteratore(nodo *); //bool=false
     public:
-    Iteratore();
-    Iteratore &operator++();
-    Iteratore &operator++(int);
-    const T &operator*() const;
-    const T *operator->() const;
-    bool operator==(const Iteratore &) const;
-    bool operator!=(const Iteratore &) const;
+        Iteratore();
+        Iteratore &operator++();
+        Iteratore &operator++(int);
+        const T &operator*() const;
+        const T *operator->() const;
+        bool operator==(const Iteratore &) const;
+        bool operator!=(const Iteratore &) const;
 
     };
     constIteratore inizio() const;
@@ -142,7 +142,7 @@ void Container<T>::aggiungiDavanti(const T & obj)
 {
     if (primo == nullptr) primo = ultimo = new nodo(obj);
     else
-    primo = new nodo(obj, primo);
+        primo = new nodo(obj, primo);
 }
 
 template<class T>
