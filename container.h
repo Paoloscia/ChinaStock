@@ -31,7 +31,8 @@ public:
     bool operator==(const Container<T>&) const;
     bool operator!=(const Container<T>&) const;
 
-    void aggiungi(const T&);
+    void aggiungiDavanti(const T&);
+    void aggiungiDietro(const T&);
 
 
     class constIteratore
@@ -134,4 +135,23 @@ Container<T>& Container<T>::operator=(const Container & q)
         primo = clone(q.primo, ultimo);
     }
     return *this;
+}
+
+template<class T>
+void Container<T>::aggiungiDavanti(const T & obj)
+{
+    if (primo == nullptr) primo = ultimo = new nodo(obj);
+    else
+    primo = new nodo(obj, primo);
+}
+
+template<class T>
+void Container<T>::aggiungiDietro(const T & obj)
+{
+    if (primo == nullptr) primo = ultimo = new nodo(obj);
+    else
+    {
+        ultimo->next = new nodo(obj);
+        ultimo = ultimo->next;
+    }
 }
