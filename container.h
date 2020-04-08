@@ -1,7 +1,9 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <string>
+using std::string;
 template <class T>
+
 
 
 #endif // CONTAINER_H
@@ -18,9 +20,11 @@ private:
         void distruggi();
 
     };
-    static void eliminaNodo(); //CAPIRE MEGLIO STATICI, CONTROLLARE!!!!!!!!
+    void eliminaNodo(nodo*, const T&); //CAPIRE MEGLIO STATICI, CONTROLLARE!!!!!!!!
     nodo* primo, *ultimo;
     static nodo* clone(nodo*, nodo*&);
+    nodo* rimuovi(nodo*, const T&);
+    nodo* rimuovi_s(nodo*, string);
     //nodo *copia(const nodo*);
     //nodo *lastNode(const nodo*);
 public:
@@ -76,11 +80,11 @@ public:
     Iteratore inizio();
     Iteratore fine();
     void rimuovi(const T&);
-    void rimuovi_s(std::string); //DA RIVEDERE!!!
+    void rimuovi_s(string); //DA RIVEDERE!!!
     Iteratore cerca(const T&);
-    Iteratore cerca_s(std::string); // DA RIVEDERE!!!
+    Iteratore cerca_s(string); // DA RIVEDERE!!!
     constIteratore cerca(const T&) const;
-    constIteratore cerca_s(std::string) const; //DA RIVEDERE!!!
+    constIteratore cerca_s(string) const; //DA RIVEDERE!!!
 };
 
 //-------------------------------------IMPLEMENTAZIOONE METODI--------------------------
@@ -94,6 +98,55 @@ void Container<T>::nodo::distruggi()
 {
     if (next) next->distruggi();
     delete this;
+}
+
+template<class T>
+void Container<T>::rimuovi(const T & obj)
+{
+    remove(primo, obj);
+}
+
+template<class T>
+void Container<T>::rimuovi_s(string s)
+{
+    rimuovi_s(primo, s);
+}
+
+template<class T>
+typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
+{
+    if (f == nullptr)
+        return nullptr;
+    f->next = remove(f->next, obj);
+    if (f->info == obj)
+    {
+        nodo* tmp = f->next;
+        if (primo == f) primo = tmp;
+        if (f == ultimo) ultimo = nullptr;
+        delete f;
+        return tmp;
+    }
+    if (ultimo == nullptr) ultimo = f;
+    return f;
+}
+
+template<class T>
+typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
+{
+    if (f == nullptr)
+        return nullptr;
+    f->next = remove_s(f->next, s);
+    if (f->info == s)
+    {
+        nodo* tmp = f->next;
+        if (primo == f) primo = tmp;
+        if (f == ultimo) ultimo = nullptr;
+        delete f;
+        return tmp;
+    }
+    if (ultimo == nullptr)
+        ultimo = f;
+    return f;
 }
 
 //CLONE
@@ -222,7 +275,7 @@ typename Container<T>::Iteratore Container<T>::cerca(const T & obj) // ritorna I
 }
 
 template<class T>
-typename Container<T>::Iteratore Container<T>::cerca_s(std::string s)
+typename Container<T>::Iteratore Container<T>::cerca_s(string s)
 {
     Iteratore it = primo;
     while (it != fine())
@@ -253,7 +306,7 @@ typename Container<T>::constIteratore Container<T>::cerca(const T & obj) const /
 }
 
 template<class T>
-typename Container<T>::constIteratore Container<T>::cerca_s(std::string s) const
+typename Container<T>::constIteratore Container<T>::cerca_s(string s) const
 {
     constIteratore cit = primo;
     while (cit != fine())
