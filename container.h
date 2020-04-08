@@ -20,7 +20,6 @@ private:
         void distruggi();
 
     };
-    void eliminaNodo(nodo*, const T&); //CAPIRE MEGLIO STATICI, CONTROLLARE!!!!!!!!
     nodo* primo, *ultimo;
     static nodo* clone(nodo*, nodo*&);
     nodo* rimuovi(nodo*, const T&);
@@ -64,12 +63,13 @@ public:
         Iteratore(nodo *);
     public:
         Iteratore();
+        Iteratore& operator=(const Iteratore&);
         Iteratore &operator++();
         Iteratore &operator++(int);
         const T &operator*() const;
         const T *operator->() const;
-        bool operator==(const Iteratore &) const;
-        bool operator!=(const Iteratore &) const;
+        bool operator==(const Iteratore &);
+        bool operator!=(const Iteratore &);
 
     };
     constIteratore inizio() const;
@@ -87,16 +87,27 @@ public:
 };
 
 //-------------------------------------IMPLEMENTAZIOONE METODI--------------------------
-//costruttore nodo
 template <class T>
 Container<T>::nodo::nodo(const T& obj, nodo* n) : info(obj), next(n) {}
 
-//DISTRUGGI
 template<class T>
 void Container<T>::nodo::distruggi()
 {
     if (next) next->distruggi();
     delete this;
+}
+
+template<class T>
+typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
+{
+    if (pri == nullptr)
+    {
+        ult = nullptr;
+        return nullptr;
+    }
+    nodo* p = new nodo(pri->info, clone(pri->next, ult));
+    if(pri->next == nullptr) ult = p;
+    return p;
 }
 
 template<class T>
@@ -112,72 +123,17 @@ void Container<T>::rimuovi_s(string s)
 }
 
 template<class T>
-typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
-{
-    if (f == nullptr)
-        return nullptr;
-    f->next = remove(f->next, obj);
-    if (f->info == obj)
-    {
-        nodo* tmp = f->next;
-        if (primo == f) primo = tmp;
-        if (f == ultimo) ultimo = nullptr;
-        delete f;
-        return tmp;
-    }
-    if (ultimo == nullptr) ultimo = f;
-    return f;
-}
-
-template<class T>
-typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
-{
-    if (f == nullptr)
-        return nullptr;
-    f->next = remove_s(f->next, s);
-    if (f->info == s)
-    {
-        nodo* tmp = f->next;
-        if (primo == f) primo = tmp;
-        if (f == ultimo) ultimo = nullptr;
-        delete f;
-        return tmp;
-    }
-    if (ultimo == nullptr)
-        ultimo = f;
-    return f;
-}
-
-//CLONE
-template<class T>
-typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
-{
-    if (pri == nullptr)
-    {
-        ult = nullptr;
-        return nullptr;
-    }
-    nodo* p = new nodo(pri->info, clone(pri->next, ult));
-    if(pri->next == nullptr) ult = p;
-    return p;
-}
-
-//COSTRUTTORE STANDARD CONTAINER
-template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
-//COSTRUTTORE copia CONTAINER
 template<class T>
 Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
 
-//DISTRUTTORE CONTAINER
 template<class T>
 Container<T>::~Container()
 {
     if (primo) primo->distruggi();
 }
 
-//ASSEGNAZIONE CONTAINER
 template<class T>
 Container<T>& Container<T>::operator=(const Container & q)
 {
@@ -207,6 +163,114 @@ void Container<T>::aggiungiDietro(const T & obj)
         ultimo = ultimo->next;
     }
 }
+
+
+template<class T>
+Container<T>::constIteratore::constIteratore(nodo * p) : puntatore(p) {}
+
+template<class T>
+Container<T>::constIteratore::constIteratore() : puntatore(nullptr) {}
+
+template<class T>
+typename Container<T>::constIteratore & Container<T>::constIteratore::operator=(const constIteratore & cit)
+{
+    puntatore=cit.puntatore;
+    return *this;
+}
+
+template<class T>
+typename Container<T>::constIteratore& Container<T>::constIteratore::operator++()
+{
+    if(puntatore) puntatore=puntatore->next;
+    return *this;
+
+}
+template<class T>
+typename Container<T>::constIteratore& Container<T>::constIteratore::operator++(int)
+{
+    Iteratore aux=*this;
+    if(puntatore) puntatore=puntatore->next;
+    return aux;
+
+}
+
+template<class T>
+const T & Container<T>::constIteratore::operator*() const
+{
+    return puntatore->info;
+}
+
+template<class T>
+const T * Container<T>::constIteratore::operator->() const
+{
+    return &(puntatore->info);
+}
+
+template<class T>
+bool Container<T>::constIteratore::operator==(const constIteratore& cit)
+{
+    return puntatore == cit.puntatore;
+}
+
+template<class T>
+bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
+{
+    return puntatore != cit.puntatore;
+}
+
+template<class T>
+Container<T>::Iteratore::Iteratore(nodo * p) : puntatore(p) {}
+
+template<class T>
+Container<T>::Iteratore::Iteratore() : puntatore(nullptr) {}
+
+template<class T>
+typename Container<T>::Iteratore & Container<T>::Iteratore::operator=(const Iteratore & it)
+{
+    puntatore=it.puntatore;
+    return *this;
+}
+
+template<class T>
+typename Container<T>::Iteratore& Container<T>::Iteratore::operator++()
+{
+    if(puntatore) puntatore=puntatore->next;
+    return *this;
+
+}
+template<class T>
+typename Container<T>::Iteratore& Container<T>::Iteratore::operator++(int)
+{
+    Iteratore aux=*this;
+    if(puntatore) puntatore=puntatore->next;
+    return aux;
+
+}
+
+template<class T>
+const T & Container<T>::Iteratore::operator*() const
+{
+    return puntatore->info;
+}
+
+template<class T>
+const T * Container<T>::Iteratore::operator->() const
+{
+    return &(puntatore->info);
+}
+
+template<class T>
+bool Container<T>::Iteratore::operator==(const Iteratore& it)
+{
+    return puntatore == it.puntatore;
+}
+
+template<class T>
+bool Container<T>::Iteratore::operator!=(const Iteratore& it)
+{
+    return puntatore != it.puntatore;
+}
+
 
 template<class T>
 typename Container<T>::constIteratore Container<T>::inizio() const
@@ -247,15 +311,40 @@ typename Container<T>::Iteratore Container<T>::fine()
 }
 
 template<class T>
-bool Container<T>::constIteratore::operator==(const constIteratore& cit)
+typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
 {
-    return puntatore == cit.puntatore;
+    if (f == nullptr)
+        return nullptr;
+    f->next = remove(f->next, obj);
+    if (f->info == obj)
+    {
+        nodo* tmp = f->next;
+        if (primo == f) primo = tmp;
+        if (f == ultimo) ultimo = nullptr;
+        delete f;
+        return tmp;
+    }
+    if (ultimo == nullptr) ultimo = f;
+    return f;
 }
 
 template<class T>
-bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
+typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
 {
-    return puntatore != cit.puntatore;
+    if (f == nullptr)
+        return nullptr;
+    f->next = remove_s(f->next, s);
+    if (f->info == s)
+    {
+        nodo* tmp = f->next;
+        if (primo == f) primo = tmp;
+        if (f == ultimo) ultimo = nullptr;
+        delete f;
+        return tmp;
+    }
+    if (ultimo == nullptr)
+        ultimo = f;
+    return f;
 }
 
 template<class T>
@@ -288,7 +377,6 @@ typename Container<T>::Iteratore Container<T>::cerca_s(string s)
     return Iteratore();
 }
 
-
 template<class T>
 typename Container<T>::constIteratore Container<T>::cerca(const T & obj) const // ritorna const_iterator alla prima occorrenza del match
 {
@@ -317,40 +405,4 @@ typename Container<T>::constIteratore Container<T>::cerca_s(string s) const
         cit++;
     }
     return constIteratore();
-}
-
-
-template<class T>
-typename Container<T>::constIteratore & Container<T>::constIteratore::operator=(const constIteratore & cit)
-{
-    puntatore=cit.puntatore;
-    return *this;
-}
-
-template<class T>
-typename Container<T>::constIteratore& Container<T>::constIteratore::operator++()
-{
-    if(puntatore) puntatore=puntatore->next;
-    return *this;
-
-}
-template<class T>
-typename Container<T>::constIteratore& Container<T>::constIteratore::operator++(int)
-{
-    Iteratore aux=*this;
-    if(puntatore) puntatore=puntatore->next;
-    return aux;
-
-}
-
-template<class T>
-const T & Container<T>::constIteratore::operator*() const
-{
-    return puntatore->info;
-}
-
-template<class T>
-const T * Container<T>::constIteratore::operator->() const
-{
-    return &(puntatore->info);
 }
