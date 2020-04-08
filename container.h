@@ -83,10 +83,11 @@ public:
 };
 
 //-------------------------------------IMPLEMENTAZIOONE METODI--------------------------
-
+//costruttore nodo
 template <class T>
 Container<T>::nodo::nodo(const T& obj, nodo* n) : info(obj), next(n) {}
 
+//DISTRUGGI
 template<class T>
 void Container<T>::nodo::distruggi()
 {
@@ -94,6 +95,7 @@ void Container<T>::nodo::distruggi()
     delete this;
 }
 
+//CLONE
 template<class T>
 typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
 {
@@ -107,12 +109,15 @@ typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
     return p;
 }
 
+//COSTRUTTORE STANDARD CONTAINER
 template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
+//COSTRUTTORE CONTAINER
 template<class T>
 Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
 
+//DISTRUTTORE CONTAINER
 template<class T>
 Container<T>::~Container()
 {
