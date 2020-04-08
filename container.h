@@ -71,8 +71,8 @@ public:
     };
     constIteratore inizio() const;
     constIteratore fine() const;
-    //T& front() const; -> ritorno il primo con tipo T->info
-    //T& back() const; -> ritorno l'ultimo con tipo T->info
+    T& davanti() const;
+    T& dietro() const;
     Iteratore inizio();
     Iteratore fine();
     void rimuovi(const T&);
@@ -114,7 +114,7 @@ typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
 template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
-//COSTRUTTORE di copia CONTAINER
+//COSTRUTTORE copia CONTAINER
 template<class T>
 Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
 
@@ -154,4 +154,29 @@ void Container<T>::aggiungiDietro(const T & obj)
         ultimo->next = new nodo(obj);
         ultimo = ultimo->next;
     }
+}
+
+template<class T>
+typename Container<T>::constIteratore Container<T>::inizio() const
+{
+    return constIteratore(primo);
+}
+
+template<class T>
+typename Container<T>::constIteratore Container<T>::fine() const
+{
+    if(primo) return constIteratore(ultimo + 1);
+    return constIteratore(nullptr);
+}
+
+template<class T>
+T & Container<T>::davanti() const
+{
+    return primo->info;
+}
+
+template<class T>
+T & Container<T>::dietro() const
+{
+    return ultimo->info;
 }
