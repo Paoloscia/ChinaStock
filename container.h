@@ -182,6 +182,19 @@ T & Container<T>::dietro() const
 }
 
 template<class T>
+typename Container<T>::Iteratore Container<T>::inizio()
+{
+    return Iteratore(primo);
+}
+
+template<class T>
+typename Container<T>::Iteratore Container<T>::fine()
+{
+    if(primo) return Iteratore(ultimo + 1);
+    return Iteratore(nullptr);
+}
+
+template<class T>
 bool Container<T>::constIteratore::operator==(const constIteratore& cit)
 {
     return puntatore == cit.puntatore;
@@ -191,4 +204,65 @@ template<class T>
 bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
 {
     return puntatore != cit.puntatore;
+}
+
+template<class T>
+typename Container<T>::Iteratore Container<T>::cerca(const T & obj) // ritorna Iteratore alla prima occorrenza del match
+{
+    Iteratore it = primo;
+    while (it != fine())
+    {
+        if (obj == *it)
+        {
+            return it;
+        }
+        it++;
+    }
+    return Iteratore();
+}
+
+template<class T>
+typename Container<T>::Iteratore Container<T>::cerca_s(std::string s)
+{
+    Iteratore it = primo;
+    while (it != fine())
+    {
+        if (*it == s)
+        {
+            return it;
+        }
+        it++;
+    }
+    return Iteratore();
+}
+
+
+template<class T>
+typename Container<T>::constIteratore Container<T>::cerca(const T & obj) const // ritorna const_iterator alla prima occorrenza del match
+{
+    constIteratore cit = primo;
+    while (cit != fine())
+    {
+        if (obj == *cit)
+        {
+            return cit;
+        }
+        cit++;
+    }
+    return constIteratore();
+}
+
+template<class T>
+typename Container<T>::constIteratore Container<T>::cerca_s(std::string s) const
+{
+    constIteratore cit = primo;
+    while (cit != fine())
+    {
+        if (*cit == s)
+        {
+            return cit;
+        }
+        cit++;
+    }
+    return constIteratore();
 }
