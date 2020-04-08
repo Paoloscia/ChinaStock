@@ -83,3 +83,12 @@ public:
 
 //-------------------------------------IMPLEMENTAZIOONE METODI--------------------------
 
+template <class T>
+Container<T>::nodo::nodo(const T& obj, nodo* n) : info(obj), next(n) {}
+
+template<class T>
+void Container<T>::nodo::distruggi()
+{
+    if (next) next->distruggi();
+    delete this;
+}
