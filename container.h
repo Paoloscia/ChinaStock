@@ -138,6 +138,28 @@ Container<T>& Container<T>::operator=(const Container & q)
 }
 
 template<class T>
+bool Container<T>::constIteratore::operator==(const constIteratore& cit)
+{
+   /*
+    Container<T>::constIteratore citq = cit.begin();
+    for(auto it=cit.begin();it!=cit.end();++it) // DA VISIONARE!!! NON SONO SICURO CHE SI POSSA SCRIVERE COSI'!
+      {
+        if((*it) != *citq)
+        return false;
+       }
+    return true;
+    */
+    return puntatore == cit.puntatore;
+}
+
+template<class T>
+bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
+{
+    return !puntatore != cit.puntatore;
+}
+
+
+template<class T>
 void Container<T>::aggiungiDavanti(const T & obj)
 {
     if (primo == nullptr) primo = ultimo = new nodo(obj);
