@@ -114,7 +114,7 @@ typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
 template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
-//COSTRUTTORE CONTAINER
+//COSTRUTTORE di copia CONTAINER
 template<class T>
 Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
 
