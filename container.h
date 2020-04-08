@@ -28,8 +28,8 @@ public:
     Container(const Container&);
     ~Container();
     Container& operator=(const Container&);
-    bool operator==(const Container<T>&) const;
-    bool operator!=(const Container<T>&) const;
+    //bool operator==(const Container<T>&) const;   ci serve davvero?
+    //bool operator!=(const Container<T>&) const;
 
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
@@ -138,28 +138,6 @@ Container<T>& Container<T>::operator=(const Container & q)
 }
 
 template<class T>
-bool Container<T>::constIteratore::operator==(const constIteratore& cit)
-{
-   /*
-    Container<T>::constIteratore citq = cit.begin();
-    for(auto it=cit.begin();it!=cit.end();++it) // DA VISIONARE!!! NON SONO SICURO CHE SI POSSA SCRIVERE COSI'!
-      {
-        if((*it) != *citq)
-        return false;
-       }
-    return true;
-    */
-    return puntatore == cit.puntatore;
-}
-
-template<class T>
-bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
-{
-    return !puntatore != cit.puntatore;
-}
-
-
-template<class T>
 void Container<T>::aggiungiDavanti(const T & obj)
 {
     if (primo == nullptr) primo = ultimo = new nodo(obj);
@@ -201,4 +179,16 @@ template<class T>
 T & Container<T>::dietro() const
 {
     return ultimo->info;
+}
+
+template<class T>
+bool Container<T>::constIteratore::operator==(const constIteratore& cit)
+{
+    return puntatore == cit.puntatore;
+}
+
+template<class T>
+bool Container<T>::constIteratore::operator!=(const constIteratore& cit)
+{
+    return puntatore != cit.puntatore;
 }
