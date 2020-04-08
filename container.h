@@ -123,3 +123,15 @@ Container<T>::~Container()
 {
     if (primo) primo->distruggi();
 }
+
+//ASSEGNAZIONE CONTAINER
+template<class T>
+Container<T>& Container<T>::operator=(const Container & q)
+{
+    if (this != &q)
+    {
+        if(primo) delete primo;
+        primo = clone(q.primo, ultimo);
+    }
+    return *this;
+}
