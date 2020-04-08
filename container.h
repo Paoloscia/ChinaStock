@@ -58,11 +58,10 @@ public:
 
 
     class Iteratore{
-        friend class Container;
+        friend Container<T>;
     private:
         nodo * puntatore;
-        //bool pte;
-        Iteratore(nodo *); //bool=false
+        Iteratore(nodo *);
     public:
         Iteratore();
         Iteratore &operator++();
@@ -331,22 +330,16 @@ typename Container<T>::constIteratore & Container<T>::constIteratore::operator=(
 template<class T>
 typename Container<T>::constIteratore& Container<T>::constIteratore::operator++()
 {
-    if(puntatore)
-    {
-       if(puntatore->next != nullptr)
-        {
-           puntatore=puntatore->next;
-        }
-        else
-        {
-            puntatore+=1;
-        }
-    }
+    if(puntatore) puntatore=puntatore->next;
     return *this;
+
 }
 template<class T>
 typename Container<T>::constIteratore& Container<T>::constIteratore::operator++(int)
 {
+    Iteratore aux=*this;
+    if(puntatore) puntatore=puntatore->next;
+    return aux;
 
 }
 
