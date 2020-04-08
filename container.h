@@ -266,3 +266,45 @@ typename Container<T>::constIteratore Container<T>::cerca_s(std::string s) const
     }
     return constIteratore();
 }
+
+
+template<class T>
+typename Container<T>::constIteratore & Container<T>::constIteratore::operator=(const constIteratore & cit)
+{
+    puntatore=cit.puntatore;
+    return *this;
+}
+
+template<class T>
+typename Container<T>::constIteratore& Container<T>::constIteratore::operator++()
+{
+    if(puntatore)
+    {
+       if(puntatore->next != nullptr)
+        {
+           puntatore=puntatore->next;
+        }
+        else
+        {
+            puntatore+=1;
+        }
+    }
+    return *this;
+}
+template<class T>
+typename Container<T>::constIteratore& Container<T>::constIteratore::operator++(int)
+{
+
+}
+
+template<class T>
+const T & Container<T>::constIteratore::operator*() const
+{
+    return puntatore->info;
+}
+
+template<class T>
+const T * Container<T>::constIteratore::operator->() const
+{
+    return &(puntatore->info);
+}
