@@ -113,7 +113,7 @@ typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
 template<class T>
 void Container<T>::rimuovi(const T & obj)
 {
-    remove(primo, obj);
+    rimuovi(primo, obj);
 }
 
 template<class T>
@@ -315,7 +315,7 @@ typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
 {
     if (f == nullptr)
         return nullptr;
-    f->next = remove(f->next, obj);
+    f->next = rimuovi(f->next, obj);
     if (f->info == obj)
     {
         nodo* tmp = f->next;
@@ -333,7 +333,7 @@ typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
 {
     if (f == nullptr)
         return nullptr;
-    f->next = remove_s(f->next, s);
+    f->next = rimuovi_s(f->next, s);
     if (f->info == s)
     {
         nodo* tmp = f->next;
