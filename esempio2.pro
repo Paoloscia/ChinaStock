@@ -21,6 +21,7 @@ SOURCES += \
     model.cpp \
     palestra.cpp\
     piscina.cpp\
+    query.cpp \
     vip.cpp
 
 HEADERS += \
@@ -29,6 +30,7 @@ HEADERS += \
     model.h \
     palestra.h\
     piscina.h\
+    query.h \
     vip.h
 
 FORMS += \

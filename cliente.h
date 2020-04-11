@@ -6,9 +6,7 @@ class cliente{
 private:
     char nome;
     char cognome;
-    unsigned int giorno;
-    unsigned int mese;
-    unsigned int anno;
+
     string codicefiscale;
     char luogodN; // luogo di nascita
     char residenza; // residenza;
