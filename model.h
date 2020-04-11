@@ -10,6 +10,7 @@ class model
 public:
     model();
     ~model();
+    void resetfiltro() const;
 
     void aggiungiOggetto(cliente *);
 

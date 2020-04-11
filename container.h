@@ -10,6 +10,7 @@ template <class T>
 
 class Container {
     //friend class Iteratore;
+    friend class model;
 private:
     class nodo {
     private:
@@ -36,6 +37,7 @@ public:
 
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
+    void clear();
 
 
     class constIteratore
@@ -164,6 +166,12 @@ void Container<T>::aggiungiDietro(const T & obj)
     }
 }
 
+template<class T>
+void Container<T>::clear()
+{
+    primo->distruggi();
+    primo = nullptr;
+}
 
 template<class T>
 Container<T>::constIteratore::constIteratore(nodo * p) : puntatore(p) {}
