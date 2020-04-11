@@ -4,8 +4,6 @@
 using std::string;
 template <class T>
 
-
-
 #endif // CONTAINER_H
 
 class Container {

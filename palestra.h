@@ -9,7 +9,7 @@ private:
     string nomeistruttorepalestra; //nome istruttore;
     QDate scadenzapalestra;
 public:
-    palestra(char,char,int,int,int,string,char, char,char,unsigned int,string,string,bool,bool,string,int,int,int);
+    palestra(string,string,int,int,int,string,string, string,string,unsigned int,string,string,bool,bool,string,int,int,int);
     //palestra(const palestra& p);
     palestra(cliente,bool,string,int,int,int);
     virtual palestra* clone() const;
