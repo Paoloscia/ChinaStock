@@ -1,5 +1,5 @@
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include<string>
 using std::string;
 class cliente{
@@ -19,8 +19,8 @@ private:
     bool student;
 public:
     cliente(char,char,unsigned int,unsigned int,unsigned int,string,char, char,char,unsigned int,string,string,bool);
-    //virtual ~Cliente = default ;
-    //virtual Cliente* clone() const = 0;
+    //virtual ~cliente = default ;
+    //virtual cliente* clone() const = 0;
 
     char getnome() const;
     char getcognome() const;

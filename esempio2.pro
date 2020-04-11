@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cliente.cpp \
     main.cpp\
+    model.cpp \
     palestra.cpp\
     piscina.cpp\
     vip.cpp
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     cliente.h\
     container.h \
+    model.h \
     palestra.h\
     piscina.h\
     vip.h
