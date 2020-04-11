@@ -1,7 +1,5 @@
 #include "model.h"
 
-<<<<<<< HEAD
-
 model::model() : datiTotali(new Container<cliente*>()),datiFiltrati(new Container<cliente*>()),modificato(false)
 {
     resetfiltro();
