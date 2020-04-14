@@ -5,7 +5,7 @@ using std::string;
 
 class query
 {
-public:
+/*public:
     query(string,string, int, int, int,string,string, string,string,unsigned int,string,string,bool, bool, bool, bool);//ultimi 3 booleani sono abbonamento piscina, palestra o vip
     string getnome() const;
     string getcognome() const;
@@ -16,7 +16,7 @@ public:
     unsigned int getnum() const;
     string getnumerotel() const;
     string getmail() const;
-    bool getstudent() const;
+    bool getstudent() const;*/
 };
 
 
