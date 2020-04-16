@@ -15,6 +15,7 @@
 #include <QDate>
 #include <QGroupBox>
 #include <QPushButton>
+#include "viewlistaclienti.h"
 
 class mainwindow : public QWidget
 {
@@ -36,6 +37,7 @@ private:
     QLineEdit* lineCerca;
     QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
+    viewListaClienti *elementi;
     void addMenu();
 };
 

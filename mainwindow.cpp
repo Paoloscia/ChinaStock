@@ -40,8 +40,11 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     //************** CLIENTI ********************
 
     QGroupBox *clientiGroup = new QGroupBox("Clienti");
-   // QFormLayout *formClientiLayout = new QFormLayout();
-   // clientiGroup->setLayout(formClientiLayout);
+    viewListaClienti* elementi(new viewListaClienti(this));
+    elementi->setSelectionMode(QAbstractItemView::SingleSelection);
+    QVBoxLayout *layoutListaClienti = new QVBoxLayout();
+    layoutListaClienti->addWidget(elementi);
+    clientiGroup->setLayout(layoutListaClienti);
     addButton = new QPushButton("Aggiungi",this);
     modButton = new QPushButton("Modifica",this);
     removeButton = new QPushButton("Rimuovi",this);
@@ -87,8 +90,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     mailLineEdit = new QLineEdit();
     //mailLabel->setBuddy(mailLineEdit);
 
-    QLabel *dateLabel = new QLabel("Data: ");
-    QDateEdit* date(new QDateEdit(QDate::currentDate(),this));
+    QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
+    QDateEdit* dateNascita(new QDateEdit(QDate::currentDate(),this));
 
     studenteCheckbox = new QCheckBox("Studente",this);
 
@@ -134,7 +137,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     formLayout->addRow(viaLabel, viaLineEdit);
     formLayout->addRow(telefonoLabel, telefonoLineEdit);
     formLayout->addRow(mailLabel, mailLineEdit);
-    formLayout->addRow(dateLabel, date);
+    formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
     verticalDxLayout->addLayout(formLayout);

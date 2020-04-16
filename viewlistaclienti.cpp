@@ -4,7 +4,7 @@ viewListaClienti::viewListaClienti(QWidget *parent):QListWidget (parent){}
 
 unsigned int viewListaClienti::getIndex() const
 {
-    return (uint)this->selectedIndexes()[0].row();
+    return (unsigned int)this->selectedIndexes()[0].row(); //era uint, abbiamo messo unsigned int
 }
 
 bool viewListaClienti::isSomeoneSeleceted() const
