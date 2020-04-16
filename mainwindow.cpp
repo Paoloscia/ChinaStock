@@ -4,20 +4,20 @@
 mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);
+    addMenu();
     gridLayout = new QGridLayout();
     verticalSxLayout = new QVBoxLayout();
     verticalDxLayout = new QVBoxLayout();
-    addMenu();
-
-    //******************** PEZZO PAOLO ****************************
     divH = new QHBoxLayout();
-    Layoutsinistra = new QVBoxLayout();
+
     mainLayout->addLayout(gridLayout);
     mainLayout->addLayout(divH);
     divH->addLayout(verticalSxLayout);
     divH->addLayout(verticalDxLayout);
+
     setLayout(mainLayout);
 
+    //************** FILTRI ********************
 
     All = new QCheckBox("All",this);
     palestra = new QCheckBox("Palestra",this);
@@ -25,7 +25,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     minorenne = new QCheckBox("Minorenne",this);
     maggiorenne = new QCheckBox("Maggiorenne",this);
     deseleziona = new QCheckBox("Deseleziona Tutto",this);
-    AggCliente = new QPushButton("Aggiungi Cliente", this);
     lineCerca = new QLineEdit(this);
     Cerca = new QPushButton("Cerca", this);
 
@@ -35,32 +34,26 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     gridLayout->addWidget(minorenne,0,1);
     gridLayout->addWidget(maggiorenne,1,1);
     gridLayout->addWidget(deseleziona,2,1);
-    gridLayout->addWidget(AggCliente,0,2,2,2);
     gridLayout->addWidget(lineCerca,2,2);
     gridLayout->addWidget(Cerca,2,3);
 
-    //******************** FINE PEZZO PAOLO ***********************
-
-
-    //******************** PEZZO ELIA *****************************
-
-
-    hLeftBottoni = new QHBoxLayout(); //era orizL
+    //************** CLIENTI ********************
 
     QGroupBox *clientiGroup = new QGroupBox("Clienti");
-    QFormLayout *formClientiLayout = new QFormLayout();
-    QPushButton* addButton = new QPushButton("Aggiungi",this);
-    QPushButton* modButton = new QPushButton("Modifica",this);
-    QPushButton* removeButton = new QPushButton("Rimuovi",this);
-    clientiGroup->setLayout(formClientiLayout);
-    verticalSxLayout->addWidget(clientiGroup);
-    verticalSxLayout->addLayout(hLeftBottoni);
+   // QFormLayout *formClientiLayout = new QFormLayout();
+   // clientiGroup->setLayout(formClientiLayout);
+    addButton = new QPushButton("Aggiungi",this);
+    modButton = new QPushButton("Modifica",this);
+    removeButton = new QPushButton("Rimuovi",this);
 
+    verticalSxLayout->addWidget(clientiGroup);
+    hLeftBottoni = new QHBoxLayout();
+    verticalSxLayout->addLayout(hLeftBottoni);
     hLeftBottoni->addWidget(addButton);
     hLeftBottoni->addWidget(modButton);
     hLeftBottoni->addWidget(removeButton);
 
-    //******************** FINE PEZZO ELIA ************************
+    //************** FORM ********************
 
     QLabel *nomeLabel = new QLabel(tr("Nome: "));
     nomeLineEdit = new QLineEdit();
@@ -99,7 +92,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     studenteCheckbox = new QCheckBox("Studente",this);
 
-
     //************** PEZZO FORM PISCINA ********************
 
     QGroupBox *piscinaGroup = new QGroupBox("Piscina");
@@ -131,7 +123,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     formPalestraLayout->addRow(nomeIstruttorePalestraLabel,nomeIstruttorePalestraEdit);
     formPalestraLayout->addRow(schedaPalestraCheckbox);
     palestraGroup->setLayout(formPalestraLayout);
-
 
     QFormLayout *formLayout = new QFormLayout();
     formLayout->setFormAlignment(Qt::AlignLeft);
