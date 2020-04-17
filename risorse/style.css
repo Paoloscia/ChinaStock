@@ -1,14 +1,8 @@
-/*QWidget {
-    background-color:#FFAE42;
-}
-
-QWidget QLineEdit, QWidget QDateEdit, QWidget QPushButton{
-    background-color:white;
-}*/
-QWidget QPushButton{
+QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
     background-color:#FFAE42;
     /*background-color:#87ceeb;*/
 }
 
-
-
+/*QDateEdit{
+    background-color:#FFAE42;
+}*/
