@@ -5,7 +5,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);
     addMenu();
+    setMainWindowStyle();
     gridLayout = new QGridLayout();
+    orizDxLayout = new QHBoxLayout();
     verticalSxLayout = new QVBoxLayout();
     verticalDxLayout = new QVBoxLayout();
     divH = new QHBoxLayout();
@@ -13,7 +15,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     mainLayout->addLayout(gridLayout);
     mainLayout->addLayout(divH);
     divH->addLayout(verticalSxLayout);
-    divH->addLayout(verticalDxLayout);
+    divH->addLayout(orizDxLayout);
 
     setLayout(mainLayout);
 
@@ -140,10 +142,19 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
-    verticalDxLayout->addLayout(formLayout);
+    orizDxLayout->addLayout(formLayout);
+    orizDxLayout->addLayout(verticalDxLayout);
     verticalDxLayout->addWidget(piscinaGroup);
     verticalDxLayout->addWidget(palestraGroup);
 
+}
+
+void mainwindow::setMainWindowStyle()
+{
+    QFile file(":risorse/style.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+    setStyleSheet(styleSheet);
 }
 
 void mainwindow::addMenu()

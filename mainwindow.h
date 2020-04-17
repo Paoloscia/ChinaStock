@@ -15,6 +15,7 @@
 #include <QDate>
 #include <QGroupBox>
 #include <QPushButton>
+#include <QFile>
 #include "viewlistaclienti.h"
 
 class mainwindow : public QWidget
@@ -30,7 +31,7 @@ private:
     QVBoxLayout* mainLayout;
     QGridLayout* gridLayout;
     QVBoxLayout* verticalDxLayout, *verticalSxLayout;
-    QHBoxLayout* divH, *hLeftBottoni;
+    QHBoxLayout* divH, *hLeftBottoni, *orizDxLayout;
     QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
     QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona;
@@ -38,6 +39,7 @@ private:
     QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *elementi;
+    void setMainWindowStyle();
     void addMenu();
 };
 
