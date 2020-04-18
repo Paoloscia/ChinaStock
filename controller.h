@@ -4,6 +4,8 @@
 #include <QObject>
 #include "mainwindow.h"
 #include "model.h"
+#include "addclientwindow.h"
+#include "modifyclientwindow.h"
 
 class controller : public QObject
 {
@@ -14,7 +16,12 @@ signals:
 
 private:
     mainwindow* view;
-    model* model;
+    model* m;
+    addClientWindow *addClientW;
+    modifyClientWindow *ModifyClientW;
+
+public slots:
+    //void apriAggiungi() const;
 };
 
 #endif // CONTROLLER_H
