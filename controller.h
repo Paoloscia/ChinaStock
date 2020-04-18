@@ -10,7 +10,6 @@ class controller : public QObject
     Q_OBJECT
 public:
     explicit controller(model* model,QObject *parent = nullptr);
-
 signals:
 
 private:
