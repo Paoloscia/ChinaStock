@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cliente.cpp \
+    controller.cpp \
     main.cpp\
     mainwindow.cpp \
     model.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     cliente.h\
     container.h \
+    controller.h \
     mainwindow.h \
     model.h \
     palestra.h\
