@@ -39,8 +39,7 @@ HEADERS += \
     viewlistaclienti.h \
     vip.h
 
-FORMS += \
-    cliente.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
