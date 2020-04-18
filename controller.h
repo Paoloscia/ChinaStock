@@ -9,9 +9,11 @@ class controller : public QObject
 {
     Q_OBJECT
 public:
-    explicit controller(QObject *parent = nullptr);
+    explicit controller(model* model,QObject *parent = nullptr);
 
 signals:
+
+private:
     mainwindow* view;
     model* model;
 };
