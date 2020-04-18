@@ -1,5 +1,4 @@
 #include "cliente.h"
-#include "ui_cliente.h"
 
 cliente::cliente(string n, string c, int g, int m, int a,string cf, string lN, string r, string v, unsigned int num,string nt,string em,bool s): nome(n),cognome(c),dataNascita(g,m,a),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
 
