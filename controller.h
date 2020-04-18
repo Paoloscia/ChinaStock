@@ -2,6 +2,8 @@
 #define CONTROLLER_H
 
 #include <QObject>
+#include "mainwindow.h"
+#include "model.h"
 
 class controller : public QObject
 {
@@ -10,7 +12,8 @@ public:
     explicit controller(QObject *parent = nullptr);
 
 signals:
-
+    mainwindow* view;
+    model* model;
 };
 
 #endif // CONTROLLER_H
