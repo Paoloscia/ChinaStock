@@ -3,6 +3,6 @@ QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
     /*background-color:#87ceeb;*/
 }
 
-/*QDateEdit{
-    background-color:#FFAE42;
+/*QDateEdit::drop-down{
+    border-color:#FFAE42;
 }*/
