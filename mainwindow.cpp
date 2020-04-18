@@ -94,6 +94,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
     QDateEdit* dateNascita(new QDateEdit(QDate::currentDate(),this));
+    dateNascita->setCalendarPopup(true);
+
 
     studenteCheckbox = new QCheckBox("Studente",this);
 
@@ -104,6 +106,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
     QDateEdit* dateScadPiscina(new QDateEdit(QDate::currentDate(),this));
+    dateScadPiscina->setCalendarPopup(true);
     QLabel *nomeIstruttorePiscinaLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePiscinaEdit = new QLineEdit();
     corsoNuotoCheckbox = new QCheckBox("Corso nuoto",this);
@@ -120,6 +123,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     QLabel *dateScadPalestraLabel = new QLabel("Data: ");
     QDateEdit* dateScadPalestra(new QDateEdit(QDate::currentDate(),this));
+    dateScadPalestra->setCalendarPopup(true);
     QLabel *nomeIstruttorePalestraLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePalestraEdit = new QLineEdit();
     schedaPalestraCheckbox = new QCheckBox("Scheda palestra",this);
