@@ -1,6 +1,6 @@
 #include "addclientwindow.h"
 
-addClientWindow::addClientWindow(QWidget *parent) : QWidget(parent)
+addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdialog
 {
 
     mainLayout = new QVBoxLayout(this);

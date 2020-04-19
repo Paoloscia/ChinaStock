@@ -1,7 +1,8 @@
 #ifndef ADDCLIENTWINDOW_H
 #define ADDCLIENTWINDOW_H
 
-#include <QWidget>
+//#include <QWidget> commentato perchè ho messo public QDialog, guardare assieme
+#include <QDialog>
 #include<QGridLayout>
 #include<QMenuBar>
 #include<QVBoxLayout>
@@ -18,7 +19,7 @@
 #include <QPushButton>
 #include <QFile>
 
-class addClientWindow : public QWidget
+class addClientWindow : public QDialog //inserito qdialog al posto di qwidget
 {
     Q_OBJECT
 public:

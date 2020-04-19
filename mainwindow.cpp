@@ -151,6 +151,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     verticalDxLayout->addWidget(piscinaGroup);
     verticalDxLayout->addWidget(palestraGroup);
 
+    //************** PARTE CONNECT **************************
+
+    connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
+
 }
 
 void mainwindow::setMainWindowStyle()

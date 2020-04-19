@@ -3,15 +3,18 @@
 
 #include <QObject>
 #include "mainwindow.h"
-#include "model.h"
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
+#include "model.h"
+
 
 class controller : public QObject
 {
     Q_OBJECT
 public:
     explicit controller(QObject *parent = nullptr);
+public slots:
+    void openAddView();
 signals:
 
 private:
@@ -20,8 +23,6 @@ private:
     addClientWindow *addClientW;
     modifyClientWindow *ModifyClientW;
 
-public slots:
-    //void apriAggiungi() const;
 };
 
 #endif // CONTROLLER_H

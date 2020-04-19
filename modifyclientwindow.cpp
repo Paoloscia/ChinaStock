@@ -1,6 +1,6 @@
 #include "modifyclientwindow.h"
 
-modifyClientWindow::modifyClientWindow()
+modifyClientWindow::modifyClientWindow() //mettere qdialog?
 {
 
 }

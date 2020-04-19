@@ -41,6 +41,9 @@ private:
     viewListaClienti *elementi;
     void setMainWindowStyle();
     void addMenu();
+
+signals:
+    void signOpenAddWindow();
 };
 
 #endif // GUI_H
