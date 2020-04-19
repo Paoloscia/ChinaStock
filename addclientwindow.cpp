@@ -112,4 +112,8 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     hdestraBottoni->addWidget(salvaButton);
     hdestraBottoni->addWidget(annullaButton);
 
+    //************** PARTE CONNECT **************************
+
+    connect(annullaButton, SIGNAL(clicked()), this, SLOT(close()));
+
 }
