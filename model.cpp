@@ -40,91 +40,78 @@ void model::aggiungiOggetto(cliente * cliente)
 
 void model::salva()
 {
-//    modificato = false;
-//    QFile file(path);
-//    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    modificato = false;
+    QFile file(path);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
 
-//    QXmlStreamWriter xw(&file);
-//    xw.setAutoFormatting(true);
-//    xw.writeStartDocument();
-//    xw.writeStartElement("Clienti");
-//    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+    QXmlStreamWriter xw(&file);
+    xw.setAutoFormatting(true);
+    xw.writeStartDocument();
+    xw.writeStartElement("Clienti");
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
 
-//        cliente *cliente = *it;
-//        xw.writeStartElement("cliente");
+        cliente *cliente = *it;
+        xw.writeStartElement("cliente");
 
+        if (dynamic_cast<vip *>(cliente) != nullptr) {
+            auto clientevip = dynamic_cast<vip *>(cliente);
 
-//        if (dynamic_cast<SharedRoom *>(cliente) != nullptr) {
-//            auto shared = static_cast<SharedRoom *>(cliente);
+            xw.writeAttribute("type", "vip");
+            xw.writeTextElement("corsonuoto", QString::number(clientevip->iscorsonuoto()));  //::number???
+            xw.writeTextElement("nomeistruttorepiscina", QString::fromStdString(clientevip->getnomeistruttorepiscina()));
+            xw.writeTextElement("scadenzapiscinagiorno", QString::number(clientevip->getGiornoPiscina()));
+            xw.writeTextElement("scadenzapiscinamese", QString::number(clientevip->getMesePiscina()));
+            xw.writeTextElement("scadenzapiscinaanno", QString::number(clientevip->getAnnoPiscina()));
+            xw.writeTextElement("scheda", QString::number(clientevip->isscheda()));  //::number???
+            xw.writeTextElement("nomeistruttorepalestra", QString::fromStdString(clientevip->getnomeistruttorepalestra()));
+            xw.writeTextElement("scadenzapalestragiorno", QString::number(clientevip->getGiornoPalestra()));
+            xw.writeTextElement("scadenzapalestramese", QString::number(clientevip->getMesePalestra()));
+            xw.writeTextElement("scadenzapalestraanno", QString::number(clientevip->getAnnoPalestra()));
+        }
+        else if (dynamic_cast<piscina *>(cliente) != nullptr) {
+            auto clientepiscina = dynamic_cast<piscina *>(cliente);
 
-//            xw.writeAttribute("type", "SharedRoom");
-//            xw.writeTextElement("NBeds", QString::number(shared->getNBeds()));
-//            xw.writeTextElement("PricePerBed", QString::number(shared->getPricePerBed()));
+            xw.writeAttribute("type", "piscina");
+            xw.writeTextElement("corsonuoto", QString::number(clientepiscina->iscorsonuoto()));  //::number???
+            xw.writeTextElement("nomeistruttorepiscina", QString::fromStdString(clientepiscina->getnomeistruttorepiscina()));
+            xw.writeTextElement("scadenzapiscinagiorno", QString::number(clientepiscina->getGiornoPiscina()));
+            xw.writeTextElement("scadenzapiscinamese", QString::number(clientepiscina->getMesePiscina()));
+            xw.writeTextElement("scadenzapiscinaanno", QString::number(clientepiscina->getAnnoPiscina()));
+        }
 
-//        } else if (dynamic_cast<PrivateRoom *>(cliente)) {
-//            if (dynamic_cast<HotelRoom *>(cliente)) {
-//                auto hotel = static_cast<HotelRoom *>(cliente);
+        else if (dynamic_cast<palestra *>(cliente) != nullptr){
+            auto clientepalestra = dynamic_cast<palestra *>(cliente);
 
-//                xw.writeAttribute("type", "HotelRoom");
-//                xw.writeStartElement("HotelInfo");
-//                xw.writeTextElement("HotelName", QString::fromStdString(hotel->getHotelName()));
-//                xw.writeTextElement("Tax", QString::number(hotel->getTax()));
-//                xw.writeTextElement("HotelStar", QString::number(hotel->getStars()));
-//                xw.writeEndElement();
+            xw.writeAttribute("type", "palestra");
+            xw.writeTextElement("scheda", QString::number(clientepalestra->isscheda()));  //::number???
+            xw.writeTextElement("nomeistruttorepalestra", QString::fromStdString(clientepalestra->getnomeistruttorepalestra()));
+            xw.writeTextElement("scadenzapalestragiorno", QString::number(clientepalestra->getGiornoPalestra()));
+            xw.writeTextElement("scadenzapalestramese", QString::number(clientepalestra->getMesePalestra()));
+            xw.writeTextElement("scadenzapalestraanno", QString::number(clientepalestra->getAnnoPalestra()));
+        }
 
-//            } else {
-//                xw.writeAttribute("type", "PrivateRoom");
-//            }
-//            auto privateRoom = static_cast<PrivateRoom *>(cliente);
-//            xw.writeStartElement("Rooms");
+//        else {xw.writeAttribute("type", "cliente");} CI SERVE?
 
-//            auto roomlist = privateRoom->getRooms();
-//            for (auto rit = roomlist.begin(); rit != roomlist.end(); ++rit) {
-//                xw.writeStartElement("Room");
+        xw.writeTextElement("nome", QString::fromStdString(cliente->getnome()));
+        xw.writeTextElement("cognome", QString::fromStdString(cliente->getcognome()));
+        xw.writeTextElement("giornoN", QString::number(cliente->getGiornoN()));
+        xw.writeTextElement("meseN", QString::number(cliente->getMeseN()));
+        xw.writeTextElement("annoN", QString::number(cliente->getAnnoN()));
+        xw.writeTextElement("codicefiscale", QString::fromStdString(cliente->getcodfiscale()));
+        xw.writeTextElement("luogodN", QString::fromStdString(cliente->getluogo()));
+        xw.writeTextElement("residenza", QString::fromStdString(cliente->getres()));
+        xw.writeTextElement("via", QString::fromStdString(cliente->getvia()));
+        xw.writeTextElement("numvia", QString::number(cliente->getnum()));
+        xw.writeTextElement("numerotel", QString::fromStdString(cliente->getnumerotel()));
+        xw.writeTextElement("mail", QString::fromStdString(cliente->getmail()));
+        xw.writeTextElement("student", QString::number(cliente->getstudent()));
 
-//                xw.writeTextElement("NBeds", QString::number((*rit).getNBeds()));
-//                xw.writeTextElement("Price", QString::number((*rit).getPrice()));
-//                xw.writeTextElement("Quantity", QString::number((*rit).getQuantity()));
+    }
 
-//                xw.writeEndElement();
-//            }
-//            xw.writeEndElement();
-//        } else if (dynamic_cast<AllHouse *>(cliente)) {
-//            auto allhouse = static_cast<AllHouse *>(cliente);
-//            xw.writeAttribute("type", "AllHouse");
-//            xw.writeTextElement("Price", QString::number(allhouse->getPrice()));
-//            xw.writeTextElement("Mq", QString::number(allhouse->getMq()));
-//            xw.writeTextElement("Floors", QString::number(allhouse->getNFloors()));
-//            xw.writeTextElement("NBeds", QString::number(allhouse->getNBeds()));
-//            xw.writeTextElement("CleaningPrice", QString::number(allhouse->getCleaningPrice()));
-//            xw.writeTextElement("CanTakeOnCleaning", QString::number(allhouse->getCanGuestTakeOnCleaning()));
+    xw.writeEndElement();
+    xw.writeEndDocument();
 
-//        }
-
-//        xw.writeStartElement("BaseInfo");
-//        xw.writeTextElement("Id", QString::fromStdString(cliente->getId()));
-//        xw.writeTextElement("Name", QString::fromStdString(cliente->getName()));
-//        xw.writeTextElement("City", QString::fromStdString(cliente->getCity()));
-//        xw.writeTextElement("Address", QString::fromStdString(cliente->getAddress()));
-//        xw.writeTextElement("Description", QString::fromStdString(cliente->getDescription()));
-
-//        xw.writeStartElement("Services");
-
-//        for (auto x = cliente->getServices().begin(); x != cliente->getServices().end(); ++x) {
-//            xw.writeTextElement("Service", QString::number(*x));
-//        }
-//        xw.writeEndElement();
-
-//        xw.writeEndElement();
-
-//        xw.writeEndElement();
-
-
-//    }
-//    xw.writeEndElement();
-//    xw.writeEndDocument();
-
-//    file.close();
+    file.close();
 }
 
 void model::carica(QString path) const

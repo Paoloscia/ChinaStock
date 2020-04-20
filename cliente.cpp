@@ -12,6 +12,21 @@ string cliente::getcognome() const
     return cognome;
 }
 
+int cliente::getGiornoN() const
+{
+    return dataNascita.QDate::day();
+}
+
+int cliente::getMeseN() const
+{
+    return dataNascita.QDate::month();
+}
+
+int cliente::getAnnoN() const
+{
+    return dataNascita.QDate::year();
+}
+
 string cliente::getcodfiscale() const
 {
     return codicefiscale;

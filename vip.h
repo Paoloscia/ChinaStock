@@ -8,7 +8,7 @@ class vip: public piscina, public palestra
 {
 public:
 
-    vip(string,string,int,int, int,string,string,string,string,unsigned int,string,string,bool,bool,string,int,int,int,bool,string,int,int,int);
+    vip(string="",string="", int=0,int=0,int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0,bool=false,string="",int=0,int=0,int=0);
     vip(cliente,piscina,palestra);
 
 };

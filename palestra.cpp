@@ -22,6 +22,21 @@ bool palestra::operator!=(const cliente &c) const
 
 }
 */
+int palestra::getGiornoPalestra() const
+{
+    return scadenzapalestra.QDate::day();
+}
+
+int palestra::getMesePalestra() const
+{
+    return scadenzapalestra.QDate::month();
+}
+
+int palestra::getAnnoPalestra() const
+{
+    return scadenzapalestra.QDate::year();
+}
+
 bool palestra::isscheda() const
 {
     return scheda;

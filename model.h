@@ -3,6 +3,7 @@
 
 #include "container.h"
 #include "cliente.h"
+#include "vip.h"
 #include "QString"
 #include "QFile"
 #include "QXmlStreamWriter"
