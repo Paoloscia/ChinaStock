@@ -9,7 +9,7 @@
 #include <QString>
 #include <QFile>
 #include <QDomDocument>
-
+#include <QXmlStreamWriter>
 class model
 {
 public:
