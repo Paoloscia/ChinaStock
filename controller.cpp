@@ -1,6 +1,6 @@
 #include "controller.h"
 
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view))
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view))   //view finale??
 {
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     view->show();
