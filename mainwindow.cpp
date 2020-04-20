@@ -153,7 +153,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     //************** PARTE CONNECT **************************
 
+
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
+    connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick()));
 
 }
 
@@ -187,4 +189,15 @@ void mainwindow::addMenu()
 
 
 }
+/*
+void mainwindow::handleSearchClick()
+{
+    QString searchText = searchInput->text();
+    emit clickedSearch(searchText);
+
+}
+*/
+
+
+
 

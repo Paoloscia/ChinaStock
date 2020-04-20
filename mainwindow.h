@@ -41,9 +41,13 @@ private:
     viewListaClienti *elementi;
     void setMainWindowStyle();
     void addMenu();
+    void handleSearchClick();
+
 
 signals:
     void signOpenAddWindow();
+    void clickedSearch(QString searchText);
+
 };
 
 #endif // GUI_H
