@@ -155,7 +155,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
 
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
-    connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick()));
+    //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
 }
 

@@ -41,12 +41,12 @@ private:
     viewListaClienti *elementi;
     void setMainWindowStyle();
     void addMenu();
-    void handleSearchClick();
+    //void handleSearchClick(); da implementare
 
 
 signals:
     void signOpenAddWindow();
-    void clickedSearch(QString searchText);
+    //void clickedSearch(QString searchText); da implementare search
 
 };
 

@@ -6,11 +6,12 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     view->show();
 }
 
-controller::controller(model *mod, mainwindow *vw):m(mod),view(vw)
-{
-   connect(view, SIGNAL(clickedSearch(QString)),this, SLOT(search(QString))); // lui al posto di this ha messo m ! DA RIVEDERE!!
+//pezzo per search da implementare
+//controller::controller(model *mod, mainwindow *vw):m(mod),view(vw)
+//{
+//   connect(view, SIGNAL(clickedSearch(QString)),this, SLOT(search(QString))); // lui al posto di this ha messo m ! DA RIVEDERE!!
 
-}
+//}
 
 void controller::openAddView()
 {
@@ -19,16 +20,16 @@ void controller::openAddView()
     addClientW->show();
 }
 
-void controller::openModify() const
-{
+//void controller::openModify() const
+//{
 //    QStringList oldData= model->GetRecord(index);
 //    modifyclientwindow->SetFields();
 //    modWindow->setModal(true);
 //    modWindow->show();
 
-}
+//}
 
-void controller::openSave() const
+/*void controller::openSave() const
 {
 
-}
+}*/

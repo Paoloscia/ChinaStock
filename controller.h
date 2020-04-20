@@ -16,9 +16,9 @@ public:
     controller(model *mod, mainwindow *vw); //mod = model , vw=view
 
 public slots:
-    void openAddView();
-    void openModify() const;
-    void openSave() const;
+    void openAddView(); //capire se mettere const
+    //void openModify() const; da implementare
+    //void openSave() const; da implementare
 
 signals:
 
