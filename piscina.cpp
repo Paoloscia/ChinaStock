@@ -7,6 +7,22 @@ piscina::piscina(cliente cli,bool cn,string ni,int sgpi,int smpi,int sapi):clien
 piscina *piscina::clone() const{
     return new piscina(*this);
 }
+
+int piscina::getGiornoPiscina() const
+{
+    return scadenzapiscina.QDate::day();
+}
+
+int piscina::getMesePiscina() const
+{
+    return scadenzapiscina.QDate::month();
+}
+
+int piscina::getAnnoPiscina() const
+{
+    return scadenzapiscina.QDate::year();
+}
+
 //piscina::~piscina(){}
 
 bool piscina::iscorsonuoto() const

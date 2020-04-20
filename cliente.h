@@ -17,13 +17,16 @@ private:
     string mail;
     bool student;
 public:
-    cliente(string,string, int, int, int,string,string, string,string,unsigned int,string,string,bool);
+    cliente(string="",string="", int=1, int=1, int=2000,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false);
     virtual ~cliente() = default;
 
     //virtual cliente* clone() const = 0; //DA CONTROLLARE!!
 
     string getnome() const; //forse bisognerà passare per riferimento costante le stringhe ritornate per non fare la copia, quindi const string& come ritorno
     string getcognome() const;
+    int getGiornoN() const;
+    int getMeseN() const;
+    int getAnnoN() const;
     string getcodfiscale() const;
     string getluogo() const;
     string getres() const;

@@ -3,10 +3,13 @@
 
 #include "container.h"
 #include "cliente.h"
-#include "QString"
-#include "QFile"
-#include "QXmlStreamWriter"
-
+#include "piscina.h"
+#include "palestra.h"
+#include "vip.h"
+#include <QString>
+#include <QFile>
+#include <QDomDocument>
+#include <QXmlStreamWriter>
 class model
 {
 public:
