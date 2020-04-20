@@ -56,7 +56,7 @@ void model::salva()
         if (dynamic_cast<vip *>(cliente) != nullptr) {
             auto clientevip = dynamic_cast<vip *>(cliente);
 
-            xw.writeAttribute("type", "vip");
+            xw.writeAttribute("type", "Vip");
             xw.writeTextElement("corsonuoto", QString::number(clientevip->iscorsonuoto()));  //::number???
             xw.writeTextElement("nomeistruttorepiscina", QString::fromStdString(clientevip->getnomeistruttorepiscina()));
             xw.writeTextElement("scadenzapiscinagiorno", QString::number(clientevip->getGiornoPiscina()));
@@ -71,7 +71,7 @@ void model::salva()
         else if (dynamic_cast<piscina *>(cliente) != nullptr) {
             auto clientepiscina = dynamic_cast<piscina *>(cliente);
 
-            xw.writeAttribute("type", "piscina");
+            xw.writeAttribute("type", "Piscina");
             xw.writeTextElement("corsonuoto", QString::number(clientepiscina->iscorsonuoto()));  //::number???
             xw.writeTextElement("nomeistruttorepiscina", QString::fromStdString(clientepiscina->getnomeistruttorepiscina()));
             xw.writeTextElement("scadenzapiscinagiorno", QString::number(clientepiscina->getGiornoPiscina()));
@@ -82,7 +82,7 @@ void model::salva()
         else if (dynamic_cast<palestra *>(cliente) != nullptr){
             auto clientepalestra = dynamic_cast<palestra *>(cliente);
 
-            xw.writeAttribute("type", "palestra");
+            xw.writeAttribute("type", "Palestra");
             xw.writeTextElement("scheda", QString::number(clientepalestra->isscheda()));  //::number???
             xw.writeTextElement("nomeistruttorepalestra", QString::fromStdString(clientepalestra->getnomeistruttorepalestra()));
             xw.writeTextElement("scadenzapalestragiorno", QString::number(clientepalestra->getGiornoPalestra()));
