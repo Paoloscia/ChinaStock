@@ -1,6 +1,6 @@
 #include "query.h"
 
-/*query::query()
-{
+//query::query()
+//{
 
-}*/
+//}

@@ -4,11 +4,13 @@
 #include "container.h"
 #include "cliente.h"
 #include "QString"
+#include "QFile"
+#include "QXmlStreamWriter"
 
 class model
 {
 public:
-    model();
+    model(QString path);
     ~model();
     void resetfiltro() const;
 
@@ -17,6 +19,8 @@ public:
     void cancellaOggetto(cliente *, bool = true);
 
     void salva();
+
+    void carica(QString path) const;
 
     //partire da clear, reset filter e costruttore
 
