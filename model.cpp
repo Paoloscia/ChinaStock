@@ -2,7 +2,7 @@
 
 model::model(QString path) : path(path),datiTotali(new Container<cliente*>()),datiFiltrati(new Container<cliente*>()),modificato(false)
 {
-    //carica(path); era load
+    //carica(path); da implementare, ricordarsi di togliere commento a costruttore di controller che pesca data.xml
     resetfiltro();
 }
 

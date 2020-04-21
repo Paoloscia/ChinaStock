@@ -17,6 +17,7 @@ public:
 
 public slots:
     void openAddView(); //capire se mettere const
+    void salvaFile(); //capire se mettere const
     //void openModify() const; da implementare
     //void openSave() const; da implementare
 

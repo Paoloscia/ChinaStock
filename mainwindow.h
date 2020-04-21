@@ -40,12 +40,12 @@ private:
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *elementi;
     void setMainWindowStyle();
-    void addMenu();
     //void handleSearchClick(); da implementare
 
 
 signals:
     void signOpenAddWindow();
+    void salvaFileMenu();
     //void clickedSearch(QString searchText); da implementare search
 
 };

@@ -4,7 +4,16 @@
 mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);
-    addMenu();
+
+    QMenuBar* menubar = new QMenuBar(this);
+    QMenu* menu= new QMenu("File",menubar);
+    QAction* salva = new QAction("Salva",menu);
+    QAction* exit = new QAction("Esci",menu);
+    menu->addAction(exit);
+    menu->addAction(salva);
+    menubar->addMenu(menu);
+    mainLayout->addWidget(menubar);
+
     setMainWindowStyle();
     gridLayout = new QGridLayout();
     orizDxLayout = new QHBoxLayout();
@@ -155,6 +164,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
 
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
+    connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
+
     //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
 }
@@ -167,28 +178,7 @@ void mainwindow::setMainWindowStyle()
     setStyleSheet(styleSheet);
 }
 
-void mainwindow::addMenu()
-{
-    //Creare la barra del menu,poi il menu e poi le sue azioni
-    QMenuBar* menubar = new QMenuBar(this);
-    QMenu* menu= new QMenu("File",menubar);
-    QAction* salva = new QAction("Esci",menu);
-    QAction* salvaconnome = new QAction("Salva con Nome",menu);
-    QAction* exit = new QAction("Salva",menu);
 
-
-    // Aggiungo le azioni al menu
-    menu->addAction(exit);
-    menu->addAction(salvaconnome);
-    menu->addAction(salva);
-
-    //aggiungo il menu alla barra
-    menubar->addMenu(menu);
-    // aggiungo la barra del menu
-    mainLayout->addWidget(menubar);
-
-
-}
 /*
 void mainwindow::handleSearchClick()
 {
