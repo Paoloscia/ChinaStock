@@ -50,7 +50,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     //mailLabel->setBuddy(mailLineEdit);
 
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
-    QDateEdit* dateNascita(new QDateEdit(QDate::currentDate(),this));
+    dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);
 
 
@@ -59,7 +59,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     QFormLayout *formPiscinaLayout = new QFormLayout();
 
     QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
-    QDateEdit* dateScadPiscina(new QDateEdit(QDate::currentDate(),this));
+    dateScadPiscina = (new QDateEdit(QDate::currentDate(),this));
     dateScadPiscina->setCalendarPopup(true);
     QLabel *nomeIstruttorePiscinaLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePiscinaEdit = new QLineEdit();
@@ -76,7 +76,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     QFormLayout *formPalestraLayout = new QFormLayout();
 
     QLabel *dateScadPalestraLabel = new QLabel("Data: ");
-    QDateEdit* dateScadPalestra(new QDateEdit(QDate::currentDate(),this));
+    dateScadPalestra = (new QDateEdit(QDate::currentDate(),this));
     dateScadPalestra->setCalendarPopup(true);
     QLabel *nomeIstruttorePalestraLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePalestraEdit = new QLineEdit();
@@ -115,5 +115,29 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     //************** PARTE CONNECT **************************
 
     connect(annullaButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(salvaButton, SIGNAL(clicked()), this, SLOT(confirm()));
+    connect(salvaButton, SIGNAL(clicked()), this, SLOT(close()));
 
+}
+
+void addClientWindow::confirm()
+{
+    QStringList *tmp = new QStringList();
+    tmp->push_back(nomeLineEdit->text());
+    tmp->push_back(cognomeLineEdit->text());
+    tmp->push_back(codFiscLineEdit->text());
+    tmp->push_back(ldnLineEdit->text());
+    tmp->push_back(residenzaLineEdit->text());
+    tmp->push_back(viaLineEdit->text());
+    tmp->push_back(telefonoLineEdit->text());
+    tmp->push_back(mailLineEdit->text());
+    tmp->push_back(dateNascita->date().toString());
+    tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
+    tmp->push_back(dateScadPiscina->date().toString());
+    tmp->push_back(nomeIstruttorePiscinaEdit->text());
+    tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
+    tmp->push_back(dateScadPalestra->date().toString());
+    tmp->push_back(nomeIstruttorePalestraEdit->text());
+    tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+    //emit inputError(); capire come controllare se ci sono errori di input
 }

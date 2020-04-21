@@ -36,9 +36,10 @@ private:
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
     QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona;
     QLineEdit* lineCerca;
+    QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
-    viewListaClienti *elementi;
+    viewListaClienti *listaClienti;
     void setMainWindowStyle();
     //void handleSearchClick(); da implementare
 

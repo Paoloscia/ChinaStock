@@ -51,10 +51,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     //************** CLIENTI ********************
 
     QGroupBox *clientiGroup = new QGroupBox("Clienti");
-    viewListaClienti* elementi(new viewListaClienti(this));
-    elementi->setSelectionMode(QAbstractItemView::SingleSelection);
+    viewListaClienti* listaClienti(new viewListaClienti(this));
+    listaClienti->setSelectionMode(QAbstractItemView::SingleSelection);
     QVBoxLayout *layoutListaClienti = new QVBoxLayout();
-    layoutListaClienti->addWidget(elementi);
+    layoutListaClienti->addWidget(listaClienti);
     clientiGroup->setLayout(layoutListaClienti);
     addButton = new QPushButton("Aggiungi",this);
     modButton = new QPushButton("Modifica",this);
@@ -102,7 +102,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     //mailLabel->setBuddy(mailLineEdit);
 
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
-    QDateEdit* dateNascita(new QDateEdit(QDate::currentDate(),this));
+    dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);
 
 
@@ -114,7 +114,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     QFormLayout *formPiscinaLayout = new QFormLayout();
 
     QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
-    QDateEdit* dateScadPiscina(new QDateEdit(QDate::currentDate(),this));
+    dateScadPiscina = (new QDateEdit(QDate::currentDate(),this));
     dateScadPiscina->setCalendarPopup(true);
     QLabel *nomeIstruttorePiscinaLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePiscinaEdit = new QLineEdit();
@@ -131,7 +131,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     QFormLayout *formPalestraLayout = new QFormLayout();
 
     QLabel *dateScadPalestraLabel = new QLabel("Data: ");
-    QDateEdit* dateScadPalestra(new QDateEdit(QDate::currentDate(),this));
+    dateScadPalestra = (new QDateEdit(QDate::currentDate(),this));
     dateScadPalestra->setCalendarPopup(true);
     QLabel *nomeIstruttorePalestraLabel = new QLabel(tr("Nome istruttore: "));
     nomeIstruttorePalestraEdit = new QLineEdit();
