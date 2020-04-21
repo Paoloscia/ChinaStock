@@ -92,6 +92,7 @@ void model::salva()
 
 //        else {xw.writeAttribute("type", "cliente");} CI SERVE?
 
+        xw.writeStartElement("clienteInfo");
         xw.writeTextElement("nome", QString::fromStdString(cliente->getnome()));
         xw.writeTextElement("cognome", QString::fromStdString(cliente->getcognome()));
         xw.writeTextElement("giornoN", QString::number(cliente->getGiornoN()));
@@ -105,7 +106,7 @@ void model::salva()
         xw.writeTextElement("numerotel", QString::fromStdString(cliente->getnumerotel()));
         xw.writeTextElement("mail", QString::fromStdString(cliente->getmail()));
         xw.writeTextElement("student", QString::number(cliente->getstudent()));
-
+        xw.writeEndElement();
     }
 
     xw.writeEndElement();
@@ -128,21 +129,21 @@ void model::carica(QString path) const
         QDomNode clienteNode = clienti.item(i);
         QDomElement clienteElem = clienteNode.toElement();
 
-        QDomNode baseInfo = clienteNode.firstChildElement("BaseInfo"); //dopo guardare come lo chiameremo su salva!
+        QDomNode clienteInfo = clienteNode.firstChildElement("clienteInfo"); //dopo guardare come lo chiameremo su salva!
 
-        QDomElement nomeElem = baseInfo.firstChildElement("nome");
-        QDomElement cognomeElem = baseInfo.firstChildElement("cognome");
-        QDomElement dataNascitaGiornoElem = baseInfo.firstChildElement("dataNascitaGiorno"); //pesco i tre interi della data per ricreare la QDate
-        QDomElement dataNascitaMeseElem = baseInfo.firstChildElement("dataNascitaMese");
-        QDomElement dataNascitaAnnoElem = baseInfo.firstChildElement("dataNascitaAnno");
-        QDomElement codicefiscaleElem = baseInfo.firstChildElement("codicefiscale");
-        QDomElement luogodNElem = baseInfo.firstChildElement("luogodN");
-        QDomElement residenzaElem = baseInfo.firstChildElement("residenza");
-        QDomElement viaElem = baseInfo.firstChildElement("via");
-        QDomElement numviaElem = baseInfo.firstChildElement("numvia");
-        QDomElement numerotelElem = baseInfo.firstChildElement("numerotel");
-        QDomElement mailElem = baseInfo.firstChildElement("mail");
-        QDomElement studentElem = baseInfo.firstChildElement("student");
+        QDomElement nomeElem = clienteInfo.firstChildElement("nome");
+        QDomElement cognomeElem = clienteInfo.firstChildElement("cognome");
+        QDomElement dataNascitaGiornoElem = clienteInfo.firstChildElement("giornoN"); //pesco i tre interi della data per ricreare la QDate
+        QDomElement dataNascitaMeseElem = clienteInfo.firstChildElement("meseN");
+        QDomElement dataNascitaAnnoElem = clienteInfo.firstChildElement("annoN");
+        QDomElement codicefiscaleElem = clienteInfo.firstChildElement("codicefiscale");
+        QDomElement luogodNElem = clienteInfo.firstChildElement("luogodN");
+        QDomElement residenzaElem = clienteInfo.firstChildElement("residenza");
+        QDomElement viaElem = clienteInfo.firstChildElement("via");
+        QDomElement numviaElem = clienteInfo.firstChildElement("numvia");
+        QDomElement numerotelElem = clienteInfo.firstChildElement("numerotel");
+        QDomElement mailElem = clienteInfo.firstChildElement("mail");
+        QDomElement studentElem = clienteInfo.firstChildElement("student");
 
         std::string nome = nomeElem.text().toStdString();
         std::string cognome = cognomeElem.text().toStdString();
@@ -163,9 +164,9 @@ void model::carica(QString path) const
         if (elemType == "Piscina") {
             QDomElement corsonuotoElem = clienteElem.firstChildElement("corsonuoto");
             QDomElement nomeistruttorepiscinaElem = clienteElem.firstChildElement("nomeistruttorepiscina");
-            QDomElement scadenzaPiscinaGiornoElem = baseInfo.firstChildElement("scadenzaPiscinaGiorno");
-            QDomElement scadenzaPiscinaMeseElem = baseInfo.firstChildElement("scadenzaPiscinaMese");
-            QDomElement scadenzaPiscinaAnnoElem = baseInfo.firstChildElement("scadenzaPiscinaAnno");
+            QDomElement scadenzaPiscinaGiornoElem = clienteInfo.firstChildElement("scadenzapiscinagiorno");
+            QDomElement scadenzaPiscinaMeseElem = clienteInfo.firstChildElement("scadenzapiscinamese");
+            QDomElement scadenzaPiscinaAnnoElem = clienteInfo.firstChildElement("scadenzapiscinaanno");
             bool corsonuoto = studentElem.text().toUInt()== 1;
             std::string nomeistruttorepiscina = nomeistruttorepiscinaElem.text().toStdString();
             unsigned short int scadenzaPiscinaGiorno = static_cast<unsigned int>(scadenzaPiscinaGiornoElem.text().toInt());
@@ -178,9 +179,9 @@ void model::carica(QString path) const
         } else if (elemType == "Palestra") {
             QDomElement schedaElem = clienteElem.firstChildElement("scheda");
             QDomElement nomeistruttorepalestraElem = clienteElem.firstChildElement("nomeistruttorepalestra");
-            QDomElement scadenzaPalestraGiornoElem = baseInfo.firstChildElement("scadenzaPalestraGiorno");
-            QDomElement scadenzaPalestraMeseElem = baseInfo.firstChildElement("scadenzaPalestraMese");
-            QDomElement scadenzaPalestraAnnoElem = baseInfo.firstChildElement("scadenzaPalestraAnno");
+            QDomElement scadenzaPalestraGiornoElem = clienteInfo.firstChildElement("scadenzapalestragiorno");
+            QDomElement scadenzaPalestraMeseElem = clienteInfo.firstChildElement("scadenzapalestramese");
+            QDomElement scadenzaPalestraAnnoElem = clienteInfo.firstChildElement("scadenzapalestraanno");
             bool scheda = studentElem.text().toUInt()== 1;
             std::string nomeistruttorepalestra = nomeistruttorepalestraElem.text().toStdString();
             unsigned short int scadenzaPalestraGiorno = static_cast<unsigned int>(scadenzaPalestraGiornoElem.text().toInt());
@@ -194,14 +195,14 @@ void model::carica(QString path) const
 
             QDomElement corsonuotoElem = clienteElem.firstChildElement("corsonuoto");
             QDomElement nomeistruttorepiscinaElem = clienteElem.firstChildElement("nomeistruttorepiscina");
-            QDomElement scadenzaPiscinaGiornoElem = baseInfo.firstChildElement("scadenzaPiscinaGiorno");
-            QDomElement scadenzaPiscinaMeseElem = baseInfo.firstChildElement("scadenzaPiscinaMese");
-            QDomElement scadenzaPiscinaAnnoElem = baseInfo.firstChildElement("scadenzaPiscinaAnno");
+            QDomElement scadenzaPiscinaGiornoElem = clienteInfo.firstChildElement("scadenzapiscinagiorno");
+            QDomElement scadenzaPiscinaMeseElem = clienteInfo.firstChildElement("scadenzapiscinamese");
+            QDomElement scadenzaPiscinaAnnoElem = clienteInfo.firstChildElement("scadenzapiscinaanno");
             QDomElement schedaElem = clienteElem.firstChildElement("scheda");
             QDomElement nomeistruttorepalestraElem = clienteElem.firstChildElement("nomeistruttorepalestra");
-            QDomElement scadenzaPalestraGiornoElem = baseInfo.firstChildElement("scadenzaPalestraGiorno");
-            QDomElement scadenzaPalestraMeseElem = baseInfo.firstChildElement("scadenzaPalestraMese");
-            QDomElement scadenzaPalestraAnnoElem = baseInfo.firstChildElement("scadenzaPalestraAnno");
+            QDomElement scadenzaPalestraGiornoElem = clienteInfo.firstChildElement("scadenzapalestragiorno");
+            QDomElement scadenzaPalestraMeseElem = clienteInfo.firstChildElement("scadenzapalestramese");
+            QDomElement scadenzaPalestraAnnoElem = clienteInfo.firstChildElement("scadenzapalestraanno");
             bool corsonuoto = studentElem.text().toUInt()== 1;
             std::string nomeistruttorepiscina = nomeistruttorepiscinaElem.text().toStdString();
             unsigned short int scadenzaPiscinaGiorno = static_cast<unsigned int>(scadenzaPiscinaGiornoElem.text().toInt());
