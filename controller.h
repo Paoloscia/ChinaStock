@@ -20,6 +20,7 @@ public slots:
     void salvaFile(); //capire se mettere const
     //void openModify() const; da implementare
     //void openSave() const; da implementare
+    void resetListaClienti();
 
 signals:
 

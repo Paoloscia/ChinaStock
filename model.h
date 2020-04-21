@@ -10,8 +10,9 @@
 #include <QFile>
 #include <QDomDocument>
 #include <QXmlStreamWriter>
-class model
+class model : public QObject
 {
+    //Q_OBJECT capire perchè va in errore se non è commentato!!! Paolo dice che la gente ce l'ha
 public:
     model(QString path);
     ~model();
@@ -28,6 +29,9 @@ public:
     //partire da clear, reset filter e costruttore
 
     //clear serve a distruggere tutto il container datitotali, è il nostro distruggi
+
+signals:
+    void clienteAggiunto();
 
 private:
     QString path; //serve per prendere i dati dal percorso del file

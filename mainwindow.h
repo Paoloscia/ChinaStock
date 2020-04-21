@@ -25,6 +25,7 @@ class mainwindow : public QWidget
 public:
     mainwindow(QWidget *parent =nullptr);
     //~mainwindow();
+    void mostraClienti(const QStringList); //era displayCatalog
 
 private:
 

@@ -170,6 +170,18 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
 }
 
+void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
+{
+    listaClienti->reset();
+    listaClienti->clear();
+    auto it = datiCliente.begin();
+    while(it!=datiCliente.end()){
+        listaClienti->addItem(*it);
+        ++it;
+    }
+}
+
+
 void mainwindow::setMainWindowStyle()
 {
     QFile file(":risorse/style.css");

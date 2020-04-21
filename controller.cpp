@@ -4,6 +4,13 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 {
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
+
+    //connect(view, SIGNAL(updateSearch()), this, SLOT(refreshCatalog())); implementare!!!
+
+    //connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
+
+    //connect(m, SIGNAL(catalogRemoved()), this, SLOT(refreshCatalog())); implementare!!!
+
     view->show();
 }
 
@@ -24,6 +31,13 @@ void controller::openAddView()
 void controller::salvaFile()
 {
     m->salva();
+}
+
+void controller::resetListaClienti()
+{
+    //QString filter=mainW->getResearchWord();
+    //mainW->displayCatalog(modello->getFilteredCatalog(filter,indexTranslate));
+    //view->mostraClienti(); da completare, capire cosa passare dentro a mostraClienti
 }
 
 //void controller::openModify() const
