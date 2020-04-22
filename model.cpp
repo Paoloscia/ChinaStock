@@ -35,7 +35,7 @@ void model::aggiungiOggetto(cliente * cliente)
     modificato = true;
     datiTotali->aggiungiDavanti(cliente);
     resetfiltro();
-    //emit clienteAggiunto(); capire perchè va in errore
+    emit clienteAggiunto();
 }
 
 void model::salva()

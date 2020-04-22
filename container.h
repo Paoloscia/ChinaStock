@@ -3,6 +3,7 @@
 #include <string>
 using std::string;
 template <class T>
+//template <class T*> per fare eliminazione di distruggi
 
 #endif // CONTAINER_H
 
@@ -11,10 +12,11 @@ class Container {
     friend class model;
 private:
     class nodo {
-    private:
         friend class Container<T>; // DA VEDERE!!!
+    private:
         nodo(const T&, nodo* = nullptr);
         T info;
+        //dovremo mettere T* info; per gestire eliminaz dati info con delete
         nodo* next;
         void distruggi();
 
@@ -94,6 +96,7 @@ template<class T>
 void Container<T>::nodo::distruggi()
 {
     if (next) next->distruggi();
+    //delete info; aggiungere con class T* per il container
     delete this;
 }
 

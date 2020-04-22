@@ -13,6 +13,8 @@
 class model : public QObject
 {
     //Q_OBJECT capire perchè va in errore se non è commentato!!! Paolo dice che la gente ce l'ha
+    Q_OBJECT
+
 public:
     model(QString path);
     ~model();
@@ -38,6 +40,8 @@ private:
     Container<cliente *> *datiTotali; //Vedere se effettivamente è giusto
     Container<cliente *> *datiFiltrati; //Vedere se effettivamente è giusto
     bool modificato; //teoricamente serve per non risalvare se non è stato modificato nulla
+
+    //DICHIARARE IL CONTAINER! Unico per tutta l'esecuzione
 };
 
 #endif // MODEL_H

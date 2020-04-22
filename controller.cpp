@@ -37,6 +37,7 @@ void controller::resetListaClienti()
 {
     //QString filter=mainW->getResearchWord();
     //mainW->displayCatalog(modello->getFilteredCatalog(filter,indexTranslate));
+
     //view->mostraClienti(); da completare, capire cosa passare dentro a mostraClienti
 }
 
