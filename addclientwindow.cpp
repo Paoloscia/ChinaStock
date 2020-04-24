@@ -116,7 +116,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
 
     connect(annullaButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(salvaButton, SIGNAL(clicked()), this, SLOT(confirm()));
-    connect(salvaButton, SIGNAL(clicked()), this, SLOT(close()));
+    //connect(salvaButton, SIGNAL(clicked()), this, SLOT(close())); mi sa che non serve perchè ho messo QDialog accept
 
 }
 
@@ -140,4 +140,6 @@ void addClientWindow::confirm()
     tmp->push_back(nomeIstruttorePalestraEdit->text());
     tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
     //emit inputError(); capire come controllare se ci sono errori di input
+    QDialog::accept();
+    //emit finished(); capire come fare a salvare dati!
 }

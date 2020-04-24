@@ -34,6 +34,7 @@ HEADERS += \
     cliente.h\
     container.h \
     controller.h \
+    deeppointer.h \
     mainwindow.h \
     model.h \
     modifyclientwindow.h \
