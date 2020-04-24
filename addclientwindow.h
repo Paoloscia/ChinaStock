@@ -30,6 +30,8 @@ public:
     //~addClientWindow(); DA FARE!!!
 public slots:
     virtual void confirm();
+signals:
+    void inviaStringaCliente(const QStringList);
 private:
     QVBoxLayout* mainLayout;
     QGridLayout* gridLayout;

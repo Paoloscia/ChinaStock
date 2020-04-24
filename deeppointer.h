@@ -7,29 +7,29 @@ using std::string;
 //dichiarazione del template
 
 template <class T>
-class DeepPtr{
+class deepPointer{
 private:
     T* pted;     //T puntato
 public:
-    DeepPtr(T* =nullptr);
-    DeepPtr(const DeepPtr&);
-    DeepPtr& operator=(const DeepPtr&);
+    deepPointer(T* =nullptr);
+    deepPointer(const deepPointer&);
+    deepPointer& operator=(const deepPointer&);
     T* operator->() const;
     T& operator*() const;
-    ~DeepPtr();
-    bool operator==(const DeepPtr&) const;
+    ~deepPointer();
+    bool operator==(const deepPointer&) const;
     bool operator==(string) const;
-    bool operator!=(const DeepPtr&) const;
-    bool operator>(const DeepPtr&) const;
-    bool operator<(const DeepPtr&) const;
+    bool operator!=(const deepPointer&) const;
+    bool operator>(const deepPointer&) const;
+    bool operator<(const deepPointer&) const;
     operator T*() const;
 };
 
 template <class T>
-DeepPtr<T>::DeepPtr(T* itm): pted(itm){}
+deepPointer<T>::deepPointer(T* itm): pted(itm){}
 
 template <class T>
-DeepPtr<T>::DeepPtr(const DeepPtr& dptr){
+deepPointer<T>::deepPointer(const deepPointer& dptr){
       if(dptr== nullptr)
           pted=nullptr;
       else
@@ -37,7 +37,7 @@ DeepPtr<T>::DeepPtr(const DeepPtr& dptr){
 }
 
 template <class T>
-DeepPtr<T>& DeepPtr<T>::operator=(const DeepPtr& dptr){
+deepPointer<T>& deepPointer<T>::operator=(const deepPointer& dptr){
         if(this != &dptr){
             if(pted)
                 delete pted;
@@ -47,49 +47,49 @@ DeepPtr<T>& DeepPtr<T>::operator=(const DeepPtr& dptr){
 }
 
 template <class T>
-T* DeepPtr<T>::operator->() const{
+T* deepPointer<T>::operator->() const{
        return pted;
 }
 
 template <class T>
-T& DeepPtr<T>::operator*() const{
+T& deepPointer<T>::operator*() const{
         return *pted;
 }
 
 template <class T>
-DeepPtr<T>::~DeepPtr(){
+deepPointer<T>::~deepPointer(){
     if(pted)
         delete pted;      //elimina il T puntato dal mio puntatore con gestione della memoria
 }
 
 template <class T>
-bool DeepPtr<T>::operator==(const DeepPtr& dptr) const{
+bool deepPointer<T>::operator==(const deepPointer& dptr) const{
     return *pted==*(dptr.pted);
 }
 
 template <class T>
-bool DeepPtr<T>::operator!=(const DeepPtr& dptr) const{
+bool deepPointer<T>::operator!=(const deepPointer& dptr) const{
     return *pted!=*(dptr.pted);
 }
 
 template<class T>
-bool DeepPtr<T>::operator<(const DeepPtr& dptr) const{
+bool deepPointer<T>::operator<(const deepPointer& dptr) const{
     return *pted<*(dptr.pted);
 }
 
 template<class T>
-bool DeepPtr<T>::operator>(const DeepPtr& dptr) const{
+bool deepPointer<T>::operator>(const deepPointer& dptr) const{
     return *pted>*(dptr.pted);
 }
 
 template<class T>
-bool DeepPtr<T>::operator==(string s) const
+bool deepPointer<T>::operator==(string s) const
 {
     return *pted== s;
 }
 
 template<class T>
-DeepPtr<T>::operator T *() const
+deepPointer<T>::operator T *() const
 {
     return pted;
 }

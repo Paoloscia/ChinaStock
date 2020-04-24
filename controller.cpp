@@ -11,6 +11,9 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
     //connect(m, SIGNAL(catalogRemoved()), this, SLOT(refreshCatalog())); implementare!!!
 
+    //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
+    connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
+
     view->show();
 }
 
@@ -54,3 +57,20 @@ void controller::resetListaClienti()
 {
 
 }*/
+
+void controller::aggClienteContainer(const QStringList dettagli)
+{
+    //if(details.first()=="null") FINIRE DI IMPLEMENTARE FUNZIONE CON CONTROLLI
+    //    view->displayInputError();
+//    else {
+//        if(details[1]=="null")
+//            view->displayInputError();
+//        else{
+//            if(!m->checkIfExistIntoCatalog(dettagli))
+                m->aggNelContainer(dettagli);
+//            else{
+//                m->displayTheElementExist();
+//            }
+//        }
+//    }
+}

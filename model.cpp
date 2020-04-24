@@ -1,6 +1,6 @@
 #include "model.h"
 
-model::model(QString path) : path(path),datiTotali(new Container<cliente*>()),datiFiltrati(new Container<cliente*>()),modificato(false)
+model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
     //carica(path); da implementare, ricordarsi di togliere commento a costruttore di controller che pesca data.xml
     resetfiltro();
@@ -30,13 +30,13 @@ void model::resetfiltro() const
     }
 }
 
-void model::aggiungiOggetto(cliente * cliente)
-{
-    modificato = true;
-    datiTotali->aggiungiDavanti(cliente);
-    resetfiltro();
-    emit clienteAggiunto();
-}
+//void model::aggiungiOggetto(cliente * cliente)
+//{
+//    modificato = true;
+//    datiTotali->aggiungiDavanti(cliente);
+//    resetfiltro();
+//    emit clienteAggiunto();
+//}
 
 void model::salva()
 {
@@ -223,5 +223,28 @@ void model::carica(QString path) const
         datiTotali->aggiungiDavanti(res);
     }
 
+}
+
+
+void model::aggNelContainer(const QStringList e)
+{
+    modificato = true;
+    if(e.at(0)!="null"){
+        deepPointer<cliente> elemento;
+//è da fare l'inserimento nel container pescando i dati del model!!!
+//        if(e.at(0) == "c"){
+//            elemento = new Consumable(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toDouble(),e.at(4).toUInt(),e.at(5)=="true"? true:false,e.at(6)=="true"? true:false, e.at(7).toStdString());
+//        }
+//        if(e.at(0) == "p"){
+//            if(e.at(1) == "n")
+//                elemento = new Normal(e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toDouble(),e.at(5).toDouble(),e.at(6)=="true"? true:false, e.at(8)=="true"? true:false,e.at(9)=="true"? true:false,e.at(11)=="true"? true:false);
+//            if(e.at(1) == "m")
+//                elemento = new Multifunction(e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toDouble(),e.at(5).toDouble(),e.at(6)=="true"? true:false ,e.at(7)=="true"? true:false, e.at(8)=="true"? true:false, e.at(9)=="true"? true:false, e.at(10)=="true"? true:false, e.at(11)=="true"? true:false, e.at(12)=="true"? true:false);
+//        }
+        datiTotali->aggiungiDavanti(elemento); //capire se mettere pushinorder o riordinarli col filtraggio
+        resetfiltro(); //mettere in ordine col filtraggio
+    }
+
+    emit clienteAggiunto();
 }
 

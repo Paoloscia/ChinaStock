@@ -6,6 +6,7 @@
 #include "piscina.h"
 #include "palestra.h"
 #include "vip.h"
+#include "deeppointer.h"
 #include <QString>
 #include <QFile>
 #include <QDomDocument>
@@ -32,13 +33,17 @@ public:
 
     //clear serve a distruggere tutto il container datitotali, è il nostro distruggi
 
+public slots:
+    void aggNelContainer(const QStringList);
+
 signals:
     void clienteAggiunto();
 
 private:
+
     QString path; //serve per prendere i dati dal percorso del file
-    Container<cliente *> *datiTotali; //Vedere se effettivamente è giusto
-    Container<cliente *> *datiFiltrati; //Vedere se effettivamente è giusto
+    Container<deepPointer<cliente>> *datiTotali; //Vedere se effettivamente è giusto
+    Container<deepPointer<cliente>> *datiFiltrati; //Vedere se effettivamente è giusto
     bool modificato; //teoricamente serve per non risalvare se non è stato modificato nulla
 
     //DICHIARARE IL CONTAINER! Unico per tutta l'esecuzione
