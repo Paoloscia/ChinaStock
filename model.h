@@ -21,8 +21,6 @@ public:
     ~model();
     void resetfiltro() const;
 
-    void aggiungiOggetto(cliente *);
-
     void cancellaOggetto(cliente *, bool = true);
 
     void salva();

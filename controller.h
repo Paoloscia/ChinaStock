@@ -21,6 +21,7 @@ public slots:
     //void openModify() const; da implementare
     //void openSave() const; da implementare
     void resetListaClienti();
+    void aggClienteContainer(const QStringList);
 
 signals:
 
