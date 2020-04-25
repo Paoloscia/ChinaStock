@@ -30,6 +30,8 @@ public:
     //~addClientWindow(); DA FARE!!!
 public slots:
     virtual void confirm();
+    void mostraPiscina();
+    void mostraPalestra();
 signals:
     void inviaStringaCliente(const QStringList);
 private:
@@ -44,7 +46,8 @@ private:
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;
-    QPushButton* salvaButton, *annullaButton;
+    QPushButton* salvaButton,*annullaButton;
+    QGroupBox* piscinaGroup,*palestraGroup;
 };
 
 #endif // ADDCLIENTWINDOW_H

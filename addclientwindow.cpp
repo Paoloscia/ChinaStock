@@ -1,6 +1,6 @@
 #include "addclientwindow.h"
 
-addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdialog
+addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent), piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this)),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this))
 {
 
     mainLayout = new QHBoxLayout(this);
@@ -46,8 +46,6 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     studenteCheckbox = new QCheckBox("Studente",this);
 
     //************** PEZZO FORM PISCINA ********************
-
-    QGroupBox *piscinaGroup = new QGroupBox("Abbonamento piscina");
     QFormLayout *formPiscinaLayout = new QFormLayout();
 
     QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
@@ -63,8 +61,6 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     piscinaGroup->setLayout(formPiscinaLayout);
 
     //************** PEZZO FORM PALESTRA ********************
-
-    QGroupBox *palestraGroup = new QGroupBox("Abbonamento palestra");
     QFormLayout *formPalestraLayout = new QFormLayout();
 
     QLabel *dateScadPalestraLabel = new QLabel("Data: ");
@@ -92,10 +88,8 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
-    abbonamentoPiscinaCheckbox = new QCheckBox("Abbonato a piscina",this);
     formLayout->addRow(abbonamentoPiscinaCheckbox);
 
-    abbonamentoPalestraCheckbox = new QCheckBox("Abbonato a palestra",this);
     formLayout->addRow(abbonamentoPalestraCheckbox);
 
     mainLayout->addLayout(formLayout);
@@ -112,10 +106,15 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     hdestraBottoni->addWidget(salvaButton);
     hdestraBottoni->addWidget(annullaButton);
 
+    piscinaGroup->setVisible(false);
+    palestraGroup->setVisible(false);
+
     //************** PARTE CONNECT **************************
 
     connect(annullaButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(salvaButton, SIGNAL(clicked()), this, SLOT(confirm()));
+    connect(abbonamentoPiscinaCheckbox,SIGNAL(clicked()), this, SLOT(mostraPiscina()));
+    connect(abbonamentoPalestraCheckbox,SIGNAL(clicked()), this, SLOT(mostraPalestra()));
 
 }
 
@@ -143,4 +142,21 @@ void addClientWindow::confirm()
     this->close();
     //QDialog::accept();
     //emit finished(); capire come fare a salvare dati!
+}
+
+void addClientWindow::mostraPiscina()
+{
+    if (abbonamentoPiscinaCheckbox->isChecked()==true)
+        piscinaGroup->setVisible(true);
+    else
+        piscinaGroup->setVisible(false);
+
+}
+
+void addClientWindow::mostraPalestra()
+{
+    if (abbonamentoPalestraCheckbox->isChecked()==true)
+        palestraGroup->setVisible(true);
+    else
+        palestraGroup->setVisible(false);
 }
