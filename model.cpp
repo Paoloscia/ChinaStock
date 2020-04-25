@@ -249,23 +249,23 @@ void model::carica(QString path) const
 //}
 
 void model::aggNelContainer(const QStringList e)
-{
-
-    //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
+{   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     modificato = true;
     if(e.at(0)!="null"){
-        deepPointer<cliente> elemento;
+        deepPointer<cliente> cliente;
 //è da fare l'inserimento nel container pescando i dati del model!!!
-//        if(e.at(0) == "c"){
-//            elemento = new Consumable(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toDouble(),e.at(4).toUInt(),e.at(5)=="true"? true:false,e.at(6)=="true"? true:false, e.at(7).toStdString());
-//        }
-//        if(e.at(0) == "p"){
-//            if(e.at(1) == "n")
-//                elemento = new Normal(e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toDouble(),e.at(5).toDouble(),e.at(6)=="true"? true:false, e.at(8)=="true"? true:false,e.at(9)=="true"? true:false,e.at(11)=="true"? true:false);
-//            if(e.at(1) == "m")
-//                elemento = new Multifunction(e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toDouble(),e.at(5).toDouble(),e.at(6)=="true"? true:false ,e.at(7)=="true"? true:false, e.at(8)=="true"? true:false, e.at(9)=="true"? true:false, e.at(10)=="true"? true:false, e.at(11)=="true"? true:false, e.at(12)=="true"? true:false);
-//        }
-        datiTotali->aggiungiDavanti(elemento); //capire se mettere pushinorder o riordinarli col filtraggio
+        if(e.at(0) == "piscina"){
+       //dopo aver passato date salvarla in una variabile qdate, da lì istanziare 3 variabili e prendere giorno mese e anno e inserirle nella costruzione di piscina e degli altri
+       //cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),e.at(2).toInt(),e.at(3).toInt(),e.at(4).toInt(),e.at(5).toStdString(), e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(9).toUInt(), e.at(10).toStdString(),e.at(11).toStdString()),e.at(12)=="true" ? true:false,e.at(13)=="true" ? true:false,;
+    }
+     if(e.at(0) == "p"){ //sistemare gli if in base ai checkbox fleggati su addcliente!!!!!
+       if(e.at(1) == "Palestra"){}//eliminare graffe
+         //cliente = new palestra(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(), e.at(7).toUInt(),e.at(8).toStdString(),e.at(9).toStdString(),e.at(10)=="true" ? true:false, e.at(13).toStdString(),e.at(14).toStdString(),e.at(15)=="true" ? true:false);
+         //SISTEMARE COSTRUZIONE DEI CLIENTI!!!
+        if(e.at(1) == "vip"){}//eliminare graffe
+         //cliente = new vip(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(), e.at(7).toUInt(),e.at(8).toStdString(),e.at(9).toStdString(),e.at(10)=="true" ? true:false, e.at(11).toStdString(),e.at(12).toStdString(),e.at(13).toStdString(),e.at(14).toStdString(),e.at(15)=="true" ? true:false);
+         }
+        datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
         resetfiltro(); //mettere in ordine col filtraggio
     }
 
