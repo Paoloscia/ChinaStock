@@ -53,9 +53,11 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);
 
-
     studenteCheckbox = new QCheckBox("Studente",this);
-    QGroupBox *piscinaGroup = new QGroupBox("Piscina");
+
+    //************** PEZZO FORM PISCINA ********************
+
+    QGroupBox *piscinaGroup = new QGroupBox("Abbonamento piscina");
     QFormLayout *formPiscinaLayout = new QFormLayout();
 
     QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
@@ -72,7 +74,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
 
     //************** PEZZO FORM PALESTRA ********************
 
-    QGroupBox *palestraGroup = new QGroupBox("Palestra");
+    QGroupBox *palestraGroup = new QGroupBox("Abbonamento palestra");
     QFormLayout *formPalestraLayout = new QFormLayout();
 
     QLabel *dateScadPalestraLabel = new QLabel("Data: ");
@@ -102,6 +104,8 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
 
     orizDxLayout->addLayout(formLayout);
     orizDxLayout->addLayout(verticalDxLayout);
+    abbonamentoPiscinaCheckbox = new QCheckBox("Piscina",this);
+    verticalDxLayout->addWidget(abbonamentoPiscinaCheckbox);
     verticalDxLayout->addWidget(piscinaGroup);
     verticalDxLayout->addWidget(palestraGroup);
     salvaButton = new QPushButton("Salva",this);

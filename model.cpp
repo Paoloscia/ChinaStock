@@ -225,9 +225,33 @@ void model::carica(QString path) const
 
 }
 
+//void addClientWindow::confirm() COPIA DA CANCELLARE!
+//{
+//    QStringList *tmp = new QStringList();
+//    tmp->push_back(nomeLineEdit->text());
+//    tmp->push_back(cognomeLineEdit->text());
+//    tmp->push_back(codFiscLineEdit->text());
+//    tmp->push_back(ldnLineEdit->text());
+//    tmp->push_back(residenzaLineEdit->text());
+//    tmp->push_back(viaLineEdit->text());
+//    tmp->push_back(telefonoLineEdit->text());
+//    tmp->push_back(mailLineEdit->text());
+//    tmp->push_back(dateNascita->date().toString());
+//    tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
+//    tmp->push_back(dateScadPiscina->date().toString());
+//    tmp->push_back(nomeIstruttorePiscinaEdit->text());
+//    tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
+//    tmp->push_back(dateScadPalestra->date().toString());
+//    tmp->push_back(nomeIstruttorePalestraEdit->text());
+//    tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+//    emit inviaStringaCliente(*tmp); //era sendItemsDetails
+//    this->close();
+//}
 
 void model::aggNelContainer(const QStringList e)
 {
+
+    //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     modificato = true;
     if(e.at(0)!="null"){
         deepPointer<cliente> elemento;

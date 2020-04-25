@@ -39,7 +39,7 @@ private:
     QHBoxLayout *oriz,* divH, *hLeftBottoni, *orizDxLayout, *hdestraBottoni, *orizSxLayout;
     QCheckBox* studenteCheckbox, *studente2Checkbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit;
-    QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona;
+    QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona,*abbonamentoPiscinaCheckbox;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;
