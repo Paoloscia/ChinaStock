@@ -67,7 +67,7 @@ void controller::aggClienteContainer(const QStringList dettagli)
 //            view->displayInputError();
 //        else{
 //            if(!m->checkIfExistIntoCatalog(dettagli))
-                m->aggNelContainer(dettagli);
+                m->aggNelContainer(dettagli); //FARLO CON CONNECT!!!!
 //            else{
 //                m->displayTheElementExist();
 //            }

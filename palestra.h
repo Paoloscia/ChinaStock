@@ -12,7 +12,7 @@ public:
     palestra(string="",string="", int=0,int=0,int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0);
     //palestra(const palestra& p);
     palestra(cliente,bool=false,string="",int=1,int=1,int=2000);
-    virtual palestra* clone() const;
+    palestra* clone() const;
     //virtual ~palestra();
     //virtual bool operator==(const cliente& c) const; //override?
     //virtual bool operator!=(const cliente& c) const; //override?

@@ -13,8 +13,6 @@ class controller : public QObject
     Q_OBJECT
 public:
     explicit controller(QObject *parent = nullptr);
-    controller(model *mod, mainwindow *vw); //mod = model , vw=view
-
 public slots:
     void openAddView(); //capire se mettere const
     void salvaFile(); //capire se mettere const

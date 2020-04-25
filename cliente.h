@@ -20,7 +20,7 @@ public:
     cliente(string="",string="", int=1, int=1, int=2000,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false);
     virtual ~cliente() = default;
 
-    //virtual cliente* clone() const = 0; //DA CONTROLLARE!!
+    virtual cliente* clone() const; //DA CONTROLLARE!!
 
     string getnome() const; //forse bisognerà passare per riferimento costante le stringhe ritornate per non fare la copia, quindi const string& come ritorno
     string getcognome() const;

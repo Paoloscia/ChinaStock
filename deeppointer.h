@@ -30,9 +30,9 @@ deepPointer<T>::deepPointer(T* itm): pted(itm){}
 
 template <class T>
 deepPointer<T>::deepPointer(const deepPointer& dptr){
-      if(dptr== nullptr)
-          pted=nullptr;
-      else
+//      if(dptr== nullptr) capire se è necessario
+//          pted=nullptr;
+//      else
           pted=dptr.pted->clone();
 }
 
