@@ -33,13 +33,14 @@ public slots:
 signals:
     void inviaStringaCliente(const QStringList);
 private:
-    QVBoxLayout* mainLayout;
+    //controllare quali non si usano!!!!
+    QHBoxLayout* mainLayout;
     QGridLayout* gridLayout;
-    QVBoxLayout* verticalDxLayout, *verticalSxLayout;
-    QHBoxLayout *oriz,* divH, *hLeftBottoni, *orizDxLayout, *hdestraBottoni, *orizSxLayout;
+    QVBoxLayout* verticalDxLayout;
+    QHBoxLayout *oriz, *hdestraBottoni;
     QCheckBox* studenteCheckbox, *studente2Checkbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit;
-    QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona,*abbonamentoPiscinaCheckbox;
+    QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona,*abbonamentoPiscinaCheckbox, *abbonamentoPalestraCheckbox;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;

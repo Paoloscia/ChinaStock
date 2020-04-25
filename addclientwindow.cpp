@@ -3,17 +3,7 @@
 addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdialog
 {
 
-    mainLayout = new QVBoxLayout(this);
-    gridLayout = new QGridLayout();
-    orizDxLayout = new QHBoxLayout();
-    verticalSxLayout = new QVBoxLayout();
-    verticalDxLayout = new QVBoxLayout();
-    divH = new QHBoxLayout();
-
-    mainLayout->addLayout(gridLayout);
-    mainLayout->addLayout(divH);
-    divH->addLayout(verticalSxLayout);
-    divH->addLayout(orizDxLayout);
+    mainLayout = new QHBoxLayout(this);
 
     setLayout(mainLayout);
 
@@ -102,10 +92,16 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent) //messo qdia
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
-    orizDxLayout->addLayout(formLayout);
-    orizDxLayout->addLayout(verticalDxLayout);
-    abbonamentoPiscinaCheckbox = new QCheckBox("Piscina",this);
-    verticalDxLayout->addWidget(abbonamentoPiscinaCheckbox);
+    abbonamentoPiscinaCheckbox = new QCheckBox("Abbonato a piscina",this);
+    formLayout->addRow(abbonamentoPiscinaCheckbox);
+
+    abbonamentoPalestraCheckbox = new QCheckBox("Abbonato a palestra",this);
+    formLayout->addRow(abbonamentoPalestraCheckbox);
+
+    mainLayout->addLayout(formLayout);
+    verticalDxLayout = new QVBoxLayout();
+    mainLayout->addLayout(verticalDxLayout);
+
     verticalDxLayout->addWidget(piscinaGroup);
     verticalDxLayout->addWidget(palestraGroup);
     salvaButton = new QPushButton("Salva",this);

@@ -16,7 +16,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
 
     setMainWindowStyle();
     gridLayout = new QGridLayout();
-    orizDxLayout = new QHBoxLayout();
     verticalSxLayout = new QVBoxLayout();
     verticalDxLayout = new QVBoxLayout();
     divH = new QHBoxLayout();
@@ -24,7 +23,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     mainLayout->addLayout(gridLayout);
     mainLayout->addLayout(divH);
     divH->addLayout(verticalSxLayout);
-    divH->addLayout(orizDxLayout);
 
     setLayout(mainLayout);
 
@@ -155,8 +153,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
-    orizDxLayout->addLayout(formLayout);
-    orizDxLayout->addLayout(verticalDxLayout);
+    divH->addLayout(formLayout);
+    divH->addLayout(verticalDxLayout);
     verticalDxLayout->addWidget(piscinaGroup);
     verticalDxLayout->addWidget(palestraGroup);
 
