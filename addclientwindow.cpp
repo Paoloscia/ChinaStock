@@ -30,6 +30,8 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent), piscinaGrou
     QLabel *viaLabel = new QLabel(tr("Via: "));
     viaLineEdit = new QLineEdit();
     //viaLabel->setBuddy(viaLineEdit);
+    QLabel *numeroLabel = new QLabel(tr("Numero Via"));
+    numeroviaLineEdit = new QLineEdit();
 
     QLabel *telefonoLabel = new QLabel(tr("Telefono: "));
     telefonoLineEdit = new QLineEdit();
@@ -83,6 +85,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent), piscinaGrou
     formLayout->addRow(ldnLabel, ldnLineEdit);
     formLayout->addRow(residenzaLabel, residenzaLineEdit);
     formLayout->addRow(viaLabel, viaLineEdit);
+    formLayout->addRow(numeroLabel, numeroviaLineEdit);
     formLayout->addRow(telefonoLabel, telefonoLineEdit);
     formLayout->addRow(mailLabel, mailLineEdit);
     formLayout->addRow(dateNascitaLabel, dateNascita);
