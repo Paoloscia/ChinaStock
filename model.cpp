@@ -261,9 +261,9 @@ void model::aggNelContainer(const QStringList e)
         //è da fare l'inserimento nel container pescando i dati del model!!!
         if(e.at(0) == "piscina"){
        //dopo aver passato date salvarla in una variabile qdate, da lì istanziare 3 variabili e prendere giorno mese e anno e inserirle nella costruzione di piscina e degli altri
-       //string="",string="", int=0, int=0, int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0
+       //0string="",1string="", 2int=0, 3int=0, 4int=0,5string="",6string="", 7string="",8string="",9unsigned int = 0,10string="",11string="",12bool=false,13bool=false,14string="",15int=0,16int=0,17int=0
        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-       cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(11).toStdString()),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
+       cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
     }
      if(e.at(0) == "p"){ //sistemare gli if in base ai checkbox fleggati su addcliente!!!!!
        if(e.at(1) == "Palestra"){}//eliminare graffe
