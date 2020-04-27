@@ -47,7 +47,7 @@ private:
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;
     QPushButton* salvaButton,*annullaButton;
-    QGroupBox* piscinaGroup,*palestraGroup;
+    QGroupBox* piscinaGroup,* palestraGroup;
 };
 
 #endif // ADDCLIENTWINDOW_H

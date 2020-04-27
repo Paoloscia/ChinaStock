@@ -234,7 +234,7 @@ void model::carica(QString path) const
 //    3tmp->push_back(ldnLineEdit->text());
 //    4tmp->push_back(residenzaLineEdit->text());
 //    5tmp->push_back(viaLineEdit->text());
-//    6tmp->push_back(numeroCivico->text()); //guardare come si chiamerà di preciso
+//    6tmp->push_back(numeroviaLineEdit->text()); //guardare come si chiamerà di preciso
 //    7tmp->push_back(telefonoLineEdit->text());
 //    8tmp->push_back(mailLineEdit->text());
 //    9tmp->push_back(dateNascita->date().toString());
@@ -252,26 +252,23 @@ void model::carica(QString path) const
 void model::aggNelContainer(const QStringList e)
 {   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     modificato = true;
-    if(e.at(0)!="null"){
+    if(e.at(0)!=""){
         deepPointer<cliente> cliente;
         QDate dataNascitaTmp = QDate::fromString(e.at(9));
-        //dataNascitaTmp.day();
-        //dataNascitaTmp.month();
-        //dataNascitaTmp.year();
         //è da fare l'inserimento nel container pescando i dati del model!!!
-        if(e.at(0) == "piscina"){
-       //dopo aver passato date salvarla in una variabile qdate, da lì istanziare 3 variabili e prendere giorno mese e anno e inserirle nella costruzione di piscina e degli altri
-       //0string="",1string="", 2int=0, 3int=0, 4int=0,5string="",6string="", 7string="",8string="",9unsigned int = 0,10string="",11string="",12bool=false,13bool=false,14string="",15int=0,16int=0,17int=0
-       QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-       cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
-    }
-     if(e.at(0) == "p"){ //sistemare gli if in base ai checkbox fleggati su addcliente!!!!!
-       if(e.at(1) == "Palestra"){}//eliminare graffe
-         //cliente = new palestra(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(), e.at(7).toUInt(),e.at(8).toStdString(),e.at(9).toStdString(),e.at(10)=="true" ? true:false, e.at(13).toStdString(),e.at(14).toStdString(),e.at(15)=="true" ? true:false);
-         //SISTEMARE COSTRUZIONE DEI CLIENTI!!!
-        if(e.at(1) == "vip"){}//eliminare graffe
-         //cliente = new vip(e.at(1).toStdString(),e.at(2).toStdString(),e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(), e.at(7).toUInt(),e.at(8).toStdString(),e.at(9).toStdString(),e.at(10)=="true" ? true:false, e.at(11).toStdString(),e.at(12).toStdString(),e.at(13).toStdString(),e.at(14).toStdString(),e.at(15)=="true" ? true:false);
-         }
+        if (e.at(17) == true && e.at(18) == true) { //VIP
+            QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
+            QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
+            cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.day(),dataScadPalestraTmp.month(),dataScadPalestraTmp.year());
+        }
+        else if(e.at(17) == true && e.at(18)== false){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
+            QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
+            cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
+        }
+        else if (e.at(17) == false && e.at(18)== true) { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
+            QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
+            cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.day(),dataScadPalestraTmp.month(),dataScadPalestraTmp.year());
+        }
         datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
         resetfiltro(); //mettere in ordine col filtraggio
     }

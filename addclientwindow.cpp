@@ -30,7 +30,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent), piscinaGrou
     QLabel *viaLabel = new QLabel(tr("Via: "));
     viaLineEdit = new QLineEdit();
     //viaLabel->setBuddy(viaLineEdit);
-    QLabel *numeroLabel = new QLabel(tr("Numero Via"));
+    QLabel *numeroLabel = new QLabel(tr("Numero Via:"));
     numeroviaLineEdit = new QLineEdit();
 
     QLabel *telefonoLabel = new QLabel(tr("Telefono: "));
@@ -131,7 +131,7 @@ void addClientWindow::confirm()
     tmp->push_back(ldnLineEdit->text());
     tmp->push_back(residenzaLineEdit->text());
     tmp->push_back(viaLineEdit->text());
-    //tmp->push_back(numCivicoLineEdit->text()); sistemare il nome preciso
+    tmp->push_back(numeroviaLineEdit->text());
     tmp->push_back(telefonoLineEdit->text());
     tmp->push_back(mailLineEdit->text());
     tmp->push_back(dateNascita->date().toString());
