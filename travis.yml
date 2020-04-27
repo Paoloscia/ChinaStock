@@ -1,0 +1,18 @@
+language: cpp
+dist: trusty
+compiler: g++
+before_install:
+- sudo add-apt-repository ppa:beineri/opt-qt551-trusty -y
+- sudo apt-get update
+install:
+- sudo apt-get install qt55base
+- source /opt/qt55/bin/qt55-env.sh
+deploy:
+  provider: releases
+  api_key: "$GIT_TOKEN"
+  file: esempio2
+  skip_cleanup: true
+
+script:
+- "/opt/qt55/bin/qmake PREFIX=/usr"
+- make all
