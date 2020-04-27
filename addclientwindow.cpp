@@ -123,6 +123,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent), piscinaGrou
 
 void addClientWindow::confirm()
 {
+
     QStringList *tmp = new QStringList();
     tmp->push_back(nomeLineEdit->text());
     tmp->push_back(cognomeLineEdit->text());
@@ -130,6 +131,7 @@ void addClientWindow::confirm()
     tmp->push_back(ldnLineEdit->text());
     tmp->push_back(residenzaLineEdit->text());
     tmp->push_back(viaLineEdit->text());
+    //tmp->push_back(numCivicoLineEdit->text()); sistemare il nome preciso
     tmp->push_back(telefonoLineEdit->text());
     tmp->push_back(mailLineEdit->text());
     tmp->push_back(dateNascita->date().toString());
@@ -140,7 +142,7 @@ void addClientWindow::confirm()
     tmp->push_back(dateScadPalestra->date().toString());
     tmp->push_back(nomeIstruttorePalestraEdit->text());
     tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
-    //emit inputError(); capire come controllare se ci sono errori di input
+    //emit inputError(); AGGIUNGERE CONTROLLO ERRORI INPUT!!! (AD ES DATA SCADENZA NON COMPILATA)
     emit inviaStringaCliente(*tmp); //era sendItemsDetails
     this->close();
     //QDialog::accept();

@@ -228,22 +228,23 @@ void model::carica(QString path) const
 //void addClientWindow::confirm() COPIA DA CANCELLARE!
 //{
 //    QStringList *tmp = new QStringList();
-//    tmp->push_back(nomeLineEdit->text());
-//    tmp->push_back(cognomeLineEdit->text());
-//    tmp->push_back(codFiscLineEdit->text());
-//    tmp->push_back(ldnLineEdit->text());
-//    tmp->push_back(residenzaLineEdit->text());
-//    tmp->push_back(viaLineEdit->text());
-//    tmp->push_back(telefonoLineEdit->text());
-//    tmp->push_back(mailLineEdit->text());
-//    tmp->push_back(dateNascita->date().toString());
-//    tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
-//    tmp->push_back(dateScadPiscina->date().toString());
-//    tmp->push_back(nomeIstruttorePiscinaEdit->text());
-//    tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
-//    tmp->push_back(dateScadPalestra->date().toString());
-//    tmp->push_back(nomeIstruttorePalestraEdit->text());
-//    tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+//    0tmp->push_back(nomeLineEdit->text());
+//    1tmp->push_back(cognomeLineEdit->text());
+//    2tmp->push_back(codFiscLineEdit->text());
+//    3tmp->push_back(ldnLineEdit->text());
+//    4tmp->push_back(residenzaLineEdit->text());
+//    5tmp->push_back(viaLineEdit->text());
+//    6tmp->push_back(numeroCivico->text()); //guardare come si chiamerà di preciso
+//    7tmp->push_back(telefonoLineEdit->text());
+//    8tmp->push_back(mailLineEdit->text());
+//    9tmp->push_back(dateNascita->date().toString());
+//    10tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
+//    11tmp->push_back(dateScadPiscina->date().toString());
+//    12tmp->push_back(nomeIstruttorePiscinaEdit->text());
+//    13tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
+//    14tmp->push_back(dateScadPalestra->date().toString());
+//    15tmp->push_back(nomeIstruttorePalestraEdit->text());
+//    16tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
 //    emit inviaStringaCliente(*tmp); //era sendItemsDetails
 //    this->close();
 //}
@@ -253,10 +254,16 @@ void model::aggNelContainer(const QStringList e)
     modificato = true;
     if(e.at(0)!="null"){
         deepPointer<cliente> cliente;
-//è da fare l'inserimento nel container pescando i dati del model!!!
+        QDate dataNascitaTmp = QDate::fromString(e.at(9));
+        //dataNascitaTmp.day();
+        //dataNascitaTmp.month();
+        //dataNascitaTmp.year();
+        //è da fare l'inserimento nel container pescando i dati del model!!!
         if(e.at(0) == "piscina"){
        //dopo aver passato date salvarla in una variabile qdate, da lì istanziare 3 variabili e prendere giorno mese e anno e inserirle nella costruzione di piscina e degli altri
-       //cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),e.at(2).toInt(),e.at(3).toInt(),e.at(4).toInt(),e.at(5).toStdString(), e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(9).toUInt(), e.at(10).toStdString(),e.at(11).toStdString()),e.at(12)=="true" ? true:false,e.at(13)=="true" ? true:false,;
+       //string="",string="", int=0, int=0, int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0
+       QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
+       cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(11).toStdString()),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
     }
      if(e.at(0) == "p"){ //sistemare gli if in base ai checkbox fleggati su addcliente!!!!!
        if(e.at(1) == "Palestra"){}//eliminare graffe
