@@ -142,6 +142,9 @@ void addClientWindow::confirm()
     tmp->push_back(dateScadPalestra->date().toString());
     tmp->push_back(nomeIstruttorePalestraEdit->text());
     tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+    tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
+    tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
+
     //emit inputError(); AGGIUNGERE CONTROLLO ERRORI INPUT!!! (AD ES DATA SCADENZA NON COMPILATA)
     emit inviaStringaCliente(*tmp); //era sendItemsDetails
     this->close();
