@@ -164,7 +164,7 @@ void Container<T>::aggiungiDavanti(const T & obj)
 //    }
 //    else
 //    {
-        new_nodo->next = primo;
+        new_nodo->next = primo; //QUI C'é ERRORE DA CONTROLLARE!!! NON ENTRA NEI CAMPI DI PRIMO, POTREBBE ESSERE INIZIALIZZATO MALE
         primo = new_nodo;
 //    }
 
