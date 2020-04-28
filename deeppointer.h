@@ -2,8 +2,7 @@
 #define DEEPPOINTER_H
 
 
-#include "cliente.h"
-using std::string;
+
 //dichiarazione del template
 
 template <class T>
@@ -17,8 +16,8 @@ public:
     T* operator->() const;
     T& operator*() const;
     ~deepPointer();
-    bool operator==(const deepPointer&) const;
-    bool operator==(string) const;
+    //bool operator==(const deepPointer&) const;
+    //bool operator==(string) const; capire se serve
     bool operator!=(const deepPointer&) const;
     bool operator>(const deepPointer&) const;
     bool operator<(const deepPointer&) const;
@@ -30,9 +29,9 @@ deepPointer<T>::deepPointer(T* itm): pted(itm){}
 
 template <class T>
 deepPointer<T>::deepPointer(const deepPointer& dptr){
-//      if(dptr== nullptr) capire se è necessario
-//          pted=nullptr;
-//      else
+      if(dptr == nullptr)
+          pted=nullptr;
+      else
           pted=dptr.pted->clone();
 }
 
@@ -62,10 +61,10 @@ deepPointer<T>::~deepPointer(){
         delete pted;      //elimina il T puntato dal mio puntatore con gestione della memoria
 }
 
-template <class T>
-bool deepPointer<T>::operator==(const deepPointer& dptr) const{
-    return *pted==*(dptr.pted);
-}
+//template <class T> commentato, capire se serve perchè creava problemi!
+//bool deepPointer<T>::operator==(const deepPointer& dptr) const{
+//    return *pted==*(dptr.pted);
+//}
 
 template <class T>
 bool deepPointer<T>::operator!=(const deepPointer& dptr) const{
@@ -82,11 +81,11 @@ bool deepPointer<T>::operator>(const deepPointer& dptr) const{
     return *pted>*(dptr.pted);
 }
 
-template<class T>
-bool deepPointer<T>::operator==(string s) const
-{
-    return *pted== s;
-}
+//template<class T>
+//bool deepPointer<T>::operator==(string s) const
+//{
+//    return *pted== s;
+//}
 
 template<class T>
 deepPointer<T>::operator T *() const

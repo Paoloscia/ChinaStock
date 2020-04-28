@@ -9,9 +9,9 @@ private:
     string nomeistruttorepalestra; //nome istruttore;
     QDate scadenzapalestra;
 public:
-    palestra(string="",string="", int=0,int=0,int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0);
+    palestra(string="",string="", int=2000,int=1,int=1,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=2000,int=1,int=1);
     //palestra(const palestra& p);
-    palestra(cliente,bool=false,string="",int=1,int=1,int=2000);
+    palestra(cliente,bool=false,string="",int=2000,int=1,int=1);
     palestra* clone() const;
     //virtual ~palestra();
     //virtual bool operator==(const cliente& c) const; //override?

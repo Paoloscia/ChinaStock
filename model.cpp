@@ -1,4 +1,7 @@
 #include "model.h"
+#include<iostream>
+using std::cout;
+using std::endl;
 
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
@@ -252,27 +255,45 @@ void model::carica(QString path) const
 void model::aggNelContainer(const QStringList e)
 {   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     //modificato = true; commentato per segfault
-    if(e.at(0)!=""){
+    //if(e.at(0)!=""){ mettere come controllo se serve!!!
         deepPointer<cliente> cliente;
         QDate dataNascitaTmp = QDate::fromString(e.at(9));
         //è da fare l'inserimento nel container pescando i dati del model!!!
-        if (e.at(17) == true && e.at(18) == true) { //VIP
+        if (e.at(17) == "true" && e.at(18) == "true") { //VIP
             QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
             QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-            cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.day(),dataScadPalestraTmp.month(),dataScadPalestraTmp.year());
+            cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
-        else if(e.at(17) == true && e.at(18)== false){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
+        else if(e.at(17) == "true" && e.at(18) == "false"){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
             QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-            cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.day(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.year());
+            cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
         }
-        else if (e.at(17) == false && e.at(18)== true) { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
+        else if (e.at(17) == "false" && e.at(18) == "true") { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
             QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-            cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.day(),dataNascitaTmp.month(),dataNascitaTmp.year(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.day(),dataScadPalestraTmp.month(),dataScadPalestraTmp.year());
+            cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
         datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
         resetfiltro(); //mettere in ordine col filtraggio
-    }
+    //}
 
     //emit clienteAggiunto(); commentato per segfault
 }
 
+//deepPtr<transazione> Model::recordGenerator(const QStringList &transfert) const
+//{
+//    deepPtr<transazione> tmp;
+//    double import= transfert[2].toDouble();
+//    QDate data = QDate::fromString(transfert[1]);
+//    std::string desc= transfert[3].toStdString();
+//    if(transfert[0]=="Entrata"){
+//        tmp= new entrata(import,desc,data,transfert[4].toStdString());
+//    } else if (transfert[0]=="Uscita") {
+//        tmp= new uscita(import,desc,data,transfert[5].toStdString());
+//    } else if(transfert[0]=="Abbonamento"){
+//        QDate r= QDate::fromString(transfert[6]);
+//        tmp= new abbonamento(import,desc,data,transfert[5].toStdString(),r);
+//    } else {
+//        tmp= new risparmio(import, desc, data);
+//    }
+//    return tmp;
+//}

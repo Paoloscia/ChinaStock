@@ -2,8 +2,8 @@
 
 
 
-piscina::piscina(string n, string c, int g, int m, int a,string cf, string lN, string r, string v, unsigned int num,string nt,string em,bool s,bool cn,string ni,int sgpi,int smpi,int sapi):cliente(n,c,g,m,a,cf,lN,r,v,num,nt,em,s),corsonuoto(cn),nomeistruttorepiscina(ni),scadenzapiscina(sgpi,smpi,sapi){}
-piscina::piscina(cliente cli,bool cn,string ni,int sgpi,int smpi,int sapi):cliente(cli),corsonuoto(cn),nomeistruttorepiscina(ni),scadenzapiscina(sgpi,smpi,sapi){}
+piscina::piscina(string n, string c, int a, int m, int g,string cf, string lN, string r, string v, unsigned int num,string nt,string em,bool s,bool cn,string ni,int sapi,int smpi,int sgpi):cliente(n,c,a,m,g,cf,lN,r,v,num,nt,em,s),corsonuoto(cn),nomeistruttorepiscina(ni),scadenzapiscina(sapi,smpi,sgpi){}
+piscina::piscina(cliente cli,bool cn,string ni,int sapi,int smpi,int sgpi):cliente(cli),corsonuoto(cn),nomeistruttorepiscina(ni),scadenzapiscina(sapi,smpi,sgpi){}
 piscina *piscina::clone() const{
     return new piscina(*this);
 }

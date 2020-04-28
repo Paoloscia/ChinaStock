@@ -10,8 +10,8 @@ private:
     string nomeistruttorepiscina;
     QDate scadenzapiscina;
 public:
-    piscina(string="",string="", int=0, int=0, int=0,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=0,int=0,int=0);
-    piscina(cliente,bool=false,string="",int=1,int=1,int=2000);
+    piscina(string="",string="", int=2000, int=1, int=1,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false,bool=false,string="",int=2000,int=1,int=1);
+    piscina(cliente,bool=false,string="",int=2000,int=1,int=1);
     piscina* clone() const;
     //virtual ~piscina();
 

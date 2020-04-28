@@ -2,10 +2,8 @@
 #define CONTAINER_H
 #include <string>
 using std::string;
+
 template <class T>
-
-#endif // CONTAINER_H
-
 class Container {
     //friend class Iteratore;
     friend class model;
@@ -13,11 +11,11 @@ private:
     class nodo {
         friend class Container<T>; // DA VEDERE!!!
     private:
-        nodo(const T&, nodo* = nullptr);
         T info;
         nodo* next;
+        nodo(const T&, nodo* = nullptr);
+        nodo(const nodo&);
         void distruggi();
-
     };
     nodo* primo, *ultimo;
     static nodo* clone(nodo*, nodo*&);
@@ -27,6 +25,7 @@ private:
     //nodo *lastNode(const nodo*);
 public:
     Container();
+    Container(const T&);
     Container(const Container&);
     ~Container();
     Container& operator=(const Container&);
@@ -90,6 +89,9 @@ public:
 template <class T>
 Container<T>::nodo::nodo(const T& obj, nodo* n) : info(obj), next(n) {}
 
+template <class T>
+Container<T>::nodo::nodo(const nodo& n):info(n.info), next(n.next){}
+
 template<class T>
 void Container<T>::nodo::distruggi()
 {
@@ -125,6 +127,9 @@ void Container<T>::rimuovi_s(string s)
 template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
+template <class T>
+Container<T>::Container(const T& obj): primo(new nodo(obj)){ ultimo=primo;}
+
 template<class T>
 Container<T>::Container(const Container & q) : primo(clone(q.primo, ultimo)) {}
 
@@ -145,13 +150,24 @@ Container<T>& Container<T>::operator=(const Container & q)
     return *this;
 }
 
+//template <class T> capire se serve implementare
+//bool Container<T>::operator==(const Container<T>& c) const{
+//    return equal(primo, c.primo);
+//}
+
 template<class T>
 void Container<T>::aggiungiDavanti(const T & obj)
 {
-    nodo* current;
     nodo* new_nodo = new nodo(obj);
+//    if (primo == nullptr) {
+//        primo = ultimo = new_nodo;
+//    }
+//    else
+//    {
         new_nodo->next = primo;
         primo = new_nodo;
+//    }
+
 //    if (primo == nullptr) primo = ultimo = new nodo(obj);
 //    else
 //        primo = new nodo(obj, primo);
@@ -416,3 +432,5 @@ typename Container<T>::constIteratore Container<T>::cerca_s(string s) const
     }
     return constIteratore();
 }
+
+#endif // CONTAINER_H

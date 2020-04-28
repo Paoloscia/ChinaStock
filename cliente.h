@@ -17,7 +17,7 @@ private:
     string mail;
     bool student;
 public:
-    cliente(string="",string="", int=1, int=1, int=2000,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false);
+    cliente(string="",string="", int=2000, int=1, int=1,string="",string="", string="",string="",unsigned int = 0,string="",string="",bool=false);
     virtual ~cliente() = default;
 
     virtual cliente* clone() const; //DA CONTROLLARE!!
