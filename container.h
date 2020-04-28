@@ -148,9 +148,13 @@ Container<T>& Container<T>::operator=(const Container & q)
 template<class T>
 void Container<T>::aggiungiDavanti(const T & obj)
 {
-    if (primo == nullptr) primo = ultimo = new nodo(obj);
-    else
-        primo = new nodo(obj, primo);
+    nodo* current;
+    nodo* new_nodo = new nodo(obj);
+        new_nodo->next = primo;
+        primo = new_nodo;
+//    if (primo == nullptr) primo = ultimo = new nodo(obj);
+//    else
+//        primo = new nodo(obj, primo);
 }
 
 template<class T>
