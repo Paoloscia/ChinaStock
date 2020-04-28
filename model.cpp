@@ -251,7 +251,7 @@ void model::carica(QString path) const
 
 void model::aggNelContainer(const QStringList e)
 {   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
-    modificato = true;
+    //modificato = true; commentato per segfault
     if(e.at(0)!=""){
         deepPointer<cliente> cliente;
         QDate dataNascitaTmp = QDate::fromString(e.at(9));
@@ -273,6 +273,6 @@ void model::aggNelContainer(const QStringList e)
         resetfiltro(); //mettere in ordine col filtraggio
     }
 
-    emit clienteAggiunto();
+    //emit clienteAggiunto(); commentato per segfault
 }
 
