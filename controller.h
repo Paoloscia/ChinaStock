@@ -25,9 +25,9 @@ signals:
 
 private:
     mainwindow* view;
-    model* m;
     addClientWindow *addClientW;
     modifyClientWindow *ModifyClientW;
+    model* m;
 
 };
 

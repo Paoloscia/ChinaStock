@@ -1,6 +1,6 @@
 #include "controller.h"
 //controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()),m(new model("data.xml")), addClientW(new addClientWindow(view))   //versione nuova da implementare che pesca data.xml
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view))   //controllare ordine inizializzazione
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), m(new model("data.xml"))   //controllare ordine inizializzazione
 {
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));

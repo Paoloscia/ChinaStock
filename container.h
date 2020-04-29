@@ -159,14 +159,14 @@ template<class T>
 void Container<T>::aggiungiDavanti(const T & obj)
 {
     nodo* new_nodo = new nodo(obj);
-//    if (primo == nullptr) {
-//        primo = ultimo = new_nodo;
-//    }
-//    else
-//    {
-        new_nodo->next = primo; //QUI C'é ERRORE DA CONTROLLARE!!! NON ENTRA NEI CAMPI DI PRIMO, POTREBBE ESSERE INIZIALIZZATO MALE
+    if (primo == nullptr) {
+        primo = ultimo = new_nodo;
+    }
+    else
+    {
+        new_nodo->next = primo;
         primo = new_nodo;
-//    }
+    }
 
 //    if (primo == nullptr) primo = ultimo = new nodo(obj);
 //    else

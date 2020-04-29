@@ -6,7 +6,7 @@ using std::endl;
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
     //carica(path); da implementare, ricordarsi di togliere commento a costruttore di controller che pesca data.xml
-    resetfiltro();
+    //resetfiltro(); bisognerà implementare il reset filtro!
 }
 
 model::~model()
@@ -273,7 +273,7 @@ void model::aggNelContainer(const QStringList e)
             cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
         datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
-        resetfiltro(); //mettere in ordine col filtraggio
+        //resetfiltro(); //mettere in ordine col filtraggio, bisognerà sistemare la sua implementazione!!!
     //}
 
     //emit clienteAggiunto(); commentato per segfault
