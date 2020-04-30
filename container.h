@@ -314,7 +314,6 @@ typename Container<T>::constIteratore Container<T>::inizio() const
 template<class T>
 typename Container<T>::constIteratore Container<T>::fine() const
 {
-    if(primo) return constIteratore(ultimo + 1);
     return constIteratore(nullptr);
 }
 
@@ -339,7 +338,6 @@ typename Container<T>::Iteratore Container<T>::inizio()
 template<class T>
 typename Container<T>::Iteratore Container<T>::fine()
 {
-    if(primo) return Iteratore(ultimo + 1);
     return Iteratore(nullptr);
 }
 
