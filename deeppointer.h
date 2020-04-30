@@ -1,10 +1,6 @@
 #ifndef DEEPPOINTER_H
 #define DEEPPOINTER_H
 
-
-
-//dichiarazione del template
-
 template <class T>
 class deepPointer{
 private:
