@@ -66,8 +66,8 @@ public:
         Iteratore& operator=(const Iteratore&);
         Iteratore &operator++();
         Iteratore &operator++(int);
-        const T &operator*() const;
-        const T *operator->() const;
+        T &operator*() const;
+        T *operator->() const;
         bool operator==(const Iteratore &);
         bool operator!=(const Iteratore &);
 
@@ -281,13 +281,13 @@ typename Container<T>::Iteratore& Container<T>::Iteratore::operator++(int)
 }
 
 template<class T>
-const T & Container<T>::Iteratore::operator*() const
+T & Container<T>::Iteratore::operator*() const
 {
     return puntatore->info;
 }
 
 template<class T>
-const T * Container<T>::Iteratore::operator->() const
+T * Container<T>::Iteratore::operator->() const
 {
     return &(puntatore->info);
 }
