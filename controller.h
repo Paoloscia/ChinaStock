@@ -28,6 +28,7 @@ private:
     addClientWindow *addClientW;
     modifyClientWindow *ModifyClientW;
     model* m;
+    QMap<unsigned int,unsigned int> indexTranslate;
 
 };
 

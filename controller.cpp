@@ -7,7 +7,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(refreshCatalog())); implementare!!!
 
-    //connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
+    connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
 
     //connect(m, SIGNAL(catalogRemoved()), this, SLOT(refreshCatalog())); implementare!!!
 
@@ -36,12 +36,11 @@ void controller::salvaFile()
     m->salva();
 }
 
-void controller::resetListaClienti()
+void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
 {
-    //QString filter=mainW->getResearchWord();
-    //mainW->displayCatalog(modello->getFilteredCatalog(filter,indexTranslate));
+    QString filtro = view->getParolaCercata();
 
-    //view->mostraClienti(); da completare, capire cosa passare dentro a mostraClienti
+    view->mostraClienti(m->getListaClientiFiltrata(filtro,indexTranslate));
 }
 
 //void controller::openModify() const

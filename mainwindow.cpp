@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 
 
-mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
+mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this))
 {
+    setWindowTitle("China Fit");
     mainLayout = new QVBoxLayout(this);
 
     QMenuBar* menubar = new QMenuBar(this);
@@ -49,7 +50,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
     //************** CLIENTI ********************
 
     QGroupBox *clientiGroup = new QGroupBox("Clienti");
-    viewListaClienti* listaClienti(new viewListaClienti(this));
     listaClienti->setSelectionMode(QAbstractItemView::SingleSelection);
     QVBoxLayout *layoutListaClienti = new QVBoxLayout();
     layoutListaClienti->addWidget(listaClienti);
@@ -177,6 +177,11 @@ void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesc
         listaClienti->addItem(*it);
         ++it;
     }
+}
+
+const QString mainwindow::getParolaCercata() const
+{
+    return lineCerca->text();
 }
 
 

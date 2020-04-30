@@ -228,6 +228,32 @@ void model::carica(QString path) const
 
 }
 
+QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned int, unsigned int>& indexMapper) const
+{
+    QStringList ret;
+    QString cliente; //era etichetta
+    QRegExp regex(filter,Qt::CaseInsensitive, QRegExp::Wildcard); //sta pescando i dati filtrati da qui, forse non serve datiFiltrati come container! regexp fa pattern matching! CAPIRE SE è POSSIBILE USARLO PERCHè è UNA CLASSE DI QT NEL MODEL! Però in teoria sì perchè non è una cosa grafica
+    auto it=datiTotali->inizio();
+    unsigned int count=0;
+    if(!datiTotali->isEmpty()){ //NON SO SE SIA GIUSTO COSì IS EMPTY PER COM'é IMPLEMENTATO DENTRO A CONTAINER!
+        while(it!=datiTotali->fine()){
+            cliente = (QString::fromStdString((*(*it)).getnome() + " " + (*(*it)).getcognome()) + " "); //vedere quali altri get mettere!
+            if(cliente.contains(regex)){
+                indexMapper.insert((uint)ret.count(),count);
+//                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST
+//                    cliente += (QString::fromStdString(dynamic_cast<const Consumable*>(&(*(*it)))->getColorName()));
+                ret.push_back(cliente);
+            }
+            count++;
+            ++it;
+        }
+    }
+
+    return ret;
+}
+
+
+
 //void addClientWindow::confirm() COPIA DA CANCELLARE!
 //{
 //    QStringList *tmp = new QStringList();
@@ -252,7 +278,7 @@ void model::carica(QString path) const
 //    this->close();
 //}
 
-void model::aggNelContainer(const QStringList e)
+void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E come lettera! (c di cliente invece di e di etichetta)
 {   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     //modificato = true; commentato per segfault
     //if(e.at(0)!=""){ mettere come controllo se serve!!!
@@ -273,27 +299,8 @@ void model::aggNelContainer(const QStringList e)
             cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
         datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
-        //resetfiltro(); //mettere in ordine col filtraggio, bisognerà sistemare la sua implementazione!!!
+        //resetfiltro(); //mettere in ordine col filtraggio, bisognerà sistemare la sua implementazione!!! capire se serve perchè abbiamo implementato il filtraggio di gotta
     //}
 
-    //emit clienteAggiunto(); commentato per segfault
+    emit clienteAggiunto();
 }
-
-//deepPtr<transazione> Model::recordGenerator(const QStringList &transfert) const
-//{
-//    deepPtr<transazione> tmp;
-//    double import= transfert[2].toDouble();
-//    QDate data = QDate::fromString(transfert[1]);
-//    std::string desc= transfert[3].toStdString();
-//    if(transfert[0]=="Entrata"){
-//        tmp= new entrata(import,desc,data,transfert[4].toStdString());
-//    } else if (transfert[0]=="Uscita") {
-//        tmp= new uscita(import,desc,data,transfert[5].toStdString());
-//    } else if(transfert[0]=="Abbonamento"){
-//        QDate r= QDate::fromString(transfert[6]);
-//        tmp= new abbonamento(import,desc,data,transfert[5].toStdString(),r);
-//    } else {
-//        tmp= new risparmio(import, desc, data);
-//    }
-//    return tmp;
-//}

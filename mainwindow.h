@@ -26,6 +26,7 @@ public:
     mainwindow(QWidget *parent =nullptr);
     //~mainwindow();
     void mostraClienti(const QStringList); //era displayCatalog
+    const QString getParolaCercata() const; //era getResearchWord
 
 private:
     //controllare quali non si usano!!!!

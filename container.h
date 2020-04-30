@@ -35,11 +35,12 @@ public:
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
     void clear();
+    bool isEmpty() const;
 
 
     class constIteratore
     {
-        friend Container<T>;
+        friend class Container<T>;
     private:
         const nodo* puntatore;
         constIteratore(nodo*);
@@ -189,6 +190,12 @@ void Container<T>::clear()
 {
     primo->distruggi();
     primo = nullptr;
+}
+
+template<class T>
+bool Container<T>::isEmpty() const
+{
+    return (primo==nullptr);
 }
 
 template<class T>

@@ -2,7 +2,7 @@
 
 addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
-
+    setWindowTitle("Finestra aggiunta clienti");
     mainLayout = new QHBoxLayout(this);
 
     setLayout(mainLayout);

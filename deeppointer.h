@@ -50,7 +50,7 @@ T* deepPointer<T>::operator->() const{
        return pted;
 }
 
-template <class T>
+template <class T> //QUI c'é ERRORE!!! RIPRENDERE DA QUI
 T& deepPointer<T>::operator*() const{
         return *pted;
 }

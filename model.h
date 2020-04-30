@@ -11,9 +11,10 @@
 #include <QFile>
 #include <QDomDocument>
 #include <QXmlStreamWriter>
+#include <QMap>
 class model : public QObject
 {
-    //Q_OBJECT capire perchè va in errore se non è commentato!!! Paolo dice che la gente ce l'ha
+
     Q_OBJECT
 
 public:
@@ -31,6 +32,8 @@ public:
 
     //clear serve a distruggere tutto il container datitotali, è il nostro distruggi
 
+    QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
+
 public slots:
     void aggNelContainer(const QStringList);
 
@@ -44,7 +47,6 @@ private:
     Container<deepPointer<cliente>> *datiFiltrati; //Vedere se effettivamente è giusto
     bool modificato; //teoricamente serve per non risalvare se non è stato modificato nulla
 
-    //DICHIARARE IL CONTAINER! Unico per tutta l'esecuzione
 };
 
 #endif // MODEL_H
