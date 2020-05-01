@@ -28,6 +28,7 @@ class addClientWindow : public QDialog //inserito qdialog al posto di qwidget
 public:
     addClientWindow(QWidget *parent =nullptr);
     //~addClientWindow(); DA FARE!!!
+    void mostraErroreInput();
 public slots:
     virtual void confirm();
     void mostraPiscina();
@@ -35,6 +36,7 @@ public slots:
     void pulisciRighe();
 signals:
     void inviaStringaCliente(const QStringList);
+    void erroreInput();
 private:
     //controllare quali non si usano!!!!
     QHBoxLayout* mainLayout;

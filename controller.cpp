@@ -14,6 +14,8 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
     connect(this, SIGNAL(pulisciCampi()), addClientW, SLOT(pulisciRighe()));
+    connect(addClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto()));
+    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!
 
     view->show();
 }
@@ -73,5 +75,10 @@ void controller::aggClienteContainer(const QStringList dettagli)
 //                m->displayTheElementExist();
 //            }
 //        }
-//    }
+                //    }
+}
+
+void controller::erroreInputRicevuto()
+{
+    addClientW->mostraErroreInput();
 }
