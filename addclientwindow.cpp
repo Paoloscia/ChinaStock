@@ -1,21 +1,21 @@
 #include "addclientwindow.h"
-
-addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
+#include<QMessageBox>
+addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina(*)",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra(*)",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
     setWindowTitle("Finestra aggiunta clienti");
     mainLayout = new QHBoxLayout(this);
 
     setLayout(mainLayout);
 
-    QLabel *nomeLabel = new QLabel(tr("Nome: "));
+    QLabel *nomeLabel = new QLabel(tr("Nome(*): "));
     nomeLineEdit = new QLineEdit();
     //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
 
-    QLabel *cognomeLabel = new QLabel(tr("Cognome: "));
+    QLabel *cognomeLabel = new QLabel(tr("Cognome(*): "));
     cognomeLineEdit = new QLineEdit();
     //cognomeLabel->setBuddy(cognomeLineEdit);
 
-    QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale: "));
+    QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale(*): "));
     codFiscLineEdit = new QLineEdit();
     //codFiscLabel->setBuddy(codFiscLineEdit);
 
@@ -121,9 +121,16 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
 
 }
 
+void addClientWindow::mostraErroreInput()
+{
+    QMessageBox erroreInputBox;
+    erroreInputBox.critical(this,"Errore di inputazione","Compilare i campi obbligatori (*) per poter procedere");
+    //erroreInputBox.setMinimumSize(600,600); non prende setminimumsize capire perchè quando si sistemerà graficamente codice
+}
+
 void addClientWindow::confirm()
 {
-
+    if (nomeLineEdit->text()!="" && cognomeLineEdit->text()!="" && codFiscLineEdit->text()!="" && (abbonamentoPiscinaCheckbox->isChecked() || abbonamentoPalestraCheckbox->isChecked())){
     QStringList *tmp = new QStringList();
     tmp->push_back(nomeLineEdit->text());
     tmp->push_back(cognomeLineEdit->text());
@@ -145,9 +152,14 @@ void addClientWindow::confirm()
     tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
     tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
 
-    //emit inputError(); AGGIUNGERE CONTROLLO ERRORI INPUT!!! (AD ES DATA SCADENZA NON COMPILATA)
+
     emit inviaStringaCliente(*tmp); //era sendItemsDetails
     this->close();
+    }
+    else
+    {
+        emit erroreInput(); //era input error
+    }
     //QDialog::accept();
     //emit finished(); capire come fare a salvare dati!
 }
