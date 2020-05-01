@@ -22,13 +22,14 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::string;
 class addClientWindow : public QDialog //inserito qdialog al posto di qwidget
 {
     Q_OBJECT
 public:
     addClientWindow(QWidget *parent =nullptr);
     //~addClientWindow(); DA FARE!!!
-    void mostraErroreInput();
+    void mostraErroreInput(string);
 public slots:
     virtual void confirm();
     void mostraPiscina();
@@ -36,7 +37,7 @@ public slots:
     void pulisciRighe();
 signals:
     void inviaStringaCliente(const QStringList);
-    void erroreInput();
+    void erroreInput(string);
 private:
     //controllare quali non si usano!!!!
     QHBoxLayout* mainLayout;

@@ -20,7 +20,7 @@ public slots:
     //void openSave() const; da implementare
     void resetListaClienti();
     void aggClienteContainer(const QStringList);
-    void erroreInputRicevuto();
+    void erroreInputRicevuto(string);
     void rimuoviCliente(const unsigned int);
 
 signals:

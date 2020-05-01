@@ -1,6 +1,6 @@
 #include "addclientwindow.h"
 #include<QMessageBox>
-addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina(*)",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra(*)",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
+addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
     setWindowTitle("Finestra aggiunta clienti");
     mainLayout = new QHBoxLayout(this);
@@ -121,47 +121,54 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
 
 }
 
-void addClientWindow::mostraErroreInput()
+void addClientWindow::mostraErroreInput(string motivo)
 {
     QMessageBox erroreInputBox;
-    erroreInputBox.critical(this,"Errore di inputazione","Compilare i campi obbligatori (*) per poter procedere");
+    if (motivo== "mancaLineEdit")
+        erroreInputBox.critical(this,"Errore di inputazione","Compilare i campi obbligatori (*) per poter procedere");
+    else if (motivo =="mancaCheckBox")
+        erroreInputBox.critical(this,"Errore di inputazione","selezionare almeno uno degli abbonamenti tra piscina e palestra per poter procedere");
+
     //erroreInputBox.setMinimumSize(600,600); non prende setminimumsize capire perchè quando si sistemerà graficamente codice
 }
 
 void addClientWindow::confirm()
 {
-    if (nomeLineEdit->text()!="" && cognomeLineEdit->text()!="" && codFiscLineEdit->text()!="" && (abbonamentoPiscinaCheckbox->isChecked() || abbonamentoPalestraCheckbox->isChecked())){
-    QStringList *tmp = new QStringList();
-    tmp->push_back(nomeLineEdit->text());
-    tmp->push_back(cognomeLineEdit->text());
-    tmp->push_back(codFiscLineEdit->text());
-    tmp->push_back(ldnLineEdit->text());
-    tmp->push_back(residenzaLineEdit->text());
-    tmp->push_back(viaLineEdit->text());
-    tmp->push_back(numeroviaLineEdit->text());
-    tmp->push_back(telefonoLineEdit->text());
-    tmp->push_back(mailLineEdit->text());
-    tmp->push_back(dateNascita->date().toString());
-    tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
-    tmp->push_back(dateScadPiscina->date().toString());
-    tmp->push_back(nomeIstruttorePiscinaEdit->text());
-    tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
-    tmp->push_back(dateScadPalestra->date().toString());
-    tmp->push_back(nomeIstruttorePalestraEdit->text());
-    tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
-    tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
-    tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
-
-
-    emit inviaStringaCliente(*tmp); //era sendItemsDetails
-    this->close();
+    if (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
+        emit erroreInput("mancaLineEdit");
+    }
+    else if (!abbonamentoPiscinaCheckbox->isChecked() && !abbonamentoPalestraCheckbox->isChecked()) {
+        emit erroreInput("mancaCheckBox");
     }
     else
     {
-        emit erroreInput(); //era input error
+        QStringList *tmp = new QStringList();
+        tmp->push_back(nomeLineEdit->text());
+        tmp->push_back(cognomeLineEdit->text());
+        tmp->push_back(codFiscLineEdit->text());
+        tmp->push_back(ldnLineEdit->text());
+        tmp->push_back(residenzaLineEdit->text());
+        tmp->push_back(viaLineEdit->text());
+        tmp->push_back(numeroviaLineEdit->text());
+        tmp->push_back(telefonoLineEdit->text());
+        tmp->push_back(mailLineEdit->text());
+        tmp->push_back(dateNascita->date().toString());
+        tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
+        tmp->push_back(dateScadPiscina->date().toString());
+        tmp->push_back(nomeIstruttorePiscinaEdit->text());
+        tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
+        tmp->push_back(dateScadPalestra->date().toString());
+        tmp->push_back(nomeIstruttorePalestraEdit->text());
+        tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+        tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
+        tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
+
+        emit inviaStringaCliente(*tmp); //era sendItemsDetails
+        this->close();
+
+        //QDialog::accept(); capire se servono queste due righe commentate
+        //emit finished();
     }
-    //QDialog::accept();
-    //emit finished(); capire come fare a salvare dati!
 }
 
 void addClientWindow::mostraPiscina()
