@@ -21,6 +21,7 @@ public slots:
     void resetListaClienti();
     void aggClienteContainer(const QStringList);
     void erroreInputRicevuto();
+    void rimuoviCliente(const unsigned int);
 
 signals:
     void pulisciCampi();

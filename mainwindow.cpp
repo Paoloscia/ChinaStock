@@ -163,6 +163,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
+    connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
 
     //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
@@ -204,5 +205,11 @@ void mainwindow::handleSearchClick()
 */
 
 
-
+void mainwindow::richiestaRimoz()
+{
+    if(listaClienti->isSomeoneSeleceted())
+        emit richiestaRimozCliente(listaClienti->getIndex());
+//    else IMPLEMENTARE GESTIONE NESSUN ELEMENTO SELEZIONATO PER RIMOZIONE
+//        displayNotSelection();
+}
 

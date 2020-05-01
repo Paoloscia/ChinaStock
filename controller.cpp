@@ -2,14 +2,16 @@
 //controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()),m(new model("data.xml")), addClientW(new addClientWindow(view))   //versione nuova da implementare che pesca data.xml
 controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), m(new model("data.xml"))   //controllare ordine inizializzazione
 {
+    //CONNESSIONI A PAGINA MAINWINDOW
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
+    connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(refreshCatalog())); implementare!!!
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
 
-    //connect(m, SIGNAL(catalogRemoved()), this, SLOT(refreshCatalog())); implementare!!!
+    connect(m, SIGNAL(clienteRimosso()), this, SLOT(resetListaClienti()));
 
     //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
@@ -38,6 +40,11 @@ void controller::openAddView()
 void controller::salvaFile()
 {
     m->salva();
+}
+
+void controller::rimuoviCliente(const unsigned int cliente){
+    m->rimuoviCliente(indexTranslate[cliente]);
+    //refreshCatalog(); bisogna implementare reset della lista clienti
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow

@@ -28,6 +28,8 @@ public:
     void mostraClienti(const QStringList); //era displayCatalog
     const QString getParolaCercata() const; //era getResearchWord
 
+public slots:
+    void richiestaRimoz();
 private:
     //controllare quali non si usano!!!!
     QVBoxLayout* mainLayout;
@@ -50,6 +52,7 @@ signals:
     void signOpenAddWindow();
     void salvaFileMenu();
     //void clickedSearch(QString searchText); da implementare search
+    void richiestaRimozCliente(const unsigned int); //era requestRemoveIntoCatalog
 
 };
 

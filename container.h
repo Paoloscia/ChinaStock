@@ -34,6 +34,7 @@ public:
 
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
+    void rimuoviIndice(const unsigned int);
     void clear();
     bool isEmpty() const;
 
@@ -183,6 +184,45 @@ void Container<T>::aggiungiDietro(const T & obj)
         ultimo->next = new nodo(obj);
         ultimo = ultimo->next;
     }
+}
+
+template <class T>
+void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè è uguale a gotta, vedere se cambia
+    if(isEmpty())
+        return;
+
+    if(!primo->next){//coda
+        if(i==0){//testa
+            delete primo;
+            primo=nullptr;
+            return;
+        }
+    }
+    else{//piu di un el
+        nodo* prec=primo;
+        nodo* corr=primo->next;
+
+        if(i==0){//testa
+            primo=primo->next;
+            prec->next=nullptr;
+            delete prec;
+            return;
+        }
+
+        for(unsigned int x=1; corr->next && x<i; x++){
+            prec=prec->next;
+            corr=corr->next;
+        }
+
+        if(corr){
+            prec->next=corr->next;
+            corr->next=nullptr;
+            delete corr;
+            return;
+        }
+    }
+
+    return;
 }
 
 template<class T>

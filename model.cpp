@@ -252,6 +252,12 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
     return ret;
 }
 
+void model::rimuoviCliente(const unsigned int i)
+{
+    datiTotali->rimuoviIndice(i); //era removeOneAtIndex
+    emit clienteRimosso();
+}
+
 
 
 //void addClientWindow::confirm() COPIA DA CANCELLARE!
