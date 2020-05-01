@@ -32,6 +32,7 @@ public slots:
     virtual void confirm();
     void mostraPiscina();
     void mostraPalestra();
+    void pulisciRighe();
 signals:
     void inviaStringaCliente(const QStringList);
 private:

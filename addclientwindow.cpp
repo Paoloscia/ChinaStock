@@ -168,3 +168,29 @@ void addClientWindow::mostraPalestra()
     else
         palestraGroup->setVisible(false);
 }
+
+//la prima volta che entra fa una pulizia inutile visto che sono già tutti vuoti
+void addClientWindow::pulisciRighe()
+{
+    nomeLineEdit->setText("");
+    cognomeLineEdit->setText("");
+    codFiscLineEdit->setText("");
+    ldnLineEdit->setText("");
+    residenzaLineEdit->setText("");
+    viaLineEdit->setText("");
+    numeroviaLineEdit->setText("");
+    telefonoLineEdit->setText("");
+    mailLineEdit->setText("");
+    dateNascita->setDate(QDate::currentDate());
+    studenteCheckbox->setChecked(false);
+    dateScadPiscina->setDate(QDate::currentDate());
+    nomeIstruttorePiscinaEdit->setText("");
+    corsoNuotoCheckbox->setChecked(false);
+    dateScadPalestra->setDate(QDate::currentDate());
+    nomeIstruttorePalestraEdit->setText("");
+    schedaPalestraCheckbox->setChecked(false);
+    abbonamentoPiscinaCheckbox->setChecked(false);
+    abbonamentoPalestraCheckbox->setChecked(false);
+    piscinaGroup->setVisible(false);
+    palestraGroup->setVisible(false);
+}

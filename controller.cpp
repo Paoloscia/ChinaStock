@@ -13,6 +13,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
     //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
+    connect(this, SIGNAL(pulisciCampi()), addClientW, SLOT(pulisciRighe()));
 
     view->show();
 }
@@ -26,6 +27,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
 void controller::openAddView()
 {
+    emit pulisciCampi();
     //addClientW->Clear(); metodo da aggiungere dopo dentro ad addClientWindow, pensare se è necessario per add
     addClientW->setModal(true);
     addClientW->show();

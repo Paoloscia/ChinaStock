@@ -22,6 +22,7 @@ public slots:
     void aggClienteContainer(const QStringList);
 
 signals:
+    void pulisciCampi();
 
 private:
     mainwindow* view;
