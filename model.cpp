@@ -234,7 +234,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     if(dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))))){
                 const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))));
 
-    tmp.push_back(QString::fromStdString(datiTotali->clienteIndicato(indice)->getnome()));
+                tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
     tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
     tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
     tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
@@ -258,7 +258,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
    else if(dynamic_cast<const piscina*>(&(*(datiTotali->clienteIndicato(indice))))){
        const piscina * stringaCliente = dynamic_cast<const piscina*>(&(*(datiTotali->clienteIndicato(indice))));
 
-       tmp.push_back(QString::fromStdString(datiTotali->clienteIndicato(indice)->getnome()));
+       tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
        tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
@@ -280,7 +280,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
    }
    else if(dynamic_cast<const palestra*>(&(*(datiTotali->clienteIndicato(indice))))){
        const palestra * stringaCliente = dynamic_cast<const palestra*>(&(*(datiTotali->clienteIndicato(indice))));
-       tmp.push_back(QString::fromStdString(datiTotali->clienteIndicato(indice)->getnome()));
+       tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
        tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
