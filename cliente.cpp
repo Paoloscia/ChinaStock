@@ -17,6 +17,11 @@ string cliente::getcognome() const
     return cognome;
 }
 
+QDate cliente::getDataN() const
+{
+    return dataNascita;
+}
+
 int cliente::getGiornoN() const
 {
     return dataNascita.QDate::day();

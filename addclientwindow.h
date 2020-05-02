@@ -39,7 +39,7 @@ public slots:
 signals:
     void inviaStringaCliente(const QStringList);
     void erroreInput(string);
-private:
+protected:
     //controllare quali non si usano!!!!
     QHBoxLayout* mainLayout;
     QGridLayout* gridLayout;

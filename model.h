@@ -31,13 +31,14 @@ public:
     //partire da clear, reset filter e costruttore
 
     //clear serve a distruggecatalogRemovedre tutto il container datitotali, è il nostro distruggi
-
+    QStringList getCampiCliente(const unsigned int) const;
     QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
 
     void rimuoviCliente(const unsigned int);
 
 public slots:
     void aggNelContainer(const QStringList);
+    void modificaItem(const unsigned int,const QStringList);
 
 signals:
     void clienteAggiunto();

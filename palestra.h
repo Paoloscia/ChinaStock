@@ -17,7 +17,7 @@ public:
     //virtual bool operator==(const cliente& c) const; //override?
     //virtual bool operator!=(const cliente& c) const; //override?
 
-
+    QDate getDataPalestra() const;
     int getGiornoPalestra() const;
     int getMesePalestra() const;
     int getAnnoPalestra() const;
