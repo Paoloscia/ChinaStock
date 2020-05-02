@@ -16,6 +16,7 @@
 #include <QGroupBox>
 #include <QPushButton>
 #include <QFile>
+#include<QMessageBox>
 #include "viewlistaclienti.h"
 
 class mainwindow : public QWidget

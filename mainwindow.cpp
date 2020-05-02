@@ -209,7 +209,9 @@ void mainwindow::richiestaRimoz()
 {
     if(listaClienti->isSomeoneSeleceted())
         emit richiestaRimozCliente(listaClienti->getIndex());
-//    else IMPLEMENTARE GESTIONE NESSUN ELEMENTO SELEZIONATO PER RIMOZIONE
-//        displayNotSelection();
+    else{
+    QMessageBox rimuoviNonSelezionato;
+    rimuoviNonSelezionato.critical(this,"Nessun cliente selezionato","Selezionare un cliente da rimuovere");
+    }
 }
 
