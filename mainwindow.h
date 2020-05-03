@@ -32,6 +32,7 @@ public:
     const QString getParolaCercata() const; //era getResearchWord
     void nessunSelezionato();
     void visualizzaDettagliCliente(deepPointer<cliente>);
+    void resetDettCliente();
 
     bool isSelected() const;
     unsigned int getIndexSelected() const;

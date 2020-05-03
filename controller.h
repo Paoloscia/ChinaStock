@@ -19,6 +19,7 @@ public slots:
     void openModifyView(); //capire se mettere const
     //void openSave() const; da implementare
     void resetListaClienti();
+    void resetDettClienteView();
     void aggClienteContainer(const QStringList);
     void erroreInputRicevuto(string);
     void rimuoviCliente(const unsigned int);

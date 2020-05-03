@@ -199,6 +199,12 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
     nomeClienteLabel->setText(nome);
 }
 
+void mainwindow::resetDettCliente()
+{
+    nomeClienteLabel->clear();
+    //mettere tutta la lista dei dettagli cliente da resettare nella view!!!
+}
+
 bool mainwindow::isSelected() const
 {
     return listaClienti->isSomeoneSelected();

@@ -77,6 +77,12 @@ void controller::resetListaClienti() //implementato per mostrare la lista di cli
     QString filtro = view->getParolaCercata();
 
     view->mostraClienti(m->getListaClientiFiltrata(filtro,indexTranslate));
+
+    resetDettClienteView();
+}
+
+void controller::resetDettClienteView(){
+    view->resetDettCliente();
 }
 
 //void controller::openModify() const
