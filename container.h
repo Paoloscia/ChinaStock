@@ -3,6 +3,7 @@
 #include <string>
 #include<QStringList>
 #include<iostream>
+#include<deeppointer.h>
 using std::string;
 using std::cout;
 
@@ -40,7 +41,7 @@ public:
     void rimpiazzaFinale(unsigned int, const T&);
     T clienteIndicato(unsigned int) const;
     void rimuoviIndice(const unsigned int);
-    T prendiStringIndice(const unsigned int);
+    T prendiNodoIndice(const unsigned int);
     void clear();
     bool isEmpty() const;
 
@@ -250,7 +251,7 @@ void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè 
 }
 
 template <class T>
-T Container<T>::prendiStringIndice(const unsigned int i){ //mostraValoriIndice non prendi
+T Container<T>::prendiNodoIndice(const unsigned int i){
     if(!primo->next){ //si potrebbe tenere if i==0 sennò cicla, capire se sistemare funzione
         if(i==0){
             return primo->info;
@@ -271,7 +272,8 @@ T Container<T>::prendiStringIndice(const unsigned int i){ //mostraValoriIndice n
             return corr->info;
         }
     }
-    //tornare nodo vuoto però di deeppointer cliente
+    T temp; //oggetto da ritornare se non trovo nulla
+    return temp;
 }
 
 template<class T>
