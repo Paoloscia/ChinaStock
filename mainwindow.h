@@ -18,6 +18,8 @@
 #include <QFile>
 #include<QMessageBox>
 #include "viewlistaclienti.h"
+#include"deeppointer.h"
+#include"cliente.h"
 
 class mainwindow : public QWidget
 {
@@ -29,6 +31,7 @@ public:
     void mostraClienti(const QStringList); //era displayCatalog
     const QString getParolaCercata() const; //era getResearchWord
     void nessunSelezionato();
+    void visualizzaDettagliCliente(deepPointer<cliente>);
 
     bool isSelected() const;
     unsigned int getIndexSelected() const;
@@ -50,6 +53,7 @@ private:
     QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *listaClienti;
+    QLabel *nomeClienteLabel;
     void setMainWindowStyle();
     //void handleSearchClick(); da implementare
 

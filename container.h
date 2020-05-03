@@ -251,7 +251,7 @@ void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè 
 
 template <class T>
 T Container<T>::prendiStringIndice(const unsigned int i){ //mostraValoriIndice non prendi
-    if(!primo->next){
+    if(!primo->next){ //si potrebbe tenere if i==0 sennò cicla, capire se sistemare funzione
         if(i==0){
             return primo->info;
         }
@@ -271,6 +271,7 @@ T Container<T>::prendiStringIndice(const unsigned int i){ //mostraValoriIndice n
             return corr->info;
         }
     }
+    //tornare nodo vuoto però di deeppointer cliente
 }
 
 template<class T>

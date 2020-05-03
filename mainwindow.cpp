@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 
-mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this))
+mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this)),nomeClienteLabel (new QLabel(this))
 {
     setWindowTitle("China Fit");
     mainLayout = new QVBoxLayout(this);
@@ -69,7 +69,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     QLabel *nomeLabel = new QLabel(tr("Nome: "));
     //nomeLineEdit = new QLineEdit();
-    QLabel *nomeClienteLabel = new QLabel();
+    //QLabel *nomeClienteLabel = new QLabel(); inserito sopra, probabilmente dovrò inserire nel costruttore tutti
     //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
 
     QLabel *cognomeLabel = new QLabel(tr("Cognome: "));
@@ -193,9 +193,15 @@ void mainwindow::nessunSelezionato()
     rimuoviNonSelezionato.critical(this,"Nessun cliente selezionato","Selezionare un cliente");
 }
 
+void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisualizzare){
+    QString nome = QString::fromStdString(clienteDaVisualizzare->getnome());
+    nomeClienteLabel->clear();
+    nomeClienteLabel->setText(nome);
+}
+
 bool mainwindow::isSelected() const
 {
-    return listaClienti->isSomeoneSeleceted();
+    return listaClienti->isSomeoneSelected();
 }
 
 unsigned int mainwindow::getIndexSelected() const

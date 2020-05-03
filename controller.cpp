@@ -69,7 +69,7 @@ void controller::rimpiazzaItem(const unsigned int indice, const QStringList stri
 }
 
 void controller::mostraCliente(const unsigned int cliente){
-    m->mostraCliente(indexTranslate[cliente]);
+    view->visualizzaDettagliCliente(m->mostraCliente(indexTranslate[cliente]));
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow

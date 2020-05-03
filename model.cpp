@@ -335,9 +335,12 @@ void model::rimuoviCliente(const unsigned int i)
     emit clienteRimosso();
 }
 
-QString model::mostraCliente(const unsigned int i)
+deepPointer<cliente> model::mostraCliente(const unsigned int i)
 {
-    return QString::fromStdString((datiTotali->prendiStringIndice(i))->print());
+    deepPointer<cliente> clienteDaVisualizzare;
+    clienteDaVisualizzare = (datiTotali->prendiStringIndice(i));
+    return clienteDaVisualizzare;
+    //return QString::fromStdString((datiTotali->prendiStringIndice(i))->getnome());
 }
 
 

@@ -36,7 +36,7 @@ public:
 
     void rimuoviCliente(const unsigned int);
 
-    QString mostraCliente(const unsigned int);
+    deepPointer<cliente> mostraCliente(const unsigned int);
 
 public slots:
     void aggNelContainer(const QStringList);
