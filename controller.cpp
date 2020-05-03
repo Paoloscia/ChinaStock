@@ -7,6 +7,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(signOpenModWindow()),this,SLOT(openModifyView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
     connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
+    connect(view,SIGNAL(richiestaShowCliente(const unsigned int)),this,SLOT(mostraCliente(const unsigned int)));
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(refreshCatalog())); implementare!!!
 
@@ -65,6 +66,10 @@ void controller::rimpiazzaItem(const unsigned int indice, const QStringList stri
 {
     m->modificaItem(indexTranslate[indice], stringaCliente);
     resetListaClienti();
+}
+
+void controller::mostraCliente(const unsigned int cliente){
+    m->mostraCliente(indexTranslate[cliente]);
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow

@@ -335,6 +335,11 @@ void model::rimuoviCliente(const unsigned int i)
     emit clienteRimosso();
 }
 
+QString model::mostraCliente(const unsigned int i)
+{
+    return QString::fromStdString((datiTotali->prendiStringIndice(i))->print());
+}
+
 
 
 //void addClientWindow::confirm() COPIA DA CANCELLARE!

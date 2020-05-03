@@ -7,7 +7,7 @@ unsigned int viewListaClienti::getIndex() const
     return (unsigned int)this->selectedIndexes()[0].row(); //era uint, abbiamo messo unsigned int
 }
 
-bool viewListaClienti::isSomeoneSeleceted() const
+bool viewListaClienti::isSomeoneSelected() const
 {
     return !this->selectedIndexes().empty();
 }

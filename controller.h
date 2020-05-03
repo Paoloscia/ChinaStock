@@ -23,6 +23,7 @@ public slots:
     void erroreInputRicevuto(string);
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
+    void mostraCliente(const unsigned int);
 
 signals:
     void pulisciCampi();

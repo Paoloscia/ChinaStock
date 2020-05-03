@@ -10,7 +10,7 @@ public:
 
     unsigned int getIndex() const;
 
-    bool isSomeoneSeleceted() const;
+    bool isSomeoneSelected() const;
 
     void unSelectIndex() const;
 };

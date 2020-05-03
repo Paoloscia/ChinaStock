@@ -36,6 +36,8 @@ public:
 
     void rimuoviCliente(const unsigned int);
 
+    QString mostraCliente(const unsigned int);
+
 public slots:
     void aggNelContainer(const QStringList);
     void modificaItem(const unsigned int,const QStringList);

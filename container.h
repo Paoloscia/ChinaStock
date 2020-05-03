@@ -1,7 +1,10 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <string>
+#include<QStringList>
+#include<iostream>
 using std::string;
+using std::cout;
 
 template <class T>
 class Container {
@@ -37,6 +40,7 @@ public:
     void rimpiazzaFinale(unsigned int, const T&);
     T clienteIndicato(unsigned int) const;
     void rimuoviIndice(const unsigned int);
+    T prendiStringIndice(const unsigned int);
     void clear();
     bool isEmpty() const;
 
@@ -243,6 +247,30 @@ void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè 
     }
 
     return;
+}
+
+template <class T>
+T Container<T>::prendiStringIndice(const unsigned int i){ //mostraValoriIndice non prendi
+    if(!primo->next){
+        if(i==0){
+            return primo->info;
+        }
+    }
+    else{
+        nodo* corr=primo->next;
+
+        if(i==0){
+            return primo->info;
+        }
+
+        for(unsigned int x=1; corr->next && x<i; x++){
+            corr=corr->next;
+        }
+
+        if(corr){
+            return corr->info;
+        }
+    }
 }
 
 template<class T>

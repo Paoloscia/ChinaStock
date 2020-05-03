@@ -68,7 +68,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     //************** FORM ********************
 
     QLabel *nomeLabel = new QLabel(tr("Nome: "));
-    nomeLineEdit = new QLineEdit();
+    //nomeLineEdit = new QLineEdit();
+    QLabel *nomeClienteLabel = new QLabel();
     //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
 
     QLabel *cognomeLabel = new QLabel(tr("Cognome: "));
@@ -142,7 +143,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     QFormLayout *formLayout = new QFormLayout();
     formLayout->setFormAlignment(Qt::AlignLeft);
-    formLayout->addRow(nomeLabel, nomeLineEdit);
+    formLayout->addRow(nomeLabel, nomeClienteLabel);
     formLayout->addRow(cognomeLabel, cognomeLineEdit);
     formLayout->addRow(codFiscLabel, codFiscLineEdit);
     formLayout->addRow(ldnLabel, ldnLineEdit);
@@ -165,6 +166,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
+    connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
     //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
 }
@@ -223,10 +225,17 @@ void mainwindow::handleSearchClick()
 
 void mainwindow::richiestaRimoz()
 {
-    if(listaClienti->isSomeoneSeleceted())
+    if(listaClienti->isSomeoneSelected())
         emit richiestaRimozCliente(listaClienti->getIndex());
     else{
         nessunSelezionato();
     }
 }
+
+void mainwindow::showInfoCliente(){
+    if(listaClienti->isSomeoneSelected()) //vedere se serve davvero
+        //refreshMainW; bisogna implementare
+        emit richiestaShowCliente(listaClienti->getIndex());
+}
+
 

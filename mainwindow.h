@@ -35,6 +35,7 @@ public:
 
 public slots:
     void richiestaRimoz();
+    void showInfoCliente();
 private:
     //controllare quali non si usano!!!!
     QVBoxLayout* mainLayout;
@@ -58,7 +59,8 @@ signals:
     void signOpenModWindow();
     void salvaFileMenu();
     //void clickedSearch(QString searchText); da implementare search
-    void richiestaRimozCliente(const unsigned int); //era requestRemoveIntoCatalog
+    void richiestaRimozCliente(const unsigned int);
+    void richiestaShowCliente(const unsigned int);
 
 };
 
