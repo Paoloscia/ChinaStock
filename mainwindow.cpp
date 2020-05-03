@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 
 
-mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this)),nomeClienteLabel (new QLabel(this))
+mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this)),nomeClienteLabel (new QLabel(this)),
+    cognomeClienteLabel(new QLabel(this)),codiceFClienteLabel(new QLabel(this)),LuogoDNLabel(new QLabel(this)),residenzaClienteLabel(new QLabel(this)),
+    viaClienteLabel(new QLabel(this)), telefonoClienteLabel(new QLabel(this)), mailClienteLabel(new QLabel(this)), datadNClienteLabel(new QLabel(this)),AbbonamentoPiscinaLabel(new QLabel(this)),
+    nomeIstruttorePiscinaLabel(new QLabel(this)), AbbonamentoPalestraLabel(new QLabel(this)),nomeIstruttorePalestraLabel(new QLabel(this))
 {
     setWindowTitle("China Fit");
     mainLayout = new QVBoxLayout(this);
@@ -68,38 +71,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     //************** FORM ********************
 
     QLabel *nomeLabel = new QLabel(tr("Nome: "));
-    //nomeLineEdit = new QLineEdit();
-    //QLabel *nomeClienteLabel = new QLabel(); inserito sopra, probabilmente dovrò inserire nel costruttore tutti
-    //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
-
     QLabel *cognomeLabel = new QLabel(tr("Cognome: "));
-    cognomeLineEdit = new QLineEdit();
-    //cognomeLabel->setBuddy(cognomeLineEdit);
-
     QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale: "));
-    codFiscLineEdit = new QLineEdit();
-    //codFiscLabel->setBuddy(codFiscLineEdit);
-
     QLabel *ldnLabel = new QLabel(tr("Luogo di nascita: "));
-    ldnLineEdit = new QLineEdit();
-    //ldnLabel->setBuddy(ldnLineEdit);
-
     QLabel *residenzaLabel = new QLabel(tr("Residenza: "));
-    residenzaLineEdit = new QLineEdit();
-    //residenzaLabel->setBuddy(residenzaLineEdit);
-
     QLabel *viaLabel = new QLabel(tr("Via: "));
-    viaLineEdit = new QLineEdit();
-    //viaLabel->setBuddy(viaLineEdit);
-
     QLabel *telefonoLabel = new QLabel(tr("Telefono: "));
-    telefonoLineEdit = new QLineEdit();
-    //telefonoLabel->setBuddy(telefonoLineEdit);
-
     QLabel *mailLabel = new QLabel(tr("Mail: "));
-    mailLineEdit = new QLineEdit();
-    //mailLabel->setBuddy(mailLineEdit);
-
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
     dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);
@@ -144,13 +122,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QFormLayout *formLayout = new QFormLayout();
     formLayout->setFormAlignment(Qt::AlignLeft);
     formLayout->addRow(nomeLabel, nomeClienteLabel);
-    formLayout->addRow(cognomeLabel, cognomeLineEdit);
-    formLayout->addRow(codFiscLabel, codFiscLineEdit);
-    formLayout->addRow(ldnLabel, ldnLineEdit);
-    formLayout->addRow(residenzaLabel, residenzaLineEdit);
-    formLayout->addRow(viaLabel, viaLineEdit);
-    formLayout->addRow(telefonoLabel, telefonoLineEdit);
-    formLayout->addRow(mailLabel, mailLineEdit);
+    formLayout->addRow(cognomeLabel, cognomeClienteLabel);
+    formLayout->addRow(codFiscLabel, codiceFClienteLabel);
+    formLayout->addRow(ldnLabel, LuogoDNLabel);
+    formLayout->addRow(residenzaLabel, residenzaClienteLabel);
+    formLayout->addRow(viaLabel, viaClienteLabel);
+    formLayout->addRow(telefonoLabel, telefonoClienteLabel);
+    formLayout->addRow(mailLabel, mailClienteLabel);
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
 
@@ -197,6 +175,32 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
     QString nome = QString::fromStdString(clienteDaVisualizzare->getnome());
     nomeClienteLabel->clear();
     nomeClienteLabel->setText(nome);
+    QString cognome = QString::fromStdString(clienteDaVisualizzare->getcognome());
+    cognomeClienteLabel->clear();
+    cognomeClienteLabel->setText(cognome);
+    QString codiceFiscale = QString::fromStdString(clienteDaVisualizzare->getcodfiscale());
+    codiceFClienteLabel->clear();
+    codiceFClienteLabel->setText(codiceFiscale);
+    QString LuogoDN = QString:: fromStdString(clienteDaVisualizzare->getluogo());
+    LuogoDNLabel->clear();
+    LuogoDNLabel->setText(LuogoDN);
+    QString residenza = QString:: fromStdString(clienteDaVisualizzare->getres());
+    residenzaClienteLabel->clear();
+    residenzaClienteLabel->setText(residenza);
+    QString via = QString:: fromStdString(clienteDaVisualizzare->getvia());
+    viaClienteLabel->clear();
+    viaClienteLabel->setText(via);
+    QString telefono =  QString:: fromStdString(clienteDaVisualizzare->getnumerotel());
+    telefonoClienteLabel->clear();
+    telefonoClienteLabel->setText(telefono);
+    QString mail =  QString:: fromStdString(clienteDaVisualizzare->getmail());
+    mailClienteLabel->clear();
+    mailClienteLabel->setText(mail);
+    //QString dataNascita =  QString:: fromStdString(clienteDaVisualizzare->getAnnoN());capire come mostrare data
+    //datadNClienteLabel->clear();
+    //datadNClienteLabel->setDate(dataNascita);
+    //QString IstruttorePiscina =  QString:: fromStdString(clienteDaVisualizzare->));
+    //bisognerà fare controllo con cast per decidere che campi prendere in base al tipo di cliente
 }
 
 void mainwindow::resetDettCliente()

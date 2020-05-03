@@ -54,7 +54,7 @@ private:
     QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *listaClienti;
-    QLabel *nomeClienteLabel;
+    QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel;
     void setMainWindowStyle();
     //void handleSearchClick(); da implementare
 
