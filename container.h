@@ -34,6 +34,8 @@ public:
 
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
+    void rimpiazzaFinale(unsigned int, const T&);
+    T clienteIndicato(unsigned int) const;
     void rimuoviIndice(const unsigned int);
     void clear();
     bool isEmpty() const;
@@ -185,6 +187,24 @@ void Container<T>::aggiungiDietro(const T & obj)
         ultimo = ultimo->next;
     }
 }
+
+template<class T>
+void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModificato){
+    rimuoviIndice(indice);
+    aggiungiDavanti(clienteModificato);
+}
+
+template <class T>
+T Container<T>::clienteIndicato(unsigned int i) const{
+    //if(i>= size())
+    //    return nullptr;    DA IMPLEMENTARE PER IL CONTROLLO, SERVE?
+    nodo* contatore = primo;
+    for(unsigned int k=0; k<i; k++)
+        contatore=contatore->next;
+    return contatore->info;
+}
+
+
 
 template <class T>
 void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè è uguale a gotta, vedere se cambia

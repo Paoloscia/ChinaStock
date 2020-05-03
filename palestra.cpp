@@ -6,6 +6,11 @@ palestra *palestra::clone() const
 {
     return new palestra(*this);
 }
+
+QDate palestra::getDataPalestra() const
+{
+    return scadenzapalestra;
+}
 /*
 palestra::palestra(const palestra &p)
 {

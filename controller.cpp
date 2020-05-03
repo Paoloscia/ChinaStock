@@ -1,9 +1,10 @@
 #include "controller.h"
 //controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()),m(new model("data.xml")), addClientW(new addClientWindow(view))   //versione nuova da implementare che pesca data.xml
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), m(new model("data.xml"))   //controllare ordine inizializzazione
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))   //controllare ordine inizializzazione
 {
     //CONNESSIONI A PAGINA MAINWINDOW
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
+    connect(view,SIGNAL(signOpenModWindow()),this,SLOT(openModifyView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
     connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
 
@@ -18,6 +19,8 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(this, SIGNAL(pulisciCampi()), addClientW, SLOT(pulisciRighe()));
     connect(addClientW, SIGNAL(erroreInput(string)), this, SLOT(erroreInputRicevuto(string)));
     //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!
+
+    connect(ModifyClientW, SIGNAL(rimpiazzaCliente(const unsigned int,const QStringList)), this, SLOT(rimpiazzaItem(const unsigned int, QStringList)));
 
     view->show();
 }
@@ -42,9 +45,26 @@ void controller::salvaFile()
     m->salva();
 }
 
-void controller::rimuoviCliente(const unsigned int cliente){
-    m->rimuoviCliente(indexTranslate[cliente]);
-    //refreshCatalog(); bisogna implementare reset della lista clienti
+void controller::openModifyView()
+{
+    if(view->isSelected()){
+        ModifyClientW->caricaDati(m->getCampiCliente(view->getIndexSelected()), view->getIndexSelected());
+        ModifyClientW->setModal(true);
+        ModifyClientW->show();
+    }
+    else
+        view->nessunSelezionato();
+}
+
+void controller::rimuoviCliente(const unsigned int indice){
+    m->rimuoviCliente(indexTranslate[indice]);
+    resetListaClienti();
+}
+
+void controller::rimpiazzaItem(const unsigned int indice, const QStringList stringaCliente)
+{
+    m->modificaItem(indexTranslate[indice], stringaCliente);
+    resetListaClienti();
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow

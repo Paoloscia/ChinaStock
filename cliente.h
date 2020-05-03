@@ -24,6 +24,7 @@ public:
 
     string getnome() const; //forse bisognerà passare per riferimento costante le stringhe ritornate per non fare la copia, quindi const string& come ritorno
     string getcognome() const;
+    QDate getDataN() const;
     int getGiornoN() const;
     int getMeseN() const;
     int getAnnoN() const;

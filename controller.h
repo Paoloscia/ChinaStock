@@ -16,12 +16,13 @@ public:
 public slots:
     void openAddView(); //capire se mettere const
     void salvaFile(); //capire se mettere const
-    //void openModify() const; da implementare
+    void openModifyView(); //capire se mettere const
     //void openSave() const; da implementare
     void resetListaClienti();
     void aggClienteContainer(const QStringList);
     void erroreInputRicevuto(string);
     void rimuoviCliente(const unsigned int);
+    void rimpiazzaItem(const unsigned int,const QStringList);
 
 signals:
     void pulisciCampi();

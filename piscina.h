@@ -15,6 +15,7 @@ public:
     piscina* clone() const;
     //virtual ~piscina();
 
+    QDate getDataPiscina() const;
     int getGiornoPiscina() const;
     int getMesePiscina() const;
     int getAnnoPiscina() const;

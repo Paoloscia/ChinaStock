@@ -164,7 +164,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
-
+    connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
 }
@@ -183,6 +183,22 @@ void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesc
 const QString mainwindow::getParolaCercata() const
 {
     return lineCerca->text();
+}
+
+void mainwindow::nessunSelezionato()
+{
+    QMessageBox rimuoviNonSelezionato;
+    rimuoviNonSelezionato.critical(this,"Nessun cliente selezionato","Selezionare un cliente");
+}
+
+bool mainwindow::isSelected() const
+{
+    return listaClienti->isSomeoneSeleceted();
+}
+
+unsigned int mainwindow::getIndexSelected() const
+{
+    return listaClienti->getIndex();
 }
 
 
@@ -210,8 +226,7 @@ void mainwindow::richiestaRimoz()
     if(listaClienti->isSomeoneSeleceted())
         emit richiestaRimozCliente(listaClienti->getIndex());
     else{
-    QMessageBox rimuoviNonSelezionato;
-    rimuoviNonSelezionato.critical(this,"Nessun cliente selezionato","Selezionare un cliente da rimuovere");
+        nessunSelezionato();
     }
 }
 

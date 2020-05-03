@@ -28,6 +28,10 @@ public:
     //~mainwindow();
     void mostraClienti(const QStringList); //era displayCatalog
     const QString getParolaCercata() const; //era getResearchWord
+    void nessunSelezionato();
+
+    bool isSelected() const;
+    unsigned int getIndexSelected() const;
 
 public slots:
     void richiestaRimoz();
@@ -51,6 +55,7 @@ private:
 
 signals:
     void signOpenAddWindow();
+    void signOpenModWindow();
     void salvaFileMenu();
     //void clickedSearch(QString searchText); da implementare search
     void richiestaRimozCliente(const unsigned int); //era requestRemoveIntoCatalog

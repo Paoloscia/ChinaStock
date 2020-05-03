@@ -8,6 +8,11 @@ piscina *piscina::clone() const{
     return new piscina(*this);
 }
 
+QDate piscina::getDataPiscina() const
+{
+    return scadenzapiscina;
+}
+
 int piscina::getGiornoPiscina() const
 {
     return scadenzapiscina.QDate::day();
