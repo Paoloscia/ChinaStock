@@ -230,7 +230,7 @@ void model::carica(QString path) const
 
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
-    QStringList tmp;
+    QStringList tmp; //PRIMA FARE TUTTO IL CLIENTE E POI TIRARE FUORI I CAMPI SINGOLI COL DYNAMIC CAST
     if(dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))))){
                 const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))));
 
@@ -258,7 +258,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
    else if(dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
        const piscina * stringaCliente = dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))));
 
-       tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
+       tmp.push_back(QString::fromStdString(dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
        tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
