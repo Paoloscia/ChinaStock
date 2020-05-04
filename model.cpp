@@ -230,75 +230,57 @@ void model::carica(QString path) const
 
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
-    QStringList tmp; //PRIMA FARE TUTTO IL CLIENTE E POI TIRARE FUORI I CAMPI SINGOLI COL DYNAMIC CAST
-    if(dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))))){
-                const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))));
+    QStringList tmp;
+    cliente * clienteTmp = static_cast<cliente*>(&(*(datiTotali->prendiNodoIndice(indice)))); //capire se è corretto inserire static cast o no!
+    tmp.push_back(QString::fromStdString(clienteTmp->getnome()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getcognome()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getcodfiscale()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getluogo()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getres()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getvia()));
+    tmp.push_back(QString::number(clienteTmp->getnum()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getnumerotel()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getmail()));
+    tmp.push_back(clienteTmp->getDataN().toString());
+    tmp.push_back(clienteTmp->getstudent()? "true":"false");
 
-    tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getres()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getvia()));
-    tmp.push_back(QString::number(stringaCliente->getnum()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getnumerotel()));
-    tmp.push_back(QString::fromStdString(stringaCliente->getmail()));
-    tmp.push_back(stringaCliente->getDataN().toString());
-    tmp.push_back(stringaCliente->getstudent()? "true":"false");
-    tmp.push_back(stringaCliente->getDataPiscina().toString());
-    tmp.push_back(QString::fromStdString(stringaCliente->getnomeistruttorepiscina()));
-    tmp.push_back(stringaCliente->iscorsonuoto()? "true":"false");
-    tmp.push_back(stringaCliente->getDataPalestra().toString());
-    tmp.push_back(QString::fromStdString(stringaCliente->getnomeistruttorepalestra()));
-    tmp.push_back(stringaCliente->isscheda()? "true":"false");
-    tmp.push_back("true");
-    tmp.push_back("true");
+
+    if(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+        tmp.push_back("true");
+        tmp.push_back("true");
+
     }
 
-   else if(dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
-       const piscina * stringaCliente = dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))));
+   else if(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
 
-       tmp.push_back(QString::fromStdString(dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnome()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getres()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getvia()));
-       tmp.push_back(QString::number(stringaCliente->getnum()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getnumerotel()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getmail()));
-       tmp.push_back(stringaCliente->getDataN().toString());
-       tmp.push_back(stringaCliente->getstudent()? "true":"false");
-       tmp.push_back(stringaCliente->getDataPiscina().toString());
-       tmp.push_back(QString::fromStdString(stringaCliente->getnomeistruttorepiscina()));
-       tmp.push_back(stringaCliente->iscorsonuoto()? "true":"false");
+       tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
+       tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
+       tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
        tmp.push_back(QDate().toString());
        tmp.push_back(QString::fromStdString(""));
        tmp.push_back("false");
        tmp.push_back("true");
        tmp.push_back("false");
+
    }
-   else if(dynamic_cast<const palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
-       const palestra * stringaCliente = dynamic_cast<const palestra*>(&(*(datiTotali->prendiNodoIndice(indice))));
-       tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getres()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getvia()));
-       tmp.push_back(QString::number(stringaCliente->getnum()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getnumerotel()));
-       tmp.push_back(QString::fromStdString(stringaCliente->getmail()));
-       tmp.push_back(stringaCliente->getDataN().toString());
-       tmp.push_back(stringaCliente->getstudent()? "true":"false");
+   else if(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+
        tmp.push_back(QDate().toString());
        tmp.push_back(QString::fromStdString(""));
        tmp.push_back("false");
-       tmp.push_back(stringaCliente->getDataPalestra().toString());
-       tmp.push_back(QString::fromStdString(stringaCliente->getnomeistruttorepalestra()));
-       tmp.push_back(stringaCliente->isscheda()? "true":"false");
+       tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
+       tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
+       tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
        tmp.push_back("false");
        tmp.push_back("true");
+
        }
 //    else
 //        tmp.push_back("null");
