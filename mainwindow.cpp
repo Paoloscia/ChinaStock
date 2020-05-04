@@ -206,6 +206,13 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
 void mainwindow::resetDettCliente()
 {
     nomeClienteLabel->clear();
+    cognomeClienteLabel->clear();
+    codiceFClienteLabel->clear();
+    LuogoDNLabel->clear();
+    residenzaClienteLabel->clear();
+    viaClienteLabel->clear();
+    telefonoClienteLabel->clear();
+    mailClienteLabel->clear();
     //mettere tutta la lista dei dettagli cliente da resettare nella view!!!
 }
 
