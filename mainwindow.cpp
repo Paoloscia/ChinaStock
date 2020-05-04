@@ -3,8 +3,8 @@
 
 mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new viewListaClienti(this)),nomeClienteLabel (new QLabel(this)),
     cognomeClienteLabel(new QLabel(this)),codiceFClienteLabel(new QLabel(this)),LuogoDNLabel(new QLabel(this)),residenzaClienteLabel(new QLabel(this)),
-    viaClienteLabel(new QLabel(this)), telefonoClienteLabel(new QLabel(this)), mailClienteLabel(new QLabel(this)), datadNClienteLabel(new QLabel(this)),AbbonamentoPiscinaLabel(new QLabel(this)),
-    nomeIstruttorePiscinaLabel(new QLabel(this)), AbbonamentoPalestraLabel(new QLabel(this)),nomeIstruttorePalestraLabel(new QLabel(this))
+    viaClienteLabel(new QLabel(this)), telefonoClienteLabel(new QLabel(this)), mailClienteLabel(new QLabel(this)),datadNClienteLabel(new QLabel(this)),studenteClienteLabel(new QLabel(this)),AbbonamentoPiscinaLabel(new QLabel(this)),
+    nomeIstruttorePiscinaLabel(new QLabel(this)),corsoNuotoClienteLabel(new QLabel(this)), AbbonamentoPalestraLabel(new QLabel(this)),nomeIstruttorePalestraLabel(new QLabel(this)),schedaPalestraClienteLabel(new QLabel(this))
 {
     setWindowTitle("China Fit");
     mainLayout = new QVBoxLayout(this);
@@ -76,7 +76,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        QLabel *telefonoLabel = new QLabel(tr("Telefono: "));
        QLabel *mailLabel = new QLabel(tr("Mail: "));
        QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
-       studenteCheckbox = new QCheckBox("Studente",this);
+       QLabel *studenteLabel = new QLabel("Studente: ");
 
        //************** PEZZO FORM PISCINA ********************
 
@@ -84,11 +84,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        QFormLayout *formPiscinaLayout = new QFormLayout();
        QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
        QLabel *nomeIstruttorePiscina = new QLabel(tr("Nome istruttore: "));
-       //nomeIstruttorePiscinaEdit = new QLineEdit();
-       corsoNuotoCheckbox = new QCheckBox("Corso nuoto");
+       QLabel *corsoNuotoLabel = new QLabel("Corso nuoto: ");
        formPiscinaLayout->addRow(dateScadPiscinaLabel,AbbonamentoPiscinaLabel);
        formPiscinaLayout->addRow(nomeIstruttorePiscina,nomeIstruttorePiscinaLabel);
-       formPiscinaLayout->addRow(corsoNuotoCheckbox);
+       formPiscinaLayout->addRow(corsoNuotoLabel,corsoNuotoClienteLabel);
        piscinaGroup->setLayout(formPiscinaLayout);
 
        //************** PEZZO FORM PALESTRA ********************
@@ -97,10 +96,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        QFormLayout *formPalestraLayout = new QFormLayout();
        QLabel *dateScadPalestraLabel = new QLabel("Data: ");
        QLabel *nomeIstruttorePalestra = new QLabel(tr("Nome istruttore: "));
-       schedaPalestraCheckbox = new QCheckBox("Scheda palestra");
+       QLabel *schedaPalestraLabel = new QLabel("Scheda palestra: ");
        formPalestraLayout->addRow(dateScadPalestraLabel,AbbonamentoPalestraLabel);
        formPalestraLayout->addRow(nomeIstruttorePalestra,nomeIstruttorePalestraLabel);
-       formPalestraLayout->addRow(schedaPalestraCheckbox);
+       formPalestraLayout->addRow(schedaPalestraLabel,schedaPalestraClienteLabel);
        palestraGroup->setLayout(formPalestraLayout);
 
        QFormLayout *formLayout = new QFormLayout();
@@ -114,7 +113,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        formLayout->addRow(telefonoLabel, telefonoClienteLabel);
        formLayout->addRow(mailLabel, mailClienteLabel);
        formLayout->addRow(dateNascitaLabel,datadNClienteLabel );
-       formLayout->addRow(studenteCheckbox);
+       formLayout->addRow(studenteLabel,studenteClienteLabel);
        clienteGroup->setLayout(formLayout);
        divH->addWidget(clienteGroup);
        divH->addLayout(verticalDxLayout);
@@ -180,47 +179,65 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
        QString mail =  QString:: fromStdString(clienteDaVisualizzare->getmail());
        mailClienteLabel->clear();
        mailClienteLabel->setText(mail);
-        if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
-       auto clientevip = dynamic_cast<vip*>(clienteDaVisualizzare.pted);
-       string istruttpisc = clientevip->getnomeistruttorepiscina();
-       string istruttpal = clientevip->getnomeistruttorepalestra();
-       QString nomepisc = QString :: fromStdString(istruttpisc);
-       QString nomepale = QString :: fromStdString(istruttpal);
        datadNClienteLabel->clear();
-       datadNClienteLabel->setText(clientevip->getDataN().toString("dd/MM/yyyy"));                          //data nascita non dovrebbe andare tra quelli di cliente?
+       datadNClienteLabel->setText(clienteDaVisualizzare->getDataN().toString("dd/MM/yyyy"));
+       studenteClienteLabel->clear();
        AbbonamentoPiscinaLabel->clear();
-       AbbonamentoPiscinaLabel->setText(clientevip->getDataPiscina().toString("dd/MM/yyyy"));
-
        nomeIstruttorePiscinaLabel->clear();
-       nomeIstruttorePiscinaLabel->setText(nomepisc);
+       corsoNuotoClienteLabel->clear();
        AbbonamentoPalestraLabel->clear();
-       AbbonamentoPalestraLabel->setText(clientevip->getDataPalestra().toString("dd/MM/yyyy"));
        nomeIstruttorePalestraLabel->clear();
-       nomeIstruttorePalestraLabel->setText(nomepale);
-       }else
-        if (dynamic_cast<piscina*>(clienteDaVisualizzare.pted) != nullptr) {
-        auto clientepis = dynamic_cast<piscina*>(clienteDaVisualizzare.pted);
-        string istruttpisc = clientepis->getnomeistruttorepiscina();
-        QString nomepisc = QString :: fromStdString(istruttpisc);
-        datadNClienteLabel->clear();
-        datadNClienteLabel->setText(clientepis->getDataN().toString("dd/MM/yyyy"));
-        AbbonamentoPiscinaLabel->clear();
-       AbbonamentoPiscinaLabel->setText(clientepis->getDataPiscina().toString("dd/MM/yyyy"));
-        nomeIstruttorePiscinaLabel->clear();
-        nomeIstruttorePiscinaLabel->setText(nomepisc);
+       schedaPalestraClienteLabel->clear();
+       if (clienteDaVisualizzare->getstudent()) {
+           studenteClienteLabel->setText("Sì");
        }
        else
-       if (dynamic_cast<palestra*>(clienteDaVisualizzare.pted) != nullptr) {
-       auto clientepal = dynamic_cast<palestra*>(clienteDaVisualizzare.pted);
-       string istruttpal = clientepal->getnomeistruttorepalestra();
-       QString nomepale = QString :: fromStdString(istruttpal);
-       datadNClienteLabel->clear();
-       datadNClienteLabel->setText(clientepal->getDataN().toString("dd/MM/yyyy"));
-       AbbonamentoPalestraLabel->clear();
-       AbbonamentoPalestraLabel->setText(clientepal->getDataPalestra().toString("dd/MM/yyyy"));
-       nomeIstruttorePalestraLabel->clear();
-       nomeIstruttorePalestraLabel->setText(nomepale);
+           studenteClienteLabel->setText("No");
 
+       if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
+           auto clientevip = dynamic_cast<vip*>(clienteDaVisualizzare.pted);
+           string istruttpisc = clientevip->getnomeistruttorepiscina();
+           string istruttpal = clientevip->getnomeistruttorepalestra();
+           QString nomepisc = QString :: fromStdString(istruttpisc);
+           QString nomepale = QString :: fromStdString(istruttpal);
+           AbbonamentoPiscinaLabel->setText(clientevip->getDataPiscina().toString("dd/MM/yyyy"));
+           nomeIstruttorePiscinaLabel->setText(nomepisc);
+           if (clientevip->iscorsonuoto()) {
+               corsoNuotoClienteLabel->setText("Sì");
+           }
+           else
+               corsoNuotoClienteLabel->setText("No");
+           AbbonamentoPalestraLabel->setText(clientevip->getDataPalestra().toString("dd/MM/yyyy"));
+           nomeIstruttorePalestraLabel->setText(nomepale);
+           if (clientevip->isscheda()) {
+               schedaPalestraClienteLabel->setText("Sì");
+           }
+           else
+               schedaPalestraClienteLabel->setText("No");
+       }
+       else if (dynamic_cast<piscina*>(clienteDaVisualizzare.pted) != nullptr) {
+           auto clientepis = dynamic_cast<piscina*>(clienteDaVisualizzare.pted);
+           string istruttpisc = clientepis->getnomeistruttorepiscina();
+           QString nomepisc = QString :: fromStdString(istruttpisc);
+           AbbonamentoPiscinaLabel->setText(clientepis->getDataPiscina().toString("dd/MM/yyyy"));
+           nomeIstruttorePiscinaLabel->setText(nomepisc);
+           if (clientepis->iscorsonuoto()) {
+               corsoNuotoClienteLabel->setText("Sì");
+           }
+           else
+               corsoNuotoClienteLabel->setText("No");
+       }
+       else if (dynamic_cast<palestra*>(clienteDaVisualizzare.pted) != nullptr) {
+           auto clientepal = dynamic_cast<palestra*>(clienteDaVisualizzare.pted);
+           string istruttpal = clientepal->getnomeistruttorepalestra();
+           QString nomepale = QString :: fromStdString(istruttpal);
+           AbbonamentoPalestraLabel->setText(clientepal->getDataPalestra().toString("dd/MM/yyyy"));
+           nomeIstruttorePalestraLabel->setText(nomepale);
+           if (clientepal->isscheda()) {
+               schedaPalestraClienteLabel->setText("Sì");
+           }
+           else
+               schedaPalestraClienteLabel->setText("No");
       }
   }
 
@@ -234,7 +251,14 @@ void mainwindow::resetDettCliente()
     viaClienteLabel->clear();
     telefonoClienteLabel->clear();
     mailClienteLabel->clear();
-    //mettere tutta la lista dei dettagli cliente da resettare nella view!!!
+    datadNClienteLabel->clear();
+    studenteClienteLabel->clear();
+    AbbonamentoPiscinaLabel->clear();
+    nomeIstruttorePiscinaLabel->clear();
+    corsoNuotoClienteLabel->clear();
+    AbbonamentoPalestraLabel->clear();
+    nomeIstruttorePalestraLabel->clear();
+    schedaPalestraClienteLabel->clear();
 }
 
 bool mainwindow::isSelected() const
