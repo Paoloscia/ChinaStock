@@ -1,7 +1,4 @@
 #include "model.h"
-#include<iostream>
-using std::cout;
-using std::endl;
 
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
