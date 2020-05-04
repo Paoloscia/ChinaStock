@@ -314,7 +314,7 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
     unsigned int count=0;
     if(!datiTotali->isEmpty()){ //NON SO SE SIA GIUSTO COSì IS EMPTY PER COM'é IMPLEMENTATO DENTRO A CONTAINER!
         while(it!=datiTotali->fine()){
-            cliente = (QString::fromStdString((*(*it)).getnome() + " " + (*(*it)).getcognome()) + " ");
+            cliente = (QString::fromStdString((*(*it)).getnome() + " " + (*(*it)).getcognome()));
             if(cliente.contains(regex)){
                 indexMapper.insert((uint)ret.count(),count);
 //                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST

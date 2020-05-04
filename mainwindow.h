@@ -69,6 +69,7 @@ private:
 signals:
     void signOpenAddWindow();
     void signOpenModWindow();
+    void cercaRuntime();
     void salvaFileMenu();
     //void clickedSearch(QString searchText); da implementare search
     void richiestaRimozCliente(const unsigned int);

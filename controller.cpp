@@ -8,8 +8,9 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
     connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
     connect(view,SIGNAL(richiestaShowCliente(const unsigned int)),this,SLOT(mostraCliente(const unsigned int)));
+    connect(view, SIGNAL(cercaRuntime()), this, SLOT(resetListaClienti()));
 
-    //connect(view, SIGNAL(updateSearch()), this, SLOT(refreshCatalog())); implementare!!!
+    //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
 

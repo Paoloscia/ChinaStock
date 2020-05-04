@@ -142,10 +142,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
+    connect(lineCerca, SIGNAL(textChanged(const QString &)), this, SIGNAL(cercaRuntime()));
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
-    //connect(Cerca, SIGNAL(clicked()), this, SLOT(handleSearchClick())); da implementare
 
 }
 
