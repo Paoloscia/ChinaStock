@@ -39,7 +39,7 @@ public:
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
     void rimpiazzaFinale(unsigned int, const T&);
-    T clienteIndicato(unsigned int) const;
+    //T prendiNodoIndice(unsigned int) const;
     void rimuoviIndice(const unsigned int);
     T prendiNodoIndice(const unsigned int) const;
     void clear();
@@ -199,15 +199,15 @@ void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModifica
     aggiungiDavanti(clienteModificato);
 }
 
-template <class T>
-T Container<T>::clienteIndicato(unsigned int i) const{
-    //if(i>= size())
-    //    return nullptr;    DA IMPLEMENTARE PER IL CONTROLLO, SERVE?
-    nodo* contatore = primo;
-    for(unsigned int k=0; k<i; k++)
-        contatore=contatore->next;
-    return contatore->info;
-}
+// template <class T>
+// T Container<T>::prendiNodoIndice(unsigned int i) const{
+//     //if(i>= size())
+//     //    return nullptr;    DA IMPLEMENTARE PER IL CONTROLLO, SERVE?
+//     nodo* contatore = primo;
+//     for(unsigned int k=0; k<i; k++)
+//         contatore=contatore->next;
+//     return contatore->info;
+// }
 
 
 

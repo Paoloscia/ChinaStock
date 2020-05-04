@@ -231,8 +231,8 @@ void model::carica(QString path) const
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
     QStringList tmp;
-    if(dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))))){
-                const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))));
+    if(dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+                const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->prendiNodoIndice(indice))));
 
     tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
     tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
@@ -255,8 +255,8 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     tmp.push_back("true");
     }
 
-   else if(dynamic_cast<const piscina*>(&(*(datiTotali->clienteIndicato(indice))))){
-       const piscina * stringaCliente = dynamic_cast<const piscina*>(&(*(datiTotali->clienteIndicato(indice))));
+   else if(dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+       const piscina * stringaCliente = dynamic_cast<const piscina*>(&(*(datiTotali->prendiNodoIndice(indice))));
 
        tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
@@ -278,8 +278,8 @@ QStringList model::getCampiCliente(const unsigned int indice) const
        tmp.push_back("true");
        tmp.push_back("false");
    }
-   else if(dynamic_cast<const palestra*>(&(*(datiTotali->clienteIndicato(indice))))){
-       const palestra * stringaCliente = dynamic_cast<const palestra*>(&(*(datiTotali->clienteIndicato(indice))));
+   else if(dynamic_cast<const palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+       const palestra * stringaCliente = dynamic_cast<const palestra*>(&(*(datiTotali->prendiNodoIndice(indice))));
        tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
        tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
