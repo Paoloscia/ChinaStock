@@ -61,6 +61,7 @@ private:
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *listaClienti;
     QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel;
+    QGroupBox* piscinaGroup,* palestraGroup;
     void setMainWindowStyle();
     //void handleSearchClick(); da implementare
 

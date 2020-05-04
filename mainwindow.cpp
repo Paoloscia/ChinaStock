@@ -66,7 +66,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        hLeftBottoni->addWidget(removeButton);
 
        //************** FORM ********************
-
+       QGroupBox *clienteGroup = new QGroupBox("Dati Cliente");
        QLabel *nomeLabel = new QLabel(tr("Nome: "));
        QLabel *cognomeLabel = new QLabel(tr("Cognome: "));
        QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale: "));
@@ -77,27 +77,32 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        QLabel *mailLabel = new QLabel(tr("Mail: "));
        QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
        studenteCheckbox = new QCheckBox("Studente",this);
+
        //************** PEZZO FORM PISCINA ********************
+
        QGroupBox *piscinaGroup = new QGroupBox("Piscina");
        QFormLayout *formPiscinaLayout = new QFormLayout();
        QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
        QLabel *nomeIstruttorePiscina = new QLabel(tr("Nome istruttore: "));
        //nomeIstruttorePiscinaEdit = new QLineEdit();
-       corsoNuotoCheckbox = new QCheckBox("Corso nuoto",this);
+       corsoNuotoCheckbox = new QCheckBox("Corso nuoto");
        formPiscinaLayout->addRow(dateScadPiscinaLabel,AbbonamentoPiscinaLabel);
        formPiscinaLayout->addRow(nomeIstruttorePiscina,nomeIstruttorePiscinaLabel);
        formPiscinaLayout->addRow(corsoNuotoCheckbox);
        piscinaGroup->setLayout(formPiscinaLayout);
+
        //************** PEZZO FORM PALESTRA ********************
+
        QGroupBox *palestraGroup = new QGroupBox("Palestra");
        QFormLayout *formPalestraLayout = new QFormLayout();
        QLabel *dateScadPalestraLabel = new QLabel("Data: ");
        QLabel *nomeIstruttorePalestra = new QLabel(tr("Nome istruttore: "));
-       schedaPalestraCheckbox = new QCheckBox("Scheda palestra",this);
+       schedaPalestraCheckbox = new QCheckBox("Scheda palestra");
        formPalestraLayout->addRow(dateScadPalestraLabel,AbbonamentoPalestraLabel);
        formPalestraLayout->addRow(nomeIstruttorePalestra,nomeIstruttorePalestraLabel);
        formPalestraLayout->addRow(schedaPalestraCheckbox);
        palestraGroup->setLayout(formPalestraLayout);
+
        QFormLayout *formLayout = new QFormLayout();
        formLayout->setFormAlignment(Qt::AlignLeft);
        formLayout->addRow(nomeLabel, nomeClienteLabel);
@@ -110,7 +115,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        formLayout->addRow(mailLabel, mailClienteLabel);
        formLayout->addRow(dateNascitaLabel,datadNClienteLabel );
        formLayout->addRow(studenteCheckbox);
-       divH->addLayout(formLayout);
+       clienteGroup->setLayout(formLayout);
+       divH->addWidget(clienteGroup);
        divH->addLayout(verticalDxLayout);
        verticalDxLayout->addWidget(piscinaGroup);
        verticalDxLayout->addWidget(palestraGroup);
@@ -174,14 +180,14 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
        QString mail =  QString:: fromStdString(clienteDaVisualizzare->getmail());
        mailClienteLabel->clear();
        mailClienteLabel->setText(mail);
-       if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
+        if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
        auto clientevip = dynamic_cast<vip*>(clienteDaVisualizzare.pted);
        string istruttpisc = clientevip->getnomeistruttorepiscina();
        string istruttpal = clientevip->getnomeistruttorepalestra();
        QString nomepisc = QString :: fromStdString(istruttpisc);
        QString nomepale = QString :: fromStdString(istruttpal);
        datadNClienteLabel->clear();
-       datadNClienteLabel->setText(clientevip->getDataN().toString("dd/MM/yyyy"));
+       datadNClienteLabel->setText(clientevip->getDataN().toString("dd/MM/yyyy"));                          //data nascita non dovrebbe andare tra quelli di cliente?
        AbbonamentoPiscinaLabel->clear();
        AbbonamentoPiscinaLabel->setText(clientevip->getDataPiscina().toString("dd/MM/yyyy"));
 
