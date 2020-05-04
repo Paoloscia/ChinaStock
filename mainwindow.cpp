@@ -46,7 +46,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     gridLayout->addWidget(maggiorenne,1,1);
     gridLayout->addWidget(deseleziona,2,1);
     gridLayout->addWidget(lineCerca,2,2);
-    gridLayout->addWidget(Cerca,2,3);
 
     //************** CLIENTI ********************
 
