@@ -39,8 +39,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     maggiorenne = new QCheckBox("Maggiorenne",this);
     deseleziona = new QCheckBox("Deseleziona Tutto",this);
     lineCerca = new QLineEdit(this);
-    Cerca = new QPushButton("Cerca", this);
-
     gridLayout->addWidget(All,0,0);
     gridLayout->addWidget(palestraCheckFiltro,1,0);
     gridLayout->addWidget(piscinaCheckFiltro,2,0);

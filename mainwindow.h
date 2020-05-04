@@ -58,7 +58,6 @@ private:
     QCheckBox* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
-    QPushButton* Cerca;
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *listaClienti;
     QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel;
