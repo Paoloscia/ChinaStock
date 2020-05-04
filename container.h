@@ -199,7 +199,7 @@ void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModifica
     aggiungiDavanti(clienteModificato);
 }
 
-// template <class T>
+// template <class T> capire se cancellare o tenere!!!
 // T Container<T>::prendiNodoIndice(unsigned int i) const{
 //     //if(i>= size())
 //     //    return nullptr;    DA IMPLEMENTARE PER IL CONTROLLO, SERVE?
