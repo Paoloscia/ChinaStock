@@ -234,7 +234,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     if(dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))))){
                 const vip * stringaCliente = dynamic_cast<const vip*>(&(*(datiTotali->clienteIndicato(indice))));
 
-                tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
+    tmp.push_back(QString::fromStdString(stringaCliente->getnome()));
     tmp.push_back(QString::fromStdString(stringaCliente->getcognome()));
     tmp.push_back(QString::fromStdString(stringaCliente->getcodfiscale()));
     tmp.push_back(QString::fromStdString(stringaCliente->getluogo()));
