@@ -20,6 +20,13 @@
 #include "viewlistaclienti.h"
 #include"deeppointer.h"
 #include"cliente.h"
+#include"piscina.h"
+#include"palestra.h"
+#include"vip.h"
+
+#include<iostream>
+using std::cout;
+using std::endl;
 
 class mainwindow : public QWidget
 {
@@ -48,7 +55,7 @@ private:
     QHBoxLayout* divH, *hLeftBottoni;
     QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
-    QCheckBox* All,*palestra,*piscina,*minorenne,*maggiorenne,*deseleziona;
+    QCheckBox* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* Cerca;

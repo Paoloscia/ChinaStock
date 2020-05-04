@@ -41,7 +41,7 @@ public:
     void rimpiazzaFinale(unsigned int, const T&);
     T clienteIndicato(unsigned int) const;
     void rimuoviIndice(const unsigned int);
-    T prendiNodoIndice(const unsigned int);
+    T prendiNodoIndice(const unsigned int) const;
     void clear();
     bool isEmpty() const;
 
@@ -251,7 +251,7 @@ void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè 
 }
 
 template <class T>
-T Container<T>::prendiNodoIndice(const unsigned int i){
+T Container<T>::prendiNodoIndice(const unsigned int i) const{
     if(!primo->next){ //si potrebbe tenere if i==0 sennò cicla, capire se sistemare funzione
         if(i==0){
             return primo->info;

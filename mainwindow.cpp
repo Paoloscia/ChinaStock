@@ -33,8 +33,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     //************** FILTRI ********************
 
     All = new QCheckBox("All",this);
-    palestra = new QCheckBox("Palestra",this);
-    piscina = new QCheckBox("Piscina",this);
+    palestraCheckFiltro = new QCheckBox("Palestra",this);
+    piscinaCheckFiltro = new QCheckBox("Piscina",this);
     minorenne = new QCheckBox("Minorenne",this);
     maggiorenne = new QCheckBox("Maggiorenne",this);
     deseleziona = new QCheckBox("Deseleziona Tutto",this);
@@ -42,8 +42,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     Cerca = new QPushButton("Cerca", this);
 
     gridLayout->addWidget(All,0,0);
-    gridLayout->addWidget(palestra,1,0);
-    gridLayout->addWidget(piscina,2,0);
+    gridLayout->addWidget(palestraCheckFiltro,1,0);
+    gridLayout->addWidget(piscinaCheckFiltro,2,0);
     gridLayout->addWidget(minorenne,0,1);
     gridLayout->addWidget(maggiorenne,1,1);
     gridLayout->addWidget(deseleziona,2,1);
@@ -172,6 +172,25 @@ void mainwindow::nessunSelezionato()
 }
 
 void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisualizzare){
+    if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
+        auto clientevip = dynamic_cast<vip*>(clienteDaVisualizzare.pted);
+        string istruttpisc = clientevip->getnomeistruttorepiscina();
+        string istruttpal = clientevip->getnomeistruttorepalestra();
+        cout<<"il cliente è un vip!!! "<<"istr piscina = "<<istruttpisc<<"istr palestra = "<<istruttpal<<endl;
+//
+    }
+    else if (dynamic_cast<piscina*>(clienteDaVisualizzare.pted) != nullptr) {
+        auto clientepis = dynamic_cast<piscina*>(clienteDaVisualizzare.pted);
+        string istruttpisc = clientepis->getnomeistruttorepiscina();
+        cout<<"il cliente è un piscina!!! istr piscina = "<<istruttpisc<<endl;
+//        auto clientevip = dynamic_cast<vip *>(clienteDaVisualizzare);
+    }
+    else if (dynamic_cast<palestra*>(clienteDaVisualizzare.pted) != nullptr) {
+        auto clientepal = dynamic_cast<palestra*>(clienteDaVisualizzare.pted);
+        string istruttpal = clientepal->getnomeistruttorepalestra();
+        cout<<"il cliente è un palestra!!! istr palestra = "<<istruttpal<<endl;
+//        auto clientevip = dynamic_cast<vip *>(clienteDaVisualizzare);
+    }
     QString nome = QString::fromStdString(clienteDaVisualizzare->getnome());
     nomeClienteLabel->clear();
     nomeClienteLabel->setText(nome);

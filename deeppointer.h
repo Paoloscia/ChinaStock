@@ -3,6 +3,7 @@
 
 template <class T>
 class deepPointer{
+    friend class mainwindow;
 private:
     T* pted;     //T puntato
 public:
