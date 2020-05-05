@@ -21,8 +21,6 @@
 #include <QStringList>
 #include <iostream>
 #include<QMessageBox>
-using std::cout;
-using std::endl;
 using std::string;
 class addClientWindow : public QDialog //inserito qdialog al posto di qwidget
 {
