@@ -63,21 +63,21 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** CLIENTI ********************
 
-    QGroupBox *clientiGroup = new QGroupBox("Clienti");
+    QGroupBox *clientiGroup = new QGroupBox("Lista Clienti");
        listaClienti->setSelectionMode(QAbstractItemView::SingleSelection);
        QVBoxLayout *layoutListaClienti = new QVBoxLayout();
+       QLabel *cercaLabel = new QLabel(tr("Cerca:"));
+       lineCerca = new QLineEdit(this);
+       cercaHBottoni = new QHBoxLayout();
+       cercaHBottoni->addWidget(cercaLabel);
+       cercaHBottoni->addWidget(lineCerca);
+       layoutListaClienti->addLayout(cercaHBottoni);
        layoutListaClienti->addWidget(listaClienti);
        clientiGroup->setLayout(layoutListaClienti);
        addButton = new QPushButton("Aggiungi",this);
        modButton = new QPushButton("Modifica",this);
        removeButton = new QPushButton("Rimuovi",this);
-       QLabel *cercaLabel = new QLabel(tr("Cerca:"));
-       lineCerca = new QLineEdit(this);
 
-       cercaHBottoni = new QHBoxLayout();
-       verticalSxLayout->addLayout(cercaHBottoni);
-       cercaHBottoni->addWidget(cercaLabel);
-       cercaHBottoni->addWidget(lineCerca);
        verticalSxLayout->addWidget(clientiGroup);
 
        hLeftBottoni = new QHBoxLayout();
@@ -150,7 +150,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
-
+    connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
+    connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
+    connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
 }
 
 void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
