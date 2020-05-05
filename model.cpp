@@ -298,7 +298,7 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
                 indexMapper.insert((uint)ret.count(),count);
 //                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST
 //                    cliente += (QString::fromStdString(dynamic_cast<const Consumable*>(&(*(*it)))->getColorName()));
-                ret.push_front(cliente);
+                ret.push_back(cliente);
             }
             count++;
             ++it;
