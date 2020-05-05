@@ -41,12 +41,11 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     //************** FILTRI ********************
     QGroupBox *filtriGroup = new QGroupBox("Filtri");
     QGridLayout* filtriGrid = new QGridLayout();
-    All = new QPushButton("All",this);
+    All = new QPushButton("Rimuovi filtro",this);
     palestraCheckFiltro = new QPushButton("Palestra",this);
     piscinaCheckFiltro = new QPushButton("Piscina",this);
     minorenne = new QPushButton("Minorenne",this);
     maggiorenne = new QPushButton("Maggiorenne",this);
-    deseleziona = new QPushButton("Deseleziona Tutto",this);
     filtriGrid->addWidget(All,0,0);
     filtriGrid->addWidget(palestraCheckFiltro,1,0);
     filtriGrid->addWidget(piscinaCheckFiltro,0,1);
