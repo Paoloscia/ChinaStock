@@ -31,10 +31,12 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     setLayout(mainLayout);
     //************** IMMAGINE ******************
     QHBoxLayout* imageLayout = new QHBoxLayout();
-    QPixmap*  pix = new QPixmap(":/img/logo.png");
+    QPixmap*  pix = new QPixmap(":/risorse/logo.png");
     QLabel* image = new QLabel(this);
     image->setPixmap(*pix);
     imageLayout->addWidget(image);
+    image->setMaximumWidth(100);
+    image->setMaximumHeight(100);
     verticalDxLayout->addLayout(imageLayout);
 
 
