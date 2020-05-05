@@ -19,12 +19,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     mainLayout->addWidget(menubar);
 
     setMainWindowStyle();
-    gridLayout = new QGridLayout();
     verticalSxLayout = new QVBoxLayout();
     verticalDxLayout = new QVBoxLayout();
     divH = new QHBoxLayout();
 
-    mainLayout->addLayout(gridLayout);
     mainLayout->addLayout(divH);
     divH->addLayout(verticalSxLayout);
 
@@ -53,13 +51,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     filtriGrid->addWidget(piscinaCheckFiltro,0,1);
     filtriGrid->addWidget(minorenne,1,1);
     filtriGrid->addWidget(maggiorenne,0,2);
-    filtriGrid->addWidget(deseleziona,1,2);
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
 
-
-   // gridLayout->addWidget(cercaLabel,2,2);
-   // gridLayout->addWidget(lineCerca,2,3);
 
     //************** CLIENTI ********************
 

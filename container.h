@@ -38,6 +38,7 @@ public:
 
     void aggiungiDavanti(const T&);
     void aggiungiDietro(const T&);
+    void aggInOrdine(const T&);
     void rimpiazzaFinale(unsigned int, const T&);
     //T prendiNodoIndice(unsigned int) const;
     void rimuoviIndice(const unsigned int);
@@ -104,7 +105,7 @@ Container<T>::nodo::nodo(const nodo& n):info(n.info), next(n.next){}
 template<class T>
 void Container<T>::nodo::distruggi()
 {
-    if (!this)
+    if (this==nullptr)
         return;
     if (next) next->distruggi();
     delete this;
@@ -166,23 +167,20 @@ Container<T>& Container<T>::operator=(const Container & q)
 //    return equal(primo, c.primo);
 //}
 
-template<class T>
-void Container<T>::aggiungiDavanti(const T & obj)
-{
-    nodo* new_nodo = new nodo(obj);
-    if (primo == nullptr) {
-        primo = ultimo = new_nodo;
-    }
-    else
-    {
-        new_nodo->next = primo;
-        primo = new_nodo;
-    }
 
-//    if (primo == nullptr) primo = ultimo = new nodo(obj);
+//template<class T>
+//void Container<T>::aggiungiDavanti(const T & obj)
+//{
+//    nodo* new_nodo = new nodo(obj);
+//    if (primo == nullptr) {
+//        primo = ultimo = new_nodo;
+//    }
 //    else
-//        primo = new nodo(obj, primo);
-}
+//    {
+//        new_nodo->next = primo;
+//        primo = new_nodo;
+//    }
+//}
 
 template<class T>
 void Container<T>::aggiungiDietro(const T & obj)
@@ -194,6 +192,28 @@ void Container<T>::aggiungiDietro(const T & obj)
         ultimo = ultimo->next;
     }
 }
+
+
+
+template<class T> //commentato aggiungidavanti e sostituito con aggInOrdine (cambiare nome), capire perchè non funziona overloading deep pointer > e <
+void Container<T>::aggiungiDavanti(const T & obj){
+    nodo* cliente = new nodo(obj);
+    if (primo == nullptr) primo = ultimo = new nodo(obj);
+    else if (primo->info > cliente->info) {
+        cliente->next = primo;
+        primo = cliente;
+    }
+    else {
+        nodo* tmp = primo;
+        while (tmp->next && tmp->next->info < cliente->info) tmp = tmp->next;
+        cliente->next = tmp->next;
+        tmp->next = cliente;
+        if (cliente->next == nullptr) ultimo = cliente;
+    }
+}
+
+
+
 
 template<class T>
 void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModificato){
