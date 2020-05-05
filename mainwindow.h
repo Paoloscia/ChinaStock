@@ -75,6 +75,9 @@ signals:
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);
 
+    void filtroPiscina();
+    void filtroTutti();
+    void filtroPalestra();
 };
 
 #endif // GUI_H

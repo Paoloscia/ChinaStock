@@ -129,6 +129,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
+    connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
+    connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
+    connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
 
 }
 

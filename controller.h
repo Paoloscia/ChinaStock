@@ -25,10 +25,12 @@ public slots:
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
     void mostraCliente(const unsigned int);
+    void filtraClientiPiscina();
+    void filtraTuttiClienti();
+    void filtraClientiPalestra();
 
 signals:
     void pulisciCampi();
-
 private:
     mainwindow* view;
     addClientWindow *addClientW;

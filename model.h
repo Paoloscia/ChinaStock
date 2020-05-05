@@ -37,6 +37,8 @@ public:
     void rimuoviCliente(const unsigned int);
 
     deepPointer<cliente> mostraCliente(const unsigned int);
+    void filterPiscina();
+    void filterPalestra();
 
 public slots:
     void aggNelContainer(const QStringList);

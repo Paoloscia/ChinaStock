@@ -9,6 +9,12 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
     connect(view,SIGNAL(richiestaShowCliente(const unsigned int)),this,SLOT(mostraCliente(const unsigned int)));
     connect(view, SIGNAL(cercaRuntime()), this, SLOT(resetListaClienti()));
+    connect(view, SIGNAL(filtroPiscina()), this, SLOT(filtraClientiPiscina()));
+    connect(view, SIGNAL(filtroTutti()), this, SLOT(filtraTuttiClienti()));
+    connect(view, SIGNAL(filtroPalestra()), this, SLOT(filtraClientiPalestra()));
+
+
+
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
@@ -60,24 +66,43 @@ void controller::openModifyView()
 
 void controller::rimuoviCliente(const unsigned int indice){
     m->rimuoviCliente(indexTranslate[indice]);
-    resetListaClienti();
+    resetListaClienti();//viene chiamato già dalla connect?
 }
 
 void controller::rimpiazzaItem(const unsigned int indice, const QStringList stringaCliente)
 {
     m->modificaItem(indexTranslate[indice], stringaCliente);
-    resetListaClienti();
+    resetListaClienti();  //viene chiamato già dalla connect?
 }
 
 void controller::mostraCliente(const unsigned int cliente){
     view->visualizzaDettagliCliente(m->mostraCliente(indexTranslate[cliente]));
 }
 
+void controller::filtraClientiPiscina()
+{
+    m->filterPiscina();
+    resetListaClienti();
+}
+
+void controller::filtraTuttiClienti()
+{
+    m->resetfiltro();
+    resetListaClienti();
+}
+
+void controller::filtraClientiPalestra()
+{
+    m->filterPalestra();
+    resetListaClienti();
+}
+
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
 {
-    QString filtro = view->getParolaCercata();
 
-    view->mostraClienti(m->getListaClientiFiltrata(filtro,indexTranslate));
+    QString parolaNelCampoCerca = view->getParolaCercata();
+
+    view->mostraClienti(m->getListaClientiFiltrata(parolaNelCampoCerca,indexTranslate));
 
     resetDettClienteView();
 }

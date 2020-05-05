@@ -3,7 +3,7 @@
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
     //carica(path); da implementare, ricordarsi di togliere commento a costruttore di controller che pesca data.xml
-    //resetfiltro(); bisognerà implementare il reset filtro!
+    resetfiltro();
 }
 
 model::~model()
@@ -289,16 +289,16 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
     QStringList ret;
     QString cliente; //era etichetta
     QRegExp regex(filter,Qt::CaseInsensitive, QRegExp::Wildcard); //sta pescando i dati filtrati da qui, forse non serve datiFiltrati come container! regexp fa pattern matching! CAPIRE SE è POSSIBILE USARLO PERCHè è UNA CLASSE DI QT NEL MODEL! Però in teoria sì perchè non è una cosa grafica
-    auto it=datiTotali->inizio();
+    auto it=datiFiltrati->inizio();
     unsigned int count=0;
-    if(!datiTotali->isEmpty()){ //NON SO SE SIA GIUSTO COSì IS EMPTY PER COM'é IMPLEMENTATO DENTRO A CONTAINER!
-        while(it!=datiTotali->fine()){
+    if(!datiFiltrati->isEmpty()){ //NON SO SE SIA GIUSTO COSì IS EMPTY PER COM'é IMPLEMENTATO DENTRO A CONTAINER!
+        while(it!=datiFiltrati->fine()){
             cliente = (QString::fromStdString((*(*it)).getnome() + " " + (*(*it)).getcognome()));
             if(cliente.contains(regex)){
                 indexMapper.insert((uint)ret.count(),count);
 //                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST
 //                    cliente += (QString::fromStdString(dynamic_cast<const Consumable*>(&(*(*it)))->getColorName()));
-                ret.push_back(cliente);
+                ret.push_front(cliente);
             }
             count++;
             ++it;
@@ -311,7 +311,9 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
 void model::rimuoviCliente(const unsigned int i)
 {
     datiTotali->rimuoviIndice(i); //era removeOneAtIndex
+    resetfiltro();
     emit clienteRimosso();
+
 }
 
 deepPointer<cliente> model::mostraCliente(const unsigned int i)
@@ -320,6 +322,29 @@ deepPointer<cliente> model::mostraCliente(const unsigned int i)
     clienteDaVisualizzare = (datiTotali->prendiNodoIndice(i));
     return clienteDaVisualizzare;
 }
+
+void model::filterPiscina()
+{
+    datiFiltrati->clear();
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+        cliente* cliente = *it;
+        if (dynamic_cast<piscina*>(cliente) != nullptr){
+                datiFiltrati->aggiungiDavanti(*it);
+        }
+    }
+}
+
+void model::filterPalestra()
+{
+    datiFiltrati->clear();
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+        cliente* cliente = *it;
+        if (dynamic_cast<palestra*>(cliente) != nullptr){
+                datiFiltrati->aggiungiDavanti(*it);
+        }
+    }
+}
+
 
 
 
@@ -368,9 +393,8 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
             cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
         datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
-        //resetfiltro(); //mettere in ordine col filtraggio, bisognerà sistemare la sua implementazione!!! capire se serve perchè abbiamo implementato il filtraggio di gotta
     //}
-
+        resetfiltro();
         emit clienteAggiunto();
 }
 
@@ -393,4 +417,5 @@ void model::modificaItem(const unsigned int indice, const QStringList e)        
         cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     datiTotali->rimpiazzaFinale (indice, cliente);
+    resetfiltro();
 }
