@@ -29,23 +29,37 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     divH->addLayout(verticalSxLayout);
 
     setLayout(mainLayout);
+    //************** IMMAGINE ******************
+//    QHBoxLayout* imageLayout =new QHBoxLayout();
+//    QPixmap*  pix = new QPixmap(":/foto.png");
+//    QLabel* image = new QLabel(this);
+//    image->setPixmap(*pix);
+//    image->setAlignment(Qt::AlignCenter);
+//    imageLayout->addWidget(image);
+//    verticalDxLayout->addLayout(imageLayout);
+
 
     //************** FILTRI ********************
-
+    QGroupBox *filtriGroup = new QGroupBox("Filtri");
+    QGridLayout* filtriGrid = new QGridLayout();
     All = new QCheckBox("All",this);
     palestraCheckFiltro = new QCheckBox("Palestra",this);
     piscinaCheckFiltro = new QCheckBox("Piscina",this);
     minorenne = new QCheckBox("Minorenne",this);
     maggiorenne = new QCheckBox("Maggiorenne",this);
     deseleziona = new QCheckBox("Deseleziona Tutto",this);
-    lineCerca = new QLineEdit(this);
-    gridLayout->addWidget(All,0,0);
-    gridLayout->addWidget(palestraCheckFiltro,1,0);
-    gridLayout->addWidget(piscinaCheckFiltro,2,0);
-    gridLayout->addWidget(minorenne,0,1);
-    gridLayout->addWidget(maggiorenne,1,1);
-    gridLayout->addWidget(deseleziona,2,1);
-    gridLayout->addWidget(lineCerca,2,2);
+    filtriGrid->addWidget(All,0,0);
+    filtriGrid->addWidget(palestraCheckFiltro,1,0);
+    filtriGrid->addWidget(piscinaCheckFiltro,0,1);
+    filtriGrid->addWidget(minorenne,1,1);
+    filtriGrid->addWidget(maggiorenne,0,2);
+    filtriGrid->addWidget(deseleziona,1,2);
+    filtriGroup->setLayout(filtriGrid);
+    verticalSxLayout->addWidget(filtriGroup);
+
+
+   // gridLayout->addWidget(cercaLabel,2,2);
+   // gridLayout->addWidget(lineCerca,2,3);
 
     //************** CLIENTI ********************
 
@@ -57,8 +71,15 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
        addButton = new QPushButton("Aggiungi",this);
        modButton = new QPushButton("Modifica",this);
        removeButton = new QPushButton("Rimuovi",this);
+       QLabel *cercaLabel = new QLabel(tr("Cerca:"));
+       lineCerca = new QLineEdit(this);
 
+       cercaHBottoni = new QHBoxLayout();
+       verticalSxLayout->addLayout(cercaHBottoni);
+       cercaHBottoni->addWidget(cercaLabel);
+       cercaHBottoni->addWidget(lineCerca);
        verticalSxLayout->addWidget(clientiGroup);
+
        hLeftBottoni = new QHBoxLayout();
        verticalSxLayout->addLayout(hLeftBottoni);
        hLeftBottoni->addWidget(addButton);
@@ -129,9 +150,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
-    connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
-    connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
-    connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
 
 }
 

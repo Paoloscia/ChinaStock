@@ -52,7 +52,7 @@ private:
     QVBoxLayout* mainLayout;
     QGridLayout* gridLayout;
     QVBoxLayout* verticalDxLayout, *verticalSxLayout;
-    QHBoxLayout* divH, *hLeftBottoni;
+    QHBoxLayout* divH, *hLeftBottoni,*cercaHBottoni, *imageLayout;
     QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
     QCheckBox* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona;
@@ -60,8 +60,8 @@ private:
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* addButton,*modButton,*removeButton;
     viewListaClienti *listaClienti;
-    QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel;
-    QGroupBox* piscinaGroup,* palestraGroup;
+    QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel,*cercaLabel;
+    QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;
     void setMainWindowStyle();
     //void handleSearchClick(); da implementare
 
@@ -75,9 +75,6 @@ signals:
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);
 
-    void filtroPiscina();
-    void filtroTutti();
-    void filtroPalestra();
 };
 
 #endif // GUI_H
