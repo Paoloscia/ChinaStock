@@ -319,7 +319,7 @@ void model::rimuoviCliente(const unsigned int i)
 deepPointer<cliente> model::mostraCliente(const unsigned int i)
 {
     deepPointer<cliente> clienteDaVisualizzare;
-    clienteDaVisualizzare = (datiTotali->prendiNodoIndice(i));
+    clienteDaVisualizzare = (datiFiltrati->prendiNodoIndice(i));
     return clienteDaVisualizzare;
 }
 
