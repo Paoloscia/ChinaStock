@@ -55,7 +55,7 @@ private:
     QHBoxLayout* divH, *hLeftBottoni,*cercaHBottoni, *imageLayout;
     QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
-    QCheckBox* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona;
+    QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* addButton,*modButton,*removeButton;
@@ -74,7 +74,9 @@ signals:
     //void clickedSearch(QString searchText); da implementare search
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);
-
+    void filtroPiscina();
+    void filtroTutti();
+    void filtroPalestra();
 };
 
 #endif // GUI_H
