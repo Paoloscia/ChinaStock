@@ -30,6 +30,7 @@ public slots:
     void filtraClientiPalestra();
     void filtraClientiMaggiorenni();
     void filtraClientiMinorenni();
+    void filtraClientiStudenti();
 
 signals:
     void pulisciCampi();

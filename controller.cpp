@@ -14,7 +14,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroPalestra()), this, SLOT(filtraClientiPalestra()));
     connect(view, SIGNAL(filtroMaggiorenne()), this, SLOT(filtraClientiMaggiorenni()));
     connect(view, SIGNAL(filtroMinorenne()), this, SLOT(filtraClientiMinorenni()));
-
+    connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
@@ -106,6 +106,12 @@ void controller::filtraClientiMaggiorenni()
 void controller::filtraClientiMinorenni()
 {
     m->filterMinorenne();
+    resetListaClienti();
+}
+
+void controller::filtraClientiStudenti()
+{
+    m->filterStudente();
     resetListaClienti();
 }
 

@@ -393,6 +393,18 @@ void model::filterMinorenne()
     }
 }
 
+void model::filterStudente()
+{
+    datiFiltrati->clear();
+    for(auto it = datiTotali->inizio(); it!= datiTotali->fine(); ++it){
+        cliente* cliente = *it;
+        if(cliente->getstudent() == true)
+        datiFiltrati->aggInOrdine(*it);
+
+    }
+
+}
+
 
 
 

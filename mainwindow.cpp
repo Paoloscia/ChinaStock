@@ -46,11 +46,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     piscinaCheckFiltro = new QPushButton("Piscina",this);
     minorenne = new QPushButton("Minorenne",this);
     maggiorenne = new QPushButton("Maggiorenne",this);
+    studente = new QPushButton("Studente",this);
     filtriGrid->addWidget(All,0,0);
     filtriGrid->addWidget(palestraCheckFiltro,1,0);
     filtriGrid->addWidget(piscinaCheckFiltro,0,1);
     filtriGrid->addWidget(minorenne,1,1);
     filtriGrid->addWidget(maggiorenne,0,2);
+    filtriGrid->addWidget(studente,1,2);
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
 
@@ -149,6 +151,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
     connect(maggiorenne, SIGNAL(clicked()), this, SIGNAL(filtroMaggiorenne()));
     connect(minorenne, SIGNAL(clicked()) , this , SIGNAL(filtroMinorenne()));
+    connect(studente, SIGNAL(clicked()) , this , SIGNAL (filtroStudente()));
 }
 
 void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
