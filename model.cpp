@@ -345,6 +345,54 @@ void model::filterPalestra()
     }
 }
 
+void model::filterMaggiorenne()
+{
+    datiFiltrati->clear();
+    for(auto it = datiTotali->inizio(); it!= datiTotali->fine(); ++it){
+        cliente* cliente = *it;
+        int year = QDate::currentDate().year();
+        int month = QDate::currentDate().month();
+        int day = QDate:: currentDate().day();
+        if(year-cliente->getAnnoN() > 18)
+        datiFiltrati->aggInOrdine(*it);
+        else
+            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() >= month)
+        {
+              if(cliente->getMeseN() < month)
+              datiFiltrati->aggInOrdine(*it);
+
+              if(cliente->getMeseN() == month && cliente->getGiornoN() <= day)
+              datiFiltrati->aggInOrdine(*it);
+        }
+
+
+    }
+}
+
+void model::filterMinorenne()
+{
+    datiFiltrati->clear();
+    for(auto it = datiTotali->inizio(); it!= datiTotali->fine(); ++it){
+        cliente* cliente = *it;
+        int year = QDate::currentDate().year();
+        int month = QDate::currentDate().month();
+        int day = QDate:: currentDate().day();
+        if(year-cliente->getAnnoN() < 18)
+        datiFiltrati->aggInOrdine(*it);
+        else
+            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() <= month)
+        {
+              if(cliente->getMeseN() > month)
+              datiFiltrati->aggInOrdine(*it);
+
+              if(cliente->getMeseN() == month && cliente->getGiornoN() > day)
+              datiFiltrati->aggInOrdine(*it);
+        }
+
+
+    }
+}
+
 
 
 

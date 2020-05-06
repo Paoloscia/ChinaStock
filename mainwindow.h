@@ -77,6 +77,8 @@ signals:
     void filtroPiscina();
     void filtroTutti();
     void filtroPalestra();
+    void filtroMaggiorenne();
+    void filtroMinorenne();
 };
 
 #endif // GUI_H

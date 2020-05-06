@@ -39,6 +39,8 @@ public:
     deepPointer<cliente> mostraCliente(const unsigned int);
     void filterPiscina();
     void filterPalestra();
+    void filterMaggiorenne();
+    void filterMinorenne();
 
 public slots:
     void aggNelContainer(const QStringList);

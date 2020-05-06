@@ -147,6 +147,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
     connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
     connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
+    connect(maggiorenne, SIGNAL(clicked()), this, SIGNAL(filtroMaggiorenne()));
+    connect(minorenne, SIGNAL(clicked()) , this , SIGNAL(filtroMinorenne()));
 }
 
 void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato

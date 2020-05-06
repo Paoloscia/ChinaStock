@@ -28,6 +28,8 @@ public slots:
     void filtraClientiPiscina();
     void filtraTuttiClienti();
     void filtraClientiPalestra();
+    void filtraClientiMaggiorenni();
+    void filtraClientiMinorenni();
 
 signals:
     void pulisciCampi();
