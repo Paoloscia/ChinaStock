@@ -356,7 +356,7 @@ void model::filterMaggiorenne()
         if(year-cliente->getAnnoN() > 18)
         datiFiltrati->aggInOrdine(*it);
         else
-            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() >= month)
+            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() <= month)
         {
               if(cliente->getMeseN() < month)
               datiFiltrati->aggInOrdine(*it);
@@ -380,7 +380,7 @@ void model::filterMinorenne()
         if(year-cliente->getAnnoN() < 18)
         datiFiltrati->aggInOrdine(*it);
         else
-            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() <= month)
+            if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() >= month)
         {
               if(cliente->getMeseN() > month)
               datiFiltrati->aggInOrdine(*it);
