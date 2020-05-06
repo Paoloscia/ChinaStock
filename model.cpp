@@ -26,7 +26,7 @@ void model::resetfiltro() const
     datiFiltrati->clear();
     for(auto it = datiTotali->inizio();it!=datiTotali->fine();++it)
      {
-        datiFiltrati->aggiungiDavanti(*it);
+        datiFiltrati->aggInOrdine(*it);
     }
 }
 
@@ -220,7 +220,7 @@ void model::carica(QString path) const
             continue;
         }
 
-        datiTotali->aggiungiDavanti(res);
+        datiTotali->aggInOrdine(res);
     }
 
 }
@@ -329,7 +329,7 @@ void model::filterPiscina()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<piscina*>(cliente) != nullptr){
-                datiFiltrati->aggiungiDavanti(*it);
+                datiFiltrati->aggInOrdine(*it);
         }
     }
 }
@@ -340,7 +340,7 @@ void model::filterPalestra()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<palestra*>(cliente) != nullptr){
-                datiFiltrati->aggiungiDavanti(*it);
+                datiFiltrati->aggInOrdine(*it);
         }
     }
 }
@@ -392,7 +392,7 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
             QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
             cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
         }
-        datiTotali->aggiungiDavanti(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
+        datiTotali->aggInOrdine(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
     //}
         resetfiltro();
         emit clienteAggiunto();

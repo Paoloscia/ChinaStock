@@ -36,8 +36,8 @@ public:
     //bool operator==(const Container<T>&) const;   ci serve davvero?
     //bool operator!=(const Container<T>&) const;
 
-    void aggiungiDavanti(const T&);
-    void aggiungiDietro(const T&);
+//    void aggiungiDavanti(const T&);
+//    void aggiungiDietro(const T&);
     void aggInOrdine(const T&);
     void rimpiazzaFinale(unsigned int, const T&);
     //T prendiNodoIndice(unsigned int) const;
@@ -182,21 +182,21 @@ Container<T>& Container<T>::operator=(const Container & q)
 //    }
 //}
 
-template<class T>
-void Container<T>::aggiungiDietro(const T & obj)
-{
-    if (primo == nullptr) primo = ultimo = new nodo(obj);
-    else
-    {
-        ultimo->next = new nodo(obj);
-        ultimo = ultimo->next;
-    }
-}
+//template<class T>
+//void Container<T>::aggiungiDietro(const T & obj)
+//{
+//    if (primo == nullptr) primo = ultimo = new nodo(obj);
+//    else
+//    {
+//        ultimo->next = new nodo(obj);
+//        ultimo = ultimo->next;
+//    }
+//}
 
 
 
 template<class T> //commentato aggiungidavanti e sostituito con aggInOrdine (cambiare nome), capire perchè non funziona overloading deep pointer > e <
-void Container<T>::aggiungiDavanti(const T & obj){
+void Container<T>::aggInOrdine(const T & obj){
     nodo* cliente = new nodo(obj);
     if (primo == nullptr) primo = ultimo = new nodo(obj);
     else if (primo->info > cliente->info) {
@@ -218,7 +218,7 @@ void Container<T>::aggiungiDavanti(const T & obj){
 template<class T>
 void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModificato){
     rimuoviIndice(indice);
-    aggiungiDavanti(clienteModificato);
+    aggInOrdine(clienteModificato);
 }
 
 // template <class T> capire se cancellare o tenere!!!

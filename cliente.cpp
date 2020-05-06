@@ -7,6 +7,36 @@ cliente *cliente::clone() const
     return new cliente(*this);
 }
 
+bool cliente::operator<(const cliente& c) const
+{
+    if(nome<c.getnome())
+        return true;
+    else if (nome == c.getnome()) {
+        if (cognome < c.getcognome())
+            return true;
+        else if (cognome == c.getcognome()) {
+            if (codicefiscale < c.getcodfiscale())
+                return true;
+        }
+    }
+    return false;
+}
+
+bool cliente::operator>(const cliente & c) const
+{
+    if(nome>c.getnome())
+        return true;
+    else if (nome == c.getnome()) {
+        if (cognome > c.getcognome())
+            return true;
+        else if (cognome == c.getcognome()) {
+            if (codicefiscale > c.getcodfiscale())
+                return true;
+        }
+    }
+    return false;
+}
+
 string cliente::getnome() const
 {
     return nome;

@@ -22,6 +22,9 @@ public:
 
     virtual cliente* clone() const; //DA CONTROLLARE!!
 
+    virtual bool operator<(const cliente&) const; //capire se è giusto virtual
+    virtual bool operator>(const cliente&) const;
+
     string getnome() const; //forse bisognerà passare per riferimento costante le stringhe ritornate per non fare la copia, quindi const string& come ritorno
     string getcognome() const;
     QDate getDataN() const;
