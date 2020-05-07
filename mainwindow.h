@@ -25,10 +25,6 @@
 #include"palestra.h"
 #include"vip.h"
 
-#include<iostream>
-using std::cout;
-using std::endl;
-
 class mainwindow : public QWidget
 {
     Q_OBJECT
