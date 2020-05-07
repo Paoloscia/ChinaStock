@@ -2,7 +2,7 @@
 
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
-    //carica(path); da implementare, ricordarsi di togliere commento a costruttore di controller che pesca data.xml
+    carica(path);
     resetfiltro();
 }
 

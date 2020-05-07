@@ -2,6 +2,7 @@
 #define CONTROLLER_H
 
 #include <QObject>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
@@ -25,6 +26,7 @@ public slots:
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
     void mostraCliente(const unsigned int);
+    void salvaIfModificato();
     void filtraClientiPiscina();
     void filtraTuttiClienti();
     void filtraClientiPalestra();

@@ -15,6 +15,8 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroMaggiorenne()), this, SLOT(filtraClientiMaggiorenni()));
     connect(view, SIGNAL(filtroMinorenne()), this, SLOT(filtraClientiMinorenni()));
     connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
+    connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
+
 
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
@@ -77,6 +79,13 @@ void controller::rimpiazzaItem(const unsigned int indice, const QStringList stri
 
 void controller::mostraCliente(const unsigned int cliente){
     view->visualizzaDettagliCliente(m->mostraCliente(indexTranslate[cliente]));
+}
+
+void controller::salvaIfModificato()
+{
+    //mettere la richiesta "sei sicuro?"
+    if (m->getModificato())
+        emit salvaFile();
 }
 
 void controller::filtraClientiPiscina()

@@ -309,6 +309,11 @@ void mainwindow::setMainWindowStyle()
     setStyleSheet(styleSheet);
 }
 
+void mainwindow::chiudiApp(QCloseEvent *)
+{
+    emit controllaModificato();
+}
+
 
 /*
 void mainwindow::handleSearchClick()

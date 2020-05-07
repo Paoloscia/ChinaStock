@@ -9,15 +9,16 @@
 #include<QGroupBox>
 #include<QHBoxLayout>
 #include<QLabel>
-#include <QFormLayout>
-#include <QLineEdit>
-#include <QDateEdit>
-#include <QDate>
-#include <QGroupBox>
-#include <QPushButton>
-#include <QFile>
+#include<QFormLayout>
+#include<QLineEdit>
+#include<QDateEdit>
+#include<QDate>
+#include<QGroupBox>
+#include<QPushButton>
+#include<QFile>
 #include<QMessageBox>
-#include "viewlistaclienti.h"
+#include<QCloseEvent>
+#include"viewlistaclienti.h"
 #include"deeppointer.h"
 #include"cliente.h"
 #include"piscina.h"
@@ -63,8 +64,8 @@ private:
     QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel,*cercaLabel;
     QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;
     void setMainWindowStyle();
-    //void handleSearchClick(); da implementare
 
+    void chiudiApp(QCloseEvent*);
 
 signals:
     void signOpenAddWindow();
@@ -80,6 +81,7 @@ signals:
     void filtroMaggiorenne();
     void filtroMinorenne();
     void filtroStudente();
+    void controllaModificato();
 };
 
 #endif // GUI_H
