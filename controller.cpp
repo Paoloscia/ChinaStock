@@ -85,9 +85,9 @@ void controller::mostraCliente(const unsigned int cliente){
 }
 
 void controller::salvaIfModificato()
-{
-    //mettere la richiesta "sei sicuro?"
+{ 
     if (m->getModificato())
+        //mettere la richiesta "sei sicuro?", bisogna metterlo in chiusura e sistemare funzione che lo chiama e mostrare message box
         emit salvaFile();
 }
 
