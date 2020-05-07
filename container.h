@@ -472,7 +472,7 @@ typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
     return f;
 }
 
-template<class T>
+template<class T> //bisogna togliere questa funzione
 typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
 {
     if (f == nullptr)
