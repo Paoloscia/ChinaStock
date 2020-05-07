@@ -7,7 +7,7 @@ QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
     border-color:#FFAE42;
 }*/
 
-QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#minorenne:focus, QPushButton#maggiorenne:focus, QPushButton#studente:focus{
+QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
 /*background-color: green;*/
 /*background-color: #03c04a;*/
 background-color: #3cb043;
@@ -16,3 +16,4 @@ background-color: #3cb043;
 QLabel{
     padding-bottom:15px;
 }
+

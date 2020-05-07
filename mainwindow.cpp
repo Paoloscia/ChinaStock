@@ -64,13 +64,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
 
-    //aggiunta object name per css
-    palestraCheckFiltro->setObjectName(QStringLiteral("palestraCheckFiltro"));
-    piscinaCheckFiltro->setObjectName(QStringLiteral("piscinaCheckFiltro"));
-    minorenne->setObjectName(QStringLiteral("minorenne"));
-    maggiorenne->setObjectName(QStringLiteral("maggiorenne"));
-    studente->setObjectName(QStringLiteral("studente"));
-
     //************** CLIENTI ********************
 
     QGroupBox *clientiGroup = new QGroupBox("Lista Clienti");
@@ -153,6 +146,16 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** PARTE GRAFICA **************************
 
+    //aggiunta object name per css
+    palestraCheckFiltro->setObjectName(QStringLiteral("palestraCheckFiltro"));
+    piscinaCheckFiltro->setObjectName(QStringLiteral("piscinaCheckFiltro"));
+    checkfiltrominorenne->setObjectName(QStringLiteral("checkfiltrominorenne"));
+    checkfiltromaggiorenne->setObjectName(QStringLiteral("checkfiltromaggiorenne"));
+    checkfiltrostudente->setObjectName(QStringLiteral("checkfiltrostudente"));
+    checkVip->setObjectName(QStringLiteral("checkVip"));
+    checkfiltrocorsopiscina->setObjectName(QStringLiteral("checkfiltrocorsopiscina"));
+    checkfiltroschedapalestra->setObjectName(QStringLiteral("checkfiltroschedapalestra"));
+
     clienteGroup->setMinimumWidth(350);
     palestraGroup->setMinimumWidth(250);
 
@@ -172,7 +175,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(checkfiltrominorenne, SIGNAL(clicked()) , this , SIGNAL(filtroMinorenne()));
     connect(checkfiltrostudente, SIGNAL(clicked()) , this , SIGNAL (filtroStudente()));
     connect(checkVip, SIGNAL(clicked()), this , SIGNAL(filtroVip()));
-    connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SIGNAL(filtroCorsoPiscina()));
+    connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SIGNAL(filtroCorsoNuoto()));
     connect(checkfiltroschedapalestra, SIGNAL(clicked()), this , SIGNAL(filtroSchedaPalestra()));
 
 }
@@ -327,6 +330,7 @@ void mainwindow::setMainWindowStyle()
 
 void mainwindow::chiudiApp(QCloseEvent *)
 {
+    //QMessageBox::question(this, "AirPnP","Desideri salvare le modifiche?"); capire perchè non lo stampa
     emit controllaModificato();
 }
 

@@ -19,7 +19,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
 
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
-    connect(view, SIGNAL(filtroCorsoPiscina()), this, SLOT(filtraClientiIstruttoriPiscina()));
+    connect(view, SIGNAL(filtroCorsoNuoto()), this, SLOT(filtraClientiIstruttoriPiscina()));
     connect(view, SIGNAL(filtroSchedaPalestra()), this, SLOT(filtraClientiIStruttoriPalestra()));
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
