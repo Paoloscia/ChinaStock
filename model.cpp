@@ -14,18 +14,18 @@ model::~model()
        }
     // FORSE E' INUTILE DA RICONTROLLARE!!!!
 */
-       datiTotali->clear();
-       datiFiltrati->clear();
+    datiTotali->clear();
+    datiFiltrati->clear();
 
-       delete datiTotali;
-       delete datiFiltrati;
+    delete datiTotali;
+    delete datiFiltrati;
 }
 
 void model::resetfiltro() const
 {
     datiFiltrati->clear();
     for(auto it = datiTotali->inizio();it!=datiTotali->fine();++it)
-     {
+    {
         datiFiltrati->aggInOrdine(*it);
     }
 }
@@ -90,7 +90,7 @@ void model::salva()
             xw.writeTextElement("scadenzapalestraanno", QString::number(clientepalestra->getAnnoPalestra()));
         }
 
-//        else {xw.writeAttribute("type", "cliente");} CI SERVE?
+        //        else {xw.writeAttribute("type", "cliente");} CI SERVE?
 
         xw.writeStartElement("clienteInfo");
         xw.writeTextElement("nome", QString::fromStdString(cliente->getnome()));
@@ -107,6 +107,7 @@ void model::salva()
         xw.writeTextElement("mail", QString::fromStdString(cliente->getmail()));
         xw.writeTextElement("student", QString::number(cliente->getstudent()));
         xw.writeEndElement();
+        xw.writeEndElement();
     }
 
     xw.writeEndElement();
@@ -122,13 +123,15 @@ bool model::getModificato() const
 
 void model::carica(QString path) const
 {
+    string tmp = path.toStdString();
+
     QFile file(path);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QDomDocument r;
     r.setContent(&file);
 
-    QDomNodeList clienti = r.elementsByTagName("Clienti");
+    QDomNodeList clienti = r.elementsByTagName("cliente");
     for (int i = 0; i < clienti.size(); i++) {
         cliente *res = nullptr;
         QDomNode clienteNode = clienti.item(i);
@@ -177,7 +180,6 @@ void model::carica(QString path) const
             unsigned short int scadenzaPiscinaGiorno = static_cast<unsigned int>(scadenzaPiscinaGiornoElem.text().toInt());
             unsigned short int scadenzaPiscinaMese = static_cast<unsigned int>(scadenzaPiscinaMeseElem.text().toInt());
             unsigned short int scadenzaPiscinaAnno = static_cast<unsigned int>(scadenzaPiscinaAnnoElem.text().toInt());
-
             res = new piscina(nome, cognome, dataNascitaGiorno, dataNascitaMese, dataNascitaAnno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,corsonuoto,nomeistruttorepiscina,scadenzaPiscinaGiorno,scadenzaPiscinaMese,scadenzaPiscinaAnno);
 
 
@@ -260,33 +262,33 @@ QStringList model::getCampiCliente(const unsigned int indice) const
 
     }
 
-   else if(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+    else if(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
 
-       tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
-       tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
-       tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
-       tmp.push_back(QDate().toString());
-       tmp.push_back(QString::fromStdString(""));
-       tmp.push_back("false");
-       tmp.push_back("true");
-       tmp.push_back("false");
+        tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
+        tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
+        tmp.push_back(QDate().toString());
+        tmp.push_back(QString::fromStdString(""));
+        tmp.push_back("false");
+        tmp.push_back("true");
+        tmp.push_back("false");
 
-   }
-   else if(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+    }
+    else if(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
 
-       tmp.push_back(QDate().toString());
-       tmp.push_back(QString::fromStdString(""));
-       tmp.push_back("false");
-       tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
-       tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
-       tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
-       tmp.push_back("false");
-       tmp.push_back("true");
+        tmp.push_back(QDate().toString());
+        tmp.push_back(QString::fromStdString(""));
+        tmp.push_back("false");
+        tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
+        tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+        tmp.push_back("false");
+        tmp.push_back("true");
 
-       }
-//    else
-//        tmp.push_back("null");
-   return tmp;
+    }
+    //    else
+    //        tmp.push_back("null");
+    return tmp;
 }
 
 QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned int, unsigned int>& indexMapper) const
@@ -301,8 +303,8 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
             cliente = (QString::fromStdString((*(*it)).getnome() + " " + (*(*it)).getcognome()));
             if(cliente.contains(regex)){
                 indexMapper.insert((uint)ret.count(),count);
-//                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST
-//                    cliente += (QString::fromStdString(dynamic_cast<const Consumable*>(&(*(*it)))->getColorName()));
+                //                if(dynamic_cast<const Consumable*>(&(*(*it)))) CAPIRE SE POTREBBE SERVIRE PER QUALCOSA QUESTO DYNAMIC CAST
+                //                    cliente += (QString::fromStdString(dynamic_cast<const Consumable*>(&(*(*it)))->getColorName()));
                 ret.push_back(cliente);
             }
             count++;
@@ -335,7 +337,7 @@ void model::filterPiscina()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<piscina*>(cliente) != nullptr){
-                datiFiltrati->aggInOrdine(*it);
+            datiFiltrati->aggInOrdine(*it);
         }
     }
 }
@@ -346,7 +348,7 @@ void model::filterPalestra()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<palestra*>(cliente) != nullptr){
-                datiFiltrati->aggInOrdine(*it);
+            datiFiltrati->aggInOrdine(*it);
         }
     }
 }
@@ -360,16 +362,16 @@ void model::filterMaggiorenne()
         int month = QDate::currentDate().month();
         int day = QDate:: currentDate().day();
         if(year-cliente->getAnnoN() > 18)
-        datiFiltrati->aggInOrdine(*it);
+            datiFiltrati->aggInOrdine(*it);
         else
             if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() <= month)
-        {
-              if(cliente->getMeseN() < month)
-              datiFiltrati->aggInOrdine(*it);
+            {
+                if(cliente->getMeseN() < month)
+                    datiFiltrati->aggInOrdine(*it);
 
-              if(cliente->getMeseN() == month && cliente->getGiornoN() <= day)
-              datiFiltrati->aggInOrdine(*it);
-        }
+                if(cliente->getMeseN() == month && cliente->getGiornoN() <= day)
+                    datiFiltrati->aggInOrdine(*it);
+            }
 
 
     }
@@ -384,16 +386,16 @@ void model::filterMinorenne()
         int month = QDate::currentDate().month();
         int day = QDate:: currentDate().day();
         if(year-cliente->getAnnoN() < 18)
-        datiFiltrati->aggInOrdine(*it);
+            datiFiltrati->aggInOrdine(*it);
         else
             if(year-cliente->getAnnoN() == 18 && cliente->getMeseN() >= month)
-        {
-              if(cliente->getMeseN() > month)
-              datiFiltrati->aggInOrdine(*it);
+            {
+                if(cliente->getMeseN() > month)
+                    datiFiltrati->aggInOrdine(*it);
 
-              if(cliente->getMeseN() == month && cliente->getGiornoN() > day)
-              datiFiltrati->aggInOrdine(*it);
-        }
+                if(cliente->getMeseN() == month && cliente->getGiornoN() > day)
+                    datiFiltrati->aggInOrdine(*it);
+            }
 
 
     }
@@ -405,7 +407,7 @@ void model::filterStudente()
     for(auto it = datiTotali->inizio(); it!= datiTotali->fine(); ++it){
         cliente* cliente = *it;
         if(cliente->getstudent() == true)
-        datiFiltrati->aggInOrdine(*it);
+            datiFiltrati->aggInOrdine(*it);
 
     }
 
@@ -419,8 +421,8 @@ void model::filterVip()
         if (dynamic_cast<vip*>(cliente) != nullptr){
             datiFiltrati->aggInOrdine(*it);
         }
-       }
- }
+    }
+}
 
 
 
@@ -430,9 +432,9 @@ void model::filterCorsoPiscina()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<piscina*>(cliente) != nullptr){
-        piscina* x = dynamic_cast<piscina*>(cliente);
-        if(x->iscorsonuoto())
-        datiFiltrati->aggInOrdine(*it);
+            piscina* x = dynamic_cast<piscina*>(cliente);
+            if(x->iscorsonuoto())
+                datiFiltrati->aggInOrdine(*it);
         }
     }
 }
@@ -443,9 +445,9 @@ void model::filterSchedaPalestra()
     for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
         cliente* cliente = *it;
         if (dynamic_cast<palestra*>(cliente) != nullptr){
-         palestra* x = dynamic_cast<palestra*>(cliente);
-         if(x->isscheda())
-         datiFiltrati->aggInOrdine(*it);
+            palestra* x = dynamic_cast<palestra*>(cliente);
+            if(x->isscheda())
+                datiFiltrati->aggInOrdine(*it);
 
         }
     }
@@ -484,25 +486,25 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
     //if(e.at(0)!=""){ mettere come controllo se serve!!!
     modificato=true;
     deepPointer<cliente> cliente;
-        QDate dataNascitaTmp = QDate::fromString(e.at(9));
-        //è da fare l'inserimento nel container pescando i dati del model!!!
-        if (e.at(17) == "true" && e.at(18) == "true") { //VIP
-            QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-            QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-            cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
-        }
-        else if(e.at(17) == "true" && e.at(18) == "false"){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
-            QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-            cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
-        }
-        else if (e.at(17) == "false" && e.at(18) == "true") { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
-            QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-            cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
-        }
-        datiTotali->aggInOrdine(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
+    QDate dataNascitaTmp = QDate::fromString(e.at(9));
+    //è da fare l'inserimento nel container pescando i dati del model!!!
+    if (e.at(17) == "true" && e.at(18) == "true") { //VIP
+        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
+        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
+        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    }
+    else if(e.at(17) == "true" && e.at(18) == "false"){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
+        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
+        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
+    }
+    else if (e.at(17) == "false" && e.at(18) == "true") { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
+        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
+        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    }
+    datiTotali->aggInOrdine(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
     //}
-        resetfiltro();
-        emit clienteAggiunto();
+    resetfiltro();
+    emit clienteAggiunto();
 }
 
 void model::modificaItem(const unsigned int indice, const QStringList e)               //è una copia di aggNelContainer a cui cambia qualcosina minuscola

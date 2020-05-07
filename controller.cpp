@@ -34,7 +34,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!
 
     connect(ModifyClientW, SIGNAL(rimpiazzaCliente(const unsigned int,const QStringList)), this, SLOT(rimpiazzaItem(const unsigned int, QStringList)));
-
+    resetListaClienti();
     view->show();
 }
 
