@@ -8,5 +8,11 @@ QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
 }*/
 
 QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#minorenne:focus, QPushButton#maggiorenne:focus, QPushButton#studente:focus{
-background-color: green;
+/*background-color: green;*/
+/*background-color: #03c04a;*/
+background-color: #3cb043;
+}
+
+QLabel{
+    padding-bottom:15px;
 }
