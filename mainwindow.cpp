@@ -49,8 +49,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     checkfiltromaggiorenne = new QPushButton("Maggiorenne",this);
     checkfiltrostudente = new QPushButton("Studente",this);
     checkVip = new QPushButton("Vip",this);
-    checkfiltrocorsopiscina = new QPushButton("Scheda Piscina",this);
-    checkfiltroschedapalestra = new QPushButton("Scheda Palestra",this);
+    checkfiltrocorsopiscina = new QPushButton("Corso nuoto",this);
+    checkfiltroschedapalestra = new QPushButton("Scheda palestra",this);
     filtriGrid->addWidget(All,0,0);
     filtriGrid->addWidget(palestraCheckFiltro,1,0);
     filtriGrid->addWidget(piscinaCheckFiltro,0,1);
