@@ -411,6 +411,46 @@ void model::filterStudente()
 
 }
 
+void model::filterVip()
+{
+    datiFiltrati->clear();
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+        cliente* cliente = *it;
+        if (dynamic_cast<vip*>(cliente) != nullptr){
+            datiFiltrati->aggInOrdine(*it);
+        }
+       }
+ }
+
+
+
+void model::filterCorsoPiscina()
+{
+    datiFiltrati->clear();
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+        cliente* cliente = *it;
+        if (dynamic_cast<piscina*>(cliente) != nullptr){
+        piscina* x = dynamic_cast<piscina*>(cliente);
+        if(x->iscorsonuoto())
+        datiFiltrati->aggInOrdine(*it);
+        }
+    }
+}
+
+void model::filterSchedaPalestra()
+{
+    datiFiltrati->clear();
+    for (auto it = datiTotali->inizio(); it != datiTotali->fine(); ++it) {
+        cliente* cliente = *it;
+        if (dynamic_cast<palestra*>(cliente) != nullptr){
+         palestra* x = dynamic_cast<palestra*>(cliente);
+         if(x->isscheda())
+         datiFiltrati->aggInOrdine(*it);
+
+        }
+    }
+}
+
 
 
 

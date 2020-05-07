@@ -18,6 +18,9 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
 
 
+    connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
+    connect(view, SIGNAL(filtroCorsoPiscina()), this, SLOT(filtraClientiIstruttoriPiscina()));
+    connect(view, SIGNAL(filtroSchedaPalestra()), this, SLOT(filtraClientiIStruttoriPalestra()));
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
@@ -124,6 +127,23 @@ void controller::filtraClientiStudenti()
     resetListaClienti();
 }
 
+void controller::filtraClientiVip()
+{
+    m->filterVip();
+    resetListaClienti();
+}
+
+void controller::filtraClientiIstruttoriPiscina()
+{
+    m->filterCorsoPiscina();
+    resetListaClienti();
+}
+
+void controller::filtraClientiIStruttoriPalestra()
+{
+    m->filterSchedaPalestra();
+    resetListaClienti();
+}
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
 {

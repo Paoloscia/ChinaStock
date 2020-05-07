@@ -42,6 +42,9 @@ public:
     void filterMaggiorenne();
     void filterMinorenne();
     void filterStudente();
+    void filterVip();
+    void filterCorsoPiscina();
+    void filterSchedaPalestra();
 
 public slots:
     void aggNelContainer(const QStringList);

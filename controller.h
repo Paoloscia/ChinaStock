@@ -33,6 +33,10 @@ public slots:
     void filtraClientiMaggiorenni();
     void filtraClientiMinorenni();
     void filtraClientiStudenti();
+    void filtraClientiVip();
+    void filtraClientiIstruttoriPiscina();
+    void filtraClientiIStruttoriPalestra();
+
 
 signals:
     void pulisciCampi();

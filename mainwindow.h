@@ -52,7 +52,7 @@ private:
     QHBoxLayout* divH, *hLeftBottoni,*cercaHBottoni, *imageLayout;
     QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
     QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
-    QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*minorenne,*maggiorenne,*deseleziona,*studente;
+    QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*checkfiltrominorenne,*checkfiltromaggiorenne,*deseleziona,*checkfiltrostudente,*checkVip,*checkfiltrocorsopiscina,*checkfiltroschedapalestra;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* addButton,*modButton,*removeButton;
@@ -78,6 +78,9 @@ signals:
     void filtroMinorenne();
     void filtroStudente();
     void controllaModificato();
+    void filtroVip();
+    void filtroCorsoNuoto();
+    void filtroSchedaPalestra();
 };
 
 #endif // GUI_H

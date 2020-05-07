@@ -45,15 +45,22 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     All = new QPushButton("Rimuovi filtro",this);
     palestraCheckFiltro = new QPushButton("Palestra",this);
     piscinaCheckFiltro = new QPushButton("Piscina",this);
-    minorenne = new QPushButton("Minorenne",this);
-    maggiorenne = new QPushButton("Maggiorenne",this);
-    studente = new QPushButton("Studente",this);
+    checkfiltrominorenne = new QPushButton("Minorenne",this);
+    checkfiltromaggiorenne = new QPushButton("Maggiorenne",this);
+    checkfiltrostudente = new QPushButton("Studente",this);
+    checkVip = new QPushButton("Vip",this);
+    checkfiltrocorsopiscina = new QPushButton("Scheda Piscina",this);
+    checkfiltroschedapalestra = new QPushButton("Scheda Palestra",this);
     filtriGrid->addWidget(All,0,0);
     filtriGrid->addWidget(palestraCheckFiltro,1,0);
     filtriGrid->addWidget(piscinaCheckFiltro,0,1);
-    filtriGrid->addWidget(minorenne,1,1);
-    filtriGrid->addWidget(maggiorenne,0,2);
-    filtriGrid->addWidget(studente,1,2);
+    filtriGrid->addWidget(checkfiltrominorenne,1,1);
+    filtriGrid->addWidget(checkfiltromaggiorenne,0,2);
+    filtriGrid->addWidget(checkfiltrostudente,1,2);
+    filtriGrid->addWidget(checkVip,2,0);
+    filtriGrid->addWidget(checkfiltrocorsopiscina,2,1);
+    filtriGrid->addWidget(checkfiltroschedapalestra,2,2);
+
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
 
@@ -161,9 +168,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
     connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
     connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
-    connect(maggiorenne, SIGNAL(clicked()), this, SIGNAL(filtroMaggiorenne()));
-    connect(minorenne, SIGNAL(clicked()) , this , SIGNAL(filtroMinorenne()));
-    connect(studente, SIGNAL(clicked()) , this , SIGNAL (filtroStudente()));
+    connect(checkfiltromaggiorenne, SIGNAL(clicked()), this, SIGNAL(filtroMaggiorenne()));
+    connect(checkfiltrominorenne, SIGNAL(clicked()) , this , SIGNAL(filtroMinorenne()));
+    connect(checkfiltrostudente, SIGNAL(clicked()) , this , SIGNAL (filtroStudente()));
+    connect(checkVip, SIGNAL(clicked()), this , SIGNAL(filtroVip()));
+    connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SIGNAL(filtroCorsoPiscina()));
+    connect(checkfiltroschedapalestra, SIGNAL(clicked()), this , SIGNAL(filtroSchedaPalestra()));
+
 }
 
 void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
