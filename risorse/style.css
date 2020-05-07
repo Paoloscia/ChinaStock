@@ -6,3 +6,7 @@ QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
 /*QDateEdit::drop-down{
     border-color:#FFAE42;
 }*/
+
+QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#minorenne:focus, QPushButton#maggiorenne:focus, QPushButton#studente:focus{
+background-color: green;
+}

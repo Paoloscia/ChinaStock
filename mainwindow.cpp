@@ -56,6 +56,12 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
 
+    //aggiunta object name per css
+    palestraCheckFiltro->setObjectName(QStringLiteral("palestraCheckFiltro"));
+    piscinaCheckFiltro->setObjectName(QStringLiteral("piscinaCheckFiltro"));
+    minorenne->setObjectName(QStringLiteral("minorenne"));
+    maggiorenne->setObjectName(QStringLiteral("maggiorenne"));
+    studente->setObjectName(QStringLiteral("studente"));
 
     //************** CLIENTI ********************
 
