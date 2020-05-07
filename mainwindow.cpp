@@ -51,6 +51,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     checkVip = new QPushButton("Vip",this);
     checkfiltrocorsopiscina = new QPushButton("Corso nuoto",this);
     checkfiltroschedapalestra = new QPushButton("Scheda palestra",this);
+    filtriGrid->addWidget(All,2,2); //tenere per primo, inizializzato per primo per impostare focus su questo
     filtriGrid->addWidget(piscinaCheckFiltro,0,0);
     filtriGrid->addWidget(palestraCheckFiltro,0,1);
     filtriGrid->addWidget(checkVip,0,2);
@@ -59,7 +60,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     filtriGrid->addWidget(checkfiltrostudente,1,2);
     filtriGrid->addWidget(checkfiltrocorsopiscina,2,0);
     filtriGrid->addWidget(checkfiltroschedapalestra,2,1);
-    filtriGrid->addWidget(All,2,2);
+
 
     filtriGroup->setLayout(filtriGrid);
     verticalSxLayout->addWidget(filtriGroup);
