@@ -12,6 +12,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QMenuBar* menubar = new QMenuBar(this);
     QMenu* menu= new QMenu("File",menubar);
     QAction* salva = new QAction("Salva",menu);
+    salva->setShortcut(Qt::Key_S | Qt::CTRL);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
     menu->addAction(salva);

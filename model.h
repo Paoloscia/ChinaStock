@@ -25,7 +25,7 @@ public:
     void cancellaOggetto(cliente *, bool = true);
 
     void salva();
-
+    bool getModificato() const;
     void carica(QString path) const;
 
     //partire da clear, reset filter e costruttore

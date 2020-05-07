@@ -115,6 +115,11 @@ void model::salva()
     file.close();
 }
 
+bool model::getModificato() const
+{
+    return modificato;
+}
+
 void model::carica(QString path) const
 {
     QFile file(path);
@@ -310,6 +315,7 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
 
 void model::rimuoviCliente(const unsigned int i)
 {
+    modificato=true;
     datiTotali->rimuoviIndice(i); //era removeOneAtIndex
     resetfiltro();
     emit clienteRimosso();
@@ -436,7 +442,8 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
 {   //PASSIAMO UN CHECKBOX FLEGGATO SE è STATO SELEZIONATO UNO SPECIFICO ABBONAMENTO PISCINA PALESTRA O VIP, IN BASE A QUELLO CAPIAMO CHE TIPO è
     //modificato = true; commentato per segfault
     //if(e.at(0)!=""){ mettere come controllo se serve!!!
-        deepPointer<cliente> cliente;
+    modificato=true;
+    deepPointer<cliente> cliente;
         QDate dataNascitaTmp = QDate::fromString(e.at(9));
         //è da fare l'inserimento nel container pescando i dati del model!!!
         if (e.at(17) == "true" && e.at(18) == "true") { //VIP
@@ -460,6 +467,7 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
 
 void model::modificaItem(const unsigned int indice, const QStringList e)               //è una copia di aggNelContainer a cui cambia qualcosina minuscola
 {
+    modificato=true;
     deepPointer<cliente> cliente;
     QDate dataNascitaTmp = QDate::fromString(e.at(9));
     //è da fare l'inserimento nel container pescando i dati del model!!!
