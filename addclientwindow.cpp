@@ -112,6 +112,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     annullaButton = new QPushButton("Annulla",this);
 
     hdestraBottoni = new QHBoxLayout();
+    hdestraBottoni->setAlignment(Qt::AlignBottom);
     verticalDxLayout->addLayout(hdestraBottoni);
     hdestraBottoni->addWidget(salvaButton);
     hdestraBottoni->addWidget(annullaButton);
