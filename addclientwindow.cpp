@@ -18,6 +18,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale(*): "));
     codFiscLineEdit = new QLineEdit();
     //codFiscLabel->setBuddy(codFiscLineEdit);
+    codFiscLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Z0-9]+\\.[A-Z]{0,9}")));
 
     QLabel *ldnLabel = new QLabel(tr("Luogo di nascita: "));
     ldnLineEdit = new QLineEdit();
@@ -30,11 +31,15 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     QLabel *viaLabel = new QLabel(tr("Via: "));
     viaLineEdit = new QLineEdit();
     //viaLabel->setBuddy(viaLineEdit);
+
     QLabel *numeroLabel = new QLabel(tr("Numero Via:"));
     numeroviaLineEdit = new QLineEdit();
+    numeroviaLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]\\d{0,3}")));
 
-    QLabel *telefonoLabel = new QLabel(tr("Telefono: "));
+    QLabel *telefonoLabel = new QLabel(tr("Telefono: ")); 
     telefonoLineEdit = new QLineEdit();
+    telefonoLineEdit->setValidator(new QRegExpValidator(QRegExp("[1-9._%+]\\d{0,12}")));
+
     //telefonoLabel->setBuddy(telefonoLineEdit);
 
     QLabel *mailLabel = new QLabel(tr("Mail: "));
