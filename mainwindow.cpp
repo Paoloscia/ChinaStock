@@ -70,10 +70,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QGroupBox *clientiGroup = new QGroupBox("Lista Clienti");
     listaClienti->setSelectionMode(QAbstractItemView::SingleSelection);
     QVBoxLayout *layoutListaClienti = new QVBoxLayout();
-    QLabel *cercaLabel = new QLabel(tr("Cerca:"));
     lineCerca = new QLineEdit(this);
+    lineCerca->setPlaceholderText("Cerca");
     cercaHBottoni = new QHBoxLayout();
-    cercaHBottoni->addWidget(cercaLabel);
     cercaHBottoni->addWidget(lineCerca);
     layoutListaClienti->addLayout(cercaHBottoni);
     layoutListaClienti->addWidget(listaClienti);
