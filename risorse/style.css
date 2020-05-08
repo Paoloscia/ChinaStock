@@ -1,19 +1,28 @@
 QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
-    background-color:#FFAE42;
-    /*background-color:#87ceeb;*/
+background-color:#FFAE42;
+/*background-color:#87ceeb;*/
 }
 
 /*QDateEdit::drop-down{
-    border-color:#FFAE42;
+border-color:#FFAE42;
 }*/
-
+cognome
 QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
 /*background-color: green;*/
 /*background-color: #03c04a;*/
 background-color: #3cb043;
 }
 
-QLabel#nomeClienteLabel,QLabel#cognomeClienteLabel,QLabel#codiceFClienteLabel,QLabel#LuogoDNLabel,QLabel#residenzaClienteLabel,QLabel#viaClienteLabel,QLabel#telefonoClienteLabel,QLabel#mailClienteLabel,QLabel#datadNClienteLabel,QLabel#studenteClienteLabel,QLabel#AbbonamentoPiscinaLabel,QLabel#nomeIstruttorePiscinaLabel,QLabel#corsoNuotoClienteLabel,QLabel#AbbonamentoPalestraLabel,QLabel#nomeIstruttorePalestraLabel,QLabel#schedaPalestraClienteLabel{
-    padding-top:10px;
-    padding-bottom:10px;
+
+QGroupBox#clienteGroupHome{
+min-width:350px;
+}
+
+QGroupBox#piscinaGroupHome,QGroupBox#palestraGroupHome{
+min-width:250px;
+}
+
+QGroupBox#clienteGroupHome QLabel,QGroupBox#piscinaGroupHome QLabel,QGroupBox#palestraGroupHome QLabel{
+padding-top:10px;
+padding-bottom:10px;
 }

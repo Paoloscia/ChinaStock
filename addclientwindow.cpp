@@ -1,7 +1,7 @@
 #include "addclientwindow.h"
 addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
-    setMinimumSize(200,200);
+    setMinimumSize(580,400);
     setWindowTitle("Finestra aggiunta clienti");
     mainLayout = new QHBoxLayout(this);
 
@@ -9,34 +9,29 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
 
     QLabel *nomeLabel = new QLabel(tr("Nome(*): "));
     nomeLineEdit = new QLineEdit();
-    nomeLineEdit->setPlaceholderText("es.Carlo");
+    nomeLineEdit->setPlaceholderText("es. Carlo");
     //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
 
     QLabel *cognomeLabel = new QLabel(tr("Cognome(*): "));
     cognomeLineEdit = new QLineEdit();
-    cognomeLineEdit->setPlaceholderText("es.Rossi");
-    //cognomeLabel->setBuddy(cognomeLineEdit);
+    cognomeLineEdit->setPlaceholderText("es. Rossi");
 
     QLabel *codFiscLabel = new QLabel(tr("Codice Fiscale(*): "));
     codFiscLineEdit = new QLineEdit();
-    //codFiscLabel->setBuddy(codFiscLineEdit);
     codFiscLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-Z0-9]{0,20}")));
-    codFiscLineEdit->setPlaceholderText("es.PDYGZF45B63M297E");
+    codFiscLineEdit->setPlaceholderText("es. PDYGZF45B63M297E");
 
     QLabel *ldnLabel = new QLabel(tr("Luogo di nascita: "));
     ldnLineEdit = new QLineEdit();
-    ldnLineEdit->setPlaceholderText("es.Padova");
-    //ldnLabel->setBuddy(ldnLineEdit);
+    ldnLineEdit->setPlaceholderText("es. Padova");
 
     QLabel *residenzaLabel = new QLabel(tr("Residenza: "));
     residenzaLineEdit = new QLineEdit();
-    residenzaLineEdit->setPlaceholderText("es.Villafranca");
-    //residenzaLabel->setBuddy(residenzaLineEdit);
+    residenzaLineEdit->setPlaceholderText("es. Villafranca");
 
     QLabel *viaLabel = new QLabel(tr("Via: "));
     viaLineEdit = new QLineEdit();
     viaLineEdit->setPlaceholderText("es. Giusti");
-    //viaLabel->setBuddy(viaLineEdit);
 
     QLabel *numeroLabel = new QLabel(tr("Numero Via:"));
     numeroviaLineEdit = new QLineEdit();
@@ -48,13 +43,9 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     telefonoLineEdit->setValidator(new QRegExpValidator(QRegExp("[+]{1}[0-9]{0,3}[0-9]{15}")));
     telefonoLineEdit->setPlaceholderText("es. +393481232567");
 
-    //telefonoLabel->setBuddy(telefonoLineEdit);
-
     QLabel *mailLabel = new QLabel(tr("Mail: "));
     mailLineEdit = new QLineEdit();
     mailLineEdit->setPlaceholderText("es. carlorossi@gmail.com");
-    //mailLabel->setBuddy(mailLineEdit);
-
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
     dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);

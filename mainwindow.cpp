@@ -156,25 +156,11 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     checkfiltrocorsopiscina->setObjectName(QStringLiteral("checkfiltrocorsopiscina"));
     checkfiltroschedapalestra->setObjectName(QStringLiteral("checkfiltroschedapalestra"));
 
-    nomeClienteLabel->setObjectName(QStringLiteral("nomeClienteLabel"));
-    cognomeClienteLabel->setObjectName(QStringLiteral("cognomeClienteLabel"));
-    codiceFClienteLabel->setObjectName(QStringLiteral("codiceFClienteLabel"));
-    LuogoDNLabel->setObjectName(QStringLiteral("LuogoDNLabel"));
-    residenzaClienteLabel->setObjectName(QStringLiteral("residenzaClienteLabel"));
-    viaClienteLabel->setObjectName(QStringLiteral("viaClienteLabel"));
-    telefonoClienteLabel->setObjectName(QStringLiteral("telefonoClienteLabel"));
-    mailClienteLabel->setObjectName(QStringLiteral("mailClienteLabel"));
-    datadNClienteLabel->setObjectName(QStringLiteral("datadNClienteLabel"));
-    studenteClienteLabel->setObjectName(QStringLiteral("studenteClienteLabel"));
-    AbbonamentoPiscinaLabel->setObjectName(QStringLiteral("AbbonamentoPiscinaLabel"));
-    nomeIstruttorePiscinaLabel->setObjectName(QStringLiteral("nomeIstruttorePiscinaLabel"));
-    corsoNuotoClienteLabel->setObjectName(QStringLiteral("corsoNuotoClienteLabel"));
-    AbbonamentoPalestraLabel->setObjectName(QStringLiteral("AbbonamentoPalestraLabel"));
-    nomeIstruttorePalestraLabel->setObjectName(QStringLiteral("nomeIstruttorePalestraLabel"));
-    schedaPalestraClienteLabel->setObjectName(QStringLiteral("schedaPalestraClienteLabel"));
-
-    clienteGroup->setMinimumWidth(350);
-    palestraGroup->setMinimumWidth(250);
+    clienteGroup->setObjectName(QStringLiteral("clienteGroupHome"));
+    piscinaGroup->setObjectName(QStringLiteral("piscinaGroupHome"));
+    palestraGroup->setObjectName(QStringLiteral("palestraGroupHome"));
+    //clienteGroup->setMinimumWidth(350); commentati perchè li ho messi come css
+    //palestraGroup->setMinimumWidth(250);
 
     //************** PARTE CONNECT **************************
 

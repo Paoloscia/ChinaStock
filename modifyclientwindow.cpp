@@ -1,6 +1,6 @@
 #include "modifyclientwindow.h"
 
-modifyClientWindow::modifyClientWindow(QWidget *parent):addClientWindow(parent){setMinimumSize(200,200);}
+modifyClientWindow::modifyClientWindow(QWidget *parent):addClientWindow(parent){setMinimumSize(580,400);}
 
 void modifyClientWindow::caricaDati(const QStringList e, const unsigned int i){
     ind = i;
