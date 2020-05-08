@@ -13,8 +13,7 @@ QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPu
 background-color: #3cb043;
 }
 
-QLabel{
+QLabel#nomeClienteLabel,QLabel#cognomeClienteLabel,QLabel#codiceFClienteLabel,QLabel#LuogoDNLabel,QLabel#residenzaClienteLabel,QLabel#viaClienteLabel,QLabel#telefonoClienteLabel,QLabel#mailClienteLabel,QLabel#datadNClienteLabel,QLabel#studenteClienteLabel,QLabel#AbbonamentoPiscinaLabel,QLabel#nomeIstruttorePiscinaLabel,QLabel#corsoNuotoClienteLabel,QLabel#AbbonamentoPalestraLabel,QLabel#nomeIstruttorePalestraLabel,QLabel#schedaPalestraClienteLabel{
     padding-top:10px;
     padding-bottom:10px;
 }
-
