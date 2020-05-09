@@ -4,10 +4,6 @@ modifyClientWindow::modifyClientWindow(QWidget *parent):addClientWindow(parent){
 
 void modifyClientWindow::caricaDati(const QStringList e, const unsigned int i){
     ind = i;
-
-    QString dot= "\\.";
-    QRegExp findDot(dot);
-
     abbonamentoPiscinaCheckbox->setChecked(e.at(17)=="true"? true : false);
     if (abbonamentoPiscinaCheckbox->isChecked()==true)
     {
