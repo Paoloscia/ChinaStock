@@ -299,8 +299,10 @@ T Container<T>::prendiNodoIndice(const unsigned int i) const{
 template<class T>
 void Container<T>::clear()
 {
-    primo->distruggi();
-    primo = nullptr;
+    if (primo){
+        primo->distruggi();
+        primo = nullptr;
+    }
 }
 
 template<class T>

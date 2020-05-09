@@ -23,8 +23,7 @@ model::~model()
 
 void model::resetfiltro() const
 {
-    if (datiFiltrati->primo) //messo controllo che esista primo di dati filtrati
-        datiFiltrati->clear();
+    datiFiltrati->clear();
     for(auto it = datiTotali->inizio();it!=datiTotali->fine();++it)
     {
         datiFiltrati->aggInOrdine(*it);
