@@ -105,8 +105,6 @@ Container<T>::nodo::nodo(const nodo& n):info(n.info), next(n.next){}
 template<class T>
 void Container<T>::nodo::distruggi()
 {
-    if (this==nullptr)
-        return;
     if (next) next->distruggi();
     delete this;
 }
