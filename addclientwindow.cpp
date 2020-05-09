@@ -1,7 +1,7 @@
 #include "addclientwindow.h"
 addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
-    setMinimumSize(580,400);
+    setMinimumSize(700,400);
     setWindowTitle("Finestra aggiunta clienti");
     mainLayout = new QHBoxLayout(this);
 
@@ -84,6 +84,16 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     formPalestraLayout->addRow(nomeIstruttorePalestraLabel,nomeIstruttorePalestraEdit);
     formPalestraLayout->addRow(schedaPalestraCheckbox);
     palestraGroup->setLayout(formPalestraLayout);
+    nomeLineEdit->setFixedWidth(280);
+    cognomeLineEdit->setFixedWidth(280);
+    codFiscLineEdit->setFixedWidth(280);
+    ldnLineEdit->setFixedWidth(280);
+    residenzaLineEdit->setFixedWidth(280);
+    viaLineEdit->setFixedWidth(280);
+    numeroviaLineEdit->setFixedWidth(280);
+    telefonoLineEdit->setFixedWidth(280);
+    mailLineEdit->setFixedWidth(280);
+    dateNascita->setFixedWidth(280);
 
     QFormLayout *formLayout = new QFormLayout();
     formLayout->setFormAlignment(Qt::AlignLeft);
@@ -98,9 +108,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     formLayout->addRow(mailLabel, mailLineEdit);
     formLayout->addRow(dateNascitaLabel, dateNascita);
     formLayout->addRow(studenteCheckbox);
-
     formLayout->addRow(abbonamentoPiscinaCheckbox);
-
     formLayout->addRow(abbonamentoPalestraCheckbox);
 
     mainLayout->addLayout(formLayout);
@@ -111,9 +119,12 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     verticalDxLayout->addWidget(palestraGroup);
     salvaButton = new QPushButton("Salva",this);
     annullaButton = new QPushButton("Annulla",this);
+    salvaButton->setFixedWidth(70);
+    annullaButton->setFixedWidth(70);
+
 
     hdestraBottoni = new QHBoxLayout();
-    hdestraBottoni->setAlignment(Qt::AlignBottom);
+    hdestraBottoni->setAlignment(Qt::AlignBottom | Qt::AlignRight);
     verticalDxLayout->addLayout(hdestraBottoni);
     hdestraBottoni->addWidget(salvaButton);
     hdestraBottoni->addWidget(annullaButton);
