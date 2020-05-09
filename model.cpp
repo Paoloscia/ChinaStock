@@ -102,7 +102,7 @@ void model::salva()
         xw.writeTextElement("luogodN", QString::fromStdString(cliente->getluogo()));
         xw.writeTextElement("residenza", QString::fromStdString(cliente->getres()));
         xw.writeTextElement("via", QString::fromStdString(cliente->getvia()));
-        xw.writeTextElement("numvia", QString::number(cliente->getnum()));
+        xw.writeTextElement("numvia", QString::fromStdString(cliente->getnum()));
         xw.writeTextElement("numerotel", QString::fromStdString(cliente->getnumerotel()));
         xw.writeTextElement("mail", QString::fromStdString(cliente->getmail()));
         xw.writeTextElement("student", QString::number(cliente->getstudent()));
@@ -163,7 +163,7 @@ void model::carica(QString path) const
         std::string luogodN = luogodNElem.text().toStdString();
         std::string residenza = residenzaElem.text().toStdString();
         std::string via = viaElem.text().toStdString();
-        unsigned short int numvia = static_cast<unsigned int>(numviaElem.text().toInt());
+        std::string numvia = numviaElem.text().toStdString();
         std::string numerotel = numerotelElem.text().toStdString();
         std::string mail = mailElem.text().toStdString();
         bool student = studentElem.text().toInt() == 1; //checkbox
@@ -242,7 +242,7 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     tmp.push_back(QString::fromStdString(clienteTmp->getluogo()));
     tmp.push_back(QString::fromStdString(clienteTmp->getres()));
     tmp.push_back(QString::fromStdString(clienteTmp->getvia()));
-    tmp.push_back(QString::number(clienteTmp->getnum()));
+    tmp.push_back(QString::fromStdString(clienteTmp->getnum()));
     tmp.push_back(QString::fromStdString(clienteTmp->getnumerotel()));
     tmp.push_back(QString::fromStdString(clienteTmp->getmail()));
     tmp.push_back(clienteTmp->getDataN().toString());
@@ -491,15 +491,15 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
     if (e.at(17) == "true" && e.at(18) == "true") { //VIP
         QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
         QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     else if(e.at(17) == "true" && e.at(18) == "false"){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
         QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
+        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
     }
     else if (e.at(17) == "false" && e.at(18) == "true") { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
         QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     datiTotali->aggInOrdine(cliente); //capire se mettere pushinorder o riordinarli col filtraggio
     //}
@@ -516,15 +516,15 @@ void model::modificaItem(const unsigned int indice, const QStringList e)        
     if (e.at(17) == "true" && e.at(18) == "true") { //VIP
         QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
         QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     else if(e.at(17) == "true" && e.at(18) == "false"){ // piscina, sistemare controllo piscina bisogna mettere if esiste data scadenza
         QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
+        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
     }
     else if (e.at(17) == "false" && e.at(18) == "true") { //palestra, mettere solo else senza controllo se viene fatto in fase di input(confirm qdialog)
         QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toUInt(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     datiTotali->rimpiazzaFinale (indice, cliente);
     resetfiltro();

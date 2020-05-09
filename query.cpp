@@ -1,5 +1,5 @@
 #include "query.h"
-query::query(string nome,string cognome, int giorno, int mese, int anno,string codicefiscale,string luogodN, string residenza,string via,unsigned int numvia,string numerotel,string mail,bool studente, bool palestra, bool piscina):nome(nome),cognome(cognome),
+query::query(string nome,string cognome, int giorno, int mese, int anno,string codicefiscale,string luogodN, string residenza,string via, string numvia,string numerotel,string mail,bool studente, bool palestra, bool piscina):nome(nome),cognome(cognome),
     giorno(giorno), mese(mese),anno(anno),codicefiscale(codicefiscale),luogo(luogodN),residenza(residenza),via(via),numero(numvia),numerotelefono(numerotel),mail(mail),studente(studente == false ? true : studente),piscina(piscina || palestra == false ? true:piscina),
     palestra(palestra || piscina == false ? true : palestra)
 {
@@ -36,7 +36,7 @@ std::string query::getvia() const
     return via;
 }
 
-unsigned int query::getnum() const
+std::string query::getnum() const
 {
     return numero;
 }

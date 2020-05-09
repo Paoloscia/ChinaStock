@@ -6,7 +6,7 @@ using std::string;
 class query
 {
 public:
-    query(string nome,string cognome, int giorno, int mese, int anno,string codicefiscale,string luogodN, string residenza,string via,unsigned int numvia,string numerotel,string mail,bool studente, bool palestra, bool piscina);//ultimi 3 booleani sono abbonamento piscina, palestra o vip
+    query(string nome,string cognome, int giorno, int mese, int anno,string codicefiscale,string luogodN, string residenza,string via,string numvia,string numerotel,string mail,bool studente, bool palestra, bool piscina);//ultimi 3 booleani sono abbonamento piscina, palestra o vip
     //ho tolto l'ultimo bool perchè è VIP
     string getnome() const;
     string getcognome() const;
@@ -14,7 +14,7 @@ public:
     string getluogo() const;
     string getres() const;
     string getvia() const;
-    unsigned int getnum() const;
+    string getnum() const;
     string getnumerotel() const;
     string getmail() const;
     bool getstudent() const;
@@ -32,7 +32,7 @@ private:
     string luogo;
     string residenza;
     string via;
-    unsigned int numero;
+    string numero;
     string numerotelefono;
     string mail;
     bool studente;

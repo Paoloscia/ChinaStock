@@ -1,6 +1,6 @@
 #include "cliente.h"
 
-cliente::cliente(string n, string c, int a, int m, int g,string cf, string lN, string r, string v, unsigned int num,string nt,string em,bool s): nome(n),cognome(c),dataNascita(a,m,g),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
+cliente::cliente(string n, string c, int a, int m, int g,string cf, string lN, string r, string v, string num,string nt,string em,bool s): nome(n),cognome(c),dataNascita(a,m,g),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
 
 cliente *cliente::clone() const
 {
@@ -87,7 +87,7 @@ string cliente::getvia() const
     return via;
 }
 
-unsigned int cliente::getnum() const
+string cliente::getnum() const
 {
     return numvia;
 }
