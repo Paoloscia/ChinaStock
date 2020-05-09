@@ -105,8 +105,6 @@ Container<T>::nodo::nodo(const nodo& n):info(n.info), next(n.next){}
 template<class T>
 void Container<T>::nodo::distruggi()
 {
-    if (this==nullptr)
-        return;
     if (next) next->distruggi();
     delete this;
 }
@@ -301,8 +299,10 @@ T Container<T>::prendiNodoIndice(const unsigned int i) const{
 template<class T>
 void Container<T>::clear()
 {
-    primo->distruggi();
-    primo = nullptr;
+    if (primo){
+        primo->distruggi();
+        primo = nullptr;
+    }
 }
 
 template<class T>
