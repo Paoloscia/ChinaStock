@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>risorse/style.css</file>
-        <file>risorse/logo.png</file>
+        <file>risorse/provachina.jpg</file>
     </qresource>
 </RCC>
