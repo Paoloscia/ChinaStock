@@ -6,23 +6,22 @@ background-color:#FFAE42;
 /*QDateEdit::drop-down{
 border-color:#FFAE42;
 }*/
-cognome
+
 QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
 /*background-color: green;*/
 /*background-color: #03c04a;*/
 background-color: #3cb043;
 }
 
-
-QGroupBox#clienteGroupHome{
-min-width:350px;
+QGroupBox#clienteGroup{
+min-width:400px;
 }
 
-QGroupBox#piscinaGroupHome,QGroupBox#palestraGroupHome{
+QGroupBox#piscinaGroup,QGroupBox#palestraGroup{
 min-width:250px;
 }
 
-QGroupBox#clienteGroupHome QLabel,QGroupBox#piscinaGroupHome QLabel,QGroupBox#palestraGroupHome QLabel{
+QGroupBox#clienteGroup QLabel,QGroupBox#piscinaGroup QLabel,QGroupBox#palestraGroup QLabel{
 padding-top:10px;
 padding-bottom:10px;
 }

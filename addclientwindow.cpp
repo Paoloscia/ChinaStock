@@ -46,6 +46,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     QLabel *mailLabel = new QLabel(tr("Mail: "));
     mailLineEdit = new QLineEdit();
     mailLineEdit->setPlaceholderText("es. carlorossi@gmail.com");
+
     QLabel *dateNascitaLabel = new QLabel("Data di nascita: ");
     dateNascita = (new QDateEdit(QDate::currentDate(),this));
     dateNascita->setCalendarPopup(true);

@@ -156,9 +156,9 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     checkfiltrocorsopiscina->setObjectName(QStringLiteral("checkfiltrocorsopiscina"));
     checkfiltroschedapalestra->setObjectName(QStringLiteral("checkfiltroschedapalestra"));
 
-    clienteGroup->setObjectName(QStringLiteral("clienteGroupHome"));
-    piscinaGroup->setObjectName(QStringLiteral("piscinaGroupHome"));
-    palestraGroup->setObjectName(QStringLiteral("palestraGroupHome"));
+    clienteGroup->setObjectName(QStringLiteral("clienteGroup"));
+    piscinaGroup->setObjectName(QStringLiteral("piscinaGroup"));
+    palestraGroup->setObjectName(QStringLiteral("palestraGroup"));
     //clienteGroup->setMinimumWidth(350); commentati perchè li ho messi come css
     //palestraGroup->setMinimumWidth(250);
 
