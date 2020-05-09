@@ -331,10 +331,10 @@ void mainwindow::setMainWindowStyle()
     setStyleSheet(styleSheet);
 }
 
-void mainwindow::chiudiApp(QCloseEvent *)
+void mainwindow::closeEvent(QCloseEvent *)
 {
-    //QMessageBox::question(this, "AirPnP","Desideri salvare le modifiche?"); capire perchè non lo stampa
-    emit controllaModificato();
+
+    emit controllaModificato(); //commentato, sistemare dopo che ha mostrato message box
 }
 
 

@@ -61,7 +61,7 @@ private:
     QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;
     void setMainWindowStyle();
 
-    void chiudiApp(QCloseEvent*);
+    void closeEvent(QCloseEvent*) override;
 
 signals:
     void signOpenAddWindow();

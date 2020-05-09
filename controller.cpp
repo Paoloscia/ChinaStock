@@ -87,8 +87,9 @@ void controller::mostraCliente(const unsigned int cliente){
 void controller::salvaIfModificato()
 { 
     if (m->getModificato())
-        //mettere la richiesta "sei sicuro?", bisogna metterlo in chiusura e sistemare funzione che lo chiama e mostrare message box
-        emit salvaFile();
+        if(QMessageBox::question(view, "ChinaFit","Desideri salvare le modifiche?")==QMessageBox::Yes){
+            emit salvaFile();
+        }
 }
 
 void controller::filtraClientiPiscina()
