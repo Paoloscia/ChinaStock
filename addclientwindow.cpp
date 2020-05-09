@@ -31,7 +31,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
 
     QLabel *viaLabel = new QLabel(tr("Via: "));
     viaLineEdit = new QLineEdit();
-    viaLineEdit->setPlaceholderText("es. Giusti");
+    viaLineEdit->setPlaceholderText("es. via Giusti");
 
     QLabel *numeroLabel = new QLabel(tr("Numero Via:"));
     numeroviaLineEdit = new QLineEdit();
