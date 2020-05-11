@@ -196,7 +196,7 @@ Container<T>& Container<T>::operator=(const Container & q)
 template<class T> //commentato aggiungidavanti e sostituito con aggInOrdine (cambiare nome), capire perchè non funziona overloading deep pointer > e <
 void Container<T>::aggInOrdine(const T & obj){
     nodo* cliente = new nodo(obj);
-    if (primo == nullptr) primo = ultimo = new nodo(obj);
+    if (primo == nullptr) primo = ultimo = cliente;
     else if (primo->info > cliente->info) {
         cliente->next = primo;
         primo = cliente;
