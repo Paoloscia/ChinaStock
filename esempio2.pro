@@ -25,7 +25,6 @@ SOURCES += \
     modifyclientwindow.cpp \
     palestra.cpp\
     piscina.cpp\
-    query.cpp \
     viewlistaclienti.cpp \
     vip.cpp
 
@@ -40,7 +39,6 @@ HEADERS += \
     modifyclientwindow.h \
     palestra.h\
     piscina.h\
-    query.h \
     viewlistaclienti.h \
     vip.h
 

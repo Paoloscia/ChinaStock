@@ -235,7 +235,8 @@ void model::carica(QString path) const
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
     QStringList tmp;
-    cliente * clienteTmp = dynamic_cast<cliente*>(&(*(datiTotali->prendiNodoIndice(indice)))); //era static, ho messo dynamic
+    //il problema è prima di questa riga
+    cliente * clienteTmp = dynamic_cast<cliente*>(&(*(datiFiltrati->prendiNodoIndice(indice)))); //era static, ho messo dynamic
     tmp.push_back(QString::fromStdString(clienteTmp->getnome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcognome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcodfiscale()));
@@ -249,24 +250,24 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     tmp.push_back(clienteTmp->getstudent()? "true":"false");
 
 
-    if(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+    if(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
 
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
+        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->isscheda()? "true":"false");
         tmp.push_back("true");
         tmp.push_back("true");
 
     }
 
-    else if(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+    else if(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
 
-        tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPiscina().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
-        tmp.push_back(dynamic_cast<piscina*>(&(*(datiTotali->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
+        tmp.push_back(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
+        tmp.push_back(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
         tmp.push_back(QDate().toString());
         tmp.push_back(QString::fromStdString(""));
         tmp.push_back("false");
@@ -274,14 +275,14 @@ QStringList model::getCampiCliente(const unsigned int indice) const
         tmp.push_back("false");
 
     }
-    else if(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))){
+    else if(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
 
         tmp.push_back(QDate().toString());
         tmp.push_back(QString::fromStdString(""));
         tmp.push_back("false");
-        tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getDataPalestra().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
-        tmp.push_back(dynamic_cast<palestra*>(&(*(datiTotali->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+        tmp.push_back(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
+        tmp.push_back(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->isscheda()? "true":"false");
         tmp.push_back("false");
         tmp.push_back("true");
 
