@@ -2,7 +2,7 @@
 
 modifyClientWindow::modifyClientWindow(QWidget *parent):addClientWindow(parent){setMinimumSize(700,400);}
 
-void modifyClientWindow::caricaDati(const QStringList e, const unsigned int i){
+void modifyClientWindow::caricaDati(const QStringList& e, const unsigned int i){
     ind = i;
     abbonamentoPiscinaCheckbox->setChecked(e.at(17)=="true"? true : false);
     if (abbonamentoPiscinaCheckbox->isChecked()==true)

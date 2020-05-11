@@ -14,8 +14,7 @@ public:
 
     explicit modifyClientWindow(QWidget *parent = nullptr);
 
-    void caricaDati(const QStringList,const unsigned int);
-
+    void caricaDati(const QStringList &,const unsigned int);
 public slots:
 
     void confirm() override;

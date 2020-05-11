@@ -235,7 +235,7 @@ void model::carica(QString path) const
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
     QStringList tmp;
-    cliente * clienteTmp = static_cast<cliente*>(&(*(datiTotali->prendiNodoIndice(indice)))); //capire se è corretto inserire static cast o no!
+    cliente * clienteTmp = dynamic_cast<cliente*>(&(*(datiTotali->prendiNodoIndice(indice)))); //era static, ho messo dynamic
     tmp.push_back(QString::fromStdString(clienteTmp->getnome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcognome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcodfiscale()));
