@@ -156,6 +156,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     checkVip->setObjectName(QStringLiteral("checkVip"));
     checkfiltrocorsopiscina->setObjectName(QStringLiteral("checkfiltrocorsopiscina"));
     checkfiltroschedapalestra->setObjectName(QStringLiteral("checkfiltroschedapalestra"));
+    All->setObjectName(QStringLiteral("All"));
 
     clienteGroup->setObjectName(QStringLiteral("clienteGroup"));
     piscinaGroup->setObjectName(QStringLiteral("piscinaGroup"));

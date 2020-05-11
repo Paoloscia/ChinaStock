@@ -13,6 +13,17 @@ QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPu
 background-color: #3cb043;
 }
 
+QPushButton#All, QPushButton#palestraCheckFiltro, QPushButton#piscinaCheckFiltro, QPushButton#checkfiltrominorenne, QPushButton#checkfiltromaggiorenne, QPushButton#checkfiltrostudente,QPushButton#checkVip,QPushButton#checkfiltrocorsopiscina,QPushButton#checkfiltroschedapalestra{
+/*background-color: green;*/
+/*border-color: rgb(66, 69, 183);
+border-width: 2px;
+border-style: solid;*/
+border-radius:10px;
+height: 30px;
+width : 100px;
+margin: 1px;
+}
+
 QGroupBox#clienteGroup{
 min-width:400px;
 }
