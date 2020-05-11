@@ -235,8 +235,7 @@ void model::carica(QString path) const
 QStringList model::getCampiCliente(const unsigned int indice) const
 {
     QStringList tmp;
-    //il problema è prima di questa riga
-    cliente * clienteTmp = dynamic_cast<cliente*>(&(*(datiFiltrati->prendiNodoIndice(indice)))); //era static, ho messo dynamic
+    deepPointer<cliente> clienteTmp = datiFiltrati->prendiNodoIndice(indice);
     tmp.push_back(QString::fromStdString(clienteTmp->getnome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcognome()));
     tmp.push_back(QString::fromStdString(clienteTmp->getcodfiscale()));
@@ -249,43 +248,38 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     tmp.push_back(clienteTmp->getDataN().toString());
     tmp.push_back(clienteTmp->getstudent()? "true":"false");
 
-
-    if(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
-
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPiscina().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPalestra().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
-        tmp.push_back(dynamic_cast<vip*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+    if(dynamic_cast<vip*>(clienteTmp.pted) != nullptr){
+        auto clientevip = dynamic_cast<vip*>(clienteTmp.pted);
+        tmp.push_back(clientevip->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(clientevip->getnomeistruttorepiscina()));
+        tmp.push_back(clientevip->iscorsonuoto()? "true":"false");
+        tmp.push_back(clientevip->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(clientevip->getnomeistruttorepalestra()));
+        tmp.push_back(clientevip->isscheda()? "true":"false");
         tmp.push_back("true");
         tmp.push_back("true");
-
     }
-
-    else if(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
-
-        tmp.push_back(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPiscina().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepiscina()));
-        tmp.push_back(dynamic_cast<piscina*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->iscorsonuoto()? "true":"false");
+    else if(dynamic_cast<piscina*>(clienteTmp.pted) != nullptr){
+        auto clientepis = dynamic_cast<piscina*>(clienteTmp.pted);
+        tmp.push_back(clientepis->getDataPiscina().toString());
+        tmp.push_back(QString::fromStdString(clientepis->getnomeistruttorepiscina()));
+        tmp.push_back(clientepis->iscorsonuoto()? "true":"false");
         tmp.push_back(QDate().toString());
         tmp.push_back(QString::fromStdString(""));
         tmp.push_back("false");
         tmp.push_back("true");
         tmp.push_back("false");
-
     }
-    else if(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))){
-
+    else if(dynamic_cast<palestra*>(clienteTmp.pted) != nullptr){
+        auto clientepal = dynamic_cast<palestra*>(clienteTmp.pted);
         tmp.push_back(QDate().toString());
         tmp.push_back(QString::fromStdString(""));
         tmp.push_back("false");
-        tmp.push_back(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getDataPalestra().toString());
-        tmp.push_back(QString::fromStdString(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->getnomeistruttorepalestra()));
-        tmp.push_back(dynamic_cast<palestra*>(&(*(datiFiltrati->prendiNodoIndice(indice))))->isscheda()? "true":"false");
+        tmp.push_back(clientepal->getDataPalestra().toString());
+        tmp.push_back(QString::fromStdString(clientepal->getnomeistruttorepalestra()));
+        tmp.push_back(clientepal->isscheda()? "true":"false");
         tmp.push_back("false");
         tmp.push_back("true");
-
     }
     //    else
     //        tmp.push_back("null");
