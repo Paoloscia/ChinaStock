@@ -81,6 +81,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     addButton = new QPushButton("Aggiungi",this);
     modButton = new QPushButton("Modifica",this);
     removeButton = new QPushButton("Rimuovi",this);
+    stampaPDFCliente = new QPushButton("Stampa Cliente", this);
 
     verticalSxLayout->addWidget(clientiGroup);
 
@@ -89,6 +90,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     hLeftBottoni->addWidget(addButton);
     hLeftBottoni->addWidget(modButton);
     hLeftBottoni->addWidget(removeButton);
+    hLeftBottoni->addWidget(stampaPDFCliente);
 
     //************** FORM ********************
     QGroupBox *clienteGroup = new QGroupBox("Dati Cliente");
@@ -166,7 +168,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** PARTE CONNECT **************************
 
-
+    connect(stampaPDFCliente, SIGNAL(clicked()), this, SIGNAL(signStampaPDFCliente()));
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(lineCerca, SIGNAL(textChanged(const QString &)), this, SIGNAL(cercaRuntime()));

@@ -55,7 +55,7 @@ private:
     QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*checkfiltrominorenne,*checkfiltromaggiorenne,*deseleziona,*checkfiltrostudente,*checkVip,*checkfiltrocorsopiscina,*checkfiltroschedapalestra;
     QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
-    QPushButton* addButton,*modButton,*removeButton;
+    QPushButton* addButton,*modButton,*removeButton, *stampaPDFCliente;
     viewListaClienti *listaClienti;
     QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel,*cercaLabel;
     QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;

@@ -7,17 +7,13 @@ background-color:#FFAE42;
 border-color:#FFAE42;
 }*/
 
-QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
+QPushButton#palestraCheckFiltro:onclick, QPushButton#piscinaCheckFiltro:onclick, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
 /*background-color: green;*/
 /*background-color: #03c04a;*/
 background-color: #3cb043;
 }
 
 QPushButton#All, QPushButton#palestraCheckFiltro, QPushButton#piscinaCheckFiltro, QPushButton#checkfiltrominorenne, QPushButton#checkfiltromaggiorenne, QPushButton#checkfiltrostudente,QPushButton#checkVip,QPushButton#checkfiltrocorsopiscina,QPushButton#checkfiltroschedapalestra{
-/*background-color: green;*/
-/*border-color: rgb(66, 69, 183);
-border-width: 2px;
-border-style: solid;*/
 border-radius:10px;
 height: 30px;
 width : 100px;
