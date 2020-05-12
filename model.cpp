@@ -531,7 +531,7 @@ void model::modificaItem(const unsigned int indice, const QStringList e)        
         datiTotali->rimpiazzaFinale (indice, cliente);
     else
     {
-    const unsigned int iTmp = datiTotali->trovaIndiceNodo(datiFiltrati->prendiNodoIndice(indice));
+        const unsigned int iTmp = datiTotali->trovaIndiceNodo(datiFiltrati->prendiNodoIndice(indice));
         datiTotali->rimpiazzaFinale (iTmp, cliente);
     }
 

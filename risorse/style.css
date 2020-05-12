@@ -7,7 +7,7 @@ background-color:#FFAE42;
 border-color:#FFAE42;
 }*/
 
-QPushButton#palestraCheckFiltro:onclick, QPushButton#piscinaCheckFiltro:onclick, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
+QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
 /*background-color: green;*/
 /*background-color: #03c04a;*/
 background-color: #3cb043;
