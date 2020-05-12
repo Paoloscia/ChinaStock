@@ -40,10 +40,20 @@ public:
 
     bool isSelected() const;
     unsigned int getIndexSelected() const;
+    void resetColoreFiltro();
 
 public slots:
     void richiestaRimoz();
     void showInfoCliente();
+    void coloriFiltroPalestra();
+    void coloriFiltroPiscina();
+    void coloriFiltroScheda();
+    void coloriFiltrocorso();
+    void coloriFiltroVip();
+    void coloriFiltroStudente();
+    void coloriFiltroMinorenne();
+    void coloriFiltroMaggiorenne();
+
 private:
     //controllare quali non si usano!!!!
     QVBoxLayout* mainLayout;
@@ -64,6 +74,7 @@ private:
     void closeEvent(QCloseEvent*) override;
 
 signals:
+    void signStampaPDFCliente();
     void signOpenAddWindow();
     void signOpenModWindow();
     void cercaRuntime();

@@ -22,6 +22,7 @@ model::~model()
 
 void model::resetfiltro() const
 {
+    emit resetColoreFiltroM();
     datiFiltrati->clear();
     for(auto it = datiTotali->inizio();it!=datiTotali->fine();++it)
     {

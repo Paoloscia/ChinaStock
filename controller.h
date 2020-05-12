@@ -36,9 +36,8 @@ public slots:
     void filtraClientiVip();
     void filtraClientiIstruttoriPiscina();
     void filtraClientiIStruttoriPalestra();
+    void resetColoreFiltroC();
     void stampaPDFCliente() const;
-
-
 signals:
     void pulisciCampi();
 private:

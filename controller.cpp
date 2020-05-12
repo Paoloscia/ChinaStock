@@ -25,8 +25,8 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
-
     connect(m, SIGNAL(clienteRimosso()), this, SLOT(resetListaClienti()));
+    connect(m, SIGNAL(resetColoreFiltroM()), this, SLOT(resetColoreFiltroC()));
 
     //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
@@ -86,7 +86,7 @@ void controller::mostraCliente(const unsigned int cliente){
 }
 
 void controller::salvaIfModificato()
-{ 
+{
     if (m->getModificato())
         if(QMessageBox::question(view, "ChinaFit","Desideri salvare le modifiche?")==QMessageBox::Yes){
             emit salvaFile();
@@ -145,6 +145,11 @@ void controller::filtraClientiIStruttoriPalestra()
 {
     m->filterSchedaPalestra();
     resetListaClienti();
+}
+
+void controller::resetColoreFiltroC()
+{
+    view->resetColoreFiltro();
 }
 
 void controller::stampaPDFCliente() const
