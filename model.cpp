@@ -526,6 +526,14 @@ void model::modificaItem(const unsigned int indice, const QStringList e)        
         QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
         cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
-    datiTotali->rimpiazzaFinale (indice, cliente);
+
+    if (datiTotali->prendiNodoIndice(indice) == datiFiltrati->prendiNodoIndice(indice))
+        datiTotali->rimpiazzaFinale (indice, cliente);
+    else
+    {
+    const unsigned int iTmp = datiTotali->trovaIndiceNodo(datiFiltrati->prendiNodoIndice(indice));
+        datiTotali->rimpiazzaFinale (iTmp, cliente);
+    }
+
     resetfiltro();
 }
