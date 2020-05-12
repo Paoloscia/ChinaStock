@@ -36,6 +36,7 @@ public slots:
     void filtraClientiVip();
     void filtraClientiIstruttoriPiscina();
     void filtraClientiIStruttoriPalestra();
+    void stampaPDFCliente() const;
 
 
 signals:

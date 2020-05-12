@@ -16,6 +16,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroMinorenne()), this, SLOT(filtraClientiMinorenni()));
     connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
+    connect(view, SIGNAL(signStampaPDFCliente()), this, SLOT(stampaPDFCliente()));
 
 
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
@@ -144,6 +145,11 @@ void controller::filtraClientiIStruttoriPalestra()
 {
     m->filterSchedaPalestra();
     resetListaClienti();
+}
+
+void controller::stampaPDFCliente() const
+{
+
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
