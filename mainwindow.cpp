@@ -13,8 +13,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QMenu* menu= new QMenu("File",menubar);
     QAction* salva = new QAction("Salva",menu);
     salva->setShortcut(Qt::Key_S | Qt::CTRL);
+    QAction* esportaCsv = new QAction("Esporta csv clienti",menu);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
+    menu->addAction(esportaCsv);
     menu->addAction(salva);
     menubar->addMenu(menu);
     mainLayout->addWidget(menubar);
