@@ -14,12 +14,13 @@ public:
     T* operator->() const;
     T& operator*() const;
     ~deepPointer();
-    //bool operator==(const deepPointer&) const;
+    bool operator==(const deepPointer&) const;
     //bool operator==(string) const; capire se serve
     bool operator!=(const deepPointer&) const;
     bool operator>(const deepPointer&) const;
     bool operator<(const deepPointer&) const;
     operator T*() const;
+
 };
 
 template <class T>
@@ -27,7 +28,7 @@ deepPointer<T>::deepPointer(T* itm): pted(itm){}
 
 template <class T>
 deepPointer<T>::deepPointer(const deepPointer& dptr){
-      if(dptr == nullptr)
+      if(!dptr)
           pted=nullptr;
       else
           pted=dptr.pted->clone();
@@ -59,10 +60,10 @@ deepPointer<T>::~deepPointer(){
         delete pted;      //elimina il T puntato dal mio puntatore con gestione della memoria
 }
 
-//template <class T> commentato, capire se serve perchè creava problemi!
-//bool deepPointer<T>::operator==(const deepPointer& dptr) const{
-//    return *pted==*(dptr.pted);
-//}
+template <class T> //era commentato, capire se serve perchè creava problemi!
+bool deepPointer<T>::operator==(const deepPointer& dptr) const{
+    return *pted==*(dptr.pted);
+}
 
 template <class T>
 bool deepPointer<T>::operator!=(const deepPointer& dptr) const{

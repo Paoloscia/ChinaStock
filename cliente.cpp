@@ -37,6 +37,11 @@ bool cliente::operator>(const cliente & c) const
     return false;
 }
 
+bool cliente::operator==(const cliente & c) const
+{
+    return nome == c.getnome() && cognome == c.getcognome() && dataNascita == QDate(c.getAnnoN(),c.getMeseN(),c.getGiornoN()) && codicefiscale == c.getcodfiscale() && luogodN == c.getluogo() && residenza == c.getres() && via == c.getvia() && numvia == c.getnum() && numerotel == c.getnumerotel() && mail == c.getmail() && student == c.getstudent();
+}
+
 string cliente::getnome() const
 {
     return nome;

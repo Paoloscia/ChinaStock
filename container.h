@@ -43,6 +43,7 @@ public:
     //T prendiNodoIndice(unsigned int) const;
     void rimuoviIndice(const unsigned int);
     T prendiNodoIndice(const unsigned int) const;
+    unsigned int trovaIndiceNodo(const T&); //forse bisogna passare const come return? Però mi segna warning
     void clear();
     bool isEmpty() const;
 
@@ -294,6 +295,21 @@ T Container<T>::prendiNodoIndice(const unsigned int i) const{
     }
     T temp; //oggetto da ritornare se non trovo nulla
     return temp;
+}
+
+template<class T>
+unsigned int Container<T>::trovaIndiceNodo(const T& nodoDaTrovare) {
+    unsigned int i=0;
+    nodo* corr = primo;
+    bool trovato = false;
+    while (trovato == false && corr->next){
+        if (corr->info == nodoDaTrovare) trovato = true;
+        else {
+            corr = corr->next;
+            i=i+1;
+        }
+    }
+    return i;
 }
 
 template<class T>

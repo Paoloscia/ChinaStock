@@ -1,5 +1,4 @@
 #include "model.h"
-
 model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cliente>>()),datiFiltrati(new Container<deepPointer<cliente>>()),modificato(false)
 {
     carica(path);
@@ -313,7 +312,13 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
 void model::rimuoviCliente(const unsigned int i)
 {
     modificato=true;
-    datiTotali->rimuoviIndice(i); //era removeOneAtIndex
+    if (datiTotali->prendiNodoIndice(i) == datiFiltrati->prendiNodoIndice(i))
+        datiTotali->rimuoviIndice(i); //era removeOneAtIndex
+    else
+    {
+        const unsigned int iTmp = datiTotali->trovaIndiceNodo(datiFiltrati->prendiNodoIndice(i));
+        datiTotali->rimuoviIndice(iTmp);
+    }
     resetfiltro();
     emit clienteRimosso();
 
