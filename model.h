@@ -53,7 +53,7 @@ public slots:
 signals:
     void clienteAggiunto();
     void clienteRimosso();
-
+    void resetColoreFiltroM() const;
 private:
 
     QString path; //serve per prendere i dati dal percorso del file

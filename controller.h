@@ -36,7 +36,7 @@ public slots:
     void filtraClientiVip();
     void filtraClientiIstruttoriPiscina();
     void filtraClientiIStruttoriPalestra();
-
+    void resetColoreFiltroC();
 
 signals:
     void pulisciCampi();

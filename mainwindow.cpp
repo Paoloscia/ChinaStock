@@ -39,8 +39,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     image->setMaximumHeight(300);
     verticalDxLayout->addLayout(imageLayout);
 
-
     //************** FILTRI ********************
+
     QGroupBox *filtriGroup = new QGroupBox("Filtri");
     QGridLayout* filtriGrid = new QGridLayout();
     All = new QPushButton("Rimuovi filtro",this);
@@ -185,6 +185,14 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SIGNAL(filtroCorsoNuoto()));
     connect(checkfiltroschedapalestra, SIGNAL(clicked()), this , SIGNAL(filtroSchedaPalestra()));
 
+    connect(palestraCheckFiltro, SIGNAL(clicked()), this, SLOT(coloriFiltroPalestra()));
+    connect(checkfiltromaggiorenne, SIGNAL(clicked()), this, SLOT(coloriFiltroMaggiorenne()));
+    connect(checkfiltrominorenne, SIGNAL(clicked()) , this , SLOT(coloriFiltroMinorenne()));
+    connect(checkfiltrostudente, SIGNAL(clicked()) , this , SLOT (coloriFiltroStudente()));
+    connect(checkVip, SIGNAL(clicked()), this , SLOT(coloriFiltroVip()));
+    connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SLOT(coloriFiltrocorso()));
+    connect(checkfiltroschedapalestra, SIGNAL(clicked()), this , SLOT(coloriFiltroScheda()));
+    connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SLOT(coloriFiltroPiscina()));
 }
 
 void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
@@ -326,6 +334,18 @@ unsigned int mainwindow::getIndexSelected() const
     return listaClienti->getIndex();
 }
 
+void mainwindow::resetColoreFiltro()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+}
+
 
 void mainwindow::setMainWindowStyle()
 {
@@ -366,5 +386,116 @@ void mainwindow::showInfoCliente(){
         //refreshMainW; bisogna implementare
         emit richiestaShowCliente(listaClienti->getIndex());
 }
+
+void mainwindow::coloriFiltroPalestra()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#3cb043;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+void mainwindow::coloriFiltroPiscina()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#3cb043;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+
+void mainwindow::coloriFiltroScheda()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#3cb043;");
+
+}
+
+
+void mainwindow::coloriFiltrocorso()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#3cb043;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+
+void mainwindow::coloriFiltroVip()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#3cb043;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+
+void mainwindow::coloriFiltroStudente()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#3cb043;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+
+void mainwindow::coloriFiltroMinorenne()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#3cb043;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
+
+void mainwindow::coloriFiltroMaggiorenne()
+{
+    palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrominorenne->setStyleSheet("background-color:#FFAE42;");
+    checkfiltromaggiorenne->setStyleSheet("background-color:#3cb043;");
+    checkfiltrostudente->setStyleSheet("background-color:#FFAE42;");
+    checkVip->setStyleSheet("background-color:#FFAE42;");
+    checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
+    checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
+
+}
+
 
 
