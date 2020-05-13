@@ -162,7 +162,7 @@ void model::carica(QString path) const
             int scadenzaPiscinaGiorno = (scadenzaPiscinaGiornoElem.text().toInt());
             int scadenzaPiscinaMese = (scadenzaPiscinaMeseElem.text().toInt());
             int scadenzaPiscinaAnno = (scadenzaPiscinaAnnoElem.text().toInt());
-            res = new piscina(nome, cognome,dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,corsonuoto,nomeistruttorepiscina,scadenzaPiscinaGiorno,scadenzaPiscinaMese,scadenzaPiscinaAnno);
+            res = new piscina(nome, cognome,dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,corsonuoto,nomeistruttorepiscina,scadenzaPiscinaAnno,scadenzaPiscinaMese,scadenzaPiscinaGiorno);
 
 
         } else if (elemType == "Palestra") {
@@ -177,7 +177,7 @@ void model::carica(QString path) const
             int scadenzaPalestraMese = (scadenzaPalestraMeseElem.text().toInt());
             int scadenzaPalestraAnno = (scadenzaPalestraAnnoElem.text().toInt());
 
-            res = new palestra(nome, cognome, dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,scheda,nomeistruttorepalestra,scadenzaPalestraGiorno,scadenzaPalestraMese,scadenzaPalestraAnno);
+            res = new palestra(nome, cognome, dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,scheda,nomeistruttorepalestra,scadenzaPalestraAnno,scadenzaPalestraMese,scadenzaPalestraGiorno);
 
 
         } else if (elemType == "Vip") {
@@ -203,7 +203,7 @@ void model::carica(QString path) const
             int scadenzaPalestraMese = (scadenzaPalestraMeseElem.text().toInt());
             int scadenzaPalestraAnno = (scadenzaPalestraAnnoElem.text().toInt());
 
-            res = new vip(nome, cognome, dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,corsonuoto,nomeistruttorepiscina,scadenzaPiscinaGiorno,scadenzaPiscinaMese,scadenzaPiscinaAnno,scheda,nomeistruttorepalestra,scadenzaPalestraGiorno,scadenzaPalestraMese,scadenzaPalestraAnno);
+            res = new vip(nome, cognome, dataNascitaAnno, dataNascitaMese, dataNascitaGiorno,codicefiscale,luogodN,residenza,via,numvia,numerotel,mail,student,corsonuoto,nomeistruttorepiscina,scadenzaPiscinaAnno,scadenzaPiscinaMese,scadenzaPiscinaGiorno,scheda,nomeistruttorepalestra,scadenzaPalestraAnno,scadenzaPalestraMese,scadenzaPalestraGiorno);
 
         } else {
             continue;
