@@ -12,30 +12,26 @@
 #include <QDomDocument>
 #include <QXmlStreamWriter>
 #include <QMap>
+
 class model : public QObject
 {
 
     Q_OBJECT
 
 public:
+
     model(QString path);
     ~model();
+
     void resetfiltro() const;
-
     void cancellaOggetto(cliente *, bool = true);
-
     void salva();
     bool getModificato() const;
     void carica(QString path) const;
-
-    //partire da clear, reset filter e costruttore
-
-    //clear serve a distruggecatalogRemovedre tutto il container datitotali, è il nostro distruggi
     QStringList getCampiCliente(const unsigned int) const;
     QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
     QStringList getListaClientiCsv() const;
     void rimuoviCliente(const unsigned int);
-
     deepPointer<cliente> mostraCliente(const unsigned int);
     void filterPiscina();
     void filterPalestra();
@@ -54,13 +50,13 @@ signals:
     void clienteAggiunto();
     void clienteRimosso();
     void resetColoreFiltroM() const;
-private:
 
-    QString path; //serve per prendere i dati dal percorso del file
-    Container<deepPointer<cliente>> *datiTotali; //Vedere se effettivamente è giusto
-    Container<deepPointer<cliente>> *datiFiltrati; //Vedere se effettivamente è giusto
-    bool modificato; //teoricamente serve per non risalvare se non è stato modificato nulla
+private:
+    QString path;
+    Container<deepPointer<cliente>> *datiTotali;
+    Container<deepPointer<cliente>> *datiFiltrati;
+    bool modificato;
 
 };
 
-#endif // MODEL_H
+#endif
