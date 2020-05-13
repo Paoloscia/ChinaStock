@@ -32,12 +32,11 @@ class mainwindow : public QWidget
 public:
     mainwindow(QWidget *parent =nullptr);
     //~mainwindow();
-    void mostraClienti(const QStringList); //era displayCatalog
-    const QString getParolaCercata() const; //era getResearchWord
+    void mostraClienti(const QStringList);
+    const QString getParolaCercata() const;
     void nessunSelezionato();
     void visualizzaDettagliCliente(deepPointer<cliente>);
     void resetDettCliente();
-
     bool isSelected() const;
     unsigned int getIndexSelected() const;
     void resetColoreFiltro();
@@ -70,7 +69,6 @@ private:
     QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel,*cercaLabel;
     QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;
     void setMainWindowStyle();
-
     void closeEvent(QCloseEvent*) override;
 
 signals:
@@ -80,7 +78,6 @@ signals:
     void cercaRuntime();
     void salvaFileMenu();
     void signEsportaCsvClienti();
-    //void clickedSearch(QString searchText); da implementare search
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);
     void filtroPiscina();

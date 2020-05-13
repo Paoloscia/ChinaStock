@@ -30,6 +30,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     divH->addLayout(verticalSxLayout);
 
     setLayout(mainLayout);
+
     //************** IMMAGINE ******************
     QHBoxLayout* imageLayout = new QHBoxLayout();
 

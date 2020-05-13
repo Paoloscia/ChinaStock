@@ -1,15 +1,9 @@
 QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
 background-color:#FFAE42;
-/*background-color:#87ceeb;*/
 }
 
-/*QDateEdit::drop-down{
+/*QDateEdit::drop-down{ //da mettere a posto il colore della freccia arancione
 border-color:#FFAE42;
-}*/
-
-/*QPushButton#palestraCheckFiltro:focus, QPushButton#piscinaCheckFiltro:focus, QPushButton#checkfiltrominorenne:focus, QPushButton#checkfiltromaggiorenne:focus, QPushButton#checkfiltrostudente:focus,QPushButton#checkVip:focus,QPushButton#checkfiltrocorsopiscina:focus,QPushButton#checkfiltroschedapalestra:focus{
-
-background-color: #3cb043;
 }*/
 
 QPushButton#All, QPushButton#palestraCheckFiltro, QPushButton#piscinaCheckFiltro, QPushButton#checkfiltrominorenne, QPushButton#checkfiltromaggiorenne, QPushButton#checkfiltrostudente,QPushButton#checkVip,QPushButton#checkfiltrocorsopiscina,QPushButton#checkfiltroschedapalestra{
