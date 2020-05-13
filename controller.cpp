@@ -1,8 +1,6 @@
 #include "controller.h"
-//controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()),m(new model("data.xml")), addClientW(new addClientWindow(view))   //versione nuova da implementare che pesca data.xml
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))   //controllare ordine inizializzazione
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))
 {
-    //CONNESSIONI A PAGINA MAINWINDOW
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     connect(view,SIGNAL(signOpenModWindow()),this,SLOT(openModifyView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
@@ -18,38 +16,26 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
     connect(view, SIGNAL(signStampaPDFCliente()), this, SLOT(stampaPDFCliente()));
     connect(view, SIGNAL(signEsportaCsvClienti()), this, SLOT(esportaCsvClienti()));
-
-
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
     connect(view, SIGNAL(filtroCorsoNuoto()), this, SLOT(filtraClientiIstruttoriPiscina()));
     connect(view, SIGNAL(filtroSchedaPalestra()), this, SLOT(filtraClientiIStruttoriPalestra()));
-    //connect(view, SIGNAL(updateSearch()), this, SLOT(resetListaClienti())); implementare!!!
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
     connect(m, SIGNAL(clienteRimosso()), this, SLOT(resetListaClienti()));
     connect(m, SIGNAL(resetColoreFiltroM()), this, SLOT(resetColoreFiltroC()));
 
-    //CONNESSIONI DA PAGINA ADDCLIENTWINDOW
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
-    connect(this, SIGNAL(pulisciCampi()), addClientW, SLOT(pulisciRighe()));
     connect(addClientW, SIGNAL(erroreInput(string)), this, SLOT(erroreInputRicevuto(string)));
-    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!
 
+    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!  --- RISOLTO?
     connect(ModifyClientW, SIGNAL(rimpiazzaCliente(const unsigned int,const QStringList)), this, SLOT(rimpiazzaItem(const unsigned int, QStringList)));
     resetListaClienti();
     view->show();
 }
 
-//pezzo per search da implementare
-//controller::controller(model *mod, mainwindow *vw):m(mod),view(vw)
-//{
-//   connect(view, SIGNAL(clickedSearch(QString)),this, SLOT(search(QString))); // lui al posto di this ha messo m ! DA RIVEDERE!!
-
-//}
-
 void controller::openAddView()
 {
-    emit pulisciCampi();
+    addClientW->pulisciRighe();
     //addClientW->Clear(); metodo da aggiungere dopo dentro ad addClientWindow, pensare se è necessario per add
     addClientW->setModal(true);
     addClientW->show();
@@ -73,13 +59,12 @@ void controller::openModifyView()
 
 void controller::rimuoviCliente(const unsigned int indice){
     m->rimuoviCliente(indexTranslate[indice]);
-    resetListaClienti();//viene chiamato già dalla connect?
 }
 
 void controller::rimpiazzaItem(const unsigned int indice, const QStringList stringaCliente)
 {
     m->modificaItem(indexTranslate[indice], stringaCliente);
-    resetListaClienti();  //viene chiamato già dalla connect?
+    resetListaClienti();
 }
 
 void controller::mostraCliente(const unsigned int cliente){
@@ -177,33 +162,16 @@ void controller::esportaCsvClienti() const
     myfile.close();
 }
 
-void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
+void controller::resetListaClienti()
 {
-
     QString parolaNelCampoCerca = view->getParolaCercata();
-
     view->mostraClienti(m->getListaClientiFiltrata(parolaNelCampoCerca,indexTranslate));
-
     resetDettClienteView();
 }
 
 void controller::resetDettClienteView(){
     view->resetDettCliente();
 }
-
-//void controller::openModify() const
-//{
-//    QStringList oldData= model->GetRecord(index);
-//    modifyclientwindow->SetFields();
-//    modWindow->setModal(true);
-//    modWindow->show();
-
-//}
-
-/*void controller::openSave() const
-{
-
-}*/
 
 void controller::aggClienteContainer(const QStringList dettagli)
 {
@@ -214,7 +182,7 @@ void controller::aggClienteContainer(const QStringList dettagli)
 //            view->displayInputError();
 //        else{
 //            if(!m->checkIfExistIntoCatalog(dettagli))
-                m->aggNelContainer(dettagli); //FARLO CON CONNECT!!!!
+                m->aggNelContainer(dettagli);
 //            else{
 //                m->displayTheElementExist();
 //            }

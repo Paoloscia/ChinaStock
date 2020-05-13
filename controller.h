@@ -7,21 +7,22 @@
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
 #include "model.h"
-#include <iostream>
-#include<fstream>
+#include <iostream>   //da tenere?
+#include <fstream>
 using std::ofstream;
 using std::endl;
 
 class controller : public QObject
 {
     Q_OBJECT
+
 public:
     explicit controller(QObject *parent = nullptr);
+
 public slots:
     void openAddView(); //capire se mettere const
     void salvaFile(); //capire se mettere const
     void openModifyView(); //capire se mettere const
-    //void openSave() const; da implementare
     void resetListaClienti();
     void resetDettClienteView();
     void aggClienteContainer(const QStringList);
@@ -42,15 +43,13 @@ public slots:
     void resetColoreFiltroC();
     void stampaPDFCliente() const;
     void esportaCsvClienti() const;
-signals:
-    void pulisciCampi();
+
 private:
     mainwindow* view;
     addClientWindow *addClientW;
     modifyClientWindow *ModifyClientW;
     model* m;
     QMap<unsigned int,unsigned int> indexTranslate;
-
 };
 
 #endif // CONTROLLER_H
