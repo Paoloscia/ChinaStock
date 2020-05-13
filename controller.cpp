@@ -167,7 +167,7 @@ void controller::esportaCsvClienti() const
     //myfile.open("test.csv");
     QStringList listaClienti = m->getListaClientiCsv();
 
-    myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail,Data di nascita,Studente"<<endl;
+    myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail,Data di nascita,Studente,Scadenza piscina,Istruttore piscina,Corso nuoto,Scadenza palestra,Istruttore palestra,Scheda"<<endl;
     auto it = listaClienti.begin();
     while(it!=listaClienti.end()){
         myfile<<it->toStdString()<<endl;
