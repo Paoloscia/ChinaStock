@@ -79,6 +79,7 @@ signals:
     void signOpenModWindow();
     void cercaRuntime();
     void salvaFileMenu();
+    void signEsportaCsvClienti();
     //void clickedSearch(QString searchText); da implementare search
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);

@@ -33,7 +33,7 @@ public:
     //clear serve a distruggecatalogRemovedre tutto il container datitotali, è il nostro distruggi
     QStringList getCampiCliente(const unsigned int) const;
     QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
-
+    QStringList getListaClientiCsv() const;
     void rimuoviCliente(const unsigned int);
 
     deepPointer<cliente> mostraCliente(const unsigned int);

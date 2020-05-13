@@ -7,7 +7,10 @@
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
 #include "model.h"
-
+#include <iostream>
+#include<fstream>
+using std::ofstream;
+using std::endl;
 
 class controller : public QObject
 {
@@ -38,6 +41,7 @@ public slots:
     void filtraClientiIStruttoriPalestra();
     void resetColoreFiltroC();
     void stampaPDFCliente() const;
+    void esportaCsvClienti() const;
 signals:
     void pulisciCampi();
 private:

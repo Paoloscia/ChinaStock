@@ -310,6 +310,23 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
     return ret;
 }
 
+QStringList model::getListaClientiCsv() const
+{
+    QStringList ret;
+    QString cliente;
+    auto it=datiTotali->inizio();
+    unsigned int count=0;
+    if(!datiTotali->isEmpty()){
+        while(it!=datiTotali->fine()){
+            cliente = (QString::fromStdString((*(*it)).getnome() + "," + (*(*it)).getcognome()+ "," + (*(*it)).getcodfiscale()+ "," + (*(*it)).getluogo()+ "," + (*(*it)).getres()+ "," + (*(*it)).getvia()+ "," + (*(*it)).getnum()+ "," + (*(*it)).getmail())); //capire se aggiungere +"endl;" alla fine, o metterlo su esporta di controller
+            ret.push_back(cliente);
+            count++;
+            ++it;
+        }
+    }
+    return ret;
+}
+
 void model::rimuoviCliente(const unsigned int i)
 {
     modificato=true;

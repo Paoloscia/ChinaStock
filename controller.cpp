@@ -17,6 +17,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
     connect(view, SIGNAL(signStampaPDFCliente()), this, SLOT(stampaPDFCliente()));
+    connect(view, SIGNAL(signEsportaCsvClienti()), this, SLOT(esportaCsvClienti()));
 
 
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
@@ -155,6 +156,23 @@ void controller::resetColoreFiltroC()
 void controller::stampaPDFCliente() const
 {
 
+}
+
+void controller::esportaCsvClienti() const
+{
+    ofstream myfile("test.csv"); //crea file e lo apre
+
+    //ofstream myfile; alternativa, creo prima oggetto file e poi lo apro
+    //myfile.open("test.csv");
+    QStringList listaClienti = m->getListaClientiCsv();
+
+    myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail"<<endl;
+    auto it = listaClienti.begin();
+    while(it!=listaClienti.end()){
+        myfile<<it->toStdString()<<endl;
+        ++it;
+    }
+    myfile.close();
 }
 
 void controller::resetListaClienti() //implementato per mostrare la lista di clienti in mainwindow
