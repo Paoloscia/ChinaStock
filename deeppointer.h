@@ -6,7 +6,7 @@ class deepPointer{
     friend class mainwindow;
     friend class model;
 private:
-    T* pted;     //T puntato
+    T* pted;
 public:
     deepPointer(T* =nullptr);
     deepPointer(const deepPointer&);
@@ -15,7 +15,6 @@ public:
     T& operator*() const;
     ~deepPointer();
     bool operator==(const deepPointer&) const;
-    //bool operator==(string) const; capire se serve
     bool operator!=(const deepPointer&) const;
     bool operator>(const deepPointer&) const;
     bool operator<(const deepPointer&) const;
@@ -49,7 +48,7 @@ T* deepPointer<T>::operator->() const{
        return pted;
 }
 
-template <class T> //QUI c'é ERRORE!!! RIPRENDERE DA QUI
+template <class T>
 T& deepPointer<T>::operator*() const{
         return *pted;
 }
@@ -57,10 +56,10 @@ T& deepPointer<T>::operator*() const{
 template <class T>
 deepPointer<T>::~deepPointer(){
     if(pted)
-        delete pted;      //elimina il T puntato dal mio puntatore con gestione della memoria
+        delete pted;
 }
 
-template <class T> //era commentato, capire se serve perchè creava problemi!
+template <class T>
 bool deepPointer<T>::operator==(const deepPointer& dptr) const{
     return *pted==*(dptr.pted);
 }
@@ -80,16 +79,10 @@ bool deepPointer<T>::operator>(const deepPointer& dptr) const{
     return *pted>*(dptr.pted);
 }
 
-//template<class T>
-//bool deepPointer<T>::operator==(string s) const
-//{
-//    return *pted== s;
-//}
-
 template<class T>
 deepPointer<T>::operator T *() const
 {
     return pted;
 }
 
-#endif // DEEPPOINTER_H
+#endif
