@@ -157,7 +157,7 @@ void model::carica(QString path) const
             QDomElement scadenzaPiscinaGiornoElem = clienteInfo.firstChildElement("scadenzapiscinagiorno");
             QDomElement scadenzaPiscinaMeseElem = clienteInfo.firstChildElement("scadenzapiscinamese");
             QDomElement scadenzaPiscinaAnnoElem = clienteInfo.firstChildElement("scadenzapiscinaanno");
-            bool corsonuoto = studentElem.text().toUInt()== 1;
+            bool corsonuoto = corsonuotoElem.text().toUInt()== 1;
             std::string nomeistruttorepiscina = nomeistruttorepiscinaElem.text().toStdString();
             int scadenzaPiscinaGiorno = (scadenzaPiscinaGiornoElem.text().toInt());
             int scadenzaPiscinaMese = (scadenzaPiscinaMeseElem.text().toInt());
@@ -171,7 +171,7 @@ void model::carica(QString path) const
             QDomElement scadenzaPalestraGiornoElem = clienteInfo.firstChildElement("scadenzapalestragiorno");
             QDomElement scadenzaPalestraMeseElem = clienteInfo.firstChildElement("scadenzapalestramese");
             QDomElement scadenzaPalestraAnnoElem = clienteInfo.firstChildElement("scadenzapalestraanno");
-            bool scheda = studentElem.text().toUInt()== 1;
+            bool scheda = schedaElem.text().toUInt()== 1;
             std::string nomeistruttorepalestra = nomeistruttorepalestraElem.text().toStdString();
             int scadenzaPalestraGiorno = (scadenzaPalestraGiornoElem.text().toInt());
             int scadenzaPalestraMese = (scadenzaPalestraMeseElem.text().toInt());
@@ -192,12 +192,12 @@ void model::carica(QString path) const
             QDomElement scadenzaPalestraGiornoElem = clienteInfo.firstChildElement("scadenzapalestragiorno");
             QDomElement scadenzaPalestraMeseElem = clienteInfo.firstChildElement("scadenzapalestramese");
             QDomElement scadenzaPalestraAnnoElem = clienteInfo.firstChildElement("scadenzapalestraanno");
-            bool corsonuoto = studentElem.text().toUInt()== 1;
+            bool corsonuoto = corsonuotoElem.text().toUInt()== 1;
             std::string nomeistruttorepiscina = nomeistruttorepiscinaElem.text().toStdString();
             int scadenzaPiscinaGiorno = (scadenzaPiscinaGiornoElem.text().toInt());
             int scadenzaPiscinaMese = (scadenzaPiscinaMeseElem.text().toInt());
             int scadenzaPiscinaAnno = (scadenzaPiscinaAnnoElem.text().toInt());
-            bool scheda = studentElem.text().toUInt()== 1;
+            bool scheda = schedaElem.text().toUInt()== 1;
             std::string nomeistruttorepalestra = nomeistruttorepalestraElem.text().toStdString();
             int scadenzaPalestraGiorno = (scadenzaPalestraGiornoElem.text().toInt());
             int scadenzaPalestraMese = (scadenzaPalestraMeseElem.text().toInt());
