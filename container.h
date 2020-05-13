@@ -24,23 +24,17 @@ private:
     nodo* primo, *ultimo;
     static nodo* clone(nodo*, nodo*&);
     nodo* rimuovi(nodo*, const T&);
-    nodo* rimuovi_s(nodo*, string);
-    //nodo *copia(const nodo*);
-    //nodo *lastNode(const nodo*);
+
 public:
     Container();
     Container(const T&);
     Container(const Container&);
     ~Container();
     Container& operator=(const Container&);
-    //bool operator==(const Container<T>&) const;   ci serve davvero?
-    //bool operator!=(const Container<T>&) const;
 
-//    void aggiungiDavanti(const T&);
-//    void aggiungiDietro(const T&);
+
     void aggInOrdine(const T&);
     void rimpiazzaFinale(unsigned int, const T&);
-    //T prendiNodoIndice(unsigned int) const;
     void rimuoviIndice(const unsigned int);
     T prendiNodoIndice(const unsigned int) const;
     unsigned int trovaIndiceNodo(const T&); //forse bisogna passare const come return? Però mi segna warning
@@ -84,19 +78,11 @@ public:
     };
     constIteratore inizio() const;
     constIteratore fine() const;
-    T& davanti() const;
-    T& dietro() const;
     Iteratore inizio();
     Iteratore fine();
     void rimuovi(const T&);
-    void rimuovi_s(string); //DA RIVEDERE!!!
-    Iteratore cerca(const T&);
-    Iteratore cerca_s(string); // DA RIVEDERE!!!
-    constIteratore cerca(const T&) const;
-    constIteratore cerca_s(string) const; //DA RIVEDERE!!!
 };
 
-//-------------------------------------IMPLEMENTAZIOONE METODI--------------------------
 template <class T>
 Container<T>::nodo::nodo(const T& obj, nodo* n) : info(obj), next(n) {}
 
@@ -130,12 +116,6 @@ void Container<T>::rimuovi(const T & obj)
 }
 
 template<class T>
-void Container<T>::rimuovi_s(string s)
-{
-    rimuovi_s(primo, s);
-}
-
-template<class T>
 Container<T>::Container() : primo(nullptr), ultimo(nullptr) {}
 
 template <class T>
@@ -161,40 +141,7 @@ Container<T>& Container<T>::operator=(const Container & q)
     return *this;
 }
 
-//template <class T> capire se serve implementare
-//bool Container<T>::operator==(const Container<T>& c) const{
-//    return equal(primo, c.primo);
-//}
-
-
-//template<class T>
-//void Container<T>::aggiungiDavanti(const T & obj)
-//{
-//    nodo* new_nodo = new nodo(obj);
-//    if (primo == nullptr) {
-//        primo = ultimo = new_nodo;
-//    }
-//    else
-//    {
-//        new_nodo->next = primo;
-//        primo = new_nodo;
-//    }
-//}
-
-//template<class T>
-//void Container<T>::aggiungiDietro(const T & obj)
-//{
-//    if (primo == nullptr) primo = ultimo = new nodo(obj);
-//    else
-//    {
-//        ultimo->next = new nodo(obj);
-//        ultimo = ultimo->next;
-//    }
-//}
-
-
-
-template<class T> //commentato aggiungidavanti e sostituito con aggInOrdine (cambiare nome), capire perchè non funziona overloading deep pointer > e <
+template<class T> //capire perchè non funziona overloading deep pointer > e <   --- risolto????
 void Container<T>::aggInOrdine(const T & obj){
     nodo* cliente = new nodo(obj);
     if (primo == nullptr) primo = ultimo = cliente;
@@ -219,18 +166,6 @@ void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModifica
     rimuoviIndice(indice);
     aggInOrdine(clienteModificato);
 }
-
-// template <class T> capire se cancellare o tenere!!!
-// T Container<T>::prendiNodoIndice(unsigned int i) const{
-//     //if(i>= size())
-//     //    return nullptr;    DA IMPLEMENTARE PER IL CONTROLLO, SERVE?
-//     nodo* contatore = primo;
-//     for(unsigned int k=0; k<i; k++)
-//         contatore=contatore->next;
-//     return contatore->info;
-// }
-
-
 
 template <class T>
 void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè è uguale a gotta, vedere se cambia
@@ -447,18 +382,6 @@ typename Container<T>::constIteratore Container<T>::fine() const
 }
 
 template<class T>
-T & Container<T>::davanti() const
-{
-    return primo->info;
-}
-
-template<class T>
-T & Container<T>::dietro() const
-{
-    return ultimo->info;
-}
-
-template<class T>
 typename Container<T>::Iteratore Container<T>::inizio()
 {
     return Iteratore(primo);
@@ -488,83 +411,4 @@ typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
     return f;
 }
 
-template<class T> //bisogna togliere questa funzione
-typename Container<T>::nodo* Container<T>::rimuovi_s(nodo* f, string s)
-{
-    if (f == nullptr)
-        return nullptr;
-    f->next = rimuovi_s(f->next, s);
-    if (f->info == s)
-    {
-        nodo* tmp = f->next;
-        if (primo == f) primo = tmp;
-        if (f == ultimo) ultimo = nullptr;
-        delete f;
-        return tmp;
-    }
-    if (ultimo == nullptr)
-        ultimo = f;
-    return f;
-}
-
-template<class T>
-typename Container<T>::Iteratore Container<T>::cerca(const T & obj) // ritorna Iteratore alla prima occorrenza del match
-{
-    Iteratore it = primo;
-    while (it != fine())
-    {
-        if (obj == *it)
-        {
-            return it;
-        }
-        it++;
-    }
-    return Iteratore();
-}
-
-template<class T>
-typename Container<T>::Iteratore Container<T>::cerca_s(string s)
-{
-    Iteratore it = primo;
-    while (it != fine())
-    {
-        if (*it == s)
-        {
-            return it;
-        }
-        it++;
-    }
-    return Iteratore();
-}
-
-template<class T>
-typename Container<T>::constIteratore Container<T>::cerca(const T & obj) const // ritorna const_iterator alla prima occorrenza del match
-{
-    constIteratore cit = primo;
-    while (cit != fine())
-    {
-        if (obj == *cit)
-        {
-            return cit;
-        }
-        cit++;
-    }
-    return constIteratore();
-}
-
-template<class T>
-typename Container<T>::constIteratore Container<T>::cerca_s(string s) const
-{
-    constIteratore cit = primo;
-    while (cit != fine())
-    {
-        if (*cit == s)
-        {
-            return cit;
-        }
-        cit++;
-    }
-    return constIteratore();
-}
-
-#endif // CONTAINER_H
+#endif
