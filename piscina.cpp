@@ -28,8 +28,6 @@ int piscina::getAnnoPiscina() const
     return scadenzapiscina.QDate::year();
 }
 
-//piscina::~piscina(){}
-
 bool piscina::iscorsonuoto() const
 {
     return corsonuoto;

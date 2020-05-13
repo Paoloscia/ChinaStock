@@ -5,12 +5,11 @@
 class palestra : virtual public cliente
 {
 private:
-    bool scheda; //se fa la scheda oppure no;
-    string nomeistruttorepalestra; //nome istruttore;
+    bool scheda;
+    string nomeistruttorepalestra;
     QDate scadenzapalestra;
 public:
     palestra(string="",string="", int=2000,int=1,int=1,string="",string="", string="",string="",string="",string="",string="",bool=false,bool=false,string="",int=2000,int=1,int=1);
-    //palestra(const palestra& p);
     palestra(cliente,bool=false,string="",int=2000,int=1,int=1);
     palestra* clone() const;
     //virtual ~palestra();
@@ -26,4 +25,4 @@ public:
 
 };
 
-#endif // PALESTRA_H
+#endif

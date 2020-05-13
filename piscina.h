@@ -24,4 +24,4 @@ public:
 
 };
 
-#endif // PISCINA_H
+#endif

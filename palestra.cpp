@@ -11,22 +11,7 @@ QDate palestra::getDataPalestra() const
 {
     return scadenzapalestra;
 }
-/*
-palestra::palestra(const palestra &p)
-{
 
-}
-
-bool palestra::operator==(const cliente &c) const
-{
-
-}
-
-bool palestra::operator!=(const cliente &c) const
-{
-
-}
-*/
 int palestra::getGiornoPalestra() const
 {
     return scadenzapalestra.QDate::day();

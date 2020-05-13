@@ -9,10 +9,10 @@ private:
     string cognome;
     QDate dataNascita;
     string codicefiscale;
-    string luogodN; // luogo di nascita
-    string residenza; // residenza;
+    string luogodN;
+    string residenza;
     string via;
-    string numvia; // numero via;
+    string numvia;
     string  numerotel;
     string mail;
     bool student;
@@ -42,4 +42,4 @@ public:
     bool getstudent() const;
 };
 
-#endif // CLIENTE_H
+#endif

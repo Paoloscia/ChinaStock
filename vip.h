@@ -13,4 +13,4 @@ public:
 
 };
 
-#endif // VIP_H
+#endif
