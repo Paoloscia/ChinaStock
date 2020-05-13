@@ -318,7 +318,9 @@ QStringList model::getListaClientiCsv() const
     unsigned int count=0;
     if(!datiTotali->isEmpty()){
         while(it!=datiTotali->fine()){
-            cliente = (QString::fromStdString((*(*it)).getnome() + "," + (*(*it)).getcognome()+ "," + (*(*it)).getcodfiscale()+ "," + (*(*it)).getluogo()+ "," + (*(*it)).getres()+ "," + (*(*it)).getvia()+ "," + (*(*it)).getnum()+ "," + (*(*it)).getmail())); //capire se aggiungere +"endl;" alla fine, o metterlo su esporta di controller
+            cliente = (QString::fromStdString((*(*it)).getnome() + "," + (*(*it)).getcognome()+ "," + (*(*it)).getcodfiscale()+ "," + (*(*it)).getluogo()+ "," + (*(*it)).getres()+ "," + (*(*it)).getvia()+ "," + (*(*it)).getnum()+ "," + (*(*it)).getmail())) +","+(*(*it)).getDataN().toString("dd/MM/yyyy");
+            if ((*(*it)).getstudent()) cliente = cliente +",Sì";
+            else cliente = cliente +",No";
             ret.push_back(cliente);
             count++;
             ++it;

@@ -160,18 +160,20 @@ void controller::stampaPDFCliente() const
 
 void controller::esportaCsvClienti() const
 {
+    //bisogna aggiungere che si può scegliere dove salvarlo!
     ofstream myfile("test.csv"); //crea file e lo apre
 
     //ofstream myfile; alternativa, creo prima oggetto file e poi lo apro
     //myfile.open("test.csv");
     QStringList listaClienti = m->getListaClientiCsv();
 
-    myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail"<<endl;
+    myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail,Data di nascita,Studente"<<endl;
     auto it = listaClienti.begin();
     while(it!=listaClienti.end()){
         myfile<<it->toStdString()<<endl;
         ++it;
     }
+    //emit successoEsportCsv(); bisogna mettere message box che si apre quando ho fatto esportazione
     myfile.close();
 }
 
