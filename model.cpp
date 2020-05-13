@@ -292,16 +292,40 @@ QStringList model::getListaClientiFiltrata(const QString filter, QMap<unsigned i
 QStringList model::getListaClientiCsv() const
 {
     QStringList ret;
-    QString cliente;
+    QString datiCliente;
     auto it=datiTotali->inizio();
-    unsigned int count=0;
     if(!datiTotali->isEmpty()){
         while(it!=datiTotali->fine()){
-            cliente = (QString::fromStdString((*(*it)).getnome() + "," + (*(*it)).getcognome()+ "," + (*(*it)).getcodfiscale()+ "," + (*(*it)).getluogo()+ "," + (*(*it)).getres()+ "," + (*(*it)).getvia()+ "," + (*(*it)).getnum()+ "," + (*(*it)).getmail())) +","+(*(*it)).getDataN().toString("dd/MM/yyyy");
-            if ((*(*it)).getstudent()) cliente = cliente +",Sì";
-            else cliente = cliente +",No";
-            ret.push_back(cliente);
-            count++;
+            datiCliente = (QString::fromStdString((*(*it)).getnome() + "," + (*(*it)).getcognome()+ "," + (*(*it)).getcodfiscale()+ "," + (*(*it)).getluogo()+ "," + (*(*it)).getres()+ "," + (*(*it)).getvia()+ "," + (*(*it)).getnum()+ "," + (*(*it)).getmail())) +","+(*(*it)).getDataN().toString("dd/MM/yyyy");
+            if ((*(*it)).getstudent()) datiCliente = datiCliente +",Sì";
+            else datiCliente = datiCliente +",No";
+            cliente* cliente = *it;
+            if (dynamic_cast<vip*>(cliente) != nullptr){
+                auto clientevip = dynamic_cast<vip *>(cliente);
+                datiCliente = datiCliente +","+clientevip->getDataPiscina().toString("dd/MM/yyyy")+","+QString::fromStdString(clientevip->getnomeistruttorepiscina());
+                if (clientevip->iscorsonuoto()) datiCliente = datiCliente +",Sì";
+                else datiCliente = datiCliente +",No";
+                datiCliente = datiCliente +","+clientevip->getDataPalestra().toString("dd/MM/yyyy")+","+QString::fromStdString(clientevip->getnomeistruttorepalestra());
+                if (clientevip->isscheda()) datiCliente = datiCliente +",Sì";
+                else datiCliente = datiCliente +",No";
+            }
+            else if (dynamic_cast<piscina*>(cliente) != nullptr){
+                auto clientepis = dynamic_cast<piscina *>(cliente);
+                datiCliente = datiCliente +","+clientepis->getDataPiscina().toString("dd/MM/yyyy")+","+QString::fromStdString(clientepis->getnomeistruttorepiscina());
+                if (clientepis->iscorsonuoto()) datiCliente = datiCliente +",Sì";
+                else datiCliente = datiCliente +",No";
+                datiCliente = datiCliente + ",non abbonato,non abbonato,non abbonato";
+            }
+            else if (dynamic_cast<palestra*>(cliente) != nullptr){
+                auto clientepal = dynamic_cast<palestra *>(cliente);
+                datiCliente = datiCliente + ",non abbonato,non abbonato,non abbonato";
+                datiCliente = datiCliente +","+clientepal->getDataPalestra().toString("dd/MM/yyyy")+","+QString::fromStdString(clientepal->getnomeistruttorepalestra());
+                if (clientepal->isscheda()) datiCliente = datiCliente +",Sì";
+                else datiCliente = datiCliente +",No";
+
+            }
+
+            ret.push_back(datiCliente);
             ++it;
         }
     }
