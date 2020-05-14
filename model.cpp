@@ -246,17 +246,17 @@ QStringList model::getCampiCliente(const unsigned int indice) const
         tmp.push_back(clientepis->getDataPiscina().toString());
         tmp.push_back(QString::fromStdString(clientepis->getnomeistruttorepiscina()));
         tmp.push_back(clientepis->iscorsonuoto()? "true":"false");
-        tmp.push_back(QDate().toString());
-        tmp.push_back(QString::fromStdString(""));
-        tmp.push_back("false");
+        tmp.push_back("Non abbonato");
+        tmp.push_back("Non abbonato");
+        tmp.push_back("Non abbonato");
         tmp.push_back("true");
         tmp.push_back("false");
     }
     else if(dynamic_cast<palestra*>(clienteTmp.pted) != nullptr){
         auto clientepal = dynamic_cast<palestra*>(clienteTmp.pted);
-        tmp.push_back(QDate().toString());
-        tmp.push_back(QString::fromStdString(""));
-        tmp.push_back("false");
+        tmp.push_back("Non abbonato");
+        tmp.push_back("Non abbonato");
+        tmp.push_back("Non abbonato");
         tmp.push_back(clientepal->getDataPalestra().toString());
         tmp.push_back(QString::fromStdString(clientepal->getnomeistruttorepalestra()));
         tmp.push_back(clientepal->isscheda()? "true":"false");
