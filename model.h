@@ -33,6 +33,7 @@ public:
     QStringList getListaClientiCsv() const;
     void rimuoviCliente(const unsigned int);
     deepPointer<cliente> mostraCliente(const unsigned int);
+    deepPointer<cliente> mostraClientePDF(const unsigned int);
     void filterPiscina();
     void filterPalestra();
     void filterMaggiorenne();

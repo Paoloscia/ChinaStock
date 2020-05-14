@@ -7,8 +7,11 @@
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
 #include "model.h"
-#include <iostream>   //da tenere?
-#include <fstream>
+#include <iostream>
+#include<fstream>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
 using std::ofstream;
 using std::endl;
 
@@ -41,7 +44,7 @@ public slots:
     void filtraClientiIstruttoriPiscina();
     void filtraClientiIStruttoriPalestra();
     void resetColoreFiltroC();
-    void stampaPDFCliente() const;
+    void stampaPDFCliente(const unsigned int) const;
     void esportaCsvClienti() const;
 
 private:

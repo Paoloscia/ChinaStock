@@ -14,7 +14,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroMinorenne()), this, SLOT(filtraClientiMinorenni()));
     connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
-    connect(view, SIGNAL(signStampaPDFCliente()), this, SLOT(stampaPDFCliente()));
+    connect(view, SIGNAL(signStampaPDFCliente(const unsigned int)), this, SLOT(stampaPDFCliente(const unsigned int))); // DA METTERE DEEPPOINTER CORRETTO!?
     connect(view, SIGNAL(signEsportaCsvClienti()), this, SLOT(esportaCsvClienti()));
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
     connect(view, SIGNAL(filtroCorsoNuoto()), this, SLOT(filtraClientiIstruttoriPiscina()));
@@ -138,9 +138,66 @@ void controller::resetColoreFiltroC()
     view->resetColoreFiltro();
 }
 
-void controller::stampaPDFCliente() const
+void controller::stampaPDFCliente(const unsigned int cliente) const
 {
+        QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","C://Desktop","FileCliente(*.pdf)");
+        QPdfWriter writer(nomeFile);
+        QPainter painter(&writer);
+        painter.setPen(Qt::black);
+        painter.drawText(700,1200,"DATI DI");
+        painter.drawText(700,2000,"Codice Fiscale:");
+        painter.drawText(700,2400,"Luogo Di Nascita:");
+        painter.drawText(700,2800,"Residenza:");
+        painter.drawText(700,3200,"Via:");
+        painter.drawText(700,3600,"Numero Telefono:");
+        painter.drawText(700,4000,"Mail:");
+        painter.drawText(700,4400,"Data Di Nascita:");
+        painter.drawText(700,4800,"Studente:");
+        painter.drawText(700,5200,"Data Corso Piscina:");
+        painter.drawText(700,5600,"Nome Istruttore Piscina:");
+        painter.drawText(700,6000,"Corso Nuoto:");
+        painter.drawText(700,6400,"Data Scheda Palestra:");
+        painter.drawText(700,6800,"Nome Istruttore Palestra:");
+        painter.drawText(700,7200,"Scheda Palestra");
 
+        QStringList p = m->getCampiCliente(cliente);
+            for(auto it=p.begin();it!=p.end();++it)
+            {
+                QString nomeTmp =(p.at(0));
+                QString cognomeTmp=(p.at(1));
+                QString codFisc=(p.at(2));
+                QString ldn=(p.at(3));
+                QString residenza=(p.at(4));
+                QString via=(p.at(5));
+                QString numerovia=(p.at(6));
+                QString telefono=(p.at(7));
+                QString mail=(p.at(8));
+                QString datenascita=(p.at(9));
+                QString studente=(p.at(10));
+                QString datacorsopiscina =(p.at(11));
+                QString nomeistruttorepiscina=(p.at(12));
+                QString corsonuoto =(p.at(13));
+                QString dateschedaPalestra =(p.at(14));
+                QString Nomeistruttorepalestra =(p.at(15));
+                QString schedaPalestra = (p.at(16));
+                painter.drawText(2000,1200,nomeTmp+" "+cognomeTmp);
+                painter.drawText(2000,2000,codFisc);
+                painter.drawText(2000,2400,ldn);
+                painter.drawText(2000,2800,residenza);
+                painter.drawText(2000,3200,via);
+                painter.drawText(2000,3600,telefono);
+                painter.drawText(2000,4000,mail);
+                painter.drawText(2000,4400,datenascita);
+                painter.drawText(2000,4800,studente);
+                painter.drawText(2000,5200,datacorsopiscina);
+                painter.drawText(2200,5600,nomeistruttorepiscina);
+                painter.drawText(2000,6000,corsonuoto);
+                painter.drawText(2000,6400,dateschedaPalestra);
+                painter.drawText(2200,6800,nomeistruttorepiscina);
+                painter.drawText(2000,7200,schedaPalestra);
+
+                painter.end();
+            }
 }
 
 void controller::esportaCsvClienti() const

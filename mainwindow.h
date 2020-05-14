@@ -44,6 +44,7 @@ public:
 public slots:
     void richiestaRimoz();
     void showInfoCliente();
+    void richiestaPDF();
     void coloriFiltroPalestra();
     void coloriFiltroPiscina();
     void coloriFiltroScheda();
@@ -72,7 +73,7 @@ private:
     void closeEvent(QCloseEvent*) override;
 
 signals:
-    void signStampaPDFCliente();
+    void signStampaPDFCliente(const unsigned int);
     void signOpenAddWindow();
     void signOpenModWindow();
     void cercaRuntime();

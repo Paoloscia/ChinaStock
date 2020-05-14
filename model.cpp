@@ -354,6 +354,13 @@ deepPointer<cliente> model::mostraCliente(const unsigned int i)
     return clienteDaVisualizzare;
 }
 
+deepPointer<cliente> model::mostraClientePDF(const unsigned int i)
+{
+    deepPointer<cliente> clienteDaStampare;
+    clienteDaStampare = (datiFiltrati->prendiNodoIndice(i));
+    return clienteDaStampare;
+}
+
 void model::filterPiscina()
 {
     datiFiltrati->clear();

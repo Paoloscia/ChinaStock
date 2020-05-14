@@ -171,7 +171,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** PARTE CONNECT **************************
 
-    connect(stampaPDFCliente, SIGNAL(clicked()), this, SIGNAL(signStampaPDFCliente()));
+    //connect(stampaPDFCliente, SIGNAL(clicked()), this, SIGNAL(signStampaPDFCliente()));
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(esportaCsv, SIGNAL(triggered()), this, SIGNAL(signEsportaCsvClienti()));
@@ -179,6 +179,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));
     connect(listaClienti, SIGNAL(itemSelectionChanged()), this, SLOT(showInfoCliente()));
+    connect(stampaPDFCliente,SIGNAL(clicked()), this, SLOT(richiestaPDF()));
     connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPiscina()));
     connect(All,SIGNAL(clicked()),this,SIGNAL(filtroTutti()));
     connect(palestraCheckFiltro, SIGNAL(clicked()), this, SIGNAL(filtroPalestra()));
@@ -389,6 +390,16 @@ void mainwindow::showInfoCliente(){
     if(listaClienti->isSomeoneSelected()) //vedere se serve davvero
         //refreshMainW; bisogna implementare
         emit richiestaShowCliente(listaClienti->getIndex());
+}
+
+void mainwindow::richiestaPDF()
+{
+    if(listaClienti->isSomeoneSelected())
+        emit signStampaPDFCliente(listaClienti->getIndex());
+    else{
+        nessunSelezionato();
+    }
+
 }
 
 void mainwindow::coloriFiltroPalestra()
