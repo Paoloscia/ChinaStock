@@ -140,7 +140,7 @@ void controller::resetColoreFiltroC()
 
 void controller::stampaPDFCliente(const unsigned int cliente) const
 {
-        QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","C://Desktop","FileCliente(*.pdf)");
+        QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientePdf/Cliente_pdf","Cliente_pdf(*.pdf)");
         QPdfWriter writer(nomeFile);
         QPainter painter(&writer);
         painter.setPen(Qt::black);
@@ -200,12 +200,11 @@ void controller::stampaPDFCliente(const unsigned int cliente) const
 
 void controller::esportaCsvClienti() const
 {
-//    QString nomeFile = QFileDialog::getSaveFileName(view,"Esporta csv","../ChinaFit/Clienti"); capire come fare a scegliere dove salvare file
-//    if(!nomeFile.endsWith(".csv"))
-//    nomeFile=nomeFile+".csv";
-
-    //bisogna aggiungere che si può scegliere dove salvarlo!
-    ofstream myfile("test.csv"); //crea file e lo apre
+    QString nomeFile = QFileDialog::getSaveFileName(view,"Esporta csv","../ChinaStock/ClientiCsv/Lista_Clienti_csv");
+    if(!nomeFile.endsWith(".csv"))
+    nomeFile=nomeFile+".csv";
+    string str = nomeFile.toStdString();
+    ofstream myfile(str); //crea file e lo apre
 
     //ofstream myfile; alternativa, creo prima oggetto file e poi lo apro
     //myfile.open("test.csv");
