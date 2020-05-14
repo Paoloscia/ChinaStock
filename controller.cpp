@@ -195,13 +195,16 @@ void controller::stampaPDFCliente(const unsigned int cliente) const
                 painter.drawText(2000,6400,dateschedaPalestra);
                 painter.drawText(2200,6800,nomeistruttorepiscina);
                 painter.drawText(2000,7200,schedaPalestra);
-
-                painter.end();
             }
+            painter.end();
 }
 
 void controller::esportaCsvClienti() const
 {
+//    QString nomeFile = QFileDialog::getSaveFileName(view,"Esporta csv","../ChinaFit/Clienti"); capire come fare a scegliere dove salvare file
+//    if(!nomeFile.endsWith(".csv"))
+//    nomeFile=nomeFile+".csv";
+
     //bisogna aggiungere che si può scegliere dove salvarlo!
     ofstream myfile("test.csv"); //crea file e lo apre
 
