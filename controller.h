@@ -7,6 +7,7 @@
 #include "addclientwindow.h"
 #include "modifyclientwindow.h"
 #include "model.h"
+#include "info.h"
 #include <iostream>
 #include<fstream>
 #include <QPdfWriter>
@@ -23,6 +24,7 @@ public:
     explicit controller(QObject *parent = nullptr);
 
 public slots:
+    void openInfoWindow();
     void openAddView(); //capire se mettere const
     void salvaFile(); //capire se mettere const
     void openModifyView(); //capire se mettere const
@@ -50,6 +52,7 @@ public slots:
 private:
     mainwindow* view;
     addClientWindow *addClientW;
+    info *infoProgetto;
     modifyClientWindow *ModifyClientW;
     model* m;
     QMap<unsigned int,unsigned int> indexTranslate;

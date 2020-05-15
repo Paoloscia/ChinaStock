@@ -11,14 +11,18 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     QMenuBar* menubar = new QMenuBar(this);
     QMenu* menu= new QMenu("File",menubar);
+    QMenu* Info = new QMenu("Info",menubar);
     QAction* salva = new QAction("Salva",menu);
+    QAction* infoProgetto = new QAction("Informazioni",Info);
     salva->setShortcut(Qt::Key_S | Qt::CTRL);
     QAction* esportaCsv = new QAction("Esporta csv clienti",menu);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
     menu->addAction(esportaCsv);
     menu->addAction(salva);
+    Info->addAction(infoProgetto);
     menubar->addMenu(menu);
+    menubar->addMenu(Info);
     mainLayout->addWidget(menubar);
 
     setMainWindowStyle();
@@ -172,6 +176,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     //************** PARTE CONNECT **************************
 
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
+    connect(infoProgetto,SIGNAL(triggered()),this,SIGNAL(infoWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(esportaCsv, SIGNAL(triggered()), this, SIGNAL(signEsportaCsvClienti()));
     connect(lineCerca, SIGNAL(textChanged(const QString &)), this, SIGNAL(cercaRuntime()));

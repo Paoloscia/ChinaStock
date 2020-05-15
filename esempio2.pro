@@ -19,6 +19,7 @@ SOURCES += \
     addclientwindow.cpp \
     cliente.cpp \
     controller.cpp \
+    info.cpp \
     main.cpp\
     mainwindow.cpp \
     model.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     container.h \
     controller.h \
     deeppointer.h \
+    info.h \
     mainwindow.h \
     model.h \
     modifyclientwindow.h \

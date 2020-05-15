@@ -75,6 +75,7 @@ private:
 signals:
     void signStampaPDFCliente(const unsigned int);
     void signOpenAddWindow();
+    void infoWindow();
     void signOpenModWindow();
     void cercaRuntime();
     void salvaFileMenu();

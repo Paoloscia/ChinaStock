@@ -1,7 +1,8 @@
 #include "controller.h"
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)),infoProgetto(new info(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))
 {
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
+    connect(view,SIGNAL(infoWindow()),this,SLOT(openInfoWindow()));
     connect(view,SIGNAL(signOpenModWindow()),this,SLOT(openModifyView()));
     connect(view,SIGNAL(salvaFileMenu()),this,SLOT(salvaFile()));
     connect(view,SIGNAL(richiestaRimozCliente(const unsigned int)),this,SLOT(rimuoviCliente(const unsigned int)));
@@ -33,6 +34,9 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     view->show();
 }
 
+void controller::openInfoWindow()
+{
+    infoProgetto->show();
 void controller::openAddView()
 {
     addClientW->pulisciRighe();
