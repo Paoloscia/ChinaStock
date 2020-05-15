@@ -37,6 +37,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 void controller::openInfoWindow()
 {
     infoProgetto->show();
+}
 void controller::openAddView()
 {
     addClientW->pulisciRighe();
