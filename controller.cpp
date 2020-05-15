@@ -17,6 +17,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
     connect(view, SIGNAL(signStampaPDFCliente(const unsigned int)), this, SLOT(stampaPDFCliente(const unsigned int))); // DA METTERE DEEPPOINTER CORRETTO!?
     connect(view, SIGNAL(signEsportaCsvClienti()), this, SLOT(esportaCsvClienti()));
+    connect(view, SIGNAL(signEsportaPDFClienti()), this, SLOT(esportaPDFClienti()));
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
     connect(view, SIGNAL(filtroCorsoNuoto()), this, SLOT(filtraClientiIstruttoriPiscina()));
     connect(view, SIGNAL(filtroSchedaPalestra()), this, SLOT(filtraClientiIStruttoriPalestra()));
@@ -223,6 +224,23 @@ void controller::esportaCsvClienti() const
     }
     //emit successoEsportCsv(); bisogna mettere message box che si apre quando ho fatto esportazione
     myfile.close();
+}
+
+void controller::esportaPDFClienti() const
+{
+    QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientePdf/Cliente_pdf","ListaClientiTOTALE_pdf(*.pdf)");
+    QPdfWriter writer(nomeFile);
+    QPainter painter(&writer);
+    painter.setPen(Qt::black);
+
+    int l=900, a1=1000;
+    QStringList clienti = m->getListaClientiPDF();
+    for(auto it = clienti.begin();it!=clienti.end();++it)
+    {
+        painter.drawText(l,a1,*it);
+        a1+=400;
+    }
+    painter.end();
 }
 
 void controller::resetListaClienti()

@@ -16,10 +16,12 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QAction* infoProgetto = new QAction("Informazioni",Info);
     salva->setShortcut(Qt::Key_S | Qt::CTRL);
     QAction* esportaCsv = new QAction("Esporta csv clienti",menu);
+    QAction* esportaPDF = new QAction("Esporta clienti pdf",menu);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
     menu->addAction(esportaCsv);
     menu->addAction(salva);
+    menu->addAction(esportaPDF);
     Info->addAction(infoProgetto);
     menubar->addMenu(menu);
     menubar->addMenu(Info);
@@ -183,6 +185,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(infoProgetto,SIGNAL(triggered()),this,SIGNAL(infoWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(esportaCsv, SIGNAL(triggered()), this, SIGNAL(signEsportaCsvClienti()));
+    connect(esportaPDF, SIGNAL(triggered()), this, SIGNAL(signEsportaPDFClienti()));
     connect(lineCerca, SIGNAL(textChanged(const QString &)), this, SIGNAL(cercaRuntime()));
     connect(removeButton, SIGNAL(clicked()),this, SLOT(richiestaRimoz()));
     connect(modButton, SIGNAL(clicked()), this, SIGNAL(signOpenModWindow()));

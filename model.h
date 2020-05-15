@@ -12,7 +12,6 @@
 #include <QDomDocument>
 #include <QXmlStreamWriter>
 #include <QMap>
-
 class model : public QObject
 {
 
@@ -31,6 +30,7 @@ public:
     QStringList getCampiCliente(const unsigned int) const;
     QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
     QStringList getListaClientiCsv() const;
+    QStringList getListaClientiPDF() const;
     void rimuoviCliente(const unsigned int);
     deepPointer<cliente> mostraCliente(const unsigned int);
     deepPointer<cliente> mostraClientePDF(const unsigned int);

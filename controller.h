@@ -48,6 +48,7 @@ public slots:
     void resetColoreFiltroC();
     void stampaPDFCliente(const unsigned int) const;
     void esportaCsvClienti() const;
+    void esportaPDFClienti() const;
 
 private:
     mainwindow* view;

@@ -332,7 +332,20 @@ QStringList model::getListaClientiCsv() const
     return ret;
 }
 
-void model::rimuoviCliente(const unsigned int i)
+QStringList model::getListaClientiPDF() const
+{
+    QStringList ret;
+    QString datiCliente;
+    for(auto it=datiTotali->inizio();it!=datiTotali->fine() && !datiTotali->isEmpty();++it)
+    {
+        datiCliente =(QString::fromStdString(("N:" +(*(*it)).getnome() + " C: " + (*(*it)).getcognome()+ " CF: " + (*(*it)).getcodfiscale())));
+        ret.push_back(datiCliente);
+
+    }
+
+    return ret;
+
+}void model::rimuoviCliente(const unsigned int i)
 {
     modificato=true;
     if (datiTotali->prendiNodoIndice(i) == datiFiltrati->prendiNodoIndice(i))

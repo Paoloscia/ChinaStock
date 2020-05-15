@@ -80,6 +80,7 @@ signals:
     void cercaRuntime();
     void salvaFileMenu();
     void signEsportaCsvClienti();
+    void signEsportaPDFClienti();
     void richiestaRimozCliente(const unsigned int);
     void richiestaShowCliente(const unsigned int);
     void filtroPiscina();
