@@ -86,9 +86,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     layoutListaClienti->addWidget(listaClienti);
     clientiGroup->setLayout(layoutListaClienti);
     addButton = new QPushButton("Aggiungi",this);
+    addButton->setMinimumWidth(100);
     modButton = new QPushButton("Modifica",this);
+    modButton->setMinimumWidth(100);
     removeButton = new QPushButton("Rimuovi",this);
+    removeButton->setMinimumWidth(100);
     stampaPDFCliente = new QPushButton("Stampa Cliente", this);
+    stampaPDFCliente->setMinimumWidth(100);
 
     verticalSxLayout->addWidget(clientiGroup);
 
