@@ -13,7 +13,6 @@ public:
     piscina(string="",string="", int=2000, int=1, int=1,string="",string="", string="",string="",string="",string="",string="",bool=false,bool=false,string="",int=2000,int=1,int=1);
     piscina(cliente,bool=false,string="",int=2000,int=1,int=1);
     piscina* clone() const;
-    //virtual ~piscina();
 
     QDate getDataPiscina() const;
     int getGiornoPiscina() const;
