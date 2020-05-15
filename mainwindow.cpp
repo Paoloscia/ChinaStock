@@ -171,7 +171,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** PARTE CONNECT **************************
 
-    //connect(stampaPDFCliente, SIGNAL(clicked()), this, SIGNAL(signStampaPDFCliente()));
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
     connect(esportaCsv, SIGNAL(triggered()), this, SIGNAL(signEsportaCsvClienti()));
@@ -189,7 +188,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(checkVip, SIGNAL(clicked()), this , SIGNAL(filtroVip()));
     connect(checkfiltrocorsopiscina, SIGNAL(clicked()), this , SIGNAL(filtroCorsoNuoto()));
     connect(checkfiltroschedapalestra, SIGNAL(clicked()), this , SIGNAL(filtroSchedaPalestra()));
-
     connect(palestraCheckFiltro, SIGNAL(clicked()), this, SLOT(coloriFiltroPalestra()));
     connect(checkfiltromaggiorenne, SIGNAL(clicked()), this, SLOT(coloriFiltroMaggiorenne()));
     connect(checkfiltrominorenne, SIGNAL(clicked()) , this , SLOT(coloriFiltroMinorenne()));
@@ -200,7 +198,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(piscinaCheckFiltro, SIGNAL(clicked()), this, SLOT(coloriFiltroPiscina()));
 }
 
-void mainwindow::mostraClienti(const QStringList datiCliente) //datiCliente pesca i dati salvati da schermata aggiungi/modifica cliente quando viene ciclato
+void mainwindow::mostraClienti(const QStringList datiCliente)
 {
     listaClienti->reset();
     listaClienti->clear();
@@ -365,16 +363,6 @@ void mainwindow::closeEvent(QCloseEvent *)
 
     emit controllaModificato(); //commentato, sistemare dopo che ha mostrato message box
 }
-
-
-/*
-void mainwindow::handleSearchClick()
-{
-    QString searchText = searchInput->text();
-    emit clickedSearch(searchText);
-
-}
-*/
 
 
 void mainwindow::richiestaRimoz()
