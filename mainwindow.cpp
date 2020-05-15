@@ -16,12 +16,12 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QAction* infoProgetto = new QAction("Informazioni",Info);
     salva->setShortcut(Qt::Key_S | Qt::CTRL);
     QAction* esportaCsv = new QAction("Esporta csv clienti",menu);
-    QAction* esportaPDF = new QAction("Esporta clienti pdf",menu);
+    QAction* esportaPDF = new QAction("Esporta pdf clienti",menu);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
     menu->addAction(esportaCsv);
-    menu->addAction(salva);
     menu->addAction(esportaPDF);
+    menu->addAction(salva);
     Info->addAction(infoProgetto);
     menubar->addMenu(menu);
     menubar->addMenu(Info);

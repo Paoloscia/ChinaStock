@@ -5,7 +5,6 @@
 #include<iostream>
 #include<deeppointer.h>
 using std::string;
-using std::cout;
 
 template <class T>
 class Container {
