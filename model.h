@@ -22,7 +22,7 @@ public:
     model(QString path);
     ~model();
 
-    void resetfiltro() const;
+    void resetfiltro() const;  //costante??
     void cancellaOggetto(cliente *, bool = true);
     void salva();
     bool getModificato() const;
@@ -34,7 +34,7 @@ public:
     void rimuoviCliente(const unsigned int);
     deepPointer<cliente> mostraCliente(const unsigned int);
     deepPointer<cliente> mostraClientePDF(const unsigned int);
-    void filterPiscina();
+    void filterPiscina();  //filtri costanti??
     void filterPalestra();
     void filterMaggiorenne();
     void filterMinorenne();

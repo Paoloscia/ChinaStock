@@ -152,6 +152,12 @@ void addClientWindow::mostraErroreInput(string motivo)
     //erroreInputBox.setMinimumSize(600,600); non prende setminimumsize capire perchè quando si sistemerà graficamente codice
 }
 
+void addClientWindow::clienteAggiunto()
+{
+    QMessageBox clienteAggiuntoBox;
+    clienteAggiuntoBox.information(this,"Cliente aggiunto","Il cliente è stato aggiunto con successo!");
+}
+
 void addClientWindow::confirm()
 {
     if (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
@@ -185,7 +191,7 @@ void addClientWindow::confirm()
 
         emit inviaStringaCliente(*tmp); //era sendItemsDetails
         this->close();
-
+        clienteAggiunto();
         //QDialog::accept(); capire se servono queste due righe commentate
         //emit finished();
     }

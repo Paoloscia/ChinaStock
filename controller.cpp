@@ -24,6 +24,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
     connect(m, SIGNAL(clienteAggiunto()), this, SLOT(resetListaClienti()));
     connect(m, SIGNAL(clienteRimosso()), this, SLOT(resetListaClienti()));
+    connect(m, SIGNAL(clienteRimosso()), this, SLOT(clienteRimossoShowBox()));
     connect(m, SIGNAL(resetColoreFiltroM()), this, SLOT(resetColoreFiltroC()));
 
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
@@ -137,6 +138,11 @@ void controller::filtraClientiIStruttoriPalestra()
 {
     m->filterSchedaPalestra();
     resetListaClienti();
+}
+
+void controller::clienteRimossoShowBox(){
+    QMessageBox clienteRimossoBox;
+    clienteRimossoBox.information(view,"Cliente rimosso","Il cliente è stato rimosso con successo!");
 }
 
 void controller::resetColoreFiltroC()

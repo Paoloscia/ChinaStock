@@ -39,6 +39,12 @@ void modifyClientWindow::caricaDati(const QStringList& e, const unsigned int i){
     studenteCheckbox->setChecked(e.at(10)=="true"? true : false);
 }
 
+void modifyClientWindow::clienteModificato()
+{
+    QMessageBox clienteModificatoBox;
+    clienteModificatoBox.information(this,"Cliente modificato","Il cliente è stato modificato con successo!");
+}
+
 void modifyClientWindow::confirm(){ //COPIARE IL CONFIRM DA ADD QUANTO è PRONTO E FARE LE MODIFICHE (CAMBIA SOLO UN EMIT)
         if (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
             emit erroreInput("mancaLineEdit");
@@ -71,5 +77,7 @@ void modifyClientWindow::confirm(){ //COPIARE IL CONFIRM DA ADD QUANTO è PRONTO
 
             emit rimpiazzaCliente(ind, *tmp); //era replaceItems     DA FARE
             this->close();
+
+            clienteModificato();
         }
     }

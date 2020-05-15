@@ -29,6 +29,7 @@ public:
     addClientWindow(QWidget *parent =nullptr);
     //~addClientWindow(); DA FARE!!!
     void mostraErroreInput(string);
+    void clienteAggiunto();
 public slots:
     virtual void confirm();
     void mostraPiscina();
