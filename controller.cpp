@@ -1,5 +1,5 @@
 #include "controller.h"
-controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow(view)),infoProgetto(new info(view)), ModifyClientW(new modifyClientWindow(view)), m(new model("data.xml"))
+controller::controller(QObject *parent) : QObject(parent),view(new mainwindow()), addClientW(new addClientWindow()),infoProgetto(new info()), ModifyClientW(new modifyClientWindow()), m(new model("data.xml"))
 {
     connect(view,SIGNAL(signOpenAddWindow()),this,SLOT(openAddView()));
     connect(view,SIGNAL(infoWindow()),this,SLOT(openInfoWindow()));

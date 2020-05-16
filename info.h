@@ -22,8 +22,10 @@ public:
    info(QWidget *parent =nullptr);
 protected:
     QHBoxLayout* mainLayout;
+    QFormLayout* formLayout, *formLayout2, *formLayout3;
     QVBoxLayout *v1, *v2;
     QHBoxLayout *ImageLayout1, *ImageLayout2, *ImageLayout3;
+    QGroupBox *Elia, *Amedeo, *Paolo;
 };
 
 #endif // INFO_H
