@@ -239,7 +239,7 @@ void controller::esportaCsvClienti() const
 
 void controller::esportaPDFClienti() const
 {
-    QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientePdf/Cliente_pdf","ListaClientiTOTALE_pdf(*.pdf)");
+    QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientiTotaliPdf/Clientetotale_pdf","ListaClientiTOTALE_pdf(*.pdf)");
     QPdfWriter writer(nomeFile);
     QPainter painter(&writer);
     painter.setPen(Qt::black);
