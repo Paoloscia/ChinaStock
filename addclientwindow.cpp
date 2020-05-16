@@ -55,7 +55,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     //************** PEZZO FORM PISCINA ********************
     QFormLayout *formPiscinaLayout = new QFormLayout();
 
-    QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
+    QLabel *dateScadPiscinaLabel = new QLabel("Data di scadenza: ");
     dateScadPiscina = (new QDateEdit(QDate::currentDate(),this));
     dateScadPiscina->setCalendarPopup(true);
     QLabel *nomeIstruttorePiscinaLabel = new QLabel(tr("Nome istruttore: "));
@@ -71,7 +71,7 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     //************** PEZZO FORM PALESTRA ********************
     QFormLayout *formPalestraLayout = new QFormLayout();
 
-    QLabel *dateScadPalestraLabel = new QLabel("Data: ");
+    QLabel *dateScadPalestraLabel = new QLabel("Data di scadenza: ");
     dateScadPalestra = (new QDateEdit(QDate::currentDate(),this));
     dateScadPalestra->setCalendarPopup(true);
     QLabel *nomeIstruttorePalestraLabel = new QLabel(tr("Nome istruttore: "));
