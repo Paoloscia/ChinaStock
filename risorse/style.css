@@ -21,7 +21,14 @@ QGroupBox#piscinaGroup,QGroupBox#palestraGroup{
 min-width:250px;
 }
 
-QGroupBox#clienteGroup QLabel,QGroupBox#piscinaGroup QLabel,QGroupBox#palestraGroup QLabel{
+QGroupBox#clienteGroup QLabel{
+padding-top:17px;
+padding-bottom:17px;
+}
+
+QGroupBox#piscinaGroup QLabel,QGroupBox#palestraGroup QLabel{
 padding-top:10px;
 padding-bottom:10px;
 }
+
+
