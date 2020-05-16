@@ -227,7 +227,7 @@ T Container<T>::prendiNodoIndice(const unsigned int i) const{
             return corr->info;
         }
     }
-    T temp; //oggetto da ritornare se non trovo nulla
+    T temp;
     return temp;
 }
 

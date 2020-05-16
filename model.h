@@ -28,7 +28,7 @@ public:
     bool getModificato() const;
     void carica(QString path) const;
     QStringList getCampiCliente(const unsigned int) const;
-    QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const; //era getFilteredCatalog
+    QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const;
     QStringList getListaClientiCsv() const;
     QStringList getListaClientiPDF() const;
     void rimuoviCliente(const unsigned int);

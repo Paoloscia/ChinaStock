@@ -519,7 +519,7 @@ void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E
     emit clienteAggiunto();
 }
 
-void model::modificaItem(const unsigned int indice, const QStringList e)               //è una copia di aggNelContainer a cui cambia qualcosina minuscola
+void model::modificaItem(const unsigned int indice, const QStringList e)
 {
     modificato=true;
     deepPointer<cliente> cliente;

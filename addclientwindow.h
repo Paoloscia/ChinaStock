@@ -1,7 +1,6 @@
 #ifndef ADDCLIENTWINDOW_H
 #define ADDCLIENTWINDOW_H
 
-//#include <QWidget> commentato perchè ho messo public QDialog, guardare assieme
 #include <QDialog>
 #include<QGridLayout>
 #include<QMenuBar>
@@ -22,12 +21,11 @@
 #include <iostream>
 #include<QMessageBox>
 using std::string;
-class addClientWindow : public QDialog //inserito qdialog al posto di qwidget
+class addClientWindow : public QDialog
 {
     Q_OBJECT
 public:
     addClientWindow(QWidget *parent =nullptr);
-    //~addClientWindow(); DA FARE!!!
     void mostraErroreInput(string);
     void clienteAggiunto();
 public slots:
