@@ -157,7 +157,7 @@ void controller::resetColoreFiltroC()
 
 void controller::stampaPDFCliente(const unsigned int cliente) const
 {
-        QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientePdf/Cliente_pdf","Cliente_pdf(*.pdf)");
+        QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientePdf","Cliente_pdf(*.pdf)");
         QPdfWriter writer(nomeFile);
         QPainter painter(&writer);
         painter.setPen(Qt::black);
