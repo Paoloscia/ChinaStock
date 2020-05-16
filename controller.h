@@ -22,7 +22,7 @@ class controller : public QObject
 
 public:
     explicit controller(QObject *parent = nullptr);
-
+    ~controller();
 public slots:
     void openInfoWindow();
     void openAddView(); //capire se mettere const

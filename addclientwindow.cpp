@@ -210,7 +210,6 @@ void addClientWindow::mostraPalestra()
         palestraGroup->setVisible(false);
 }
 
-//la prima volta che entra fa una pulizia inutile visto che sono già tutti vuoti
 void addClientWindow::pulisciRighe()
 {
     nomeLineEdit->setText("");
