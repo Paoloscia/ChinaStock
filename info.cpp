@@ -2,7 +2,7 @@
 
 info::info(QWidget *parent) : QDialog(parent)
 {
-    setMinimumSize(700,400);
+     setMinimumSize(800,500);
     setWindowTitle("Informazioni Progetto ");
     mainLayout = new QHBoxLayout(this);
     setLayout(mainLayout);
@@ -16,13 +16,13 @@ info::info(QWidget *parent) : QDialog(parent)
     QLabel *emailElia = new QLabel(tr("Mail : elia.rech@studenti.unipd.it"));
 
     QHBoxLayout *ImageLayout = new QHBoxLayout();
-    QPixmap*  pix = new QPixmap(":/risorse/provachina.jpg");
+    QPixmap*  pix = new QPixmap(":/risorse/utenteinfo.jpg");
     QLabel* image = new QLabel(this);
     image->setAlignment(Qt::AlignRight);
     image->setPixmap(*pix);
     ImageLayout->addWidget(image);
-    image->setMaximumWidth(200);
-    image->setMaximumHeight(200);
+    image->setMaximumWidth(300);
+    image->setMaximumHeight(300);
 
     formLayout->setFormAlignment(Qt::AlignRight);
     formLayout->addRow(nomeElia);
@@ -36,17 +36,17 @@ info::info(QWidget *parent) : QDialog(parent)
     QFormLayout *formLayout2 = new QFormLayout();
     QLabel *nomeAmedeo = new QLabel(tr("Nome: Amedeo"));
     QLabel *cognomeAmedeo = new QLabel(tr("Cognome: Meggiolaro"));
-    QLabel *matricolaAmedeo = new QLabel(tr("Matricola : XXXXXXXX"));
+    QLabel *matricolaAmedeo = new QLabel(tr("Matricola : 1143266"));
     QLabel *emailAmedeo = new QLabel(tr("Mail : amedeo.meggiolaro@studenti.unipd.it"));
 
     QHBoxLayout *ImageLayout2 = new QHBoxLayout();
-    QPixmap*  pix2 = new QPixmap(":/risorse/provachina.jpg");
+    QPixmap*  pix2 = new QPixmap(":/risorse/utenteinfo.jpg");
     QLabel* image2 = new QLabel(this);
     image2->setAlignment(Qt::AlignRight);
     image2->setPixmap(*pix2);
     ImageLayout2->addWidget(image2);
-    image2->setMaximumWidth(200);
-    image2->setMaximumHeight(200);
+    image2->setMaximumWidth(300);
+    image2->setMaximumHeight(300);
 
     formLayout2->addRow(nomeAmedeo);
     formLayout2->addRow(cognomeAmedeo);
@@ -63,13 +63,13 @@ info::info(QWidget *parent) : QDialog(parent)
     QLabel *emailPaolo = new QLabel(tr("Mail : paolo.scialpi@studenti.unipd.it"));
 
     QHBoxLayout *ImageLayout3 = new QHBoxLayout();
-    QPixmap*  pix3 = new QPixmap(":/risorse/provachina.jpg");
+    QPixmap*  pix3 = new QPixmap(":/risorse/utenteinfo.jpg");
     QLabel* image3 = new QLabel(this);
     image3->setAlignment(Qt::AlignRight);
     image3->setPixmap(*pix3);
     ImageLayout3->addWidget(image3);
-    image3->setMaximumWidth(200);
-    image3->setMaximumHeight(200);
+    image3->setMaximumWidth(300);
+    image3->setMaximumHeight(300);
 
     formLayout3->addRow(nomePaolo);
     formLayout3->addRow(cognomePaolo);
