@@ -124,7 +124,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     QGroupBox *piscinaGroup = new QGroupBox("Piscina");
     QFormLayout *formPiscinaLayout = new QFormLayout();
-    QLabel *dateScadPiscinaLabel = new QLabel("Data: ");
+    QLabel *dateScadPiscinaLabel = new QLabel("Data di scadenza: ");
     QLabel *nomeIstruttorePiscina = new QLabel(tr("Nome istruttore: "));
     QLabel *corsoNuotoLabel = new QLabel("Corso nuoto: ");
     formPiscinaLayout->addRow(dateScadPiscinaLabel,AbbonamentoPiscinaLabel);
@@ -136,7 +136,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     QGroupBox *palestraGroup = new QGroupBox("Palestra");
     QFormLayout *formPalestraLayout = new QFormLayout();
-    QLabel *dateScadPalestraLabel = new QLabel("Data: ");
+    QLabel *dateScadPalestraLabel = new QLabel("Data di scadenza: ");
     QLabel *nomeIstruttorePalestra = new QLabel(tr("Nome istruttore: "));
     QLabel *schedaPalestraLabel = new QLabel("Scheda palestra: ");
     formPalestraLayout->addRow(dateScadPalestraLabel,AbbonamentoPalestraLabel);
