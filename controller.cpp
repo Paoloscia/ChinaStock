@@ -217,7 +217,7 @@ void controller::stampaPDFCliente(const unsigned int cliente) const
 
 void controller::esportaCsvClienti() const
 {
-    QString nomeFile = QFileDialog::getSaveFileName(view,"Esporta csv","../ChinaStock/ClientiCsv/Lista_Clienti_csv");
+    QString nomeFile = QFileDialog::getSaveFileName(view,"Esporta csv","../ChinaStock/ClientiCsv");
     if(!nomeFile.endsWith(".csv"))
     nomeFile=nomeFile+".csv";
     string str = nomeFile.toStdString();
@@ -239,7 +239,7 @@ void controller::esportaCsvClienti() const
 
 void controller::esportaPDFClienti() const
 {
-    QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientiTotaliPdf/Clientetotale_pdf","ListaClientiTOTALE_pdf(*.pdf)");
+    QString nomeFile = QFileDialog::getSaveFileName(view,"Stampa Cliente","../ChinaStock/ClientiTotaliPdf","ListaClientiTOTALE_pdf(*.pdf)");
     QPdfWriter writer(nomeFile);
     QPainter painter(&writer);
     painter.setPen(Qt::black);
