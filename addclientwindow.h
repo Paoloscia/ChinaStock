@@ -39,17 +39,11 @@ signals:
     void inviaStringaCliente(const QStringList);
     void erroreInput(string);
 protected:
-    //controllare quali non si usano!!!!
-    QHBoxLayout* mainLayout;
-    QGridLayout* gridLayout;
     QVBoxLayout* verticalDxLayout;
-    QHBoxLayout *oriz, *hdestraBottoni;
-    QCheckBox* studenteCheckbox, *studente2Checkbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
+    QHBoxLayout* mainLayout, *hdestraBottoni;
+    QCheckBox* studenteCheckbox, *studente2Checkbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox, *abbonamentoPiscinaCheckbox, *abbonamentoPalestraCheckbox;
     QLineEdit* nomeLineEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*numeroviaLineEdit,*telefonoLineEdit,*mailLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit;
-    QCheckBox* abbonamentoPiscinaCheckbox, *abbonamentoPalestraCheckbox;
-    QLineEdit* lineCerca;
     QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
-    QPushButton* Cerca;
     QPushButton* salvaButton,*annullaButton;
     QGroupBox* piscinaGroup,* palestraGroup;
 };

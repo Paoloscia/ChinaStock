@@ -55,19 +55,14 @@ public slots:
     void coloriFiltroMaggiorenne();
 
 private:
-    //controllare quali non si usano!!!!
-    QVBoxLayout* mainLayout;
-    QGridLayout* gridLayout;
-    QVBoxLayout* verticalDxLayout, *verticalSxLayout;
-    QHBoxLayout* divH, *hLeftBottoni,*cercaHBottoni, *imageLayout;
-    QCheckBox* studenteCheckbox, *corsoNuotoCheckbox, *schedaPalestraCheckbox;
-    QLineEdit* nomeLineEdit, *nomeIstruttorePiscinaEdit, *nomeIstruttorePalestraEdit,* cognomeLineEdit,*codFiscLineEdit,*ldnLineEdit,*residenzaLineEdit,*viaLineEdit,*telefonoLineEdit,*mailLineEdit;
+    //controllare quali non si usano - FATTO 16/05/20
+    QVBoxLayout* mainLayout, *verticalDxLayout, *verticalSxLayout;
+    QHBoxLayout* divH, *hLeftBottoni, *imageLayout;
     QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*checkfiltrominorenne,*checkfiltromaggiorenne,*deseleziona,*checkfiltrostudente,*checkVip,*checkfiltrocorsopiscina,*checkfiltroschedapalestra;
     QLineEdit* lineCerca;
-    QDateEdit* dateNascita,*dateScadPiscina,*dateScadPalestra;
     QPushButton* addButton,*modButton,*removeButton, *stampaPDFCliente;
     viewListaClienti *listaClienti;
-    QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel,*cercaLabel;
+    QLabel *nomeClienteLabel, *cognomeClienteLabel,*codiceFClienteLabel,* LuogoDNLabel,*residenzaClienteLabel,*viaClienteLabel, *telefonoClienteLabel, *mailClienteLabel, *datadNClienteLabel,*studenteClienteLabel,*AbbonamentoPiscinaLabel, *nomeIstruttorePiscinaLabel,*corsoNuotoClienteLabel, *AbbonamentoPalestraLabel,*nomeIstruttorePalestraLabel,*schedaPalestraClienteLabel;
     QGroupBox* piscinaGroup,* palestraGroup, *filtriGroup;
     void setMainWindowStyle();
     void closeEvent(QCloseEvent*) override;

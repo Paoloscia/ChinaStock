@@ -82,9 +82,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QVBoxLayout *layoutListaClienti = new QVBoxLayout();
     lineCerca = new QLineEdit(this);
     lineCerca->setPlaceholderText("Cerca");
-    cercaHBottoni = new QHBoxLayout();
-    cercaHBottoni->addWidget(lineCerca);
-    layoutListaClienti->addLayout(cercaHBottoni);
+    layoutListaClienti->addWidget(lineCerca);
     layoutListaClienti->addWidget(listaClienti);
     clientiGroup->setLayout(layoutListaClienti);
     addButton = new QPushButton("Aggiungi",this);
