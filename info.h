@@ -15,17 +15,15 @@
 #include <QWidget>
 
 using std::string;
-class info : public QDialog //inserito qdialog al posto di qwidget
+class info : public QDialog
 {
     Q_OBJECT
 public:
    info(QWidget *parent =nullptr);
-    //~addClientWindow(); DA FARE!!!
 protected:
     QHBoxLayout* mainLayout;
-    QVBoxLayout *v1, *v2, *v3;
-    QHBoxLayout *o1, *o2, *o3;
-    //QGroupBox* piscinaGroup,* palestraGroup;
+    QVBoxLayout *v1, *v2;
+    QHBoxLayout *ImageLayout1, *ImageLayout2, *ImageLayout3;
 };
 
 #endif // INFO_H
