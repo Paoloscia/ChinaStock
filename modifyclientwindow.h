@@ -8,7 +8,7 @@ class modifyClientWindow : public addClientWindow
     Q_OBJECT
 private:
 
-    unsigned int ind; //indice dell' oggetto da moficare nel catalogo, si passa sia per tenere l' indice, sia per passare quello giuto da moficare
+    unsigned int ind;
 
 public:
 
@@ -23,7 +23,7 @@ public slots:
 
 signals:
 
-    void rimpiazzaCliente(const unsigned int,const QStringList); //era replaceitem
+    void rimpiazzaCliente(const unsigned int,const QStringList);
 };
 
 #endif // MODIFYCLIENTWINDOW_H

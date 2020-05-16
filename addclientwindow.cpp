@@ -10,7 +10,6 @@ addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoP
     QLabel *nomeLabel = new QLabel(tr("Nome(*): "));
     nomeLineEdit = new QLineEdit();
     nomeLineEdit->setPlaceholderText("es. Carlo");
-    //nomeLabel->setBuddy(nomeLineEdit); capire se sarebbe non necessario perchè teoricamente inserendo addrow con label e line edit viene assegnato come buddy
 
     QLabel *cognomeLabel = new QLabel(tr("Cognome(*): "));
     cognomeLineEdit = new QLineEdit();
@@ -149,7 +148,6 @@ void addClientWindow::mostraErroreInput(string motivo)
     else if (motivo =="mancaCheckBox")
         erroreInputBox.critical(this,"Errore di inputazione","selezionare almeno uno degli abbonamenti tra piscina e palestra per poter procedere");
 
-    //erroreInputBox.setMinimumSize(600,600); non prende setminimumsize capire perchè quando si sistemerà graficamente codice
 }
 
 void addClientWindow::clienteAggiunto()
@@ -189,11 +187,9 @@ void addClientWindow::confirm()
         tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
         tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
 
-        emit inviaStringaCliente(*tmp); //era sendItemsDetails
+        emit inviaStringaCliente(*tmp);
         this->close();
         clienteAggiunto();
-        //QDialog::accept(); capire se servono queste due righe commentate
-        //emit finished();
     }
 }
 

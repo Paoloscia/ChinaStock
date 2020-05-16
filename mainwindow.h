@@ -31,7 +31,6 @@ class mainwindow : public QWidget
 
 public:
     mainwindow(QWidget *parent =nullptr);
-    //~mainwindow();
     void mostraClienti(const QStringList);
     const QString getParolaCercata() const;
     void nessunSelezionato();
@@ -55,7 +54,6 @@ public slots:
     void coloriFiltroMaggiorenne();
 
 private:
-    //controllare quali non si usano - FATTO 16/05/20
     QVBoxLayout* mainLayout, *verticalDxLayout, *verticalSxLayout;
     QHBoxLayout* divH, *hLeftBottoni, *imageLayout;
     QPushButton* All,*palestraCheckFiltro,*piscinaCheckFiltro,*checkfiltrominorenne,*checkfiltromaggiorenne,*deseleziona,*checkfiltrostudente,*checkVip,*checkfiltrocorsopiscina,*checkfiltroschedapalestra;

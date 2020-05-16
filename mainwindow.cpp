@@ -174,8 +174,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     clienteGroup->setObjectName(QStringLiteral("clienteGroup"));
     piscinaGroup->setObjectName(QStringLiteral("piscinaGroup"));
     palestraGroup->setObjectName(QStringLiteral("palestraGroup"));
-    //clienteGroup->setMinimumWidth(350); commentati perchè li ho messi come css
-    //palestraGroup->setMinimumWidth(250);
+
 
     //************** PARTE CONNECT **************************
 
@@ -371,7 +370,7 @@ void mainwindow::setMainWindowStyle()
 void mainwindow::closeEvent(QCloseEvent *)
 {
 
-    emit controllaModificato(); //commentato, sistemare dopo che ha mostrato message box
+    emit controllaModificato();
 }
 
 
@@ -385,8 +384,7 @@ void mainwindow::richiestaRimoz()
 }
 
 void mainwindow::showInfoCliente(){
-    if(listaClienti->isSomeoneSelected()) //vedere se serve davvero
-        //refreshMainW; bisogna implementare
+    if(listaClienti->isSomeoneSelected())
         emit richiestaShowCliente(listaClienti->getIndex());
 }
 

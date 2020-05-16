@@ -45,7 +45,7 @@ void modifyClientWindow::clienteModificato()
     clienteModificatoBox.information(this,"Cliente modificato","Il cliente è stato modificato con successo!");
 }
 
-void modifyClientWindow::confirm(){ //COPIARE IL CONFIRM DA ADD QUANTO è PRONTO E FARE LE MODIFICHE (CAMBIA SOLO UN EMIT)
+void modifyClientWindow::confirm(){
         if (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
             emit erroreInput("mancaLineEdit");
         }
@@ -75,7 +75,7 @@ void modifyClientWindow::confirm(){ //COPIARE IL CONFIRM DA ADD QUANTO è PRONTO
             tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
             tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
 
-            emit rimpiazzaCliente(ind, *tmp); //era replaceItems     DA FARE
+            emit rimpiazzaCliente(ind, *tmp);
             this->close();
 
             clienteModificato();

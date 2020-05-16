@@ -36,6 +36,11 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     view->show();
 }
 
+controller::~controller()  //aggiunto durante la prasazione, bisogna mettere anche le delete delle window secondi voi?
+{
+    delete m;
+}
+
 void controller::openInfoWindow()
 {
     infoProgetto->show();
