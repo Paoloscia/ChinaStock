@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>risorse/style.css</file>
         <file>risorse/provachina.jpg</file>
+        <file>risorse/utenteinfo.jpg</file>
     </qresource>
 </RCC>

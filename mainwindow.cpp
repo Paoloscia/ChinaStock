@@ -12,6 +12,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QMenuBar* menubar = new QMenuBar(this);
     QMenu* menu= new QMenu("File",menubar);
     QMenu* Info = new QMenu("Info",menubar);
+    QMenu* esporta = new QMenu("Esporta",menubar);
     QAction* salva = new QAction("Salva",menu);
     QAction* infoProgetto = new QAction("Informazioni",Info);
     salva->setShortcut(Qt::Key_S | Qt::CTRL);
@@ -24,7 +25,10 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     menu->addAction(salva);
     Info->addAction(infoProgetto);
     menubar->addMenu(menu);
+    menubar->addMenu(esporta);
     menubar->addMenu(Info);
+    esporta->addAction(esportaPDF);
+    esporta->addAction(esportaCsv);
     mainLayout->addWidget(menubar);
 
     setMainWindowStyle();
