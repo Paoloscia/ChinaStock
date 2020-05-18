@@ -8,7 +8,6 @@ using std::string;
 
 template <class T>
 class Container {
-    //friend class Iteratore;
     friend class model;
 private:
     class nodo {

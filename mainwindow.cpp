@@ -231,7 +231,7 @@ void mainwindow::nessunSelezionato()
     rimuoviNonSelezionato.critical(this,"Nessun cliente selezionato","Selezionare un cliente");
 }
 
-void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisualizzare){
+void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisualizzare) const{
     QString nome = QString::fromStdString(clienteDaVisualizzare->getnome());
     nomeClienteLabel->clear();
     nomeClienteLabel->setText(nome);
@@ -271,8 +271,8 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
     else
         studenteClienteLabel->setText("No");
 
-    if (dynamic_cast<vip*>(clienteDaVisualizzare.pted) != nullptr) {
-        auto clientevip = dynamic_cast<vip*>(clienteDaVisualizzare.pted);
+    if (dynamic_cast<vip*>(&(*(clienteDaVisualizzare))) != nullptr) {
+        auto clientevip = dynamic_cast<vip*>(&(*(clienteDaVisualizzare)));
         string istruttpisc = clientevip->getnomeistruttorepiscina();
         string istruttpal = clientevip->getnomeistruttorepalestra();
         QString nomepisc = QString :: fromStdString(istruttpisc);
@@ -292,8 +292,8 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
         else
             schedaPalestraClienteLabel->setText("No");
     }
-    else if (dynamic_cast<piscina*>(clienteDaVisualizzare.pted) != nullptr) {
-        auto clientepis = dynamic_cast<piscina*>(clienteDaVisualizzare.pted);
+    else if (dynamic_cast<piscina*>(&(*(clienteDaVisualizzare))) != nullptr) {
+        auto clientepis = dynamic_cast<piscina*>(&(*(clienteDaVisualizzare)));
         string istruttpisc = clientepis->getnomeistruttorepiscina();
         QString nomepisc = QString :: fromStdString(istruttpisc);
         AbbonamentoPiscinaLabel->setText(clientepis->getDataPiscina().toString("dd/MM/yyyy"));
@@ -304,8 +304,8 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
         else
             corsoNuotoClienteLabel->setText("No");
     }
-    else if (dynamic_cast<palestra*>(clienteDaVisualizzare.pted) != nullptr) {
-        auto clientepal = dynamic_cast<palestra*>(clienteDaVisualizzare.pted);
+    else if (dynamic_cast<palestra*>(&(*(clienteDaVisualizzare))) != nullptr) {
+        auto clientepal = dynamic_cast<palestra*>(&(*(clienteDaVisualizzare)));
         string istruttpal = clientepal->getnomeistruttorepalestra();
         QString nomepale = QString :: fromStdString(istruttpal);
         AbbonamentoPalestraLabel->setText(clientepal->getDataPalestra().toString("dd/MM/yyyy"));
@@ -318,7 +318,7 @@ void mainwindow::visualizzaDettagliCliente(deepPointer<cliente> clienteDaVisuali
     }
 }
 
-void mainwindow::resetDettCliente()
+void mainwindow::resetDettCliente() const
 {
     nomeClienteLabel->clear();
     cognomeClienteLabel->clear();
@@ -348,7 +348,7 @@ unsigned int mainwindow::getIndexSelected() const
     return listaClienti->getIndex();
 }
 
-void mainwindow::resetColoreFiltro()
+void mainwindow::resetColoreFiltro() const
 {
     palestraCheckFiltro->setStyleSheet("background-color:#FFAE42;");
     piscinaCheckFiltro->setStyleSheet("background-color:#FFAE42;");

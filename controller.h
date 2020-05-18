@@ -3,16 +3,16 @@
 
 #include <QObject>
 #include <QMessageBox>
-#include "mainwindow.h"
-#include "addclientwindow.h"
-#include "modifyclientwindow.h"
-#include "model.h"
-#include "info.h"
 #include <iostream>
 #include<fstream>
 #include <QPdfWriter>
 #include <QPainter>
 #include <QFileDialog>
+#include "mainwindow.h"
+#include "addclientwindow.h"
+#include "modifyclientwindow.h"
+#include "model.h"
+#include "info.h"
 using std::ofstream;
 using std::endl;
 
@@ -24,15 +24,15 @@ public:
     explicit controller(QObject *parent = nullptr);
     ~controller();
 public slots:
-    void openInfoWindow();
-    void openAddView(); //capire se mettere const
+    void openInfoWindow()const;
+    void openAddView()const;
     void salvaFile(); //capire se mettere const
-    void openModifyView(); //capire se mettere const
+    void openModifyView() const;
     void resetListaClienti();
-    void resetDettClienteView();
+    void resetDettClienteView() const;
     void aggClienteContainer(const QStringList);
-    void erroreInputRicevuto(string);
-    void erroreDataRicevuto();
+    void erroreInputRicevuto(string);//capire se mettere const (è metodo che può essere const ma chiama metodo non const)
+    void erroreDataRicevuto();//capire se mettere const (è metodo che può essere const ma chiama metodo non const)
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
     void mostraCliente(const unsigned int);
@@ -46,7 +46,7 @@ public slots:
     void filtraClientiVip();
     void filtraClientiIstruttoriPiscina();
     void filtraClientiIStruttoriPalestra();
-    void resetColoreFiltroC();
+    void resetColoreFiltroC() const;
     void stampaPDFCliente(const unsigned int) const;
     void esportaCsvClienti() const;
     void clienteRimossoShowBox();

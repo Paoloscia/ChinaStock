@@ -34,11 +34,11 @@ public:
     void mostraClienti(const QStringList);
     const QString getParolaCercata() const;
     void nessunSelezionato();
-    void visualizzaDettagliCliente(deepPointer<cliente>);
-    void resetDettCliente();
+    void visualizzaDettagliCliente(deepPointer<cliente>) const;
+    void resetDettCliente() const;
     bool isSelected() const;
     unsigned int getIndexSelected() const;
-    void resetColoreFiltro();
+    void resetColoreFiltro() const;
 
 public slots:
     void richiestaRimoz();

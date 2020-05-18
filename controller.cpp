@@ -37,16 +37,16 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     view->show();
 }
 
-controller::~controller()  //aggiunto durante la prasazione, bisogna mettere anche le delete delle window secondi voi?
+controller::~controller()
 {
     delete m;
 }
 
-void controller::openInfoWindow()
+void controller::openInfoWindow() const
 {
     infoProgetto->show();
 }
-void controller::openAddView()
+void controller::openAddView() const
 {
     addClientW->pulisciRighe();
     //addClientW->Clear(); metodo da aggiungere dopo dentro ad addClientWindow, pensare se è necessario per add
@@ -59,7 +59,7 @@ void controller::salvaFile()
     m->salva();
 }
 
-void controller::openModifyView()
+void controller::openModifyView() const
 {
     if(view->isSelected()){
         ModifyClientW->caricaDati(m->getCampiCliente(view->getIndexSelected()), view->getIndexSelected());
@@ -151,7 +151,7 @@ void controller::clienteRimossoShowBox(){
     clienteRimossoBox.information(view,"Cliente rimosso","Il cliente è stato rimosso con successo!");
 }
 
-void controller::resetColoreFiltroC()
+void controller::resetColoreFiltroC() const
 {
     view->resetColoreFiltro();
 }
@@ -262,7 +262,7 @@ void controller::resetListaClienti()
     resetDettClienteView();
 }
 
-void controller::resetDettClienteView(){
+void controller::resetDettClienteView() const{
     view->resetDettCliente();
 }
 

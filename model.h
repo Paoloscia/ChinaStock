@@ -22,19 +22,19 @@ public:
     model(QString path);
     ~model();
 
-    void resetfiltro() const;  //costante??
+    void resetfiltro();
     void cancellaOggetto(cliente *, bool = true);
     void salva();
     bool getModificato() const;
-    void carica(QString path) const;
+    void carica(QString path);
     QStringList getCampiCliente(const unsigned int) const;
     QStringList getListaClientiFiltrata(const QString,QMap<unsigned int,unsigned int> &) const;
     QStringList getListaClientiCsv() const;
     QStringList getListaClientiPDF() const;
     void rimuoviCliente(const unsigned int);
-    deepPointer<cliente> mostraCliente(const unsigned int);
-    deepPointer<cliente> mostraClientePDF(const unsigned int);
-    void filterPiscina();  //filtri costanti??
+    deepPointer<cliente> mostraCliente(const unsigned int) const;
+    deepPointer<cliente> mostraClientePDF(const unsigned int) const;
+    void filterPiscina();
     void filterPalestra();
     void filterMaggiorenne();
     void filterMinorenne();

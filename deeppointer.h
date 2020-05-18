@@ -3,8 +3,6 @@
 
 template <class T>
 class deepPointer{
-    friend class mainwindow;
-    friend class model;
 private:
     T* pted;
 public:

@@ -13,7 +13,7 @@ model::~model()  //da controllare, come hanno fatto altri?
     delete datiFiltrati;
 }
 
-void model::resetfiltro() const
+void model::resetfiltro()
 {
     emit resetColoreFiltroM();
     datiFiltrati->clear();
@@ -104,7 +104,7 @@ bool model::getModificato() const
     return modificato;
 }
 
-void model::carica(QString path) const
+void model::carica(QString path)
 {
     string tmp = path.toStdString();
 
@@ -230,8 +230,8 @@ QStringList model::getCampiCliente(const unsigned int indice) const
     tmp.push_back(clienteTmp->getDataN().toString());
     tmp.push_back(clienteTmp->getstudent()? "true":"false");
 
-    if(dynamic_cast<vip*>(clienteTmp.pted) != nullptr){
-        auto clientevip = dynamic_cast<vip*>(clienteTmp.pted);
+    if(dynamic_cast<vip*>(&(*(clienteTmp))) != nullptr){
+        auto clientevip = dynamic_cast<vip*>(&(*(clienteTmp)));
         tmp.push_back(clientevip->getDataPiscina().toString());
         tmp.push_back(QString::fromStdString(clientevip->getnomeistruttorepiscina()));
         tmp.push_back(clientevip->iscorsonuoto()? "true":"false");
@@ -241,8 +241,8 @@ QStringList model::getCampiCliente(const unsigned int indice) const
         tmp.push_back("true");
         tmp.push_back("true");
     }
-    else if(dynamic_cast<piscina*>(clienteTmp.pted) != nullptr){
-        auto clientepis = dynamic_cast<piscina*>(clienteTmp.pted);
+    else if(dynamic_cast<piscina*>(&(*(clienteTmp))) != nullptr){
+        auto clientepis = dynamic_cast<piscina*>(&(*(clienteTmp)));
         tmp.push_back(clientepis->getDataPiscina().toString());
         tmp.push_back(QString::fromStdString(clientepis->getnomeistruttorepiscina()));
         tmp.push_back(clientepis->iscorsonuoto()? "true":"false");
@@ -252,8 +252,8 @@ QStringList model::getCampiCliente(const unsigned int indice) const
         tmp.push_back("true");
         tmp.push_back("false");
     }
-    else if(dynamic_cast<palestra*>(clienteTmp.pted) != nullptr){
-        auto clientepal = dynamic_cast<palestra*>(clienteTmp.pted);
+    else if(dynamic_cast<palestra*>(&(*(clienteTmp))) != nullptr){
+        auto clientepal = dynamic_cast<palestra*>(&(*(clienteTmp)));
         tmp.push_back("Non abbonato");
         tmp.push_back("Non abbonato");
         tmp.push_back("Non abbonato");
@@ -360,14 +360,14 @@ QStringList model::getListaClientiPDF() const
 
 }
 
-deepPointer<cliente> model::mostraCliente(const unsigned int i)
+deepPointer<cliente> model::mostraCliente(const unsigned int i) const
 {
     deepPointer<cliente> clienteDaVisualizzare;
     clienteDaVisualizzare = (datiFiltrati->prendiNodoIndice(i));
     return clienteDaVisualizzare;
 }
 
-deepPointer<cliente> model::mostraClientePDF(const unsigned int i)
+deepPointer<cliente> model::mostraClientePDF(const unsigned int i) const
 {
     deepPointer<cliente> clienteDaStampare;
     clienteDaStampare = (datiFiltrati->prendiNodoIndice(i));
