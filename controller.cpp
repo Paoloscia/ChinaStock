@@ -29,8 +29,9 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
 
     connect(addClientW, SIGNAL(inviaStringaCliente(const QStringList)), this, SLOT(aggClienteContainer(const QStringList)));
     connect(addClientW, SIGNAL(erroreInput(string)), this, SLOT(erroreInputRicevuto(string)));
+    connect(addClientW, SIGNAL(erroreDatax(string)),this , SLOT(erroreDataRicevuto(string)));
 
-    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implementare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!  --- RISOLTO?
+    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implemeSntare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!  --- RISOLTO?
     connect(ModifyClientW, SIGNAL(rimpiazzaCliente(const unsigned int,const QStringList)), this, SLOT(rimpiazzaItem(const unsigned int, QStringList)));
     resetListaClienti();
     view->show();
@@ -286,3 +287,9 @@ void controller::erroreInputRicevuto(string motivo)
 {
     addClientW->mostraErroreInput(motivo);
 }
+
+void controller::erroreDataRicevuto(string erroreD)
+{
+    addClientW->mostraErroreData(erroreD);
+}
+

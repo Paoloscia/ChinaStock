@@ -32,6 +32,7 @@ public slots:
     void resetDettClienteView();
     void aggClienteContainer(const QStringList);
     void erroreInputRicevuto(string);
+    void erroreDataRicevuto(string);
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
     void mostraCliente(const unsigned int);
