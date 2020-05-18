@@ -46,8 +46,8 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QLabel* image = new QLabel(this);
     image->setPixmap(*pix);
     imageLayout->addWidget(image);
-    image->setMaximumWidth(350);
-    image->setMaximumHeight(300);
+    image->setMaximumWidth(300);
+    image->setMaximumHeight(250);
     verticalDxLayout->addLayout(imageLayout);
 
     //************** FILTRI ********************
@@ -88,13 +88,13 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     layoutListaClienti->addWidget(listaClienti);
     clientiGroup->setLayout(layoutListaClienti);
     addButton = new QPushButton("Aggiungi",this);
-    addButton->setMinimumWidth(100);
+    addButton->setMinimumWidth(110);
     modButton = new QPushButton("Modifica",this);
-    modButton->setMinimumWidth(100);
+    modButton->setMinimumWidth(110);
     removeButton = new QPushButton("Rimuovi",this);
-    removeButton->setMinimumWidth(100);
+    removeButton->setMinimumWidth(110);
     stampaPDFCliente = new QPushButton("Stampa Cliente", this);
-    stampaPDFCliente->setMinimumWidth(100);
+    stampaPDFCliente->setMinimumWidth(110);
 
     verticalSxLayout->addWidget(clientiGroup);
 
