@@ -338,7 +338,7 @@ QStringList model::getListaClientiPDF() const
     QString datiCliente;
     for(auto it=datiTotali->inizio();it!=datiTotali->fine() && !datiTotali->isEmpty();++it)
     {
-        datiCliente =(QString::fromStdString(("N:" +(*(*it)).getnome() + " C: " + (*(*it)).getcognome()+ " CF: " + (*(*it)).getcodfiscale())));
+        datiCliente =(QString::fromStdString(("N:" +(*(*it)).getnome() + " ,C: " + (*(*it)).getcognome()+ " ,CF: " + (*(*it)).getcodfiscale())));
         ret.push_back(datiCliente);
 
     }
