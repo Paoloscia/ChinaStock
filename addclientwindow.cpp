@@ -1,5 +1,4 @@
 #include "addclientwindow.h"
-#include <QDebug>
 addClientWindow::addClientWindow(QWidget *parent) : QDialog(parent),abbonamentoPiscinaCheckbox(new QCheckBox("Abbonato a piscina",this)),abbonamentoPalestraCheckbox(new QCheckBox("Abbonato a palestra",this)),piscinaGroup (new QGroupBox("Piscina",this)),palestraGroup (new QGroupBox("Palestra",this))
 {
     setMinimumSize(700,400);
@@ -157,27 +156,23 @@ void addClientWindow::clienteAggiunto()
     clienteAggiuntoBox.information(this,"Cliente aggiunto","Il cliente è stato aggiunto con successo!");
 }
 
-void addClientWindow::mostraErroreData(string erroreD)
+void addClientWindow::mostraErroreData()
 {
     QMessageBox erroreData;
-    if(erroreD == "x")
-    {
     erroreData.critical(this,"Data non corretta","Selezione una data di scadenza successiva a quella attuale");
-    }
 
 }
 
 void addClientWindow::confirm()
 {
     if(!abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPiscina->date().year() < QDate::currentDate().year()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() < QDate::currentDate().month()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() == QDate::currentDate().month() && dateScadPiscina->date().day() <= QDate::currentDate().day())))
-        emit erroreDatax("x");
-
+        emit erroreDatax();
 
     else if(abbonamentoPalestraCheckbox->isChecked() && !abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())))
-        emit erroreDatax("x");
+        emit erroreDatax();
 
-    else if((abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked()) && (((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())) || ((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day()))))
-        emit erroreDatax("x");
+    else if((abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked()) && (((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())) || ((dateScadPiscina->date().year() < QDate::currentDate().year()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() < QDate::currentDate().month()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() == QDate::currentDate().month() && dateScadPiscina->date().day() <= QDate::currentDate().day()))))
+        emit erroreDatax();
 
     else
         if

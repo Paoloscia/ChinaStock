@@ -20,7 +20,6 @@
 #include <QStringList>
 #include <iostream>
 #include<QMessageBox>
-#include<QValidator>
 using std::string;
 class addClientWindow : public QDialog
 {
@@ -29,8 +28,7 @@ public:
     addClientWindow(QWidget *parent =nullptr);
     void mostraErroreInput(string);
     void clienteAggiunto();
-    void mostraErroreData(string);
-    void mostraErroreData1(string);
+    void mostraErroreData();
 public slots:
     virtual void confirm();
     void mostraPiscina();
@@ -39,7 +37,7 @@ public slots:
 signals:
     void inviaStringaCliente(const QStringList);
     void erroreInput(string);
-    void erroreDatax(string);
+    void erroreDatax();
 protected:
     QVBoxLayout* verticalDxLayout;
     QHBoxLayout* mainLayout, *hdestraBottoni;
