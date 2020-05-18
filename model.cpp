@@ -5,7 +5,7 @@ model::model(QString path) : path(path),datiTotali(new Container<deepPointer<cli
     resetfiltro();
 }
 
-model::~model()  //da controllare, come hanno fatto altri?
+model::~model()
 {
     datiTotali->clear();
     datiFiltrati->clear();
@@ -496,46 +496,46 @@ void model::filterSchedaPalestra()
     }
 }
 
-void model::aggNelContainer(const QStringList e) //bisogna mettere C invece di E come lettera! (c di cliente invece di e di etichetta)
+void model::aggNelContainer(const QStringList c)
 {
     modificato=true;
     deepPointer<cliente> cliente;
-    QDate dataNascitaTmp = QDate::fromString(e.at(9));
-    if (e.at(17) == "true" && e.at(18) == "true") {
-        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    QDate dataNascitaTmp = QDate::fromString(c.at(9));
+    if (c.at(17) == "true" && c.at(18) == "true") {
+        QDate dataScadPiscinaTmp = QDate::fromString(c.at(11));
+        QDate dataScadPalestraTmp = QDate::fromString(c.at(14));
+        cliente = new vip(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(13)=="true" ? true:false,c.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),c.at(16)=="true" ? true:false,c.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
-    else if(e.at(17) == "true" && e.at(18) == "false"){
-        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
+    else if(c.at(17) == "true" && c.at(18) == "false"){
+        QDate dataScadPiscinaTmp = QDate::fromString(c.at(11));
+        cliente = new piscina(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(13)=="true" ? true:false,c.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
     }
-    else if (e.at(17) == "false" && e.at(18) == "true") {
-        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    else if (c.at(17) == "false" && c.at(18) == "true") {
+        QDate dataScadPalestraTmp = QDate::fromString(c.at(14));
+        cliente = new palestra(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(16)=="true" ? true:false,c.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
     datiTotali->aggInOrdine(cliente);
     resetfiltro();
     emit clienteAggiunto();
 }
 
-void model::modificaItem(const unsigned int indice, const QStringList e)
+void model::modificaItem(const unsigned int indice, const QStringList c)
 {
     modificato=true;
     deepPointer<cliente> cliente;
-    QDate dataNascitaTmp = QDate::fromString(e.at(9));
-    if (e.at(17) == "true" && e.at(18) == "true") {
-        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new vip(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    QDate dataNascitaTmp = QDate::fromString(c.at(9));
+    if (c.at(17) == "true" && c.at(18) == "true") {
+        QDate dataScadPiscinaTmp = QDate::fromString(c.at(11));
+        QDate dataScadPalestraTmp = QDate::fromString(c.at(14));
+        cliente = new vip(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(13)=="true" ? true:false,c.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day(),c.at(16)=="true" ? true:false,c.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
-    else if(e.at(17) == "true" && e.at(18) == "false"){
-        QDate dataScadPiscinaTmp = QDate::fromString(e.at(11));
-        cliente = new piscina(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(13)=="true" ? true:false,e.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
+    else if(c.at(17) == "true" && c.at(18) == "false"){
+        QDate dataScadPiscinaTmp = QDate::fromString(c.at(11));
+        cliente = new piscina(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(13)=="true" ? true:false,c.at(12).toStdString(),dataScadPiscinaTmp.year(),dataScadPiscinaTmp.month(),dataScadPiscinaTmp.day());
     }
-    else if (e.at(17) == "false" && e.at(18) == "true") {
-        QDate dataScadPalestraTmp = QDate::fromString(e.at(14));
-        cliente = new palestra(e.at(0).toStdString(),e.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),e.at(2).toStdString(), e.at(3).toStdString(),e.at(4).toStdString(),e.at(5).toStdString(),e.at(6).toStdString(),e.at(7).toStdString(),e.at(8).toStdString(),e.at(10)=="true" ? true:false,e.at(16)=="true" ? true:false,e.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
+    else if (c.at(17) == "false" && c.at(18) == "true") {
+        QDate dataScadPalestraTmp = QDate::fromString(c.at(14));
+        cliente = new palestra(c.at(0).toStdString(),c.at(1).toStdString(),dataNascitaTmp.year(),dataNascitaTmp.month(),dataNascitaTmp.day(),c.at(2).toStdString(), c.at(3).toStdString(),c.at(4).toStdString(),c.at(5).toStdString(),c.at(6).toStdString(),c.at(7).toStdString(),c.at(8).toStdString(),c.at(10)=="true" ? true:false,c.at(16)=="true" ? true:false,c.at(15).toStdString(),dataScadPalestraTmp.year(),dataScadPalestraTmp.month(),dataScadPalestraTmp.day());
     }
 
     if (datiTotali->prendiNodoIndice(indice) == datiFiltrati->prendiNodoIndice(indice))

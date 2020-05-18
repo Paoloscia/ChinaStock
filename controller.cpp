@@ -15,7 +15,7 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(view, SIGNAL(filtroMinorenne()), this, SLOT(filtraClientiMinorenni()));
     connect(view, SIGNAL(filtroStudente()), this, SLOT(filtraClientiStudenti()));
     connect(view,SIGNAL(controllaModificato()),this,SLOT(salvaIfModificato()));
-    connect(view, SIGNAL(signStampaPDFCliente(const unsigned int)), this, SLOT(stampaPDFCliente(const unsigned int))); // DA METTERE DEEPPOINTER CORRETTO!?
+    connect(view, SIGNAL(signStampaPDFCliente(const unsigned int)), this, SLOT(stampaPDFCliente(const unsigned int)));
     connect(view, SIGNAL(signEsportaCsvClienti()), this, SLOT(esportaCsvClienti()));
     connect(view, SIGNAL(signEsportaPDFClienti()), this, SLOT(esportaPDFClienti()));
     connect(view, SIGNAL(filtroVip()), this, SLOT(filtraClientiVip()));
@@ -31,7 +31,6 @@ controller::controller(QObject *parent) : QObject(parent),view(new mainwindow())
     connect(addClientW, SIGNAL(erroreInput(string)), this, SLOT(erroreInputRicevuto(string)));
     connect(addClientW, SIGNAL(erroreDatax()),this , SLOT(erroreDataRicevuto()));
 
-    //connect(modifyClientW, SIGNAL(erroreInput()), this, SLOT(erroreInputRicevuto())); bisognerà implemeSntare visualizzazione errore per modifywindow, qui e nella sua fase di costruzione sul costruttore del controller!!!  --- RISOLTO?
     connect(ModifyClientW, SIGNAL(rimpiazzaCliente(const unsigned int,const QStringList)), this, SLOT(rimpiazzaItem(const unsigned int, QStringList)));
     resetListaClienti();
     view->show();
@@ -49,7 +48,6 @@ void controller::openInfoWindow() const
 void controller::openAddView() const
 {
     addClientW->pulisciRighe();
-    //addClientW->Clear(); metodo da aggiungere dopo dentro ad addClientWindow, pensare se è necessario per add
     addClientW->setModal(true);
     addClientW->show();
 }
@@ -222,10 +220,7 @@ void controller::esportaCsvClienti() const
     if(!nomeFile.endsWith(".csv"))
     nomeFile=nomeFile+".csv";
     string str = nomeFile.toStdString();
-    ofstream myfile(str); //crea file e lo apre
-
-    //ofstream myfile; alternativa, creo prima oggetto file e poi lo apro
-    //myfile.open("test.csv");
+    ofstream myfile(str);
     QStringList listaClienti = m->getListaClientiCsv();
 
     myfile<<"Nome,Cognome,Codice fiscale,Luogo di nascita,Residenza,Via,Telefono,Mail,Data di nascita,Studente,Scadenza piscina,Istruttore piscina,Corso nuoto,Scadenza palestra,Istruttore palestra,Scheda"<<endl;
@@ -234,7 +229,6 @@ void controller::esportaCsvClienti() const
         myfile<<it->toStdString()<<endl;
         ++it;
     }
-    //emit successoEsportCsv(); bisogna mettere message box che si apre quando ho fatto esportazione
     myfile.close();
 }
 
@@ -268,19 +262,7 @@ void controller::resetDettClienteView() const{
 
 void controller::aggClienteContainer(const QStringList dettagli)
 {
-    //if(details.first()=="null") FINIRE DI IMPLEMENTARE FUNZIONE CON CONTROLLI
-    //    view->displayInputError();
-//    else {
-//        if(details[1]=="null")
-//            view->displayInputError();
-//        else{
-//            if(!m->checkIfExistIntoCatalog(dettagli))
-                m->aggNelContainer(dettagli);
-//            else{
-//                m->displayTheElementExist();
-//            }
-//        }
-                //    }
+    m->aggNelContainer(dettagli);
 }
 
 void controller::erroreInputRicevuto(string motivo)
@@ -292,4 +274,3 @@ void controller::erroreDataRicevuto()
 {
     addClientW->mostraErroreData();
 }
-

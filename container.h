@@ -11,7 +11,7 @@ class Container {
     friend class model;
 private:
     class nodo {
-        friend class Container<T>; // DA VEDERE!!!
+        friend class Container<T>;
     private:
         T info;
         nodo* next;
@@ -35,7 +35,7 @@ public:
     void rimpiazzaFinale(unsigned int, const T&);
     void rimuoviIndice(const unsigned int);
     T prendiNodoIndice(const unsigned int) const;
-    unsigned int trovaIndiceNodo(const T&); //forse bisogna passare const come return? Però mi segna warning
+    unsigned int trovaIndiceNodo(const T&);
     void clear();
     bool isEmpty() const;
 
@@ -139,7 +139,7 @@ Container<T>& Container<T>::operator=(const Container & q)
     return *this;
 }
 
-template<class T> //capire perchè non funziona overloading deep pointer > e <   --- risolto????
+template<class T>
 void Container<T>::aggInOrdine(const T & obj){
     nodo* cliente = new nodo(obj);
     if (primo == nullptr) primo = ultimo = cliente;
@@ -166,22 +166,22 @@ void Container<T>::rimpiazzaFinale(unsigned int indice, const T& clienteModifica
 }
 
 template <class T>
-void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè è uguale a gotta, vedere se cambia
+void Container<T>::rimuoviIndice(const unsigned int i){
     if(isEmpty())
         return;
 
-    if(!primo->next){//coda
-        if(i==0){//testa
+    if(!primo->next){
+        if(i==0){
             delete primo;
             primo=nullptr;
             return;
         }
     }
-    else{//piu di un el
+    else{
         nodo* prec=primo;
         nodo* corr=primo->next;
 
-        if(i==0){//testa
+        if(i==0){
             primo=primo->next;
             prec->next=nullptr;
             delete prec;
@@ -206,7 +206,7 @@ void Container<T>::rimuoviIndice(const unsigned int i){ //da modificare perchè 
 
 template <class T>
 T Container<T>::prendiNodoIndice(const unsigned int i) const{
-    if(!primo->next){ //si potrebbe tenere if i==0 sennò cicla, capire se sistemare funzione
+    if(!primo->next){
         if(i==0){
             return primo->info;
         }
