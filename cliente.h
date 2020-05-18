@@ -20,13 +20,13 @@ public:
     cliente(string="",string="", int=2000, int=1, int=1,string="",string="", string="",string="",string="",string="",string="",bool=false);
     virtual ~cliente() = default;
 
-    virtual cliente* clone() const; //DA CONTROLLARE!!
+    virtual cliente* clone() const;
 
-    virtual bool operator<(const cliente&) const; //capire se è giusto virtual
+    virtual bool operator<(const cliente&) const;
     virtual bool operator>(const cliente&) const;
     virtual bool operator==(const cliente&) const;
 
-    string getnome() const; //forse bisognerà passare per riferimento costante le stringhe ritornate per non fare la copia, quindi const string& come ritorno
+    string getnome() const;
     string getcognome() const;
     QDate getDataN() const;
     int getGiornoN() const;

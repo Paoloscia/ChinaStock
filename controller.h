@@ -26,13 +26,13 @@ public:
 public slots:
     void openInfoWindow()const;
     void openAddView()const;
-    void salvaFile(); //capire se mettere const
+    void salvaFile();
     void openModifyView() const;
     void resetListaClienti();
     void resetDettClienteView() const;
     void aggClienteContainer(const QStringList);
-    void erroreInputRicevuto(string);//capire se mettere const (è metodo che può essere const ma chiama metodo non const)
-    void erroreDataRicevuto();//capire se mettere const (è metodo che può essere const ma chiama metodo non const)
+    void erroreInputRicevuto(string);
+    void erroreDataRicevuto();
     void rimuoviCliente(const unsigned int);
     void rimpiazzaItem(const unsigned int,const QStringList);
     void mostraCliente(const unsigned int);

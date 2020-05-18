@@ -2,10 +2,6 @@ QWidget QPushButton, QMenuBar::item:selected, QMenu::item:selected{
 background-color:#FFAE42;
 }
 
-/*QDateEdit::drop-down{ //da mettere a posto il colore della freccia arancione
-border-color:#FFAE42;
-}*/
-
 QPushButton#All, QPushButton#palestraCheckFiltro, QPushButton#piscinaCheckFiltro, QPushButton#checkfiltrominorenne, QPushButton#checkfiltromaggiorenne, QPushButton#checkfiltrostudente,QPushButton#checkVip,QPushButton#checkfiltrocorsopiscina,QPushButton#checkfiltroschedapalestra{
 border-radius:10px;
 height: 30px;
@@ -30,5 +26,3 @@ QGroupBox#piscinaGroup QLabel,QGroupBox#palestraGroup QLabel{
 padding-top:10px;
 padding-bottom:10px;
 }
-
-
