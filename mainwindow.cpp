@@ -20,8 +20,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     QAction* esportaPDF = new QAction("Esporta pdf clienti",menu);
     QAction* exit = new QAction("Esci",menu);
     menu->addAction(exit);
-    menu->addAction(esportaCsv);
-    menu->addAction(esportaPDF);
     menu->addAction(salva);
     Info->addAction(infoProgetto);
     menubar->addMenu(menu);
