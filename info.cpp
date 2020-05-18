@@ -59,7 +59,7 @@ info::info(QWidget *parent) : QDialog(parent)
     QFormLayout *formLayout3 = new QFormLayout();
     QLabel *nomePaolo = new QLabel(tr("Nome: Paolo"));
     QLabel *cognomePaolo = new QLabel(tr("Cognome: Scialpi"));
-    QLabel *matricolaPaolo = new QLabel(tr("Matricola : XXXXXXX"));
+    QLabel *matricolaPaolo = new QLabel(tr("Matricola : 1161625"));
     QLabel *emailPaolo = new QLabel(tr("Mail : paolo.scialpi@studenti.unipd.it"));
 
     QHBoxLayout *ImageLayout3 = new QHBoxLayout();
