@@ -162,7 +162,7 @@ void addClientWindow::mostraErroreData(string erroreD)
     QMessageBox erroreData;
     if(erroreD == "x")
     {
-    erroreData.critical(this,"DATA NON CORRETTA","COMPILARE CORRETTAMENTE LA DATA");
+    erroreData.critical(this,"Data non corretta","Selezione una data di scadenza successiva a quella attuale");
     }
 
 }
