@@ -52,6 +52,7 @@ public slots:
     void coloriFiltroStudente();
     void coloriFiltroMinorenne();
     void coloriFiltroMaggiorenne();
+    void closeButton();
 
 private:
     QVBoxLayout* mainLayout, *verticalDxLayout, *verticalSxLayout;

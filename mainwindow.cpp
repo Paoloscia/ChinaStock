@@ -183,6 +183,7 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     connect(addButton, SIGNAL(clicked()), this, SIGNAL(signOpenAddWindow()));
     connect(infoProgetto,SIGNAL(triggered()),this,SIGNAL(infoWindow()));
     connect(salva, SIGNAL(triggered()), this, SIGNAL(salvaFileMenu()));
+    connect(exit, SIGNAL(triggered()), this, SLOT(closeButton()));
     connect(esportaCsv, SIGNAL(triggered()), this, SIGNAL(signEsportaCsvClienti()));
     connect(esportaPDF, SIGNAL(triggered()), this, SIGNAL(signEsportaPDFClienti()));
     connect(lineCerca, SIGNAL(textChanged(const QString &)), this, SIGNAL(cercaRuntime()));
@@ -508,6 +509,11 @@ void mainwindow::coloriFiltroMaggiorenne()
     checkfiltrocorsopiscina->setStyleSheet("background-color:#FFAE42;");
     checkfiltroschedapalestra->setStyleSheet("background-color:#FFAE42;");
 
+}
+
+void mainwindow::closeButton()
+{
+    this->close();
 }
 
 
