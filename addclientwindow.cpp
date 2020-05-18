@@ -164,89 +164,58 @@ void addClientWindow::mostraErroreData(string erroreD)
     {
     erroreData.critical(this,"DATA NON CORRETTA","COMPILARE CORRETTAMENTE LA DATA");
     }
-    if(erroreD == "parte2")
-    {
-    erroreData.critical(this,"DATA NON CORRETTA","COMPILARE CORRETTAMENTE LA DATA");
-    }
 
 }
 
-
 void addClientWindow::confirm()
 {
-    int year = QDate::currentDate().year();
-    int month = QDate::currentDate().month();
-    int day = QDate:: currentDate().day();
-
-    if(!abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPiscina->date().year() < year)|| (dateScadPiscina->date().year() == year && dateScadPiscina->date().month() < month) || (dateScadPiscina->date().year() == year && dateScadPiscina->date().month() == month && dateScadPiscina->date().day() <= day)))
-            emit erroreDatax("x");
+    if(!abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPiscina->date().year() < QDate::currentDate().year()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() < QDate::currentDate().month()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() == QDate::currentDate().month() && dateScadPiscina->date().day() <= QDate::currentDate().day())))
+        emit erroreDatax("x");
 
 
-           else if(abbonamentoPalestraCheckbox->isChecked() && !abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())))
-            emit erroreDatax("parte2");
+    else if(abbonamentoPalestraCheckbox->isChecked() && !abbonamentoPiscinaCheckbox->isChecked() && ((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())))
+        emit erroreDatax("x");
 
-
-//     if((dateScadPiscina->date().year() > 0 ) & (dateScadPiscina->date().year() < year) || (dateScadPiscina->date().year() == year && dateScadPiscina->date().month() < month) || (dateScadPiscina->date().year() == year && dateScadPiscina->date().month() == month && dateScadPiscina->date().day() <= day))
-//        emit erroreDatax("x");
-
-//        if((dateScadPalestra->date().year() > 0 ) & (dateScadPalestra->date().year() < QDate::currentDate().year())|| (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day()))
-//        emit erroreDatax("parte2");
-
-
-   // else
-//    if(abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked())
-//    {
-//     if((dateScadPiscina->date().year() < QDate::currentDate().year()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() < QDate::currentDate().month()) || (dateScadPiscina->date().year() == QDate::currentDate().year() && dateScadPiscina->date().month() == QDate::currentDate().month() && dateScadPiscina->date().day() <= QDate::currentDate().day()))
-//        emit erroreDatax("x");
-
-//        if(dateScadPalestra->date().year() < QDate::currentDate().year() || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day()))
-//        emit erroreDatax("parte2");
-
-//    }
-//    else
-
-//    if(!abbonamentoPiscinaCheckbox->isChecked())
-//     if(dateScadPalestra->date().year() < QDate::currentDate().year() || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day()))
-//     emit erroreDatax("parte2");
-//   }
-
-   else
-    if
-     (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
-        emit erroreInput("mancaLineEdit");
-    }
-    else if (!abbonamentoPiscinaCheckbox->isChecked() && !abbonamentoPalestraCheckbox->isChecked()) {
-        emit erroreInput("mancaCheckBox");
-    }
+    else if((abbonamentoPalestraCheckbox->isChecked() && abbonamentoPiscinaCheckbox->isChecked()) && (((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day())) || ((dateScadPalestra->date().year() < QDate::currentDate().year()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() < QDate::currentDate().month()) || (dateScadPalestra->date().year() == QDate::currentDate().year() && dateScadPalestra->date().month() == QDate::currentDate().month() && dateScadPalestra->date().day() <= QDate::currentDate().day()))))
+        emit erroreDatax("x");
 
     else
-    {
-        QStringList *tmp = new QStringList();
-        tmp->push_back(nomeLineEdit->text());
-        tmp->push_back(cognomeLineEdit->text());
-        tmp->push_back(codFiscLineEdit->text());
-        tmp->push_back(ldnLineEdit->text());
-        tmp->push_back(residenzaLineEdit->text());
-        tmp->push_back(viaLineEdit->text());
-        tmp->push_back(numeroviaLineEdit->text());
-        tmp->push_back(telefonoLineEdit->text());
-        tmp->push_back(mailLineEdit->text());
-        tmp->push_back(dateNascita->date().toString());
-        tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
-        tmp->push_back(dateScadPiscina->date().toString());
-        tmp->push_back(nomeIstruttorePiscinaEdit->text());
-        tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
-        tmp->push_back(dateScadPalestra->date().toString());
-        tmp->push_back(nomeIstruttorePalestraEdit->text());
-        tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
-        tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
-        tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
+        if
+                (nomeLineEdit->text()=="" || cognomeLineEdit->text()=="" || codFiscLineEdit->text()==""){
+            emit erroreInput("mancaLineEdit");
+        }
+        else if (!abbonamentoPiscinaCheckbox->isChecked() && !abbonamentoPalestraCheckbox->isChecked()) {
+            emit erroreInput("mancaCheckBox");
+        }
 
-        emit inviaStringaCliente(*tmp);
-        this->close();
+        else
+        {
+            QStringList *tmp = new QStringList();
+            tmp->push_back(nomeLineEdit->text());
+            tmp->push_back(cognomeLineEdit->text());
+            tmp->push_back(codFiscLineEdit->text());
+            tmp->push_back(ldnLineEdit->text());
+            tmp->push_back(residenzaLineEdit->text());
+            tmp->push_back(viaLineEdit->text());
+            tmp->push_back(numeroviaLineEdit->text());
+            tmp->push_back(telefonoLineEdit->text());
+            tmp->push_back(mailLineEdit->text());
+            tmp->push_back(dateNascita->date().toString());
+            tmp->push_back(studenteCheckbox->isChecked()? "true":"false");
+            tmp->push_back(dateScadPiscina->date().toString());
+            tmp->push_back(nomeIstruttorePiscinaEdit->text());
+            tmp->push_back(corsoNuotoCheckbox->isChecked()? "true":"false");
+            tmp->push_back(dateScadPalestra->date().toString());
+            tmp->push_back(nomeIstruttorePalestraEdit->text());
+            tmp->push_back(schedaPalestraCheckbox->isChecked()? "true":"false");
+            tmp->push_back(abbonamentoPiscinaCheckbox->isChecked()? "true":"false");
+            tmp->push_back(abbonamentoPalestraCheckbox->isChecked()? "true":"false");
 
-        clienteAggiunto();
-    }
+            emit inviaStringaCliente(*tmp);
+            this->close();
+
+            clienteAggiunto();
+        }
 }
 
 void addClientWindow::mostraPiscina()
