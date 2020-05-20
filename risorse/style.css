@@ -18,11 +18,11 @@ min-width:250px;
 }
 
 QGroupBox#clienteGroup QLabel{
-padding-top:17px;
-padding-bottom:17px;
+padding-top:11px;
+padding-bottom:11px;
 }
 
 QGroupBox#piscinaGroup QLabel,QGroupBox#palestraGroup QLabel{
-padding-top:10px;
-padding-bottom:10px;
+padding-top:3px;
+padding-bottom:3px;
 }
