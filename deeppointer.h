@@ -10,7 +10,6 @@ public:
     deepPointer(const deepPointer&);
     deepPointer& operator=(const deepPointer&);
     T* operator->() const;
-    T& operator*() const;
     ~deepPointer();
     bool operator==(const deepPointer&) const;
     bool operator!=(const deepPointer&) const;
@@ -44,11 +43,6 @@ deepPointer<T>& deepPointer<T>::operator=(const deepPointer& dptr){
 template <class T>
 T* deepPointer<T>::operator->() const{
        return pted;
-}
-
-template <class T>
-T& deepPointer<T>::operator*() const{
-        return *pted;
 }
 
 template <class T>
