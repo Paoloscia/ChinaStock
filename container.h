@@ -21,7 +21,6 @@ private:
     };
     nodo* primo, *ultimo;
     static nodo* clone(nodo*, nodo*&);
-    nodo* rimuovi(nodo*, const T&);
 
 public:
     Container();
@@ -78,7 +77,6 @@ public:
     constIteratore fine() const;
     Iteratore inizio();
     Iteratore fine();
-    void rimuovi(const T&);
 };
 
 template <class T>
@@ -105,24 +103,6 @@ typename Container<T>::nodo* Container<T>::clone(nodo * pri, nodo *& ult)
     nodo* p = new nodo(pri->info, clone(pri->next, ult));
     if(pri->next == nullptr) ult = p;
     return p;
-}
-
-template<class T>
-typename Container<T>::nodo* Container<T>::rimuovi(nodo* f, const T & obj)
-{
-    if (f == nullptr)
-        return nullptr;
-    f->next = rimuovi(f->next, obj);
-    if (f->info == obj)
-    {
-        nodo* tmp = f->next;
-        if (primo == f) primo = tmp;
-        if (f == ultimo) ultimo = nullptr;
-        delete f;
-        return tmp;
-    }
-    if (ultimo == nullptr) ultimo = f;
-    return f;
 }
 
 template<class T>
@@ -403,9 +383,4 @@ typename Container<T>::Iteratore Container<T>::fine()
     return Iteratore(nullptr);
 }
 
-template<class T>
-void Container<T>::rimuovi(const T & obj)
-{
-    rimuovi(primo, obj);
-}
 #endif
