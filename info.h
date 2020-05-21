@@ -2,16 +2,11 @@
 #define INFO_H
 
 #include <QDialog>
-#include<QMenuBar>
 #include<QVBoxLayout>
-#include<QCheckBox>
 #include<QGroupBox>
 #include<QVBoxLayout>
 #include<QLabel>
 #include <QFormLayout>
-#include <QGroupBox>
-#include <QPushButton>
-#include <iostream>
 #include <QWidget>
 
 using std::string;

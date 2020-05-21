@@ -2,7 +2,6 @@
 #define CONTAINER_H
 #include <string>
 #include<QStringList>
-#include<iostream>
 #include<deeppointer.h>
 using std::string;
 
