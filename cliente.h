@@ -20,7 +20,7 @@ public:
     cliente(string="",string="", int=2000, int=1, int=1,string="",string="", string="",string="",string="",string="",string="",bool=false);
     virtual ~cliente() = default;
 
-    virtual cliente* clone() const;
+    virtual cliente* clone() const =0;
 
     virtual bool operator<(const cliente&) const;
     virtual bool operator>(const cliente&) const;

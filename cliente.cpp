@@ -2,10 +2,10 @@
 
 cliente::cliente(string n, string c, int a, int m, int g,string cf, string lN, string r, string v, string num,string nt,string em,bool s): nome(n),cognome(c),dataNascita(a,m,g),codicefiscale(cf),luogodN(lN),residenza(r),via(v),numvia(num),numerotel(nt),mail(em),student(s){}
 
-cliente *cliente::clone() const
-{
-    return new cliente(*this);
-}
+//cliente *cliente::clone() const
+//{
+//    return new cliente(*this);
+//}
 
 bool cliente::operator<(const cliente& c) const
 {
