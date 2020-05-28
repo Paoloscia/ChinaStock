@@ -162,7 +162,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
 
     //************** PARTE GRAFICA **************************
 
-    //aggiunta object name per css
     palestraCheckFiltro->setObjectName(QStringLiteral("palestraCheckFiltro"));
     piscinaCheckFiltro->setObjectName(QStringLiteral("piscinaCheckFiltro"));
     checkfiltrominorenne->setObjectName(QStringLiteral("checkfiltrominorenne"));
@@ -176,7 +175,6 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent), listaClienti(new view
     clienteGroup->setObjectName(QStringLiteral("clienteGroup"));
     piscinaGroup->setObjectName(QStringLiteral("piscinaGroup"));
     palestraGroup->setObjectName(QStringLiteral("palestraGroup"));
-
 
     //************** PARTE CONNECT **************************
 
