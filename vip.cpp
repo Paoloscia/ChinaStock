@@ -1,8 +1,5 @@
 #include "vip.h"
 
-
-//vip::vip(cliente cli, piscina pis, palestra pal): cliente (cli), piscina(pis), palestra(pal){}
-
 vip *vip::clone() const
 {
     return new vip(*this);
